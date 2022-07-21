@@ -10,8 +10,7 @@ local scene = composer.newScene()
 function scene:create( event )
 	local sceneGroup = self.view
 	
-	--GIT TEST--
-	local git = 1 		-- 테스트 코드
+	
 
 end
 
