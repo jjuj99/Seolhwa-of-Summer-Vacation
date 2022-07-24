@@ -13,11 +13,17 @@ function scene:create( event )
 	-- 이미지 불러오기 ----
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 
-	local back = display.newImageRect("image/p10_2.png",display.contentWidth, display.contentHeight)
-	back.x, back.y = display.contentWidth*0.5, display.contentHeight*0.5
+	-- local back = display.newImageRect("image/p10_2.png",display.contentWidth, display.contentHeight)
+	-- back.x, back.y = display.contentWidth*0.5, display.contentHeight*0.5
+
+	local set = display.newImage("image/public/설정.png")
+	set.x, set.y = display.contentWidth * 0.05, display.contentHeight * 0.09
 
 	local face = display.newImage("image/public/지천.png")
-	face.x,face.y = display.contentWidth*0.82, display.contentHeight*0.088
+	face.x, face.y = display.contentWidth * 0.853, display.contentHeight * 0.09
+
+	local item = display.newImage("image/public/아이템.png")
+	item.x, item.y = display.contentWidth * 0.95, display.contentHeight * 0.09
 
 	local c1 = display.newImageRect("image/유영.png",170,248)
 	c1.x,c1.y = display.contentWidth*0.151, display.contentHeight*0.773
@@ -25,50 +31,44 @@ function scene:create( event )
 	local c2 = display.newImageRect("image/심랑.png",170,248)
 	c2.x,c2.y = display.contentWidth*0.8486, display.contentHeight*0.773
 
-	local item = display.newImage("image/public/아이템.png")
-	item.x,item.y= display.contentWidth*0.925, display.contentHeight*0.088
-
-	local setting1 = display.newImage("image/public/설정.png")
-	setting1.x,setting1.y= display.contentWidth*0.1, display.contentHeight*0.088
-
 	local board = display.newImageRect("image/보드.png",680,400)
 	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.48
 
 	local card1 = display.newImageRect("image/숨은그림.png",100,182)
-	card1.x,card1.y= 364,240
+	card1.x,card1.y= 364,250
 
 	local card2 = display.newImageRect("image/숨은그림.png",100,182)
-	card2.x,card2.y= 475,240
+	card2.x,card2.y= 475,250
 
 	local card3 = display.newImageRect("image/숨은그림.png",100,182)
-	card3.x,card3.y=  580,240
+	card3.x,card3.y=  580,250
 
 	local card4 = display.newImageRect("image/숨은그림.png",100,182)
-	card4.x,card4.y=  690,240
+	card4.x,card4.y=  690,250
 
 	local card5 = display.newImageRect("image/숨은그림.png",100,182)
-	card5.x,card5.y= 799,240
+	card5.x,card5.y= 799,250
 
 	local card6 = display.newImageRect("image/숨은그림.png",100,182)
-	card6.x,card6.y= 904,240
+	card6.x,card6.y= 904,250
 
 	local card7 = display.newImageRect("image/숨은그림.png",100,182)
-	card7.x,card7.y=  364,427
+	card7.x,card7.y=  364,439
 
 	local card8 = display.newImageRect("image/숨은그림.png",100,182)
-	card8.x,card8.y=  475,427
+	card8.x,card8.y=  475,439
 
 	local card9 = display.newImageRect("image/숨은그림.png",100,182)
-	card9.x,card9.y= 580,427
+	card9.x,card9.y= 580,439
 
 	local card10 = display.newImageRect("image/숨은그림.png",100,182)
-	card10.x,card10.y= 690,427
+	card10.x,card10.y= 690,439
 
 	local card11 = display.newImageRect("image/숨은그림.png",100,182)
-	card11.x,card11.y= 799,427
+	card11.x,card11.y= 799,439
 
 	local card12 = display.newImageRect("image/숨은그림.png",100,182)
-	card12.x,card12.y= 904,427
+	card12.x,card12.y= 904,439
 
 
 	local level = display.newImageRect("image/단계.png",670,120)
@@ -79,12 +79,12 @@ function scene:create( event )
 
 	-----레이어 정리-----------
 	sceneGroup:insert(background)
-	sceneGroup:insert(back)
+	-- sceneGroup:insert(back)
 	sceneGroup:insert(face)
 	sceneGroup:insert(c1)
 	sceneGroup:insert(c2)
 	sceneGroup:insert(item)
-	sceneGroup:insert(setting1)
+	sceneGroup:insert(set)
 	sceneGroup:insert(board)
 	sceneGroup:insert(card1)
 	sceneGroup:insert(card2)

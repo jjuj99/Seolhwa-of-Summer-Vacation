@@ -16,20 +16,20 @@ function scene:create( event )
 	-- local back = display.newImageRect("image/p9_2.png",display.contentWidth, display.contentHeight)
 	-- back.x, back.y = display.contentWidth*0.5, display.contentHeight*0.5
 
-	local face = display.newImage("image/public/지천.png")
-	face.x,face.y = display.contentWidth*0.82, display.contentHeight*0.088
+	local setting1 = display.newImage("image/public/설정.png")
+	setting1.x, setting1.y = display.contentWidth * 0.05, display.contentHeight * 0.09
 
+	local face = display.newImage("image/public/지천.png")
+	face.x, face.y = display.contentWidth * 0.853, display.contentHeight * 0.09
+
+	local item = display.newImage("image/public/아이템.png")
+	item.x, item.y = display.contentWidth * 0.95, display.contentHeight * 0.09
+	
 	local c1 = display.newImageRect("image/유영.png",170,248)
 	c1.x,c1.y = display.contentWidth*0.151, display.contentHeight*0.773
 	
 	local c2 = display.newImageRect("image/심랑.png",170,248)
 	c2.x,c2.y = display.contentWidth*0.8486, display.contentHeight*0.773
-
-	local item = display.newImage("image/public/아이템.png")
-	item.x,item.y= display.contentWidth*0.925, display.contentHeight*0.088
-
-	local setting1 = display.newImage("image/public/설정.png")
-	setting1.x,setting1.y= display.contentWidth*0.1, display.contentHeight*0.088
 
 	local board = display.newImageRect("image/보드.png",680,400)
 	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.48
