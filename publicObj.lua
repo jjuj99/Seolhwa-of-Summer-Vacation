@@ -12,28 +12,28 @@ function scene:create( event )
 	-- 오브젝트들 배치 --
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 
-	local set = display.newImage("image/설정.png")
+	local set = display.newImage("image/public/설정.png")
 	set.x, set.y = display.contentWidth * 0.05, display.contentHeight * 0.09
 
-	local guide = display.newImage("image/지천.png")
+	local guide = display.newImage("image/public/지천.png")
 	guide.x, guide.y = display.contentWidth * 0.853, display.contentHeight * 0.09
 
-	local item = display.newImage("image/아이템.png")
+	local item = display.newImage("image/public/아이템.png")
 	item.x, item.y = display.contentWidth * 0.95, display.contentHeight * 0.09
 
-	local char = display.newImage("image/인물1.png")
+	local char = display.newImage("image/public/인물1.png")
 	char.x, char.y = display.contentWidth * 0.2, display.contentHeight * 0.6
 
-	local char2 = display.newImage("image/인물2.png") --청자는 어둡게 할 필요 있음
+	local char2 = display.newImage("image/public/인물2.png") --청자는 어둡게 할 필요 있음
 	char2.x, char2.y = display.contentWidth * 0.8, display.contentHeight * 0.6
 
-	local name = display.newImage("image/이름.png")
+	local name = display.newImage("image/public/이름.png")
 	name.x, name.y = display.contentWidth * 0.19, display.contentHeight * 0.62
 
-	local lines = display.newImage("image/대사창.png")
+	local lines = display.newImage("image/public/대사창.png")
 	lines.x, lines.y = display.contentWidth * 0.5, display.contentHeight * 0.8
 
-	local next = display.newImage("image/다음.png")
+	local next = display.newImage("image/public/다음.png")
 	next.x, next.y = display.contentWidth * 0.925, display.contentHeight * 0.88
 
 	--layer 정리--
@@ -42,7 +42,7 @@ function scene:create( event )
 	sceneGroup:insert(set)
 	sceneGroup:insert(guide)
 	sceneGroup:insert(item)
-	scencGroup:insert(char)
+	sceneGroup:insert(char)
 	sceneGroup:insert(char2)
 	sceneGroup:insert(name)
 	sceneGroup:insert(lines)
