@@ -16,7 +16,7 @@ function scene:create( event )
 	-- local back = display.newImageRect("image/p9_2.png",display.contentWidth, display.contentHeight)
 	-- back.x, back.y = display.contentWidth*0.5, display.contentHeight*0.5
 
-	local face = display.newImage("image/지천얼굴.png")
+	local face = display.newImage("image/public/지천.png")
 	face.x,face.y = display.contentWidth*0.82, display.contentHeight*0.088
 
 	local c1 = display.newImageRect("image/유영.png",170,248)
@@ -25,10 +25,10 @@ function scene:create( event )
 	local c2 = display.newImageRect("image/심랑.png",170,248)
 	c2.x,c2.y = display.contentWidth*0.8486, display.contentHeight*0.773
 
-	local item = display.newImageRect("image/아이템.png",100,100)
+	local item = display.newImage("image/public/아이템.png")
 	item.x,item.y= display.contentWidth*0.925, display.contentHeight*0.088
 
-	local setting1 = display.newImageRect("image/설정.png",90,90)
+	local setting1 = display.newImage("image/public/설정.png")
 	setting1.x,setting1.y= display.contentWidth*0.1, display.contentHeight*0.088
 
 	local board = display.newImageRect("image/보드.png",680,400)
