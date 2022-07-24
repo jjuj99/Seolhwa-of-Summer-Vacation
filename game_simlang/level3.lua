@@ -31,32 +31,45 @@ function scene:create( event )
 	local setting1 = display.newImage("image/public/설정.png")
 	setting1.x,setting1.y= display.contentWidth*0.1, display.contentHeight*0.088
 
-	-- local board = display.newImageRect("image/보드.png",680,400)
-	-- board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.48
+	local board = display.newImageRect("image/보드.png",680,400)
+	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.48
 
-	local card1 = display.newImageRect("image/숨은그림.png",150,182)
-	card1.x,card1.y= display.contentWidth*0.31, display.contentHeight*0.343
+	local card1 = display.newImageRect("image/숨은그림.png",100,182)
+	card1.x,card1.y= 364,240
 
-	local card2 = display.newImageRect("image/숨은그림.png",150,182)
-	card2.x,card2.y= display.contentWidth*0.434, display.contentHeight*0.343
+	local card2 = display.newImageRect("image/숨은그림.png",100,182)
+	card2.x,card2.y= 475,240
 
-	local card3 = display.newImageRect("image/숨은그림.png",150,182)
-	card3.x,card3.y=  display.contentWidth*0.558, display.contentHeight*0.343
+	local card3 = display.newImageRect("image/숨은그림.png",100,182)
+	card3.x,card3.y=  580,240
 
-	local card4 = display.newImageRect("image/숨은그림.png",150,182)
-	card4.x,card4.y=  display.contentWidth*0.682, display.contentHeight*0.343
+	local card4 = display.newImageRect("image/숨은그림.png",100,182)
+	card4.x,card4.y=  690,240
 
-	local card5 = display.newImageRect("image/숨은그림.png",150,182)
-	card5.x,card5.y= display.contentWidth*0.31, display.contentHeight*0.617
+	local card5 = display.newImageRect("image/숨은그림.png",100,182)
+	card5.x,card5.y= 799,240
 
-	local card6 = display.newImageRect("image/숨은그림.png",150,182)
-	card6.x,card6.y= display.contentWidth*0.434, display.contentHeight*0.617
+	local card6 = display.newImageRect("image/숨은그림.png",100,182)
+	card6.x,card6.y= 904,240
 
-	local card7 = display.newImageRect("image/숨은그림.png",150,182)
-	card7.x,card7.y=  display.contentWidth*0.558, display.contentHeight*0.617
+	local card7 = display.newImageRect("image/숨은그림.png",100,182)
+	card7.x,card7.y=  364,427
 
-	local card8 = display.newImageRect("image/숨은그림.png",150,182)
-	card8.x,card8.y=  display.contentWidth*0.682, display.contentHeight*0.617
+	local card8 = display.newImageRect("image/숨은그림.png",100,182)
+	card8.x,card8.y=  475,427
+
+	local card9 = display.newImageRect("image/숨은그림.png",100,182)
+	card9.x,card9.y= 580,427
+
+	local card10 = display.newImageRect("image/숨은그림.png",100,182)
+	card10.x,card10.y= 690,427
+
+	local card11 = display.newImageRect("image/숨은그림.png",100,182)
+	card11.x,card11.y= 799,427
+
+	local card12 = display.newImageRect("image/숨은그림.png",100,182)
+	card12.x,card12.y= 904,427
+
 
 	local level = display.newImageRect("image/단계.png",670,120)
 	level.x,level.y= display.contentWidth*0.5, display.contentHeight*0.89
@@ -72,7 +85,7 @@ function scene:create( event )
 	sceneGroup:insert(c2)
 	sceneGroup:insert(item)
 	sceneGroup:insert(setting1)
-	--sceneGroup:insert(board)
+	sceneGroup:insert(board)
 	sceneGroup:insert(card1)
 	sceneGroup:insert(card2)
 	sceneGroup:insert(card3)
@@ -81,6 +94,10 @@ function scene:create( event )
 	sceneGroup:insert(card6)
 	sceneGroup:insert(card7)
 	sceneGroup:insert(card8)
+	sceneGroup:insert(card9)
+	sceneGroup:insert(card10)
+	sceneGroup:insert(card11)
+	sceneGroup:insert(card12)
 	sceneGroup:insert(level)
 	--레이어 정리 끝 -------------
 	
