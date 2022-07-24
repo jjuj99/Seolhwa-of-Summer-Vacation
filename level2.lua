@@ -16,7 +16,7 @@ function scene:create( event )
 	-- local back = display.newImageRect("image/p9_2.png",display.contentWidth, display.contentHeight)
 	-- back.x, back.y = display.contentWidth*0.5, display.contentHeight*0.5
 
-	local face = display.newImageRect("image/지천얼굴.png",100,100)
+	local face = display.newImage("image/지천얼굴.png")
 	face.x,face.y = display.contentWidth*0.82, display.contentHeight*0.088
 
 	local c1 = display.newImageRect("image/유영.png",170,248)
