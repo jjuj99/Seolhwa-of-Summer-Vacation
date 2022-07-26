@@ -13,7 +13,7 @@ function scene:create( event )
 	-- 이미지 불러오기 ----
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 
-	local cardgroup= display.newGroup();
+	local cardgroup= display.newGroup()
 	-- local back = display.newImageRect("image/p9_1.png",display.contentWidth, display.contentHeight)
 	-- back.x, back.y = display.contentWidth*0.5, display.contentHeight*0.5
 
