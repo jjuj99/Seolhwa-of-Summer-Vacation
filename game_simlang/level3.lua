@@ -100,7 +100,65 @@ function scene:create( event )
 	sceneGroup:insert(card12)
 	sceneGroup:insert(level)
 	--레이어 정리 끝 -------------
-	
+	function card1:tap( event )
+		composer.showOverlay('game_simlang.fail')
+	end
+	card1:addEventListener("tap", card1)
+
+	function card2:tap( event )
+		composer.showOverlay('game_simlang.fail')
+	end
+	card2:addEventListener("tap", card2)
+
+	function card3:tap( event )
+		composer.showOverlay('game_simlang.clear')
+	end
+	card3:addEventListener("tap", card3)
+
+	function card4:tap( event )
+		composer.showOverlay('game_simlang.fail')
+	end
+	card4:addEventListener("tap", card4)
+
+	function card5:tap( event )
+		composer.showOverlay('game_simlang.fail')
+	end
+	card5:addEventListener("tap", card5)
+
+	function card6:tap( event )
+		composer.showOverlay('game_simlang.fail')
+	end
+	card6:addEventListener("tap", card6)
+
+	function card7:tap( event )
+		composer.showOverlay('game_simlang.fail')
+	end
+	card7:addEventListener("tap", card7)
+
+	function card8:tap( event )
+		composer.showOverlay('game_simlang.fail')
+	end
+	card8:addEventListener("tap", card8)
+
+	function card9:tap( event )
+		composer.showOverlay('game_simlang.fail')
+	end
+	card9:addEventListener("tap", card9)
+
+	function card10:tap( event )
+		composer.showOverlay('game_simlang.fail')
+	end
+	card10:addEventListener("tap", card10)
+
+	function card11:tap( event )
+		composer.showOverlay('game_simlang.fail')
+	end
+	card11:addEventListener("tap", card11)
+
+	function card12:tap( event )
+		composer.showOverlay('game_simlang.fail')
+	end
+	card12:addEventListener("tap", card12)
 	
 	
 end
