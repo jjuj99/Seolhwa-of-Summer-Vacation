@@ -271,6 +271,20 @@ function scene:create( event )
 	end
 	touchAn:addEventListener("tap", touchAn)
 	
+	function setting1:tap( event )
+		composer.showOverlay('game_simlang.setting')
+	end
+	setting1:addEventListener("tap", setting1)
+
+	function face:tap( event )
+		composer.showOverlay('game_simlang.jichunface')
+	end
+	face:addEventListener("tap", face)
+
+	function item:tap( event )
+		composer.showOverlay('game_simlang.item')
+	end
+	item:addEventListener("tap", item)
 end
 
 function scene:show( event )
