@@ -160,10 +160,10 @@ function scene:create( event )
 	end
 	card12:addEventListener("tap", card12)
 	
-	function setting1:tap( event )
+	function set:tap( event )
 		composer.showOverlay('game_simlang.setting')
 	end
-	setting1:addEventListener("tap", setting1)
+	set:addEventListener("tap", set)
 
 	function face:tap( event )
 		composer.showOverlay('game_simlang.jichunface')
