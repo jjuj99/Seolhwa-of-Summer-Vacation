@@ -9,9 +9,6 @@ function scene:create( event )
     local set = display.newImageRect("image/public/설정창.png",400,600)
     set.x,set.y= display.contentWidth/2, display.contentHeight/2
 
-    local buttonNum1 = display.newImageRect("image/public/일시정지.png",370,100)
-    buttonNum1.x,buttonNum1.y=640,170
-
     local buttonNum2 = display.newImageRect("image/public/다시하기.png",370,100)
     buttonNum2.x,buttonNum2.y=640,295
 
@@ -22,14 +19,9 @@ function scene:create( event )
     buttonNum4.x,buttonNum4.y=640,545
 
     sceneGroup:insert(set)
-    sceneGroup:insert(buttonNum1)
     sceneGroup:insert(buttonNum2)
     sceneGroup:insert(buttonNum3)
     sceneGroup:insert(buttonNum4)
-
-    function buttonNum1:tap( event )
-	end
-	buttonNum1:addEventListener("tap", buttonNum1)
 
     function buttonNum2:tap( event )
 	
