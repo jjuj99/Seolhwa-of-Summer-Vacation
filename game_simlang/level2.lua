@@ -13,6 +13,10 @@ function scene:create( event )
 	-- 이미지 불러오기 ----
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 
+	local levelText = display.newText("2단계)어디에 있을까?", display.contentWidth*0.5, display.contentHeight*0.9)
+	levelText:setFillColor(0)
+	levelText.size=30
+
 	local cardgroup= display.newGroup()
 	-- local back = display.newImageRect("image/p9_2.png",display.contentWidth, display.contentHeight)
 	-- back.x, back.y = display.contentWidth*0.5, display.contentHeight*0.5
@@ -26,132 +30,132 @@ function scene:create( event )
 	local item = display.newImage("image/public/아이템.png")
 	item.x, item.y = display.contentWidth * 0.95, display.contentHeight * 0.09
 	
-	local c1 = display.newImageRect("image/유영.png",170,248)
+	local c1 = display.newImageRect("image/simlang_image/유영.png",170,248)
 	c1.x,c1.y = display.contentWidth*0.151, display.contentHeight*0.773
 	
-	local c2 = display.newImageRect("image/심랑.png",170,248)
+	local c2 = display.newImageRect("image/simlang_image/심랑.png",170,248)
 	c2.x,c2.y = display.contentWidth*0.8486, display.contentHeight*0.773
 
-	local board = display.newImageRect("image/보드.png",680,400)
+	local board = display.newImageRect("image/simlang_image/보드.png",680,400)
 	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.48
 ---------
-	local card1 = display.newImageRect("image/숨은그림.png",150,182)
+	local card1 = display.newImageRect("image/simlang_image/숨은그림.png",150,182)
 	card1.x,card1.y= display.contentWidth*0.31, display.contentHeight*0.343
 	cardgroup:insert(card1)
 
-	local card11 = display.newImageRect("image/그림2.png",150,182)
+	local card11 = display.newImageRect("image/simlang_image/그림2.png",150,182)
 	card11.x,card11.y= display.contentWidth*0.31, display.contentHeight*0.343
 	card11.alpha=0
 	cardgroup:insert(card11)
 
-	local card12 = display.newImageRect("image/그림3.png",150,182)
+	local card12 = display.newImageRect("image/simlang_image/그림3.png",150,182)
 	card12.x,card12.y= display.contentWidth*0.31, display.contentHeight*0.343
 	card12.alpha=0
 	cardgroup:insert(card12)
 -------
-	local card2 = display.newImageRect("image/숨은그림.png",150,182)
+	local card2 = display.newImageRect("image/simlang_image/숨은그림.png",150,182)
 	card2.x,card2.y= display.contentWidth*0.434, display.contentHeight*0.343
 	cardgroup:insert(card2)
 
-	local card21 = display.newImageRect("image/그림2.png",150,182)
+	local card21 = display.newImageRect("image/simlang_image/그림2.png",150,182)
 	card21.x,card21.y= display.contentWidth*0.434, display.contentHeight*0.343
 	card21.alpha=0
 	cardgroup:insert(card21)
 
-	local card22 = display.newImageRect("image/그림3.png",150,182)
+	local card22 = display.newImageRect("image/simlang_image/그림3.png",150,182)
 	card22.x,card22.y= display.contentWidth*0.434, display.contentHeight*0.343
 	card22.alpha=0
 	cardgroup:insert(card22)
 ----
-	local card3 = display.newImageRect("image/숨은그림.png",150,182)
+	local card3 = display.newImageRect("image/simlang_image/숨은그림.png",150,182)
 	card3.x,card3.y=  display.contentWidth*0.558, display.contentHeight*0.343
 	cardgroup:insert(card3)
 
-	local card31 = display.newImageRect("image/그림2.png",150,182)
+	local card31 = display.newImageRect("image/simlang_image/그림2.png",150,182)
 	card31.x,card31.y= display.contentWidth*0.558, display.contentHeight*0.343
 	card31.alpha=0
 	cardgroup:insert(card31)
 
-	local card32 = display.newImageRect("image/그림3.png",150,182)
+	local card32 = display.newImageRect("image/simlang_image/그림3.png",150,182)
 	card32.x,card32.y= display.contentWidth*0.558, display.contentHeight*0.343
 	card32.alpha=0
 	cardgroup:insert(card32)
 ------
-	local card4 = display.newImageRect("image/숨은그림.png",150,182)
+	local card4 = display.newImageRect("image/simlang_image/숨은그림.png",150,182)
 	card4.x,card4.y=  display.contentWidth*0.682, display.contentHeight*0.343
 	cardgroup:insert(card4)
 
-	local card41 = display.newImageRect("image/그림2.png",150,182)
+	local card41 = display.newImageRect("image/simlang_image/그림2.png",150,182)
 	card41.x,card41.y= display.contentWidth*0.682, display.contentHeight*0.343
 	card41.alpha=0
 	cardgroup:insert(card41)
 
-	local card42 = display.newImageRect("image/그림3.png",150,182)
+	local card42 = display.newImageRect("image/simlang_image/그림3.png",150,182)
 	card42.x,card42.y= display.contentWidth*0.682, display.contentHeight*0.343
 	card42.alpha=0
 	cardgroup:insert(card42)
 ------
 
-	local card5 = display.newImageRect("image/숨은그림.png",150,182)
+	local card5 = display.newImageRect("image/simlang_image/숨은그림.png",150,182)
 	card5.x,card5.y= display.contentWidth*0.31, display.contentHeight*0.617
 	cardgroup:insert(card5)
 
-	local card51 = display.newImageRect("image/그림2.png",150,182)
+	local card51 = display.newImageRect("image/simlang_image/그림2.png",150,182)
 	card51.x,card51.y= display.contentWidth*0.31, display.contentHeight*0.617
 	card51.alpha=0
 	cardgroup:insert(card51)
 
-	local card52 = display.newImageRect("image/그림3.png",150,182)
+	local card52 = display.newImageRect("image/simlang_image/그림3.png",150,182)
 	card52.x,card52.y= display.contentWidth*0.31, display.contentHeight*0.617
 	card52.alpha=0
 	cardgroup:insert(card52)
 -------
-	local card6 = display.newImageRect("image/숨은그림.png",150,182)
+	local card6 = display.newImageRect("image/simlang_image/숨은그림.png",150,182)
 	card6.x,card6.y= display.contentWidth*0.434, display.contentHeight*0.617
 	cardgroup:insert(card6)
 
-	local card61 = display.newImageRect("image/그림2.png",150,182)
+	local card61 = display.newImageRect("image/simlang_image/그림2.png",150,182)
 	card61.x,card61.y= display.contentWidth*0.434, display.contentHeight*0.617
 	card61.alpha=0
 	cardgroup:insert(card61)
 
-	local card62 = display.newImageRect("image/그림3.png",150,182)
+	local card62 = display.newImageRect("image/simlang_image/그림3.png",150,182)
 	card62.x,card62.y= display.contentWidth*0.434, display.contentHeight*0.617
 	card62.alpha=0
 	cardgroup:insert(card62)
 ------
-	local card7 = display.newImageRect("image/숨은그림.png",150,182)
+	local card7 = display.newImageRect("image/simlang_image/숨은그림.png",150,182)
 	card7.x,card7.y=  display.contentWidth*0.558, display.contentHeight*0.617
 	cardgroup:insert(card7)
 
-	local card71 = display.newImageRect("image/그림2.png",150,182)
+	local card71 = display.newImageRect("image/simlang_image/그림2.png",150,182)
 	card71.x,card71.y= display.contentWidth*0.558, display.contentHeight*0.617
 	card71.alpha=0
 	cardgroup:insert(card71)
 
-	local card72 = display.newImageRect("image/그림3.png",150,182)
+	local card72 = display.newImageRect("image/simlang_image/그림3.png",150,182)
 	card72.x,card72.y= display.contentWidth*0.558, display.contentHeight*0.617
 	card72.alpha=0
 	cardgroup:insert(card72)
 ------
-	local card8 = display.newImageRect("image/숨은그림.png",150,182)
+	local card8 = display.newImageRect("image/simlang_image/숨은그림.png",150,182)
 	card8.x,card8.y=  display.contentWidth*0.682, display.contentHeight*0.617
 	cardgroup:insert(card8)
 
-	local card81 = display.newImageRect("image/그림2.png",150,182)
+	local card81 = display.newImageRect("image/simlang_image/그림2.png",150,182)
 	card81.x,card81.y= display.contentWidth*0.682, display.contentHeight*0.617
 	card81.alpha=0
 	cardgroup:insert(card81)
 
-	local card82 = display.newImageRect("image/그림3.png",150,182)
+	local card82 = display.newImageRect("image/simlang_image/그림3.png",150,182)
 	card82.x,card82.y= display.contentWidth*0.682, display.contentHeight*0.617
 	card82.alpha=0
 	cardgroup:insert(card82)
 -------
-	local level = display.newImageRect("image/단계.png",670,120)
+	local level = display.newImageRect("image/simlang_image/단계.png",670,120)
 	level.x,level.y= display.contentWidth*0.5, display.contentHeight*0.89
 
-	local touchAn = display.newImage("image/숨은정답1.png")
+	local touchAn = display.newImage("image/simlang_image/숨은정답1.png")
 	touchAn.x,touchAn.y=600,300
 	touchAn:scale(0.06,0.06)
 
@@ -170,6 +174,7 @@ function scene:create( event )
 	sceneGroup:insert(cardgroup)
 	sceneGroup:insert(level)
 	sceneGroup:insert(touchAn)
+	sceneGroup:insert(levelText)
 	--레이어 정리 끝 -------------
 
 	--tap 확대 event------------------------------------------------

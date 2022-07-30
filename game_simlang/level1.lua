@@ -11,6 +11,10 @@ function scene:create( event )
 	local sceneGroup = self.view
 
 	-- 이미지 불러오기 ----
+	local levelText = display.newText("1단계)어디에 있을까?", display.contentWidth*0.5, display.contentHeight*0.9)
+	levelText:setFillColor(0)
+	levelText.size=30
+
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 
 	local cardgroup= display.newGroup()
@@ -26,97 +30,97 @@ function scene:create( event )
 	local item = display.newImage("image/public/아이템.png")
 	item.x, item.y = display.contentWidth * 0.95, display.contentHeight * 0.09
 
-	local c1 = display.newImageRect("image/유영.png",170,248)
+	local c1 = display.newImageRect("image/simlang_image/유영.png",170,248)
 	c1.x,c1.y = display.contentWidth*0.151, display.contentHeight*0.773
 	
-	local c2 = display.newImageRect("image/심랑.png",170,248)
+	local c2 = display.newImageRect("image/simlang_image/심랑.png",170,248)
 	c2.x,c2.y = display.contentWidth*0.8486, display.contentHeight*0.773
 
-	local board = display.newImageRect("image/보드.png",680,400)
+	local board = display.newImageRect("image/simlang_image/보드.png",680,400)
 	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.48
 
 --------
-	local card1 = display.newImageRect("image/그림.png",300,180)
+	local card1 = display.newImageRect("image/simlang_image/그림.png",300,180)
 	card1.x,card1.y= display.contentWidth*0.37, display.contentHeight*0.34
 	cardgroup:insert(card1)
 
-	local card11 = display.newImageRect("image/그림2.png",300,180)
+	local card11 = display.newImageRect("image/simlang_image/그림2.png",300,180)
 	card11.x,card11.y= display.contentWidth*0.37, display.contentHeight*0.34
 	card11.alpha=0
 	cardgroup:insert(card11)
 
-	local card12 = display.newImageRect("image/그림3.png",300,180)
+	local card12 = display.newImageRect("image/simlang_image/그림3.png",300,180)
 	card12.x,card12.y= display.contentWidth*0.37, display.contentHeight*0.34
 	card12.alpha=0
 	cardgroup:insert(card12)
 
-	local card13 = display.newImageRect("image/그림4.png",300,180)
+	local card13 = display.newImageRect("image/simlang_image/그림4.png",300,180)
 	card13.x,card13.y= display.contentWidth*0.37, display.contentHeight*0.34
 	card13.alpha=0
 	cardgroup:insert(card13)
 --------
-	local card2 = display.newImageRect("image/그림.png",300,180)
+	local card2 = display.newImageRect("image/simlang_image/그림.png",300,180)
 	card2.x,card2.y= display.contentWidth*0.63, display.contentHeight*0.34
 	cardgroup:insert(card2)
 
-	local card21 = display.newImageRect("image/그림2.png",300,180)
+	local card21 = display.newImageRect("image/simlang_image/그림2.png",300,180)
 	card21.x,card21.y= display.contentWidth*0.63, display.contentHeight*0.34
 	card21.alpha=0
 	cardgroup:insert(card21)
 
-	local card22 = display.newImageRect("image/그림3.png",300,180)
+	local card22 = display.newImageRect("image/simlang_image/그림3.png",300,180)
 	card22.x,card22.y= display.contentWidth*0.63, display.contentHeight*0.34
 	card22.alpha=0
 	cardgroup:insert(card22)
 
-	local card23 = display.newImageRect("image/그림4.png",300,180)
+	local card23 = display.newImageRect("image/simlang_image/그림4.png",300,180)
 	card23.x,card23.y= display.contentWidth*0.63, display.contentHeight*0.34
 	card23.alpha=0
 	cardgroup:insert(card23)
 -------
-	local card3 = display.newImageRect("image/그림.png",300,180)
+	local card3 = display.newImageRect("image/simlang_image/그림.png",300,180)
 	card3.x,card3.y= display.contentWidth*0.37, display.contentHeight*0.62
 	cardgroup:insert(card3)
 
-	local card31 = display.newImageRect("image/그림2.png",300,180)
+	local card31 = display.newImageRect("image/simlang_image/그림2.png",300,180)
 	card31.x,card31.y= display.contentWidth*0.37, display.contentHeight*0.62
 	card31.alpha=0
 	cardgroup:insert(card31)
 
-	local card32 = display.newImageRect("image/그림3.png",300,180)
+	local card32 = display.newImageRect("image/simlang_image/그림3.png",300,180)
 	card32.x,card32.y= display.contentWidth*0.37, display.contentHeight*0.62
 	card32.alpha=0
 	cardgroup:insert(card32)
 
-	local card33 = display.newImageRect("image/그림4.png",300,180)
+	local card33 = display.newImageRect("image/simlang_image/그림4.png",300,180)
 	card33.x,card33.y= display.contentWidth*0.37, display.contentHeight*0.62
 	card33.alpha=0
 	cardgroup:insert(card33)
 	
 -------
-	local card4 = display.newImageRect("image/그림.png",300,180)
+	local card4 = display.newImageRect("image/simlang_image/그림.png",300,180)
 	card4.x,card4.y= display.contentWidth*0.63, display.contentHeight*0.62
 	cardgroup:insert(card4)
 
-	local card41 = display.newImageRect("image/그림2.png",300,180)
+	local card41 = display.newImageRect("image/simlang_image/그림2.png",300,180)
 	card41.x,card41.y= display.contentWidth*0.63, display.contentHeight*0.62
 	card41.alpha=0
 	cardgroup:insert(card41)
 
-	local card42 = display.newImageRect("image/그림3.png",300,180)
+	local card42 = display.newImageRect("image/simlang_image/그림3.png",300,180)
 	card42.x,card42.y= display.contentWidth*0.63, display.contentHeight*0.62
 	card42.alpha=0
 	cardgroup:insert(card42)
 
-	local card43 = display.newImageRect("image/그림4.png",300,180)
+	local card43 = display.newImageRect("image/simlang_image/그림4.png",300,180)
 	card43.x,card43.y= display.contentWidth*0.63, display.contentHeight*0.62
 	card43.alpha=0
 	cardgroup:insert(card43)
 ------
-	local level = display.newImageRect("image/단계.png",670,120)
+	local level = display.newImageRect("image/simlang_image/단계.png",670,120)
 	level.x,level.y= display.contentWidth*0.5, display.contentHeight*0.89
 
-	local touchAn = display.newImage("image/숨은정답1.png")
+	local touchAn = display.newImage("image/simlang_image/숨은정답1.png")
 	touchAn.x,touchAn.y=400,500
 	touchAn:scale(0.06,0.06)
 
@@ -135,6 +139,7 @@ function scene:create( event )
 	sceneGroup:insert(cardgroup)
 	sceneGroup:insert(level)
 	sceneGroup:insert(touchAn)
+	sceneGroup:insert(levelText)
 	touchAn:toFront()
 	--레이어 정리 끝 -------------
 
