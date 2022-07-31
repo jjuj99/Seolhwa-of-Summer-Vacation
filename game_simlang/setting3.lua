@@ -1,37 +1,43 @@
------------------------------------------------------------------------------------------
---
--- view1.lua
---
------------------------------------------------------------------------------------------
+
 
 local composer = require( "composer" )
 local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
+
+    local set = display.newImageRect("image/public/설정창.png",400,600)
+    set.x,set.y= display.contentWidth/2, display.contentHeight/2
+
+    local buttonNum2 = display.newImageRect("image/public/다시하기.png",370,100)
+    buttonNum2.x,buttonNum2.y=640,295
+
+    local buttonNum3 = display.newImageRect("image/public/세부설정.png",370,100)
+    buttonNum3.x,buttonNum3.y=640,420
+
+    local buttonNum4 = display.newImageRect("image/public/나가기.png",370,100)
+    buttonNum4.x,buttonNum4.y=640,545
+
+    sceneGroup:insert(set)
+    sceneGroup:insert(buttonNum2)
+    sceneGroup:insert(buttonNum3)
+    sceneGroup:insert(buttonNum4)
+
+    function buttonNum2:tap( event )
 	
-	
-    local back = display.newRoundedRect(display.contentWidth/2, display.contentHeight/2, 700,500,10)
-	back:setFillColor(0.5, 0.5, 0.2)
+	end
+	buttonNum2:addEventListener("tap", buttonNum2)
 
-	local textStart= display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.4, 500,300,10)
-	textStart:setFillColor(0.5, 0.4, 0.4)
+    function buttonNum3:tap( event )
+	end
+	buttonNum3:addEventListener("tap", buttonNum3)
 
-	local textStart2 = display.newText("게임 플레이 방법", display.contentWidth/2, display.contentHeight*0.24)
-	textStart2.size = 30
+    function buttonNum4:tap( event )
+		composer.removeScene('game_simlang.setting')
+	end
+	buttonNum4:addEventListener("tap", buttonNum4)
 
-	local button = display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.69, 500,100,10)
-	button:setFillColor(0.5, 0.4, 0.4)
 
-
- 	local text = display.newText("시작하기", display.contentWidth/2, display.contentHeight*0.69)
- 	text.size = 30
-
-	sceneGroup:insert(back)
-	sceneGroup:insert(textStart)
-	sceneGroup:insert(textStart2)
-	sceneGroup:insert(button)
-	sceneGroup:insert(text)
 end
 
 function scene:show( event )

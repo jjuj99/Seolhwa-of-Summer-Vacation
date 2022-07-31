@@ -6,6 +6,7 @@
 
 local composer = require( "composer" )
 local scene = composer.newScene()
+local timeAttack
 
 function scene:create( event )
 	local sceneGroup = self.view
@@ -38,6 +39,15 @@ function scene:create( event )
 
 	local board = display.newImageRect("image/simlang_image/보드.png",680,400)
 	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.48
+
+	local time= display.newText(10, display.contentWidth/2, display.contentHeight*0.12)
+	time.size = 50
+
+	local timeBoard = display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.1, 100,100, 5)
+	timeBoard:setFillColor(0.6, 0.5, 0.5)
+
+	local timerText =  display.newText("timer", display.contentWidth*0.5, display.contentHeight*0.05)
+	timerText.size=20
 
 --------
 	local card1 = display.newImageRect("image/simlang_image/그림.png",300,180)
@@ -140,8 +150,28 @@ function scene:create( event )
 	sceneGroup:insert(level)
 	sceneGroup:insert(touchAn)
 	sceneGroup:insert(levelText)
+	sceneGroup:insert(timeBoard)
+	sceneGroup:insert(timerText)
+	sceneGroup:insert(time)
 	touchAn:toFront()
 	--레이어 정리 끝 -------------
+
+	--timer event-------------------------
+	local function counter( event )
+		time.text = time.text - 1
+   
+		if( time.text == '5' ) then
+			time:setFillColor(1, 0, 0)
+		end
+   
+		if( time.text == '-1') then
+			time.alpha = 0
+			composer.showOverlay('game_simlang.fail')
+			
+		end
+	end
+   
+	timeAttack = timer.performWithDelay(1000, counter, 11)   
 
 	--tap 확대 event------------------------------------------------
 	function card1:tap( event )
@@ -216,12 +246,16 @@ function scene:create( event )
 	card42:addEventListener("tap", card42)
 --------------
 	function touchAn:tap( event )
+		--time.alpha = 0
 		composer.gotoScene('game_simlang.level2')
 		composer.removeScene('game_simlang.level1')
 	end
 	touchAn:addEventListener("tap", touchAn)
 
 	function setting1:tap( event )
+		timer.pause(timeAttack)
+		composer.setVariable( "timeAttack", timeAttack )
+
 		composer.showOverlay('game_simlang.setting')
 	end
 	setting1:addEventListener("tap", setting1)
@@ -256,10 +290,8 @@ function scene:hide( event )
 	local phase = event.phase
 	
 	if event.phase == "will" then
-		-- Called when the scene is on screen and is about to move off screen
-		--
-		-- INSERT code here to pause the scene
-		-- e.g. stop timers, stop animation, unload sounds, etc.)
+		composer.removeScene('game_simlang.level1')
+	    timer.cancel(timeAttack)
 	elseif phase == "did" then
 		-- Called when the scene is now off screen
 	end
@@ -268,10 +300,7 @@ end
 function scene:destroy( event )
 	local sceneGroup = self.view
 	
-	-- Called prior to the removal of scene's "view" (sceneGroup)
-	-- 
-	-- INSERT code here to cleanup the scene
-	-- e.g. remove display objects, remove touch listeners, save state, etc.
+	
 end
 
 ---------------------------------------------------------------------------------

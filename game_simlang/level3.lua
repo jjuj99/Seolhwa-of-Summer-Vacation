@@ -6,6 +6,7 @@
 
 local composer = require( "composer" )
 local scene = composer.newScene()
+local timeAttack
 
 function scene:create( event )
 	local sceneGroup = self.view
@@ -78,6 +79,15 @@ function scene:create( event )
 	local level = display.newImageRect("image/simlang_image/단계.png",670,120)
 	level.x,level.y= display.contentWidth*0.5, display.contentHeight*0.89
 
+	local time= display.newText(10, display.contentWidth/2, display.contentHeight*0.12)
+	time.size = 50
+
+	local timeBoard = display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.1, 100,100, 5)
+	timeBoard:setFillColor(0.6, 0.5, 0.5)
+
+	local timerText =  display.newText("timer", display.contentWidth*0.5, display.contentHeight*0.05)
+	timerText.size=20
+
 	------이미지 불러오기 끝 ----------------
 
 
@@ -104,69 +114,94 @@ function scene:create( event )
 	sceneGroup:insert(card12)
 	sceneGroup:insert(level)
 	sceneGroup:insert(levelText)
+	sceneGroup:insert(timeBoard)
+	sceneGroup:insert(timerText)
+	sceneGroup:insert(time)
 	--레이어 정리 끝 -------------
+	--timer event-------------------------
+	local function counter( event )
+		time.text = time.text - 1
+   
+		if( time.text == '5' ) then
+			time:setFillColor(1, 0, 0)
+		end
+   
+		if( time.text == '-1') then
+			time.alpha = 0
+			composer.showOverlay('game_simlang.fail')
+			
+		end
+	end
+   
+	timeAttack = timer.performWithDelay(1000, counter, 11)   
+	--tap 확대 event------------------------------------------------
 	function card1:tap( event )
-		composer.showOverlay('game_simlang.fail')
+		composer.showOverlay('game_simlang.fail3')
 	end
 	card1:addEventListener("tap", card1)
 
 	function card2:tap( event )
-		composer.showOverlay('game_simlang.fail')
+		composer.showOverlay('game_simlang.fail3')
 	end
 	card2:addEventListener("tap", card2)
 
 	function card3:tap( event )
+		time.alpha = 0
+
 		composer.showOverlay('game_simlang.clear')
 	end
 	card3:addEventListener("tap", card3)
 
 	function card4:tap( event )
-		composer.showOverlay('game_simlang.fail')
+		composer.showOverlay('game_simlang.fail3')
 	end
 	card4:addEventListener("tap", card4)
 
 	function card5:tap( event )
-		composer.showOverlay('game_simlang.fail')
+		composer.showOverlay('game_simlang.fail3')
 	end
 	card5:addEventListener("tap", card5)
 
 	function card6:tap( event )
-		composer.showOverlay('game_simlang.fail')
+		composer.showOverlay('game_simlang.fail3')
 	end
 	card6:addEventListener("tap", card6)
 
 	function card7:tap( event )
-		composer.showOverlay('game_simlang.fail')
+		composer.showOverlay('game_simlang.fail3')
 	end
 	card7:addEventListener("tap", card7)
 
 	function card8:tap( event )
-		composer.showOverlay('game_simlang.fail')
+		composer.showOverlay('game_simlang.fail3')
 	end
 	card8:addEventListener("tap", card8)
 
 	function card9:tap( event )
-		composer.showOverlay('game_simlang.fail')
+		composer.showOverlay('game_simlang.fail3')
 	end
 	card9:addEventListener("tap", card9)
 
 	function card10:tap( event )
-		composer.showOverlay('game_simlang.fail')
+		composer.showOverlay('game_simlang.fail3')
 	end
 	card10:addEventListener("tap", card10)
 
 	function card11:tap( event )
-		composer.showOverlay('game_simlang.fail')
+		composer.showOverlay('game_simlang.fail3')
 	end
 	card11:addEventListener("tap", card11)
 
 	function card12:tap( event )
-		composer.showOverlay('game_simlang.fail')
+		composer.showOverlay('game_simlang.fail3')
 	end
 	card12:addEventListener("tap", card12)
 	
 	function set:tap( event )
-		composer.showOverlay('game_simlang.setting')
+		timer.pause(timeAttack)
+		composer.setVariable( "timeAttack", timeAttack )
+
+		composer.showOverlay('game_simlang.setting3')
 	end
 	set:addEventListener("tap", set)
 
@@ -200,10 +235,8 @@ function scene:hide( event )
 	local phase = event.phase
 	
 	if event.phase == "will" then
-		-- Called when the scene is on screen and is about to move off screen
-		--
-		-- INSERT code here to pause the scene
-		-- e.g. stop timers, stop animation, unload sounds, etc.)
+		composer.removeScene('game_simlang.level3')
+		timer.cancel(timeAttack)
 	elseif phase == "did" then
 		-- Called when the scene is now off screen
 	end

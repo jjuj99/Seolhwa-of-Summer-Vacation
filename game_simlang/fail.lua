@@ -21,7 +21,7 @@ function scene:create( event )
  	function button1:tap( event )
         composer.removeScene('game_simlang.fail')
         composer.gotoScene('game_simlang.level1')
-        composer.removeScene('game_simlang.level3')
+        composer.removeScene('game_simlang.level1')
  	end
  	button1:addEventListener("tap", button1)
 
@@ -51,10 +51,7 @@ function scene:hide( event )
 	local phase = event.phase
 	
 	if event.phase == "will" then
-		-- Called when the scene is on screen and is about to move off screen
-		--
-		-- INSERT code here to pause the scene
-		-- e.g. stop timers, stop animation, unload sounds, etc.)
+		composer.removeScene('fail')
 	elseif phase == "did" then
 		-- Called when the scene is now off screen
 	end

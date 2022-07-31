@@ -38,6 +38,10 @@ function scene:create( event )
 	buttonNum4:addEventListener("tap", buttonNum4)
 
 
+
+	-- local timeAttack = composer.getVariable("timeAttack")
+    --     timer.resume(timeAttack)
+ 	-- 	composer.hideOverlay('setting')
 end
 
 function scene:show( event )
