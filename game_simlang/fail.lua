@@ -51,7 +51,7 @@ function scene:hide( event )
 	local phase = event.phase
 	
 	if event.phase == "will" then
-		composer.removeScene('fail')
+		composer.removeScene('game_simlang.fail')
 	elseif phase == "did" then
 		-- Called when the scene is now off screen
 	end

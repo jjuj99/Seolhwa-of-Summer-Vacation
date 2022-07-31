@@ -13,10 +13,10 @@ function scene:create( event )
  	title.size = 30
     title:setFillColor(0)
 
-    local object1 = display.newImageRect("image/public/꽃1.png",150,150)
+    local object1 = display.newImageRect("image/public/꽃3.png",150,150)
 	object1.x,object1.y= display.contentWidth*0.38, display.contentHeight*0.5
 
-    local object2 = display.newImageRect("image/public/설명1.png",300,150)
+    local object2 = display.newImageRect("image/public/설명3.png",300,150)
 	object2.x,object2.y= display.contentWidth*0.56, display.contentHeight*0.5
 
  	sceneGroup:insert(board)

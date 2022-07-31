@@ -19,7 +19,9 @@ function scene:create( event )
  	text.size = 30
 
  	function button1:tap( event )
+		composer.removeScene('game_simlang.fail2')
         composer.gotoScene('game_simlang.level1')
+		composer.removeScene('game_simlang.level2')
  	end
  	button1:addEventListener("tap", button1)
 
@@ -50,7 +52,6 @@ function scene:hide( event )
 	
 	if event.phase == "will" then
 		composer.removeScene('game_simlang.fail2')
-        composer.removeScene('game_simlang.level2')
 	elseif phase == "did" then
 		-- Called when the scene is now off screen
 	end

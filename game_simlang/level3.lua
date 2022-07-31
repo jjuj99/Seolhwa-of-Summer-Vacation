@@ -128,7 +128,7 @@ function scene:create( event )
    
 		if( time.text == '-1') then
 			time.alpha = 0
-			composer.showOverlay('game_simlang.fail')
+			composer.showOverlay('game_simlang.fail3')
 			
 		end
 	end
@@ -147,7 +147,6 @@ function scene:create( event )
 
 	function card3:tap( event )
 		time.alpha = 0
-
 		composer.showOverlay('game_simlang.clear')
 	end
 	card3:addEventListener("tap", card3)

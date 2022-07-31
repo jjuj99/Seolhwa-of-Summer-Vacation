@@ -246,7 +246,7 @@ function scene:create( event )
 	card42:addEventListener("tap", card42)
 --------------
 	function touchAn:tap( event )
-		--time.alpha = 0
+		time.alpha = 0
 		composer.gotoScene('game_simlang.level2')
 		composer.removeScene('game_simlang.level1')
 	end
@@ -290,8 +290,8 @@ function scene:hide( event )
 	local phase = event.phase
 	
 	if event.phase == "will" then
+		timer.cancel(timeAttack)
 		composer.removeScene('game_simlang.level1')
-	    timer.cancel(timeAttack)
 	elseif phase == "did" then
 		-- Called when the scene is now off screen
 	end
