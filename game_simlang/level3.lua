@@ -136,11 +136,13 @@ function scene:create( event )
 	timeAttack = timer.performWithDelay(1000, counter, 11)   
 	--tap 확대 event------------------------------------------------
 	function card1:tap( event )
+		timer.pause(timeAttack)
 		composer.showOverlay('game_simlang.fail3')
 	end
 	card1:addEventListener("tap", card1)
 
 	function card2:tap( event )
+		timer.pause(timeAttack)
 		composer.showOverlay('game_simlang.fail3')
 	end
 	card2:addEventListener("tap", card2)
@@ -153,46 +155,55 @@ function scene:create( event )
 	card3:addEventListener("tap", card3)
 
 	function card4:tap( event )
+		timer.pause(timeAttack)
 		composer.showOverlay('game_simlang.fail3')
 	end
 	card4:addEventListener("tap", card4)
 
 	function card5:tap( event )
+		timer.pause(timeAttack)
 		composer.showOverlay('game_simlang.fail3')
 	end
 	card5:addEventListener("tap", card5)
 
 	function card6:tap( event )
+		timer.pause(timeAttack)
 		composer.showOverlay('game_simlang.fail3')
 	end
 	card6:addEventListener("tap", card6)
 
 	function card7:tap( event )
+		timer.pause(timeAttack)
 		composer.showOverlay('game_simlang.fail3')
 	end
 	card7:addEventListener("tap", card7)
 
 	function card8:tap( event )
+		timer.pause(timeAttack)
 		composer.showOverlay('game_simlang.fail3')
 	end
 	card8:addEventListener("tap", card8)
 
 	function card9:tap( event )
+		timer.pause(timeAttack)
 		composer.showOverlay('game_simlang.fail3')
 	end
 	card9:addEventListener("tap", card9)
 
 	function card10:tap( event )
+		timer.pause(timeAttack)
 		composer.showOverlay('game_simlang.fail3')
 	end
 	card10:addEventListener("tap", card10)
 
 	function card11:tap( event )
+		timer.pause(timeAttack)
 		composer.showOverlay('game_simlang.fail3')
 	end
 	card11:addEventListener("tap", card11)
 
 	function card12:tap( event )
+		timer.pause(timeAttack)
 		composer.showOverlay('game_simlang.fail3')
 	end
 	card12:addEventListener("tap", card12)
@@ -206,12 +217,17 @@ function scene:create( event )
 	set:addEventListener("tap", set)
 
 	function face:tap( event )
-		composer.showOverlay('game_simlang.jichunface')
+		timer.pause(timeAttack)
+		composer.setVariable( "timeAttack2", timeAttack )
+
+		composer.showOverlay('game_simlang.jichunface3')
 	end
 	face:addEventListener("tap", face)
 
 	function item:tap( event )
-		composer.showOverlay('game_simlang.item')
+		timer.pause(timeAttack)
+		composer.setVariable( "timeAttack3", timeAttack )
+		composer.showOverlay('game_simlang.item3')
 	end
 	item:addEventListener("tap", item)
 end
@@ -236,7 +252,7 @@ function scene:hide( event )
 	
 	if event.phase == "will" then
 		composer.removeScene('game_simlang.level3')
-		timer.cancel(timeAttack)
+		--timer.cancel(timeAttack)
 	elseif phase == "did" then
 		-- Called when the scene is now off screen
 	end

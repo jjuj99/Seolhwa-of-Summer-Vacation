@@ -4,9 +4,14 @@ local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
-	
-	
-    local back = display.newRoundedRect(display.contentWidth/2, display.contentHeight/2, 700,500,10)
+
+	local background = display.newImageRect("image/simlang_image/1단계캡쳐.png",display.contentWidth,display.contentHeight)
+    background.x,background.y = display.contentWidth/2,display.contentHeight/2
+
+	local time= display.newText(10, display.contentWidth/2, display.contentHeight*0.12)
+	time.size = 50
+
+	local back = display.newRoundedRect(display.contentWidth/2, display.contentHeight/2, 700,500,10)
 	back:setFillColor(0.5, 0.5, 0.2)
 
 	local textStart= display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.4, 500,300,10)
@@ -23,13 +28,14 @@ function scene:create( event )
  	text.size = 30
 
 	function button:tap( event )
-		local timeAttack = composer.getVariable("timeAttack1")
-        timer.resume(timeAttack)
-		composer.hideOverlay('game_simlang.start')
+		composer.removeScene('game_simlang.start')
+		composer.gotoScene('game_simlang.level1')
 	end
 	button:addEventListener("tap", button)
 
+	sceneGroup:insert(background)
 	sceneGroup:insert(back)
+	sceneGroup:insert(time)
 	sceneGroup:insert(textStart)
 	sceneGroup:insert(textStart2)
 	sceneGroup:insert(button)

@@ -201,6 +201,7 @@ function scene:create( event )
 		if( time.text == '-1') then
 			time.alpha = 0
 			composer.showOverlay('game_simlang.fail2')
+			timer.cancel(timeAttack)
 		end
 	end
    
@@ -315,12 +316,17 @@ function scene:create( event )
 	setting1:addEventListener("tap", setting1)
 
 	function face:tap( event )
-		composer.showOverlay('game_simlang.jichunface')
+		timer.pause(timeAttack)
+		composer.setVariable( "timeAttack2", timeAttack )
+
+		composer.showOverlay('game_simlang.jichunface2')
 	end
 	face:addEventListener("tap", face)
 
 	function item:tap( event )
-		composer.showOverlay('game_simlang.item')
+		timer.pause(timeAttack)
+		composer.setVariable( "timeAttack3", timeAttack )
+		composer.showOverlay('game_simlang.item2')
 	end
 	item:addEventListener("tap", item)
 end
@@ -344,7 +350,6 @@ function scene:hide( event )
 	local phase = event.phase
 	
 	if event.phase == "will" then
-		timer.cancel(timeAttack)
 		composer.removeScene('game_simlang.level2')
 	elseif phase == "did" then
 		-- Called when the scene is now off screen

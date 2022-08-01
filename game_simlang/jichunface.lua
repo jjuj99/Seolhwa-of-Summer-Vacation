@@ -15,14 +15,21 @@ function scene:create( event )
     local buttonNum2 = display.newImageRect("image/public/지천버튼2.png",355,260)
     buttonNum2.x,buttonNum2.y=640,500
 
+	local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
+	button1.x,button1.y=820,80
+
    
     sceneGroup:insert(set)
     sceneGroup:insert(buttonNum1)
     sceneGroup:insert(buttonNum2)
+	sceneGroup:insert(button1)
 
-    function buttonNum1:tap( event )
+    function button1:tap( event )
+		local timeAttack = composer.getVariable("timeAttack2")
+        timer.resume(timeAttack)
+		composer.hideOverlay('game_simlang.jichunface')
 	end
-	buttonNum1:addEventListener("tap", buttonNum1)
+	button1:addEventListener("tap", button1)
 
  
 

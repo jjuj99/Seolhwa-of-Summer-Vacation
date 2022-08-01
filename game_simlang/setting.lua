@@ -27,7 +27,9 @@ function scene:create( event )
 	sceneGroup:insert(button1)
 
     function buttonNum2:tap( event )
-	
+		composer.removeScene('game_simlang.level1')
+		composer.hideOverlay('game_simlang.setting')
+		composer.gotoScene('game_simlang.level1')
 	end
 	buttonNum2:addEventListener("tap", buttonNum2)
 

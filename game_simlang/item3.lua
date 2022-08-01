@@ -20,7 +20,7 @@ function scene:create( event )
 	function button1:tap( event )
 		local timeAttack = composer.getVariable("timeAttack3")
         timer.resume(timeAttack)
-		composer.hideOverlay('game_simlang.item')
+		composer.hideOverlay('game_simlang.item3')
 	end
 	button1:addEventListener("tap", button1)
    

@@ -29,9 +29,8 @@ function scene:create( event )
 	sceneGroup:insert(button1)
 
 	function button1:tap( event )
-		local timeAttack = composer.getVariable("timeAttack")
-        timer.resume(timeAttack)
-		composer.hideOverlay('game_simlang.setting')
+		composer.hideOverlay('game_simlang.popup3')
+		--다음 화면으로.. composer.gotoScene('game_simlang.level2')
 	end
 	button1:addEventListener("tap", button1)
 
