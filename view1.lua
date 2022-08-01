@@ -13,8 +13,6 @@ function scene:create( event )
 	--GIT TEST--
 	local git = 1 		-- 테스트 코드
 
-	--merge TEST--
-	local test=0        --merge 테스트
 
 end
 
