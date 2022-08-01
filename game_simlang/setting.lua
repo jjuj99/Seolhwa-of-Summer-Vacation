@@ -18,10 +18,13 @@ function scene:create( event )
     local buttonNum4 = display.newImageRect("image/public/나가기.png",370,100)
     buttonNum4.x,buttonNum4.y=640,545
 
+	local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
+	button1.x,button1.y=800,91
     sceneGroup:insert(set)
     sceneGroup:insert(buttonNum2)
     sceneGroup:insert(buttonNum3)
     sceneGroup:insert(buttonNum4)
+	sceneGroup:insert(button1)
 
     function buttonNum2:tap( event )
 	
@@ -36,6 +39,13 @@ function scene:create( event )
 		composer.removeScene('game_simlang.setting')
 	end
 	buttonNum4:addEventListener("tap", buttonNum4)
+
+	function button1:tap( event )
+		local timeAttack = composer.getVariable("timeAttack")
+        timer.resume(timeAttack)
+		composer.hideOverlay('game_simlang.setting')
+	end
+	button1:addEventListener("tap", button1)
 
 
 

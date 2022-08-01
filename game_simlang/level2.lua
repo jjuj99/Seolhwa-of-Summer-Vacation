@@ -301,7 +301,8 @@ function scene:create( event )
 --------------
 	function touchAn:tap( event )
 		time.alpha = 0
-		composer.gotoScene('game_simlang.level3')
+		timer.pause(timeAttack)
+		composer.showOverlay('game_simlang.popup2')
 	end
 	touchAn:addEventListener("tap", touchAn)
 	

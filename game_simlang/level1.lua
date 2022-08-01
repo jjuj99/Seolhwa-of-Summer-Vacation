@@ -11,6 +11,7 @@ local timeAttack
 function scene:create( event )
 	local sceneGroup = self.view
 
+	
 	-- 이미지 불러오기 ----
 	local levelText = display.newText("1단계)어디에 있을까?", display.contentWidth*0.5, display.contentHeight*0.9)
 	levelText:setFillColor(0)
@@ -247,8 +248,8 @@ function scene:create( event )
 --------------
 	function touchAn:tap( event )
 		time.alpha = 0
-		composer.gotoScene('game_simlang.level2')
-		composer.removeScene('game_simlang.level1')
+		timer.pause(timeAttack)
+		composer.showOverlay('game_simlang.popup')
 	end
 	touchAn:addEventListener("tap", touchAn)
 
@@ -269,6 +270,11 @@ function scene:create( event )
 		composer.showOverlay('game_simlang.item')
 	end
 	item:addEventListener("tap", item)
+
+	timer.pause(timeAttack)
+	composer.setVariable( "timeAttack1", 10 )
+	composer.showOverlay('game_simlang.start')
+	
 end
 
 function scene:show( event )

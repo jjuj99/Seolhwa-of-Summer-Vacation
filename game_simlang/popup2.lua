@@ -9,7 +9,7 @@ function scene:create( event )
 	local board = display.newImageRect("image/simlang_image/보드.png",500,300)
 	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.5
 
-    local title = display.newText("꽃 획득 성공!", display.contentWidth/2, display.contentHeight*0.33)
+    local title = display.newText("게임 클리어/꽃 획득 성공!", display.contentWidth/2, display.contentHeight*0.33)
  	title.size = 30
     title:setFillColor(0)
 
@@ -19,10 +19,20 @@ function scene:create( event )
     local object2 = display.newImageRect("image/public/설명2.png",300,150)
 	object2.x,object2.y= display.contentWidth*0.56, display.contentHeight*0.5
 
+	local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
+	button1.x,button1.y=864,235
+
  	sceneGroup:insert(board)
     sceneGroup:insert(title)
     sceneGroup:insert(object1)
     sceneGroup:insert(object2)
+	sceneGroup:insert(button1)
+
+	function button1:tap( event )
+		composer.hideOverlay('game_simlang.popup2')
+		composer.gotoScene('game_simlang.level3')
+	end
+	button1:addEventListener("tap", button1)
 
 end
 

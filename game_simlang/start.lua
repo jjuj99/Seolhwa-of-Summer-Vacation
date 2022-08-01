@@ -1,8 +1,3 @@
------------------------------------------------------------------------------------------
---
--- view1.lua
---
------------------------------------------------------------------------------------------
 
 local composer = require( "composer" )
 local scene = composer.newScene()
@@ -26,6 +21,13 @@ function scene:create( event )
 
  	local text = display.newText("시작하기", display.contentWidth/2, display.contentHeight*0.69)
  	text.size = 30
+
+	function button:tap( event )
+		local timeAttack = composer.getVariable("timeAttack1")
+        timer.resume(timeAttack)
+		composer.hideOverlay('game_simlang.start')
+	end
+	button:addEventListener("tap", button)
 
 	sceneGroup:insert(back)
 	sceneGroup:insert(textStart)

@@ -147,7 +147,8 @@ function scene:create( event )
 
 	function card3:tap( event )
 		time.alpha = 0
-		composer.showOverlay('game_simlang.clear')
+		timer.pause(timeAttack)
+		composer.showOverlay('game_simlang.popup3')
 	end
 	card3:addEventListener("tap", card3)
 
