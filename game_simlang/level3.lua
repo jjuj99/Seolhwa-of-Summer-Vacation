@@ -11,6 +11,7 @@ local timeAttack
 function scene:create( event )
 	local sceneGroup = self.view
 
+	local levelText2
 	-- 이미지 불러오기 ----
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 
@@ -129,6 +130,13 @@ function scene:create( event )
 		if( time.text == '-1') then
 			time.alpha = 0
 			composer.showOverlay('game_simlang.fail3')
+			levelText.alpha=0
+			levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+			levelText2:setFillColor(0)
+			levelText2.size=30
+
+			sceneGroup:insert(levelText2)
+			timer.cancel(timeAttack)
 			
 		end
 	end
@@ -136,20 +144,39 @@ function scene:create( event )
 	timeAttack = timer.performWithDelay(1000, counter, 11)   
 	--tap 확대 event------------------------------------------------
 	function card1:tap( event )
-		timer.pause(timeAttack)
+		time.alpha = 0
 		composer.showOverlay('game_simlang.fail3')
+		levelText.alpha=0
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)
+		timer.cancel(timeAttack)
 	end
 	card1:addEventListener("tap", card1)
 
 	function card2:tap( event )
-		timer.pause(timeAttack)
+		time.alpha = 0
 		composer.showOverlay('game_simlang.fail3')
+		levelText.alpha=0
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)
+		timer.cancel(timeAttack)
 	end
 	card2:addEventListener("tap", card2)
 
 	function card3:tap( event )
 		time.alpha = 0
 		timer.pause(timeAttack)
+
+		levelText.alpha=0
+		levelText2 = display.newText("찾기 성공! 숨은 그림 찾기 클리어!", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
+
+		sceneGroup:insert(levelText2)
 		local board = display.newImageRect("image/simlang_image/보드.png",500,300)
 		board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.5
 	
@@ -182,56 +209,110 @@ function scene:create( event )
 	card3:addEventListener("tap", card3)
 
 	function card4:tap( event )
-		timer.pause(timeAttack)
+		time.alpha = 0
 		composer.showOverlay('game_simlang.fail3')
+		levelText.alpha=0
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)
+		timer.cancel(timeAttack)
 	end
 	card4:addEventListener("tap", card4)
 
 	function card5:tap( event )
-		timer.pause(timeAttack)
+		time.alpha = 0
 		composer.showOverlay('game_simlang.fail3')
+		levelText.alpha=0
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)
+		timer.cancel(timeAttack)
 	end
 	card5:addEventListener("tap", card5)
 
 	function card6:tap( event )
-		timer.pause(timeAttack)
+		time.alpha = 0
 		composer.showOverlay('game_simlang.fail3')
+		levelText.alpha=0
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)
+		timer.cancel(timeAttack)
 	end
 	card6:addEventListener("tap", card6)
 
 	function card7:tap( event )
-		timer.pause(timeAttack)
+		time.alpha = 0
 		composer.showOverlay('game_simlang.fail3')
+		levelText.alpha=0
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)
+		timer.cancel(timeAttack)
 	end
 	card7:addEventListener("tap", card7)
 
 	function card8:tap( event )
-		timer.pause(timeAttack)
+		time.alpha = 0
 		composer.showOverlay('game_simlang.fail3')
+		levelText.alpha=0
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)
+		timer.cancel(timeAttack)
 	end
 	card8:addEventListener("tap", card8)
 
 	function card9:tap( event )
-		timer.pause(timeAttack)
+		time.alpha = 0
 		composer.showOverlay('game_simlang.fail3')
+		levelText.alpha=0
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)
+		timer.cancel(timeAttack)
 	end
 	card9:addEventListener("tap", card9)
 
 	function card10:tap( event )
-		timer.pause(timeAttack)
+		time.alpha = 0
 		composer.showOverlay('game_simlang.fail3')
+		levelText.alpha=0
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)
+		timer.cancel(timeAttack)
 	end
 	card10:addEventListener("tap", card10)
 
 	function card11:tap( event )
-		timer.pause(timeAttack)
+		time.alpha = 0
 		composer.showOverlay('game_simlang.fail3')
+		levelText.alpha=0
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)
+		timer.cancel(timeAttack)
 	end
 	card11:addEventListener("tap", card11)
 
 	function card12:tap( event )
-		timer.pause(timeAttack)
+		time.alpha = 0
 		composer.showOverlay('game_simlang.fail3')
+		levelText.alpha=0
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)
+		timer.cancel(timeAttack)
 	end
 	card12:addEventListener("tap", card12)
 	

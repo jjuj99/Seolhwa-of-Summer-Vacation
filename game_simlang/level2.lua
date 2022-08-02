@@ -10,6 +10,7 @@ local timeAttack
 
 function scene:create( event )
 	local sceneGroup = self.view
+	local levelText2
 
 	-- 이미지 불러오기 ----
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
@@ -58,10 +59,10 @@ function scene:create( event )
 	card11.alpha=0
 	cardgroup:insert(card11)
 
-	local card12 = display.newImageRect("image/simlang_image/그림3.png",150,182)
-	card12.x,card12.y= display.contentWidth*0.31, display.contentHeight*0.343
-	card12.alpha=0
-	cardgroup:insert(card12)
+	-- local card12 = display.newImageRect("image/simlang_image/그림3.png",150,182)
+	-- card12.x,card12.y= display.contentWidth*0.31, display.contentHeight*0.343
+	-- card12.alpha=0
+	-- cardgroup:insert(card12)
 -------
 	local card2 = display.newImageRect("image/simlang_image/숨은그림.png",150,182)
 	card2.x,card2.y= display.contentWidth*0.434, display.contentHeight*0.343
@@ -72,10 +73,10 @@ function scene:create( event )
 	card21.alpha=0
 	cardgroup:insert(card21)
 
-	local card22 = display.newImageRect("image/simlang_image/그림3.png",150,182)
-	card22.x,card22.y= display.contentWidth*0.434, display.contentHeight*0.343
-	card22.alpha=0
-	cardgroup:insert(card22)
+	-- local card22 = display.newImageRect("image/simlang_image/그림3.png",150,182)
+	-- card22.x,card22.y= display.contentWidth*0.434, display.contentHeight*0.343
+	-- card22.alpha=0
+	-- cardgroup:insert(card22)
 ----
 	local card3 = display.newImageRect("image/simlang_image/숨은그림.png",150,182)
 	card3.x,card3.y=  display.contentWidth*0.558, display.contentHeight*0.343
@@ -86,10 +87,10 @@ function scene:create( event )
 	card31.alpha=0
 	cardgroup:insert(card31)
 
-	local card32 = display.newImageRect("image/simlang_image/그림3.png",150,182)
-	card32.x,card32.y= display.contentWidth*0.558, display.contentHeight*0.343
-	card32.alpha=0
-	cardgroup:insert(card32)
+	-- local card32 = display.newImageRect("image/simlang_image/그림3.png",150,182)
+	-- card32.x,card32.y= display.contentWidth*0.558, display.contentHeight*0.343
+	-- card32.alpha=0
+	-- cardgroup:insert(card32)
 ------
 	local card4 = display.newImageRect("image/simlang_image/숨은그림.png",150,182)
 	card4.x,card4.y=  display.contentWidth*0.682, display.contentHeight*0.343
@@ -100,10 +101,10 @@ function scene:create( event )
 	card41.alpha=0
 	cardgroup:insert(card41)
 
-	local card42 = display.newImageRect("image/simlang_image/그림3.png",150,182)
-	card42.x,card42.y= display.contentWidth*0.682, display.contentHeight*0.343
-	card42.alpha=0
-	cardgroup:insert(card42)
+	-- local card42 = display.newImageRect("image/simlang_image/그림3.png",150,182)
+	-- card42.x,card42.y= display.contentWidth*0.682, display.contentHeight*0.343
+	-- card42.alpha=0
+	-- cardgroup:insert(card42)
 ------
 
 	local card5 = display.newImageRect("image/simlang_image/숨은그림.png",150,182)
@@ -115,10 +116,10 @@ function scene:create( event )
 	card51.alpha=0
 	cardgroup:insert(card51)
 
-	local card52 = display.newImageRect("image/simlang_image/그림3.png",150,182)
-	card52.x,card52.y= display.contentWidth*0.31, display.contentHeight*0.617
-	card52.alpha=0
-	cardgroup:insert(card52)
+	-- local card52 = display.newImageRect("image/simlang_image/그림3.png",150,182)
+	-- card52.x,card52.y= display.contentWidth*0.31, display.contentHeight*0.617
+	-- card52.alpha=0
+	-- cardgroup:insert(card52)
 -------
 	local card6 = display.newImageRect("image/simlang_image/숨은그림.png",150,182)
 	card6.x,card6.y= display.contentWidth*0.434, display.contentHeight*0.617
@@ -129,10 +130,10 @@ function scene:create( event )
 	card61.alpha=0
 	cardgroup:insert(card61)
 
-	local card62 = display.newImageRect("image/simlang_image/그림3.png",150,182)
-	card62.x,card62.y= display.contentWidth*0.434, display.contentHeight*0.617
-	card62.alpha=0
-	cardgroup:insert(card62)
+	-- local card62 = display.newImageRect("image/simlang_image/그림3.png",150,182)
+	-- card62.x,card62.y= display.contentWidth*0.434, display.contentHeight*0.617
+	-- card62.alpha=0
+	-- cardgroup:insert(card62)
 ------
 	local card7 = display.newImageRect("image/simlang_image/숨은그림.png",150,182)
 	card7.x,card7.y=  display.contentWidth*0.558, display.contentHeight*0.617
@@ -143,10 +144,10 @@ function scene:create( event )
 	card71.alpha=0
 	cardgroup:insert(card71)
 
-	local card72 = display.newImageRect("image/simlang_image/그림3.png",150,182)
-	card72.x,card72.y= display.contentWidth*0.558, display.contentHeight*0.617
-	card72.alpha=0
-	cardgroup:insert(card72)
+	-- local card72 = display.newImageRect("image/simlang_image/그림3.png",150,182)
+	-- card72.x,card72.y= display.contentWidth*0.558, display.contentHeight*0.617
+	-- card72.alpha=0
+	-- cardgroup:insert(card72)
 ------
 	local card8 = display.newImageRect("image/simlang_image/숨은그림.png",150,182)
 	card8.x,card8.y=  display.contentWidth*0.682, display.contentHeight*0.617
@@ -157,17 +158,13 @@ function scene:create( event )
 	card81.alpha=0
 	cardgroup:insert(card81)
 
-	local card82 = display.newImageRect("image/simlang_image/그림3.png",150,182)
-	card82.x,card82.y= display.contentWidth*0.682, display.contentHeight*0.617
-	card82.alpha=0
-	cardgroup:insert(card82)
 -------
 	local level = display.newImageRect("image/simlang_image/단계.png",670,120)
 	level.x,level.y= display.contentWidth*0.5, display.contentHeight*0.89
 
 	local touchAn = display.newImage("image/simlang_image/숨은정답1.png")
 	touchAn.x,touchAn.y=600,300
-	touchAn:scale(0.06,0.06)
+	touchAn:scale(0.3,0.3)
 
 	------이미지 불러오기 끝 ----------------
 
@@ -201,6 +198,12 @@ function scene:create( event )
 		if( time.text == '-1') then
 			time.alpha = 0
 			composer.showOverlay('game_simlang.fail2')
+			levelText.alpha=0
+			levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+			levelText2:setFillColor(0)
+			levelText2.size=30
+
+			sceneGroup:insert(levelText2)
 			timer.cancel(timeAttack)
 		end
 	end
@@ -213,11 +216,11 @@ function scene:create( event )
 		card11.alpha=1
 	end
 	card1:addEventListener("tap", card1)
-	function card11:tap( event )
-		card11.alpha=0
-		card12.alpha=1
-	end
-	card11:addEventListener("tap", card11)
+	-- function card11:tap( event )
+	-- 	card11.alpha=0
+	-- 	card12.alpha=1
+	-- end
+	-- card11:addEventListener("tap", card11)
 -----------
 	function card2:tap( event )
 		card2.alpha=0
@@ -226,83 +229,90 @@ function scene:create( event )
 		touchAn:scale(1.3,1.3)
 	end
 	card2:addEventListener("tap", card2)
-	function card21:tap( event )
-		card21.alpha=0
-		card22.alpha=1
-		touchAn.x,touchAn.y=550,260
-		touchAn:scale(3,3)
-	end
-	card21:addEventListener("tap", card21)
+	-- function card21:tap( event )
+	-- 	card21.alpha=0
+	-- 	card22.alpha=1
+	-- 	touchAn.x,touchAn.y=550,260
+	-- 	touchAn:scale(3,3)
+	-- end
+	-- card21:addEventListener("tap", card21)
 --------------------
 	function card3:tap( event )
 		card3.alpha=0
 		card31.alpha=1
 	end
 	card3:addEventListener("tap", card3)
-	function card31:tap( event )
-		card31.alpha=0
-		card32.alpha=1
-	end
-	card31:addEventListener("tap", card31)
+	-- function card31:tap( event )
+	-- 	card31.alpha=0
+	-- 	card32.alpha=1
+	-- end
+	-- card31:addEventListener("tap", card31)
 ----------------
 	function card4:tap( event )
 		card4.alpha=0
 		card41.alpha=1
 	end
 	card4:addEventListener("tap", card4)
-	function card41:tap( event )
-		card41.alpha=0
-		card42.alpha=1
-	end
-	card41:addEventListener("tap", card41)
+	-- function card41:tap( event )
+	-- 	card41.alpha=0
+	-- 	card42.alpha=1
+	-- end
+	-- card41:addEventListener("tap", card41)
 --------------
 	function card5:tap( event )
 		card5.alpha=0
 		card51.alpha=1
 	end
 	card5:addEventListener("tap", card5)
-	function card51:tap( event )
-		card51.alpha=0
-		card52.alpha=1
-	end
-	card51:addEventListener("tap", card51)
+	-- function card51:tap( event )
+	-- 	card51.alpha=0
+	-- 	card52.alpha=1
+	-- end
+	-- card51:addEventListener("tap", card51)
 --------------
 	function card6:tap( event )
 		card6.alpha=0
 		card61.alpha=1
 	end
 	card6:addEventListener("tap", card6)
-	function card61:tap( event )
-		card61.alpha=0
-		card62.alpha=1
-	end
-	card61:addEventListener("tap", card61)
+	-- function card61:tap( event )
+	-- 	card61.alpha=0
+	-- 	card62.alpha=1
+	-- end
+	-- card61:addEventListener("tap", card61)
 --------------
 	function card7:tap( event )
 		card7.alpha=0
 		card71.alpha=1
 	end
 	card7:addEventListener("tap", card7)
-	function card71:tap( event )
-		card71.alpha=0
-		card72.alpha=1
-	end
-	card71:addEventListener("tap", card71)
+	-- function card71:tap( event )
+	-- 	card71.alpha=0
+	-- 	card72.alpha=1
+	-- end
+	-- card71:addEventListener("tap", card71)
 --------------
 	function card8:tap( event )
 		card8.alpha=0
 		card81.alpha=1
 	end
 	card8:addEventListener("tap", card8)
-	function card81:tap( event )
-		card81.alpha=0
-		card82.alpha=1
-	end
-	card81:addEventListener("tap", card81)
+	-- function card81:tap( event )
+	-- 	card81.alpha=0
+	-- 	card82.alpha=1
+	-- end
+	-- card81:addEventListener("tap", card81)
 --------------
 	function touchAn:tap( event )
 		time.alpha = 0
 		timer.pause(timeAttack)
+
+		levelText.alpha=0
+		levelText2 = display.newText("찾기 성공! 2단계 통과~~", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
+
+		sceneGroup:insert(levelText2)
 		local board = display.newImageRect("image/simlang_image/보드.png",500,300)
 		board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.5
 	
