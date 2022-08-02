@@ -11,7 +11,34 @@ local timeAttack
 function scene:create( event )
 	local sceneGroup = self.view
 
-	
+	local startGroup = display.newGroup()
+
+	--시작 화면---------------------
+	local time= display.newText(10, display.contentWidth/2, display.contentHeight*0.12)
+	time.size = 50
+
+	local back = display.newRoundedRect(display.contentWidth/2, display.contentHeight/2, 700,500,10)
+	back:setFillColor(0.5, 0.5, 0.2)
+
+	local textStart= display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.4, 500,300,10)
+	textStart:setFillColor(0.5, 0.4, 0.4)
+
+	local textStart2 = display.newText("게임 플레이 방법", display.contentWidth/2, display.contentHeight*0.24)
+	textStart2.size = 30
+
+	local button = display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.69, 500,100,10)
+	button:setFillColor(0.5, 0.4, 0.4)
+
+
+ 	local text = display.newText("시작하기", display.contentWidth/2, display.contentHeight*0.69)
+ 	text.size = 30
+
+	 startGroup:insert(back)
+	 startGroup:insert(time)
+	 startGroup:insert(textStart)
+	 startGroup:insert(textStart2)
+	 startGroup:insert(button)
+	 startGroup:insert(text)
 	-- 이미지 불러오기 ----
 	local levelText = display.newText("1단계)어디에 있을까?", display.contentWidth*0.5, display.contentHeight*0.9)
 	levelText:setFillColor(0)
@@ -22,6 +49,8 @@ function scene:create( event )
 	local cardgroup= display.newGroup()
 	-- local back = display.newImageRect("image/p9_1.png",display.contentWidth, display.contentHeight)
 	-- back.x, back.y = display.contentWidth*0.5, display.contentHeight*0.5
+
+	
 
 	local setting1 = display.newImage("image/public/설정.png")
 	setting1.x, setting1.y = display.contentWidth * 0.05, display.contentHeight * 0.09
@@ -157,22 +186,30 @@ function scene:create( event )
 	touchAn:toFront()
 	--레이어 정리 끝 -------------
 
-	--timer event-------------------------
-	local function counter( event )
-		time.text = time.text - 1
-   
-		if( time.text == '5' ) then
-			time:setFillColor(1, 0, 0)
+	function button:tap( event )
+		startGroup.alpha=0
+
+			--timer event-------------------------
+		local function counter( event )
+			time.text = time.text - 1
+	
+			if( time.text == '5' ) then
+				time:setFillColor(1, 0, 0)
+			end
+	
+			if( time.text == '-1') then
+				time.alpha = 0
+				composer.showOverlay('game_simlang.fail')
+				
+			end
 		end
-   
-		if( time.text == '-1') then
-			time.alpha = 0
-			composer.showOverlay('game_simlang.fail')
-			
-		end
+	
+		timeAttack = timer.performWithDelay(1000, counter, 11)   
 	end
-   
-	timeAttack = timer.performWithDelay(1000, counter, 11)   
+	button:addEventListener("tap", button)
+
+	sceneGroup:insert(startGroup)
+
 
 	--tap 확대 event------------------------------------------------
 	function card1:tap( event )
@@ -249,7 +286,42 @@ function scene:create( event )
 	function touchAn:tap( event )
 		time.alpha = 0
 		timer.pause(timeAttack)
-		composer.showOverlay('game_simlang.popup')
+	local board = display.newImageRect("image/simlang_image/보드.png",500,300)
+	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.5
+
+    local title = display.newText("게임 클리어/꽃 획득 성공!", display.contentWidth/2, display.contentHeight*0.33)
+ 	title.size = 30
+    title:setFillColor(0)
+
+    local object1 = display.newImageRect("image/public/꽃1.png",150,150)
+	object1.x,object1.y= display.contentWidth*0.38, display.contentHeight*0.5
+
+    local object2 = display.newImageRect("image/public/설명1.png",300,150)
+	object2.x,object2.y= display.contentWidth*0.56, display.contentHeight*0.5
+
+	local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
+	button1.x,button1.y=864,235
+
+ 	sceneGroup:insert(board)
+    sceneGroup:insert(title)
+    sceneGroup:insert(object1)
+    sceneGroup:insert(object2)
+	sceneGroup:insert(button1)
+
+	
+
+	
+	--시작 화면---------------------
+
+
+	----------------------------------------------------------------------
+	function button1:tap( event )
+		composer.removeScene('game_simlang.level1')
+		composer.gotoScene('game_simlang.level2')
+		timer.cancel(timeAttack)
+	end
+	button1:addEventListener("tap", button1)
+		--composer.showOverlay('game_simlang.popup')
 	end
 	touchAn:addEventListener("tap", touchAn)
 
@@ -275,8 +347,6 @@ function scene:create( event )
 		composer.showOverlay('game_simlang.item')
 	end
 	item:addEventListener("tap", item)
-
-	
 end
 
 function scene:show( event )
