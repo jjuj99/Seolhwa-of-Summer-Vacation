@@ -11,6 +11,9 @@ local timeAttack
 function scene:create( event )
 	local sceneGroup = self.view
 
+	local explosionSound = audio.loadSound( "image/simlang_image/Trust.mp3" )
+	audio.play( explosionSound )
+
 	local levelText2
 	-- 이미지 불러오기 ----
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
@@ -145,6 +148,7 @@ function scene:create( event )
 	--tap 확대 event------------------------------------------------
 	function card1:tap( event )
 		time.alpha = 0
+		audio.pause(explosionSound)
 		composer.showOverlay('game_simlang.fail3')
 		levelText.alpha=0
 		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
@@ -157,6 +161,7 @@ function scene:create( event )
 
 	function card2:tap( event )
 		time.alpha = 0
+		audio.pause(explosionSound)
 		composer.showOverlay('game_simlang.fail3')
 		levelText.alpha=0
 		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
@@ -169,6 +174,7 @@ function scene:create( event )
 
 	function card3:tap( event )
 		time.alpha = 0
+		audio.pause(explosionSound)
 		timer.pause(timeAttack)
 
 		levelText.alpha=0
@@ -210,6 +216,7 @@ function scene:create( event )
 
 	function card4:tap( event )
 		time.alpha = 0
+		audio.pause(explosionSound)
 		composer.showOverlay('game_simlang.fail3')
 		levelText.alpha=0
 		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
@@ -222,6 +229,7 @@ function scene:create( event )
 
 	function card5:tap( event )
 		time.alpha = 0
+		audio.pause(explosionSound)
 		composer.showOverlay('game_simlang.fail3')
 		levelText.alpha=0
 		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
@@ -234,6 +242,7 @@ function scene:create( event )
 
 	function card6:tap( event )
 		time.alpha = 0
+		audio.pause(explosionSound)
 		composer.showOverlay('game_simlang.fail3')
 		levelText.alpha=0
 		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
@@ -246,6 +255,7 @@ function scene:create( event )
 
 	function card7:tap( event )
 		time.alpha = 0
+		audio.pause(explosionSound)
 		composer.showOverlay('game_simlang.fail3')
 		levelText.alpha=0
 		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
@@ -258,6 +268,7 @@ function scene:create( event )
 
 	function card8:tap( event )
 		time.alpha = 0
+		audio.pause(explosionSound)
 		composer.showOverlay('game_simlang.fail3')
 		levelText.alpha=0
 		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
@@ -270,6 +281,7 @@ function scene:create( event )
 
 	function card9:tap( event )
 		time.alpha = 0
+		audio.pause(explosionSound)
 		composer.showOverlay('game_simlang.fail3')
 		levelText.alpha=0
 		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
@@ -282,6 +294,7 @@ function scene:create( event )
 
 	function card10:tap( event )
 		time.alpha = 0
+		audio.pause(explosionSound)
 		composer.showOverlay('game_simlang.fail3')
 		levelText.alpha=0
 		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
@@ -294,6 +307,7 @@ function scene:create( event )
 
 	function card11:tap( event )
 		time.alpha = 0
+		audio.pause(explosionSound)
 		composer.showOverlay('game_simlang.fail3')
 		levelText.alpha=0
 		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
@@ -306,6 +320,7 @@ function scene:create( event )
 
 	function card12:tap( event )
 		time.alpha = 0
+		audio.pause(explosionSound)
 		composer.showOverlay('game_simlang.fail3')
 		levelText.alpha=0
 		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)

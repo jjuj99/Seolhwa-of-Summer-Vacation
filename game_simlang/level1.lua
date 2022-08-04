@@ -11,6 +11,9 @@ local timeAttack
 function scene:create( event )
 	local sceneGroup = self.view
 
+	local explosionSound = audio.loadSound( "image/simlang_image/Trust.mp3" )
+	audio.play( explosionSound )
+
 	local levelText2
 	local startGroup = display.newGroup()
 
@@ -161,6 +164,7 @@ function scene:create( event )
 	
 			if( time.text == '-1') then
 				time.alpha = 0
+				audio.pause(explosionSound)
 				composer.showOverlay('game_simlang.fail')
 				levelText.alpha=0
 				levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
@@ -210,6 +214,7 @@ function scene:create( event )
 --------------
 	function touchAn:tap( event )
 		time.alpha = 0
+		audio.pause(explosionSound)
 		timer.pause(timeAttack)
 		levelText.alpha=0
 		levelText2 = display.newText("찾기 성공! 1단계 통과~~", display.contentWidth*0.5, display.contentHeight*0.9)
