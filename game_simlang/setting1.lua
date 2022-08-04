@@ -116,6 +116,13 @@ function scene:create( event )
 	end
 	button1:addEventListener("tap", button1)
 
+	function out:tap( event )
+        composer.removeScene('game_simlang.level1')
+		composer.hideOverlay('game_simlang.setting1')
+		composer.gotoScene('start')
+ 	end
+ 	out:addEventListener("tap", out)
+
  	sceneGroup:insert(background)
  	sceneGroup:insert(replay)
  	sceneGroup:insert(detail)
