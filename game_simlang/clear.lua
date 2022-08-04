@@ -1,8 +1,4 @@
------------------------------------------------------------------------------------------
---
--- view1.lua
---
------------------------------------------------------------------------------------------
+
 
 local composer = require( "composer" )
 local scene = composer.newScene()
@@ -10,8 +6,20 @@ local scene = composer.newScene()
 function scene:create( event )
 	local sceneGroup = self.view
 	
-	
+	local background = display.newRoundedRect(display.contentWidth/2, display.contentHeight/2, 700,400, 45)
+ 	background:setFillColor(0.6, 0.5, 0.5)
 
+ 	local title = display.newText("Clear", display.contentWidth/2, display.contentHeight*0.3)
+ 	title.size = 60
+
+ 	function title:tap( event )
+        
+ 	end
+ 	title:addEventListener("tap", title)
+
+ 	sceneGroup:insert(background)
+ 	sceneGroup:insert(title)
+	
 
 end
 

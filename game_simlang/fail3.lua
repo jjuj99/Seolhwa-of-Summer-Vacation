@@ -1,8 +1,4 @@
------------------------------------------------------------------------------------------
---
--- view1.lua
---
------------------------------------------------------------------------------------------
+
 
 local composer = require( "composer" )
 local scene = composer.newScene()
@@ -10,8 +6,30 @@ local scene = composer.newScene()
 function scene:create( event )
 	local sceneGroup = self.view
 	
-	
+	local background = display.newRoundedRect(display.contentWidth/2, display.contentHeight/2, 700,400, 45)
+ 	background:setFillColor(0.6, 0.5, 0.5)
 
+ 	local title = display.newText("Fail", display.contentWidth/2, display.contentHeight*0.3)
+ 	title.size = 60
+
+    local button1 = display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.64, 700,200,10)
+ 	button1:setFillColor(0.5, 0.5, 0.2)
+
+ 	local text = display.newText("다시하기", display.contentWidth/2, display.contentHeight*0.64)
+ 	text.size = 30
+
+ 	function button1:tap( event )
+		composer.removeScene('game_simlang.fail2')
+		composer.removeScene('game_simlang.fail3')
+        composer.gotoScene('game_simlang.level1')
+		composer.removeScene('game_simlang.level3')
+ 	end
+ 	button1:addEventListener("tap", button1)
+
+ 	sceneGroup:insert(background)
+ 	sceneGroup:insert(title)
+     sceneGroup:insert(button1)
+ 	sceneGroup:insert(text)
 
 end
 
@@ -34,10 +52,7 @@ function scene:hide( event )
 	local phase = event.phase
 	
 	if event.phase == "will" then
-		-- Called when the scene is on screen and is about to move off screen
-		--
-		-- INSERT code here to pause the scene
-		-- e.g. stop timers, stop animation, unload sounds, etc.)
+		composer.removeScene('game_simlang.fail3')
 	elseif phase == "did" then
 		-- Called when the scene is now off screen
 	end

@@ -1,16 +1,29 @@
------------------------------------------------------------------------------------------
---
--- view1.lua
---
------------------------------------------------------------------------------------------
+
 
 local composer = require( "composer" )
 local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
-	
-	
+
+    local set = display.newImageRect("image/public/아이템창.png",400,600)
+    set.x,set.y= display.contentWidth/2, display.contentHeight/2
+
+	local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
+	button1.x,button1.y=820,80
+
+   
+    sceneGroup:insert(set)
+	sceneGroup:insert(button1)
+
+
+	function button1:tap( event )
+		local timeAttack = composer.getVariable("timeAttack3")
+        timer.resume(timeAttack)
+		composer.hideOverlay('game_simlang.item')
+	end
+	button1:addEventListener("tap", button1)
+   
 
 
 end
