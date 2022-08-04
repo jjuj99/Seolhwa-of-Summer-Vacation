@@ -1,55 +1,129 @@
-
+-----------------------------------------------------------------------------------------
+--
+-- setting1.lua
+--
+-----------------------------------------------------------------------------------------
 
 local composer = require( "composer" )
 local scene = composer.newScene()
 
+
 function scene:create( event )
 	local sceneGroup = self.view
+	
+	local background = display.newImage("image/setting/설정창 바탕.png")
+	background.strokeWidth = 5
+	background:setStrokeColor(0.5, 0.5, 0.5)
+	background.x, background.y = display.contentCenterX, display.contentCenterY
 
-    local set = display.newImageRect("image/public/설정창.png",400,600)
-    set.x,set.y= display.contentWidth/2, display.contentHeight/2
+	local replay = display.newImage("image/setting/2.png")
+	replay.x, replay.y = display.contentWidth * 0.5, display.contentHeight * 0.3
 
-    local buttonNum2 = display.newImageRect("image/public/다시하기.png",370,100)
-    buttonNum2.x,buttonNum2.y=640,295
+	local detail = display.newImage("image/setting/3.png")
+	detail.x, detail.y = display.contentWidth * 0.5, display.contentHeight * 0.5
 
-    local buttonNum3 = display.newImageRect("image/public/세부설정.png",370,100)
-    buttonNum3.x,buttonNum3.y=640,420
+	local out = display.newImage("image/setting/4.png")
+	out.x, out.y = display.contentWidth * 0.5, display.contentHeight * 0.7
 
-    local buttonNum4 = display.newImageRect("image/public/나가기.png",370,100)
-    buttonNum4.x,buttonNum4.y=640,545
+	local sound1 = display.newRect(display.contentWidth * 0.4, display.contentHeight * 0.5, 50, 50)
+	sound1.alpha = 0
+	sound1.fill = {
+		type = "image",
+		filename = "image/setting/스피커1.png"
+	}
 
-	local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
-	button1.x,button1.y=800,91
+	local sound2 = display.newRect(display.contentWidth * 0.5, display.contentHeight * 0.5, 50, 50)
+	sound2.alpha = 0
+	sound2.fill = {
+		type = "image",
+		filename = "image/setting/스피커2.png"
+	}
 
-    sceneGroup:insert(set)
-    sceneGroup:insert(buttonNum2)
-    sceneGroup:insert(buttonNum3)
-    sceneGroup:insert(buttonNum4)
-	sceneGroup:insert(button1)
+	local sound3 = display.newRect(display.contentWidth * 0.6, display.contentHeight * 0.5, 50, 50)
+	sound3.alpha = 0
+	sound3.fill = {
+		type = "image",
+		filename = "image/setting/스피커3.png"
+	}
 
-    function buttonNum2:tap( event )
-		composer.removeScene('game_simlang.level2')
+    local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
+	button1.x,button1.y=822,128
+
+    
+
+	function detail:tap( event )
+		detail.alpha = 0
+		sound1.alpha = 1
+		sound2.alpha = 1
+		sound3.alpha = 1
+	end
+	detail:addEventListener("tap", detail)
+
+
+	function sound1:tap ( event )
+		audio.setVolume(0, {channel=2})
+	end
+	sound1:addEventListener("tap", sound1)
+
+	function sound2:tap ( event )
+		audio.setVolume(0.5, {channel=2})
+	end
+	sound2:addEventListener("tap", sound2)
+
+	function sound3:tap ( event )
+		audio.setVolume(1, {channel=2})
+	end
+	sound3:addEventListener("tap", sound3)
+
+	-- local index = 2 --나가서 다시 설정 들어오면 이미지가 바뀜--
+	-- function sound:tap( event)
+	-- 	if (index == 1) then
+	-- 		sound.fill = {
+	-- 			type = "image",
+	-- 			filename = "image/setting/스피커2.png"
+	-- 		}
+	-- 		audio.setVolume(0.5, {channel=1})
+	-- 		index = 2
+	-- 	elseif (index == 2) then
+	-- 		sound.fill = {
+	-- 			type = "image",
+	-- 			filename = "image/setting/스피커3.png"
+	-- 		}
+	-- 		audio.setVolume(1, {channel=1})
+	-- 		index = 3
+	-- 	elseif (index == 3) then
+	-- 		sound.fill = {
+	-- 			type = "image",
+	-- 			filename = "image/setting/스피커1.png"
+	-- 		}
+	-- 		audio.setVolume(0, {channel=1})
+	-- 		index = 1
+	-- 	end
+	-- end
+	-- sound:addEventListener("tap", sound)
+
+	function replay:tap( event )
+        composer.removeScene('game_simlang.level2')
 		composer.hideOverlay('game_simlang.setting2')
 		composer.gotoScene('game_simlang.level2')
-	end
-	buttonNum2:addEventListener("tap", buttonNum2)
+ 	end
+ 	replay:addEventListener("tap", replay)
 
-    function buttonNum3:tap( event )
-	end
-	buttonNum3:addEventListener("tap", buttonNum3)
-
-    function buttonNum4:tap( event )
-		composer.removeScene('game_simlang.setting2')
-	end
-	buttonNum4:addEventListener("tap", buttonNum4)
-
-
-	function button1:tap( event )
+     function button1:tap( event )
 		local timeAttack = composer.getVariable("timeAttack")
         timer.resume(timeAttack)
 		composer.hideOverlay('game_simlang.setting2')
 	end
 	button1:addEventListener("tap", button1)
+
+ 	sceneGroup:insert(background)
+ 	sceneGroup:insert(replay)
+ 	sceneGroup:insert(detail)
+ 	sceneGroup:insert(sound1)
+ 	sceneGroup:insert(sound2)
+ 	sceneGroup:insert(sound3)
+ 	sceneGroup:insert(out)
+     sceneGroup:insert(button1)
 
 end
 
@@ -64,6 +138,7 @@ function scene:show( event )
 		-- 
 		-- INSERT code here to make the scene come alive
 		-- e.g. start timers, begin animation, play audio, etc.
+
 	end	
 end
 
@@ -78,6 +153,7 @@ function scene:hide( event )
 		-- e.g. stop timers, stop animation, unload sounds, etc.)
 	elseif phase == "did" then
 		-- Called when the scene is now off screen
+
 	end
 end
 

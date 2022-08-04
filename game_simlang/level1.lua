@@ -12,7 +12,10 @@ function scene:create( event )
 	local sceneGroup = self.view
 
 	local explosionSound = audio.loadSound( "image/simlang_image/Trust.mp3" )
-	audio.play( explosionSound )
+	audio.play(explosionSound, {channel=4, loops=-1})
+	--배경음악 설정
+	audio.setMaxVolume(1, { channel=4 })
+	audio.setVolume(0.5, {channel=4})
 
 	local levelText2
 	local startGroup = display.newGroup()
@@ -265,7 +268,7 @@ function scene:create( event )
 		timer.pause(timeAttack)
 		composer.setVariable( "timeAttack", timeAttack )
 
-		composer.showOverlay('game_simlang.setting')
+		composer.showOverlay('game_simlang.setting1')
 	end
 	setting1:addEventListener("tap", setting1)
 

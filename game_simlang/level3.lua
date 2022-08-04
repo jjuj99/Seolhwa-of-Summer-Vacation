@@ -12,7 +12,10 @@ function scene:create( event )
 	local sceneGroup = self.view
 
 	local explosionSound = audio.loadSound( "image/simlang_image/Trust.mp3" )
-	audio.play( explosionSound )
+	audio.play(explosionSound, {channel=3, loops=-1})
+	--배경음악 설정
+	audio.setMaxVolume(1, { channel=3 })
+	audio.setVolume(0.5, {channel=3})
 
 	local levelText2
 	-- 이미지 불러오기 ----

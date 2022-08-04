@@ -61,17 +61,17 @@ function scene:create( event )
 
 
 	function sound1:tap ( event )
-		audio.setVolume(0, {channel=3})
+		audio.setVolume(0, {channel=4})
 	end
 	sound1:addEventListener("tap", sound1)
 
 	function sound2:tap ( event )
-		audio.setVolume(0.5, {channel=3})
+		audio.setVolume(0.5, {channel=4})
 	end
 	sound2:addEventListener("tap", sound2)
 
 	function sound3:tap ( event )
-		audio.setVolume(1, {channel=3})
+		audio.setVolume(1, {channel=4})
 	end
 	sound3:addEventListener("tap", sound3)
 
@@ -103,16 +103,16 @@ function scene:create( event )
 	-- sound:addEventListener("tap", sound)
 
 	function replay:tap( event )
-        composer.removeScene('game_simlang.level3')
-		composer.hideOverlay('game_simlang.setting3')
-		composer.gotoScene('game_simlang.level3')
+        composer.removeScene('game_simlang.level1')
+		composer.hideOverlay('game_simlang.setting1')
+		composer.gotoScene('game_simlang.level1')
  	end
  	replay:addEventListener("tap", replay)
 
      function button1:tap( event )
 		local timeAttack = composer.getVariable("timeAttack")
         timer.resume(timeAttack)
-		composer.hideOverlay('game_simlang.setting3')
+		composer.hideOverlay('game_simlang.setting1')
 	end
 	button1:addEventListener("tap", button1)
 
