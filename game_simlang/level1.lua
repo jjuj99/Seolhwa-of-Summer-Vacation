@@ -12,10 +12,10 @@ function scene:create( event )
 	local sceneGroup = self.view
 
 	local explosionSound = audio.loadSound( "image/simlang_image/Trust.mp3" )
-	audio.play(explosionSound, {channel=4, loops=-1})
+	audio.play(explosionSound, {channel=2, loops=-1})
 	--배경음악 설정
-	audio.setMaxVolume(1, { channel=4 })
-	audio.setVolume(0.5, {channel=4})
+	audio.setMaxVolume(1, { channel=2 })
+	audio.setVolume(0.5, {channel=2})
 
 	local levelText2
 	local startGroup = display.newGroup()
@@ -217,7 +217,7 @@ function scene:create( event )
 --------------
 	function touchAn:tap( event )
 		time.alpha = 0
-		audio.pause(explosionSound)
+		--audio.pause(explosionSound)
 		timer.pause(timeAttack)
 		levelText.alpha=0
 		levelText2 = display.newText("찾기 성공! 1단계 통과~~", display.contentWidth*0.5, display.contentHeight*0.9)

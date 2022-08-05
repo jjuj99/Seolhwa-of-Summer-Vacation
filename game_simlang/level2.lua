@@ -12,11 +12,11 @@ function scene:create( event )
 	local sceneGroup = self.view
 	local levelText2
 
-	local explosionSound = audio.loadSound( "image/simlang_image/Trust.mp3" )
-	audio.play(explosionSound, {channel=2, loops=-1})
+	-- local explosionSound = audio.loadSound( "image/simlang_image/Trust.mp3" )
+	-- audio.play(explosionSound, {channel=2, loops=-1})
 	--배경음악 설정
-	audio.setMaxVolume(1, { channel=2 })
-	audio.setVolume(0.5, {channel=2})
+	-- audio.setMaxVolume(1, { channel=2 })
+	-- audio.setVolume(0.5, {channel=2})
 	-- 이미지 불러오기 ----
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 
@@ -202,7 +202,7 @@ function scene:create( event )
    
 		if( time.text == '-1') then
 			time.alpha = 0
-			audio.pause(explosionSound)
+			--audio.pause(explosionSound)
 			composer.showOverlay('game_simlang.fail2')
 			levelText.alpha=0
 			levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
@@ -311,7 +311,7 @@ function scene:create( event )
 --------------
 	function touchAn:tap( event )
 		time.alpha = 0
-		audio.pause(explosionSound)
+		--audio.pause(explosionSound)
 		timer.pause(timeAttack)
 
 		levelText.alpha=0
