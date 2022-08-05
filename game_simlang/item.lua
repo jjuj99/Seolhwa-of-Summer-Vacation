@@ -6,7 +6,7 @@ local scene = composer.newScene()
 function scene:create( event )
 	local sceneGroup = self.view
 
-    local set = display.newImageRect("image/public/아이템창.png",400,600)
+    local set = display.newImageRect("image/items/꽃1.png",400,600)
     set.x,set.y= display.contentWidth/2, display.contentHeight/2
 
 	local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)

@@ -112,7 +112,17 @@ function scene:create( event )
      function button1:tap( event )
 		local timeAttack = composer.getVariable("timeAttack")
         timer.resume(timeAttack)
+		composer.setVariable( "flag", 1 )
 		composer.hideOverlay('game_simlang.setting3')
+
+		card2:addEventListener("tap", card2)
+		card3:addEventListener("tap", card3)
+		card4:addEventListener("tap", card4)
+		card5:addEventListener("tap", card5)
+		card8:addEventListener("tap", card8)
+		card9:addEventListener("tap", card9)
+		card10:addEventListener("tap", card10)
+		card11:addEventListener("tap", card11)
 	end
 	button1:addEventListener("tap", button1)
 

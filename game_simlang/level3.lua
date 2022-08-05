@@ -10,6 +10,11 @@ local timeAttack
 
 function scene:create( event )
 	local sceneGroup = self.view
+	local explosionSound2 = audio.loadSound( "sound/코드39.wav" )
+
+	local explosionSound3 = audio.loadSound( "sound/스위치_랜턴_버튼.mp3" )
+	
+	local explosionSound4 = audio.loadSound( "sound/Boy meets Girl.mp3" )
 
 	-- local explosionSound = audio.loadSound( "image/simlang_image/Trust.mp3" )
 	-- audio.play(explosionSound, {channel=3, loops=-1})
@@ -178,37 +183,36 @@ function scene:create( event )
 	function card3:tap( event )
 		time.alpha = 0
 		audio.pause(explosionSound)
+		audio.play(explosionSound2)
 		timer.pause(timeAttack)
 
+		audio.play(explosionSound4)
 		levelText.alpha=0
 		levelText2 = display.newText("찾기 성공! 숨은 그림 찾기 클리어!", display.contentWidth*0.5, display.contentHeight*0.9)
 		levelText2:setFillColor(0)
 		levelText2.size=30
 
 		sceneGroup:insert(levelText2)
-		local board = display.newImageRect("image/simlang_image/보드.png",500,300)
+		local board = display.newImageRect("image/items/바탕.png",500,300)
 		board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.5
 	
 		local title = display.newText("게임 클리어/꽃 획득 성공!", display.contentWidth/2, display.contentHeight*0.33)
 		 title.size = 30
 		title:setFillColor(0)
 	
-		local object1 = display.newImageRect("image/public/꽃3.png",150,150)
-		object1.x,object1.y= display.contentWidth*0.38, display.contentHeight*0.5
-	
-		local object2 = display.newImageRect("image/public/설명3.png",300,150)
-		object2.x,object2.y= display.contentWidth*0.56, display.contentHeight*0.5
-	
-		local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
-		button1.x,button1.y=864,235
-	
-		 sceneGroup:insert(board)
-		sceneGroup:insert(title)
-		sceneGroup:insert(object1)
-		sceneGroup:insert(object2)
-		sceneGroup:insert(button1)
+		local object1 = display.newImageRect("image/items/진달래.png",450,150)
+	object1.x,object1.y= display.contentWidth*0.38, display.contentHeight*0.5
+
+	local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
+	button1.x,button1.y=864,235
+
+ 	sceneGroup:insert(board)
+    sceneGroup:insert(title)
+    sceneGroup:insert(object1)
+	sceneGroup:insert(button1)
 	
 		function button1:tap( event )
+			audio.pause(explosionSound4)
 			composer.removeScene('game_simlang.level3')
 			--composer.gotoScene('game_simlang.level2')
 			timer.cancel(timeAttack)
@@ -334,8 +338,30 @@ function scene:create( event )
 	end
 	card12:addEventListener("tap", card12)
 	
+	if composer.getVariable("flag")==1 then
+		card2:addEventListener("tap", card2)
+		card3:addEventListener("tap", card3)
+		card4:addEventListener("tap", card4)
+		card5:addEventListener("tap", card5)
+		card8:addEventListener("tap", card8)
+		card9:addEventListener("tap", card9)
+		card10:addEventListener("tap", card10)
+		card11:addEventListener("tap", card11)
+
+    end
+
+
 	function set:tap( event )
+		audio.play(explosionSound3, {duration = 1000})
 		timer.pause(timeAttack)
+		card2:removeEventListener("tap", card2)
+		card3:removeEventListener("tap", card3)
+		card4:removeEventListener("tap", card4)
+		card5:removeEventListener("tap", card5)
+		card8:removeEventListener("tap", card8)
+		card9:removeEventListener("tap", card9)
+		card10:removeEventListener("tap", card10)
+		card11:removeEventListener("tap", card11)
 		composer.setVariable( "timeAttack", timeAttack )
 
 		composer.showOverlay('game_simlang.setting3')
@@ -343,6 +369,7 @@ function scene:create( event )
 	set:addEventListener("tap", set)
 
 	function face:tap( event )
+		audio.play(explosionSound3, {duration = 1000})
 		timer.pause(timeAttack)
 		composer.setVariable( "timeAttack2", timeAttack )
 
@@ -351,6 +378,7 @@ function scene:create( event )
 	face:addEventListener("tap", face)
 
 	function item:tap( event )
+		audio.play(explosionSound3, {duration = 1000})
 		timer.pause(timeAttack)
 		composer.setVariable( "timeAttack3", timeAttack )
 		composer.showOverlay('game_simlang.item3')

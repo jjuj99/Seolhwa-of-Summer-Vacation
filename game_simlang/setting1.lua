@@ -19,6 +19,10 @@ function scene:create( event )
 	local replay = display.newImage("image/setting/2.png")
 	replay.x, replay.y = display.contentWidth * 0.5, display.contentHeight * 0.3
 
+	local replay2 = display.newImage("image/setting/2클릭.png")
+	replay2.x, replay2.y = display.contentWidth * 0.5, display.contentHeight * 0.3
+	replay2.alpha=0
+
 	local detail = display.newImage("image/setting/3.png")
 	detail.x, detail.y = display.contentWidth * 0.5, display.contentHeight * 0.5
 
@@ -49,6 +53,7 @@ function scene:create( event )
     local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
 	button1.x,button1.y=822,128
 
+	
     
 
 	function detail:tap( event )
@@ -106,6 +111,7 @@ function scene:create( event )
         composer.removeScene('game_simlang.level1')
 		composer.hideOverlay('game_simlang.setting1')
 		composer.gotoScene('game_simlang.level1')
+		
  	end
  	replay:addEventListener("tap", replay)
 
@@ -125,6 +131,7 @@ function scene:create( event )
 
  	sceneGroup:insert(background)
  	sceneGroup:insert(replay)
+	 sceneGroup:insert(replay2)
  	sceneGroup:insert(detail)
  	sceneGroup:insert(sound1)
  	sceneGroup:insert(sound2)

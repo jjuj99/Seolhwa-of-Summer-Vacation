@@ -6,13 +6,13 @@ local scene = composer.newScene()
 function scene:create( event )
 	local sceneGroup = self.view
 
-    local set = display.newImageRect("image/public/지천바탕.png",400,600)
+	local set = display.newImageRect("image/jichuns/바탕.png",400,600)
     set.x,set.y= display.contentWidth/2, display.contentHeight/2
 
-    local buttonNum1 = display.newImageRect("image/public/지천버튼1.png",355,260)
+    local buttonNum1 = display.newImageRect("image/jichuns/1.png",355,260)
     buttonNum1.x,buttonNum1.y=640,220
 
-    local buttonNum2 = display.newImageRect("image/public/지천버튼2.png",355,260)
+    local buttonNum2 = display.newImageRect("image/jichuns/2.png",355,260)
     buttonNum2.x,buttonNum2.y=640,500
 
 	local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
