@@ -1,6 +1,6 @@
 -----------------------------------------------------------------------------------------
 --
--- view1.lua
+-- game.lua
 --
 -----------------------------------------------------------------------------------------
 
@@ -10,10 +10,17 @@ local scene = composer.newScene()
 function scene:create( event )
 	local sceneGroup = self.view
 	
-	local background = display.newImageRect("image/example.png", display.contentWidth, display.contentHeight)
-	background.x, background.y = display.contentWidth/2, display.contentHeight/2
+	local backgroundMusic = audio.loadStream("sound/04.InJichun'sMouth.mp3")
+	audio.play(backgroundMusic, {channel=1, loops=-1})
+	--배경음악 설정
+	audio.setMaxVolume(1, { channel=1 })
+	audio.setVolume(0.5, {channel=1}) 
+	says:audio.stop()
+ 		audio.dispose(BGM) 
+		dispose()
+	--local background = display.newImageRect("image/example.png", display.contentWidth, display.contentHeight)
+	--background.x, background.y = display.contentWidth/2, display.contentHeight/2
 
-	
 	local objectGroup = display.newGroup()
 	local option = display.newImage("image/option.png")
 	option.x, option.y = 65, 64
@@ -28,95 +35,111 @@ function scene:create( event )
 	local rightCheek = display.newImage("image/rightCheek.png")
 	rightCheek.x, rightCheek.y = 1152, 410
 	cheek:insert(leftCheek)
-	cheek:insert(rightCheek) ---미완
-
-	------NoClick
-	------위쪽 이빨 변수선언_이미지 크기 (171 * 171 px)
-	local Ntooth1 = display.newImage("image/noClickTooth/1.png")
-	Ntooth1.x, Ntooth1.y = 219, 217
-	local Ntooth2 = display.newImage("image/noClickTooth/2.png")
-	Ntooth2.x, Ntooth2.y = 390, 217
-	local Ntooth3 = display.newImage("image/noClickTooth/3.png")
-	Ntooth3.x, Ntooth3.y = 561, 217
-	local Ntooth4 = display.newImage("image/noClickTooth/4.png")
-	Ntooth4.x, Ntooth4.y = 732, 217
-	local Ntooth5 = display.newImage("image/noClickTooth/5.png")
-	Ntooth5.x, Ntooth5.y = 903, 217
-	local Ntooth6 = display.newImage("image/noClickTooth/6.png")
-	Ntooth6.x, Ntooth6.y = 1074, 217
-	------아래쪽 이빨 변수선언_이미지 크기 (171 * 171 px)
-	local Ntooth7 = display.newImage("image/noClickTooth/7.png")
-	Ntooth7.x, Ntooth7.y = 219, 605
-	local Ntooth8 = display.newImage("image/noClickTooth/8.png")
-	Ntooth8.x, Ntooth8.y = 390, 605
-	local Ntooth9 = display.newImage("image/noClickTooth/9.png")
-	Ntooth9.x, Ntooth9.y = 561, 605
-	local Ntooth10 = display.newImage("image/noClickTooth/10.png")
-	Ntooth10.x, Ntooth10.y = 732, 605
-	local Ntooth11 = display.newImage("image/noClickTooth/11.png")
-	Ntooth11.x, Ntooth11.y = 903, 605
-	local Ntooth12 = display.newImage("image/noClickTooth/12.png")
-	Ntooth12.x, Ntooth12.y = 1074, 605
-	local Ntooth = display.newGroup()
-	cheek:insert(Ntooth)
 	cheek:insert(rightCheek)
 
+	------NoClick
+	------이빨 변수선언_이미지 크기 (171 * 171 px)
+	local noToothGroup = display.newGroup()
+ 	local noTooth = {}
+ 	for i = 0, 11 do
+ 		if(i < 6) then
+			noTooth[i] = display.newImage(noToothGroup, "image/noClickTooth/noUp.png")
+			noTooth[i].x, noTooth[i].y = 219 + 171*i, 217
+		else
+			noTooth[i] = display.newImage(noToothGroup, "image/noClickTooth/noDown.png")
+			noTooth[i].x, noTooth[i].y = 219 + 171*(i-6), 605
+		end
+ 	end
 	------OneClick
-	------위쪽 이빨 변수선언_이미지 크기 (171 * 171 px)
-	local Otooth1 = display.newImage("image/oneClickTooth/1.png")
-	Otooth1.x, Otooth1.y = 219, 217
-	local Otooth2 = display.newImage("image/oneClickTooth/2.png")
-	Otooth2.x, Otooth2.y = 390, 217
-	local Otooth3 = display.newImage("image/oneClickTooth/3.png")
-	Otooth3.x, Otooth3.y = 561, 217
-	local Otooth4 = display.newImage("image/oneClickTooth/4.png")
-	Otooth4.x, Otooth4.y = 732, 217
-	local Otooth5 = display.newImage("image/oneClickTooth/5.png")
-	Otooth5.x, Otooth5.y = 903, 217
-	local Otooth6 = display.newImage("image/oneClickTooth/6.png")
-	Otooth6.x, Otooth6.y = 1074, 217
-	------아래쪽 이빨 변수선언_이미지 크기 (171 * 171 px)
-	local Otooth7 = display.newImage("image/oneClickTooth/7.png")
-	Otooth7.x, Otooth7.y = 219, 605
-	local Otooth8 = display.newImage("image/oneClickTooth/8.png")
-	Otooth8.x, Otooth8.y = 390, 605
-	local Otooth9 = display.newImage("image/oneClickTooth/9.png")
-	Otooth9.x, Otooth9.y = 561, 605
-	local Otooth10 = display.newImage("image/oneClickTooth/10.png")
-	Otooth10.x, Otooth10.y = 732, 605
-	local Otooth11 = display.newImage("image/oneClickTooth/11.png")
-	Otooth11.x, Otooth11.y = 903, 605
-	local Otooth12 = display.newImage("image/oneClickTooth/12.png")
-	Otooth12.x, Otooth12.y = 1074, 605
-
+	local oneToothGroup = display.newGroup()
+ 	local oneTooth = {}
+ 	for i = 0, 11 do
+		if(i < 6) then
+			oneTooth[i] = display.newImage(oneToothGroup, "image/oneClickTooth/oneUp.png")
+			oneTooth[i].x, oneTooth[i].y = 219 + 171*i, 217
+		else
+			oneTooth[i] = display.newImage(oneToothGroup, "image/oneClickTooth/oneDown.png")
+			oneTooth[i].x, oneTooth[i].y = 219 + 171*(i-6), 605
+		end
+		oneTooth[i].alpha = 0
+ 	end
 	-----TwoClick
-	------위쪽 이빨 변수선언_이미지 크기 (171 * 171 px)
-	local Ttooth1 = display.newImage("image/twoClickTooth/1.png")
-	Ttooth1.x, Ttooth1.y = 219, 217
-	local Ttooth2 = display.newImage("image/twoClickTooth/2.png")
-	Ttooth2.x, Ttooth2.y = 390, 217
-	local Ttooth3 = display.newImage("image/twoClickTooth/3.png")
-	Ttooth3.x, Ttooth3.y = 561, 217
-	local Ttooth4 = display.newImage("image/twoClickTooth/4.png")
-	Ttooth4.x, Ttooth4.y = 732, 217
-	local Ttooth5 = display.newImage("image/twoClickTooth/5.png")
-	Ttooth5.x, Ttooth5.y = 903, 217
-	local Ttooth6 = display.newImage("image/twoClickTooth/6.png")
-	Ttooth6.x, Ttooth6.y = 1074, 217
-	------아래쪽 이빨 변수선언_이미지 크기 (171 * 171 px)
-	local Ttooth7 = display.newImage("image/twoClickTooth/7.png")
-	Ttooth7.x, Ttooth7.y = 219, 605
-	local Ttooth8 = display.newImage("image/twoClickTooth/8.png")
-	Ttooth8.x, Ttooth8.y = 390, 605
-	local Ttooth9 = display.newImage("image/twoClickTooth/9.png")
-	Ttooth9.x, Ttooth9.y = 561, 605
-	local Ttooth10 = display.newImage("image/twoClickTooth/10.png")
-	Ttooth10.x, Ttooth10.y = 732, 605
-	local Ttooth11 = display.newImage("image/twoClickTooth/11.png")
-	Ttooth11.x, Ttooth11.y = 903, 605
-	local Ttooth12 = display.newImage("image/twoClickTooth/12.png")
-	Ttooth12.x, Ttooth12.y = 1074, 605
+	local twoToothGroup = display.newGroup()
+ 	local twoTooth = {}
+ 	for i = 0, 11 do
+		if(i < 6) then
+			twoTooth[i] = display.newImage(twoToothGroup, "image/twoClickTooth/twoUp.png")
+			twoTooth[i].x, twoTooth[i].y = 219 + 171*i, 217
+		else
+			twoTooth[i] = display.newImage(twoToothGroup, "image/twoClickTooth/twoDown.png")
+			twoTooth[i].x, twoTooth[i].y = 219 + 171*(i-6), 605
+		end
+		twoTooth[i].alpha = 0
+ 	end
+
 	--정렬
+	sceneGroup:insert(noToothGroup)
+	sceneGroup:insert(oneToothGroup)
+	sceneGroup:insert(twoToothGroup)
+	sceneGroup:insert(cheek)
+	sceneGroup:insert(objectGroup)
+	--sceneGroup:insert(background)
+	
+	--점수_변수선언
+	local score= display.newText(0, 500, 210)
+	score.size = 100
+	score:setFillColor(0)
+	score.alpha = 0.5
+
+	--- 타이머_변수선언
+	local second= display.newText(0, display.contentWidth*0.9, display.contentHeight*0.15)
+ 	second.size = 100
+ 	second:setFillColor(1, 1, 1)
+ 	second.alpha = 0.5
+	local minute= display.newText(2, 1200, 210)
+	minute.size = 100
+	minute:setFillColor(1, 1, 1)
+	minute.alpha = 0.5
+
+	--타이머_함수
+	math.randomseed(os.time())
+	local function counter( event )
+		second.text = second.text - 1
+		if( second.text == '-1' ) then
+			second.text = 59
+			minute.text = minute.text - 1
+		end
+		if( minute.text == 0 and second.text == '-1') then
+			second.alpha = 0
+   		end
+		-- 충치 발생
+		if(second.text%2 ~= 0) then
+			local cavity = math.random(2)
+			local whichTooth = math.random(11)
+			if(cavity == 2) then
+				if(twoTooth[whichTooth].alpha ~= 1) then
+					oneTooth[whichTooth].alpha = 1
+				end
+			else
+				twoTooth[whichTooth].alpha = 1
+			end
+		end
+	end
+	timeAttack = timer.performWithDelay(1000, counter, 121)
+	
+	----event // 클릭하면 깨끗해지기
+	local function oneTap( event )
+		
+		dice[math.random(6)].alpha = 1
+	end
+	oneToothGroup:addEventListener("tap", tapDice)
+
+	local function twoTap( event )
+		
+		dice[math.random(6)].alpha = 1
+	end
+	oneToothGroup:addEventListener("tap", tapDice)
+
 
 end
 
@@ -130,7 +153,7 @@ function scene:show( event )
 		-- Called when the scene is now on screen
 		-- 
 		-- INSERT code here to make the scene come alive
-		-- e.g. start timers, begin animation, play audio, etc.
+		-- e.g. start minuters, begin animation, play audio, etc.
 	end	
 end
 
@@ -142,7 +165,7 @@ function scene:hide( event )
 		-- Called when the scene is on screen and is about to move off screen
 		--
 		-- INSERT code here to pause the scene
-		-- e.g. stop timers, stop animation, unload sounds, etc.)
+		-- e.g. stop minuters, stop animation, unload sounds, etc.)
 	elseif phase == "did" then
 		-- Called when the scene is now off screen
 	end
