@@ -102,12 +102,18 @@ function scene:create( event )
 
 	function replay:tap( event )
  		-- composer.hideOverlay('fade', 400)
+ 
  		local phase = composer.getVariable("phase")
 
  		local eming = composer.getVariable("eming")
- 		local save = composer.getVariable("save")
  		local wall = composer.getVariable("wall")
  		local cloud = composer.getVariable("cloud")
+
+ 		save = nil
+ 		if phase == "phase1_1" or phase == "phase2_1" or phase == "phase_clear" then
+ 			save = composer.getVariable("save")
+ 		end
+
 
 
  	-- 	physics.removeBody(eming)

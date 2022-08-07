@@ -13,6 +13,10 @@ local scene = composer.newScene()
 function scene:create( event )
 	local sceneGroup = self.view
 
+	-- 효과음 --
+	local explosionSound2 = audio.loadSound( "sound/코드39.wav" )
+	local explosionSound3 = audio.loadSound( "sound/스위치_랜턴_버튼.mp3" )
+
 	physics.start()
 	physics.setDrawMode( "hybrid" )
 
@@ -94,15 +98,18 @@ function scene:create( event )
 	physics.addBody(eming, {friction=1, outline=eming_outline_none})
 	eming.isFixedRotation = true 
 	sceneGroup:insert(eming)
-
+ 
 	function arrowTab( event )
 		x = eming.x
 		y = eming.y
 		if (event.target.name == "jump") then
+			audio.play(explosionSound2)
+
 			if (arrow[4] == "left") then
+				-- transition.to(eming, { x=(x-100), transition=easing.continuousLoop})
+				-- eming:applyLinearImpulse( -1, 1 )
+
 				transition.to(eming, {time=200, x=(x-100), y=(y-100)})
-
-
 			else
 			    transition.to(eming, {time=200, x=(x+100), y=(y-100)})
 			end
@@ -137,6 +144,8 @@ function scene:create( event )
 	end
 
 	function set:tap( event )
+		audio.play(explosionSound3)
+
 		local options = {
 		    isModal = true,
 		    effect = "fade",
@@ -154,6 +163,8 @@ function scene:create( event )
  	set:addEventListener("tap", set)
 
 	function item:tap( event )
+		audio.play(explosionSound3)
+
  		local options = {
 		    isModal = true,
 		    effect = "fade",
@@ -166,6 +177,8 @@ function scene:create( event )
  	item:addEventListener("tap", item)
 
  	function guide:tap( event )
+ 		audio.play(explosionSound3)
+ 		
  		local options = {
 		    isModal = true,
 		    effect = "fade",
