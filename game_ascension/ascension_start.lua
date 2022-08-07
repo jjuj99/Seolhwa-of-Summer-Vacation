@@ -11,6 +11,9 @@ local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
+
+	-- 효과음 --
+	local explosionSound3 = audio.loadSound( "sound/스위치_랜턴_버튼.mp3" )
 	
 	local background = display.newImage("image/setting/설정창 바탕.png")
 	background.strokeWidth = 5
@@ -21,6 +24,7 @@ function scene:create( event )
 	startBtn.x, startBtn.y = display.contentWidth * 0.5, display.contentHeight * 0.3
 
 	function startBtn:tap( event )
+		audio.play(explosionSound3)
  		composer.hideOverlay('fade', 400)
  	end
  	startBtn:addEventListener("tap", startBtn)

@@ -11,6 +11,19 @@ local scene = composer.newScene()
 function scene:create( event )
 	local sceneGroup = self.view
 
+	-- BGM --
+	local explosionSound = audio.loadSound( "sound/Over the hill.mp3" )
+	audio.play(explosionSound, {channel=2, loops=-1})
+
+	audio.setMaxVolume(1, { channel=1 })
+	audio.setVolume(0.5, {channel=1})
+
+
+	-- 효과음 --
+	local explosionSound2 = audio.loadSound( "sound/코드39.wav" )
+	local explosionSound3 = audio.loadSound( "sound/스위치_랜턴_버튼.mp3" )
+
+
 	-- 물리엔진 시작 --
 	physics.start()
 	physics.setDrawMode( "hybrid" )
@@ -132,6 +145,8 @@ function scene:create( event )
 		x = eming.x
 		y = eming.y
 		if (event.target.name == "jump") then
+			audio.play(explosionSound2)
+
 			if (arrow[4] == "left") then
 				transition.to(eming, {time=100, x=(x-100), y=(y-100)})
 			else
@@ -214,6 +229,8 @@ function scene:create( event )
 
  	-- 설정, 지천얼굴, 아이템 클릭 함수 --
  	function set:tap( event )
+ 		audio.play(explosionSound3)
+
 		local options = {
 		    isModal = true,
 		    effect = "fade",
@@ -233,6 +250,8 @@ function scene:create( event )
  	set:addEventListener("tap", set)
 
  	function item:tap( event )
+ 		audio.play(explosionSound3)
+
  		local options = {
 		    isModal = true,
 		    effect = "fade",
@@ -245,6 +264,8 @@ function scene:create( event )
  	item:addEventListener("tap", item)
 
  	function guide:tap( event )
+ 		audio.play(explosionSound3)
+
  		local options = {
 		    isModal = true,
 		    effect = "fade",
