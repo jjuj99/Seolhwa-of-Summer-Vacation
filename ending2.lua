@@ -11,6 +11,9 @@ local scene = composer.newScene()
 function scene:create( event )
 	local sceneGroup = self.view
 
+	-- 효과음 설정
+	click = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
+
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 	background:setFillColor(0)
 
@@ -20,8 +23,14 @@ function scene:create( event )
 	local out = display.newImage("image/setting/4.png")
 	out.x, out.y = display.contentWidth * 0.5, display.contentHeight * 0.6
 
+	local options =
+	{ 
+		effect = "crossFade",
+    	time = 500
+    }
+
 	function replay:tap( event )
- 		composer.gotoScene('start')
+ 		composer.gotoScene('start', options)
  	end
  	replay:addEventListener("tap", replay)
 

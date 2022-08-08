@@ -9,12 +9,13 @@ local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
+
+	-- 효과음 설정
+	click = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
+
 	-- 오브젝트들 배치 --
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
-	background.fill = {
-		type = "image",
-		filename = "image/background/검정.png"
-	}
+
 	local set = display.newImage("image/public/설정.png")
 	set.x, set.y = display.contentWidth * 0.05, display.contentHeight * 0.09
 
@@ -37,17 +38,17 @@ function scene:create( event )
 	local next = display.newImage("image/dialogue/다음.png")
 	next.x, next.y = display.contentWidth * 0.925, display.contentHeight * 0.88
 
-	local highlight = display.newRect(display.contentCenterX, display.contentCenterY, 300, 300)
+	local highlight = display.newRect(display.contentCenterX, display.contentHeight* 0.45, 400, 300)
 	highlight.alpha = 0
 
 	-- 더미 대사, 더미 이름--
 
-	local script = display.newText("더미텍스트", display.contentWidth*0.505, display.contentHeight*0.775, display.contentWidth * 0.88, display.contentWidth * 0.1)
-	script.size = 30
+	local script = display.newText("더미텍스트", display.contentWidth*0.505, display.contentHeight*0.785, display.contentWidth * 0.88, display.contentWidth * 0.1, "font/경기천년바탕_Regular.ttf")
+	script.size = 29
 	script.align = "left"
 	script:setFillColor(0)
 
-	local name = display.newText("더미네임", display.contentWidth * 0.19, display.contentHeight * 0.62)
+	local name = display.newText("더미네임", display.contentWidth * 0.19, display.contentHeight * 0.62, "font/경기천년바탕_Regular.ttf")
 	name.size = 30
 	name:setFillColor(0)
 
@@ -55,7 +56,7 @@ function scene:create( event )
 	local options =
 	{ 
 		effect = "crossFade",
-    	time = 800
+    	time = 1000
     }
 
 	-- json에서 정보 읽기
@@ -69,22 +70,39 @@ function scene:create( event )
 		index = index + 1
 
 		if (index > #Data) then
-			composer.gotoScene('ending1', options)
+			audio.stop()
+			audio.dispose(BGM)
+			BGM = audio.loadSound("sound/05. 수화산 중심_Endless.mp3")
+			audio.play(BGM, {channel=1, loops=-1})
+			composer.gotoScene('scenario12', options)
 			composer.removeScene('scenario11')
 			return
 		end
 
-		if (Data[index].type == "dialogue1") then
+		if (Data[index].type == "dialogue2") then
 			name.text = Data[index].name
 			script.text = Data[index].content
 			main.alpha = 1
-			support.alpha = 0
+			support.alpha = 1
 			highlight.alpha = 0
+			speaker.alpha = 1
+			support.fill = {
+				type = "image",
+				filename = Data[index].support
+			}
 			main.fill = {
 				type = "image",
 				filename = Data[index].main
 			}
 			script:setFillColor(0)
+		elseif (Data[index].type == "dialogue3") then
+			name.text = Data[index].name
+			script.text = Data[index].content
+			main.alpha = 0
+			support.alpha = 0
+			highlight.alpha = 0
+			lines.alpha =  1
+			speaker.alpha = 1
 		elseif(Data[index].type == "highlight") then
 			name.text = Data[index].name
 			script.text = Data[index].content
@@ -95,26 +113,38 @@ function scene:create( event )
 				type = "image",
 				filename = Data[index].image
 			}
+			speaker.alpha = 0
 			script:setFillColor(0)
-			lines.alpha = 1
-			speaker.alpha = 1
-		elseif (Data[index].type == "background") then
+		elseif (Data[index].type == "black") then
+			audio.play(itemGet)
 			name.text = Data[index].name
 			script.text = Data[index].content
-			main.alpha = 1
+			main.alpha = 0
 			support.alpha = 0
-			highlight.alpha = 0
+			highlight.alpha = 1
 			script:setFillColor(0)
 			background.fill = {
 				type = "image",
 				filename = Data[index].image
 			}
-			main.fill = {
+			highlight.fill = {
 				type = "image",
-				filename = Data[index].main
+				filename = Data[index].highlight
 			}
-			lines.alpha = 1
-			speaker.alpha = 1
+			lines.alpha = 0
+			speaker.alpha = 0
+		elseif (Data[index].type == "getting") then
+			audio.play(itemGet)
+			name.text = Data[index].name
+			script.text = Data[index].content
+			main.alpha = 0
+			support.alpha = 0
+			highlight.alpha = 1
+			script:setFillColor(0)
+			highlight.fill = {
+				type = "image",
+				filename = Data[index].image
+			}
 		end
 	end
 
@@ -145,17 +175,38 @@ function scene:create( event )
 	--설정창--
 
 	function set:tap( event )
- 		composer.showOverlay('setting1')
+		audio.play(click)
+		local option = {
+				isModal = true,
+				effect = "fade",
+				tiem = 400,
+				params = {}
+		}
+ 		composer.showOverlay('setting', option)
  	end
  	set:addEventListener("tap", set)
 
  	function item:tap( event )
- 		composer.showOverlay('items')
+ 		audio.play(click)
+ 		local option = {
+				isModal = true,
+				effect = "fade",
+				tiem = 400,
+				params = {}
+		}
+ 		composer.showOverlay('items2', option)
  	end
  	item:addEventListener("tap", item)
 
  	function guide:tap( event )
- 		composer.showOverlay('info')
+ 		audio.play(click)
+ 		local option = {
+				isModal = true,
+				effect = "fade",
+				tiem = 400,
+				params = {}
+		}
+ 		composer.showOverlay('info', option)
  	end
  	guide:addEventListener("tap", guide)
 

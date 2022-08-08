@@ -9,6 +9,10 @@ local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
+
+	-- 효과음 설정
+	click = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
+
 	-- 오브젝트들 배치 --
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 
@@ -29,8 +33,8 @@ function scene:create( event )
 
 	-- 더미 대사, 더미 이름--
 
-	local script = display.newText("더미텍스트", display.contentWidth*0.505, display.contentHeight*0.775, display.contentWidth * 0.88, display.contentWidth * 0.1)
-	script.size = 30
+	local script = display.newText("더미텍스트", display.contentWidth*0.505, display.contentHeight*0.785, display.contentWidth * 0.88, display.contentWidth * 0.1, "font/경기천년바탕_Regular.ttf")
+	script.size = 29
 	script.align = "left"
 	script:setFillColor(0)
 
@@ -41,16 +45,6 @@ function scene:create( event )
 		effect = "crossFade",
     	time = 500
     }
-
-    -- 배경음악 --
-
-	local BGM = audio.loadSound("sound/Spider.mp3")
-	audio.play(BGM, {channel=1, loops=-1})
-
-	--배경음악 설정
-	
-	audio.setMaxVolume(1, { channel=1 })
-	audio.setVolume(0.5, {channel=1})
 
 	-- json에서 정보 읽기
 	local Data = jsonParse("json/prologue.json")
@@ -63,6 +57,10 @@ function scene:create( event )
 		index = index + 1
 
 		if (index > #Data) then
+			audio.stop()
+ 			audio.dispose(BGM)
+ 			BGM = audio.loadSound("sound/02. 마을_Elemental Forest.mp3")
+	    	audio.play(BGM, {channel=1, loops=-1})
 			composer.gotoScene('scenario1', options)
 			composer.removeScene('prologue')
 			return
@@ -97,17 +95,38 @@ function scene:create( event )
 	--설정창--
 
 	function set:tap( event )
- 		composer.showOverlay('setting1')
+		audio.play(click)
+		local option = {
+				isModal = true,
+				effect = "fade",
+				tiem = 400,
+				params = {}
+		}
+ 		composer.showOverlay('setting', option)
  	end
  	set:addEventListener("tap", set)
 
  	function item:tap( event )
- 		composer.showOverlay('items')
+ 		audio.play(click)
+ 		local option = {
+				isModal = true,
+				effect = "fade",
+				tiem = 400,
+				params = {}
+		}
+ 		composer.showOverlay('items0', option)
  	end
  	item:addEventListener("tap", item)
 
  	function guide:tap( event )
- 		composer.showOverlay('info')
+ 		audio.play(click)
+ 		local option = {
+				isModal = true,
+				effect = "fade",
+				tiem = 400,
+				params = {}
+		}
+ 		composer.showOverlay('info', option)
  	end
  	guide:addEventListener("tap", guide)
 
