@@ -11,26 +11,34 @@ local scene = composer.newScene()
 function scene:create( event )
 	local sceneGroup = self.view
 	
+	-- 효과음 설정
+	click = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
+
 	local background = display.newImage("image/jichuns/바탕.png")
 	background.x, background.y = display.contentCenterX, display.contentCenterY
 
 	background.strokeWidth = 5
 	background:setStrokeColor(0.5, 0.5, 0.5)
 
-	local storyInfo = display.newImage("image/jichuns/1.png")
+	local x = display.newImage("image/public/X.png")
+	x.x, x.y = display.contentWidth * 0.676, display.contentHeight * 0.1111
+
+	local storyInfo = display.newImage("image/jichuns/1클릭.png")
 	storyInfo.x, storyInfo.y = display.contentWidth * 0.5, display.contentHeight * 0.335
 
-	local gameInfo = display.newImage("image/jichuns/2.png")
+	local gameInfo = display.newImage("image/jichuns/2클릭.png")
 	gameInfo.x, gameInfo.y = display.contentWidth * 0.5, display.contentHeight * 0.665
 
-	function background:tap( event )
-		composer.hideOverlay( 'info' )
+	function x:tap( event )
+		audio.play(click)
+		composer.hideOverlay('fade', 400)
 	end
-	background:addEventListener("tap", background)
+	x:addEventListener("tap", x)
 
 	sceneGroup:insert(background)
 	sceneGroup:insert(storyInfo)
 	sceneGroup:insert(gameInfo)
+	sceneGroup:insert(x)
 
 end
 

@@ -9,6 +9,10 @@ local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
+
+	-- 효과음 설정
+	click = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
+
 	-- 오브젝트들 배치 --
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 
@@ -34,17 +38,17 @@ function scene:create( event )
 	local next = display.newImage("image/dialogue/다음.png")
 	next.x, next.y = display.contentWidth * 0.925, display.contentHeight * 0.88
 
-	local highlight = display.newRect(display.contentCenterX, display.contentCenterY, 300, 300)
+	local highlight = display.newRect(display.contentCenterX, display.contentHeight* 0.45, 400, 300)
 	highlight.alpha = 0
 
 	-- 더미 대사, 더미 이름--
 
-	local script = display.newText("더미텍스트", display.contentWidth*0.505, display.contentHeight*0.775, display.contentWidth * 0.88, display.contentWidth * 0.1)
-	script.size = 30
+	local script = display.newText("더미텍스트", display.contentWidth*0.505, display.contentHeight*0.785, display.contentWidth * 0.88, display.contentWidth * 0.1, "font/경기천년바탕_Regular.ttf")
+	script.size = 29
 	script.align = "left"
 	script:setFillColor(0)
 
-	local name = display.newText("더미네임", display.contentWidth * 0.19, display.contentHeight * 0.62)
+	local name = display.newText("더미네임", display.contentWidth * 0.19, display.contentHeight * 0.62, "font/경기천년바탕_Regular.ttf")
 	name.size = 30
 	name:setFillColor(0)
 
@@ -66,6 +70,10 @@ function scene:create( event )
 		index = index + 1
 
 		if (index > #Data) then
+			audio.stop()
+			audio.dispose(BGM)
+			BGM = audio.loadSound("sound/03. 입산_꽃포장 비닐 만지는.wav")
+			audio.play(BGM, {channel=1, loops=-1})
 			composer.gotoScene('scenario2', options)
 			composer.removeScene('scenario1')
 			return
@@ -149,17 +157,38 @@ function scene:create( event )
 	--설정창--
 
 	function set:tap( event )
- 		composer.showOverlay('setting1')
+		audio.play(click)
+		local option = {
+				isModal = true,
+				effect = "fade",
+				tiem = 400,
+				params = {}
+		}
+ 		composer.showOverlay('setting', option)
  	end
  	set:addEventListener("tap", set)
 
  	function item:tap( event )
- 		composer.showOverlay('items')
+ 		audio.play(click)
+ 		local option = {
+				isModal = true,
+				effect = "fade",
+				tiem = 400,
+				params = {}
+		}
+ 		composer.showOverlay('items0', option)
  	end
  	item:addEventListener("tap", item)
 
  	function guide:tap( event )
- 		composer.showOverlay('info')
+ 		audio.play(click)
+ 		local option = {
+				isModal = true,
+				effect = "fade",
+				tiem = 400,
+				params = {}
+		}
+ 		composer.showOverlay('info', option)
  	end
  	guide:addEventListener("tap", guide)
 

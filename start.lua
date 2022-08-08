@@ -9,6 +9,20 @@ local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
+
+	--배경음악--
+
+    local BGM = audio.loadSound("sound/00. 시작화면_춘천 그리고 가을(권민찬 외 10명).mp3")
+	audio.play(BGM, {channel=1, loops=-1})
+	
+	--배경음악 설정
+	audio.setMaxVolume(1, { channel=1 })
+	audio.setVolume(0.5, {channel=1})
+
+
+	-- 효과음 설정
+	click = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
+
 	-- 오브젝트들 배치 --
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 
@@ -22,14 +36,6 @@ function scene:create( event )
 	}
 	local starting = display.newImage("image/start/시작하기.png")
 	starting.x, starting.y = display.contentWidth * 0.5, display.contentHeight * 0.7
-
-	--배경음악--
-
-    local BGM = audio.loadSound("sound/Spider.mp3")
-	audio.play(BGM, {channel=1, loops=-1})
-	--배경음악 설정
-	audio.setMaxVolume(1, { channel=1 })
-	audio.setVolume(0.5, {channel=1})
 
 	--fade--
 
@@ -49,14 +55,26 @@ function scene:create( event )
 	--설정창--
 
 	function set:tap( event )
- 		composer.showOverlay('setting1')
+		audio.play(click)
+		local option = {
+			isModal = true,
+			effect = "fade",
+			tiem = 400,
+			params = {}
+		}
+ 		composer.showOverlay('setting', options)
  	end
  	set:addEventListener("tap", set)
 
  	--시작하기--
 
  	function starting:tap( event )
+ 		audio.stop()
+ 		audio.dispose(BGM)
+ 		BGM = audio.loadSound("sound/01 수화산 설화_설화_20초.mp3")
+	    audio.play(BGM, {channel=1, loops=-1})
  		composer.gotoScene('prologue', options)
+ 		composer.removeScene('start')
  	end
  	starting:addEventListener("tap", starting)
 

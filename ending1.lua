@@ -14,19 +14,11 @@ function scene:create( event )
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 	background:setFillColor(0)
 
- 	local endingText = display.newText("Fin!\n", display.contentWidth/2, display.contentHeight*0.45)
+ 	local endingText = display.newText("Fin!\n", display.contentWidth/2, display.contentHeight*0.45, "font/경기천년바탕_Regular.ttf")
  	endingText.size = 80
 
- 	local endingText2 =  display.newText("감사합니다.", display.contentWidth/2, display.contentHeight*0.55)
+ 	local endingText2 =  display.newText("감사합니다.", display.contentWidth/2, display.contentHeight*0.55, "font/경기천년바탕_Regular.ttf")
  	endingText2.size = 75
-
- -- 	local replay = display.newText("다시 하기", display.contentWidth/2, display.contentHeight*0.7)
-	-- replay.size = 100
-
- -- 	function replay:tap( event )
- -- 		composer.gotoScene('game')
- -- 	end
- -- 	replay:addEventListener("tap", replay)
 
  	--fade--
 	local options =
@@ -37,7 +29,7 @@ function scene:create( event )
 
  	--다음 장면--
 	local function tap(event)
-		composer.gotoScene('credit')
+		composer.gotoScene('credit', options)
 	end
 	background:addEventListener("tap", tap)
 

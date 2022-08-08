@@ -9,17 +9,15 @@ local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
+
+	-- 효과음 설정
+	click = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
+	
 	-- 오브젝트들 배치 --
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 
 	local set = display.newImage("image/public/설정.png")
 	set.x, set.y = display.contentWidth * 0.05, display.contentHeight * 0.09
-
-	local guide = display.newImage("image/public/지천.png")
-	guide.x, guide.y = display.contentWidth * 0.853, display.contentHeight * 0.09
-
-	local item = display.newImage("image/public/아이템.png")
-	item.x, item.y = display.contentWidth * 0.95, display.contentHeight * 0.09
 
 	local speakerImg = display.newRect(display.contentWidth * 0.5, display.contentHeight * 0.6, 221, 435)
 
@@ -32,17 +30,17 @@ function scene:create( event )
 	local next = display.newImage("image/dialogue/다음.png")
 	next.x, next.y = display.contentWidth * 0.925, display.contentHeight * 0.88
 
-	local highlight = display.newRect(display.contentCenterX, display.contentCenterY, 300, 300)
+	local highlight = display.newRect(display.contentCenterX, display.contentHeight* 0.45, 400, 300)
 	highlight.alpha = 0
 
 	-- 더미 대사, 더미 이름--
 
-	local script = display.newText("더미텍스트", display.contentWidth*0.505, display.contentHeight*0.775, display.contentWidth * 0.88, display.contentWidth * 0.1)
-	script.size = 30
+	local script = display.newText("더미텍스트", display.contentWidth*0.505, display.contentHeight*0.785, display.contentWidth * 0.88, display.contentWidth * 0.1, "font/경기천년바탕_Regular.ttf")
+	script.size = 29
 	script.align = "left"
 	script:setFillColor(0)
 
-	local name = display.newText("더미네임", display.contentWidth * 0.19, display.contentHeight * 0.62)
+	local name = display.newText("더미네임", display.contentWidth * 0.19, display.contentHeight * 0.62, "font/경기천년바탕_Regular.ttf")
 	name.size = 30
 	name:setFillColor(0)
 
@@ -64,7 +62,10 @@ function scene:create( event )
 		index = index + 1
 
 		if (index > #Data) then
-			composer.gotoScene('ending2')
+			audio.stop()
+			audio.dispose(BGM)
+			composer.gotoScene('ending2', options)
+			composer.removeScene('epilogue')
 			return
 		end
 
@@ -73,6 +74,7 @@ function scene:create( event )
 			script.text = Data[index].content
 			script:setFillColor(0.5, 0.5, 0.5)
 			highlight.alpha = 0
+			speaker.alpha = 1
 			speakerImg.fill = {
 				type = "image",
 				filename = Data[index].speakerImg
@@ -82,6 +84,7 @@ function scene:create( event )
 			name.text = Data[index].name
 			script.text = Data[index].content
 			speakerImg.alpha = 1
+			speaker.alpha = 1
 			highlight.alpha = 0
 			speakerImg.fill = {
 				type = "image",
@@ -93,6 +96,7 @@ function scene:create( event )
 			script.text = Data[index].content
 			speakerImg.alpha = 1
 			highlight.alpha = 0
+			speaker.alpha = 1
 			speakerImg.fill = {
 				type = "image",
 				filename = Data[index].speakerImg
@@ -102,6 +106,7 @@ function scene:create( event )
 			name.text = Data[index].name
 			script.text = Data[index].content
 			speakerImg.alpha = 0
+			speaker.alpha = 0
 			highlight.alpha = 1
 			highlight.fill = {
 				type = "image",
@@ -112,6 +117,7 @@ function scene:create( event )
 			name.text = Data[index].name
 			script.text = Data[index].content
 			speakerImg.alpha = 1
+			speaker.alpha = 0
 			highlight.alpha = 1
 			highlight.fill = {
 				type = "image",
@@ -127,6 +133,7 @@ function scene:create( event )
 			script.text = Data[index].content
 			speakerImg.alpha = 1
 			highlight.alpha = 0
+			speaker.alpha = 1
 			script:setFillColor(0)
 			background.fill = {
 				type = "image",
@@ -152,8 +159,6 @@ function scene:create( event )
 
 	sceneGroup:insert(background)
 	sceneGroup:insert(set)
-	sceneGroup:insert(guide)
-	sceneGroup:insert(item)
 	sceneGroup:insert(speakerImg)
 	sceneGroup:insert(speaker)
 	sceneGroup:insert(lines)
@@ -165,19 +170,16 @@ function scene:create( event )
 	--설정창--
 
 	function set:tap( event )
- 		composer.showOverlay('setting1')
+		audio.play(click)
+		local option = {
+				isModal = true,
+				effect = "fade",
+				tiem = 400,
+				params = {}
+		}
+ 		composer.showOverlay('setting', option)
  	end
  	set:addEventListener("tap", set)
-
- 	function item:tap( event )
- 		composer.showOverlay('items')
- 	end
- 	item:addEventListener("tap", item)
-
- 	function guide:tap( event )
- 		composer.showOverlay('info')
- 	end
- 	guide:addEventListener("tap", guide)
 
 end
 
