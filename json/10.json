@@ -1,56 +1,117 @@
 [
 	{
 		"type" : "dialogue1",
-		"name" : "지천",
-		"content" : "이제 모아온 꽃들을 병에 넣어보렴.",
-		"main" : "image/character/인물2.png",
+		"name" : "유영",
+		"content" : "정상 너무 힘들어!!",
+		"main" : "image/character/인물1.png"
 	},
 
 	{
-		"type" : "highlight",
-		"name" : "",
-		"content" : "",
-		"image" : "image/center/설정창.png"
-	},
-
-	{
-		"type" : "highlight",
-		"name" : "",
-		"content" : "",
-		"image" : "image/center/아이템창.png"
+		"type" : "dialogue3",
+		"name" : "??",
+		"content" : "짹짹! 구욱구욱!! 휘릴리릭!!",
 	},
 
 	{
 		"type" : "dialogue1",
 		"name" : "유영",
-		"content" : "어? 하나가 비어요. 남은 영물이 또 있나?",
-		"main" : "image/character/인물1.png",
+		"content" : "무슨 소리지?",
+		"main" : "image/character/인물1.png"
 	},
 
 	{
-		"type" : "highlight",
-		"name" : "",
-		"content" : "",
-		"image" : "image/center/지천창.png"
-	},
-
-	{
-		"type" : "black",
-		"name" : "",
-		"content" : "",
-		"image" : "image/background/검정.png",
-		"highlight" : "image/center/아이템창.png"
-	},
-
-	{
-		"type" : "getting",
-		"image" : "image/center/설정창.png"
-	},
-
-	{
-		"type" : "dialogue1",
+		"type" : "dialogue2",
 		"name" : "유영",
-		"content" : "읏… 갑자기 안개가…!",
+		"content" : "으악! 반쪽자리 새다!",
 		"main" : "image/character/인물1.png",
+		"support" : "image/character/인물2.png"
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "??",
+		"content" : "뭐?! 너도 나 놀리냐? 짝없는 비익조라고 으애앵!",
+		"support" : "image/character/인물2.png",
+		"main" : "image/character/인물1.png"
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "유영",
+		"content" : "비익조…? 너 이름이 비익조야?",
+		"main" : "image/character/인물1.png",
+		"support" : "image/character/인물2.png"
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "심랑",
+		"content" : "아니 내 종류가 비익조고, 이름은 심랑이다.",
+		"support" : "image/character/인물2.png",
+		"main" : "image/character/인물1.png"
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "심랑",
+		"content" : "아니 내 종류가 비익조고, 이름은 심랑이다.\n난 지금 짝 찾느라 바쁘니까 안 도와줄 거면 저리 비켜!",
+		"support" : "image/character/인물2.png",
+		"main" : "image/character/인물1.png"
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "유영",
+		"content" : "짝을 왜 찾는데?",
+		"main" : "image/character/인물1.png",
+		"support" : "image/character/인물2.png"
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "심랑",
+		"content" : "그래야 날 수 있어서 그래. 이 모양으로 어떻게 날겠냐?",
+		"support" : "image/character/인물2.png",
+		"main" : "image/character/인물1.png"
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "유영",
+		"content" : "아… 그렇구나~ 아, 저기 새들 많이 있다.",
+		"support" : "image/character/인물2.png",
+		"main" : "image/character/인물1.png"
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "심랑",
+		"content" : "뭐? 너 새 잘 찾는구나. 나 좀 도와줘봐!",
+		"support" : "image/character/인물2.png",
+		"main" : "image/character/인물1.png"
+	},
+
+	{
+		"type" : "inner",
+		"name" : "유영",
+		"content" : "도와주기 좀 싫게… 얄밉다….",
+		"main" : "image/character/인물1.png",
+		"support" : "image/character/인물2.png"
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "심랑",
+		"content" : "으애앵! 너 방금 도와주기 싫다고 생각했지!",
+		"support" : "image/character/인물2.png",
+		"main" : "image/character/인물1.png"
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "유영",
+		"content" : "아… 아냐…! 도와줄게….",
+		"main" : "image/character/인물1.png",
+		"support" : "image/character/인물2.png"
 	}
 ]

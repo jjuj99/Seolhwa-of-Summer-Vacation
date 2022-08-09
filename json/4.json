@@ -1,110 +1,193 @@
 [
 	{
-		"type" : "dialogue1",
-		"name" : "??",
-		"main" : "image/character/인물2.png",
-		"content" : "ㅁ…."
-	},
-
-	{
-		"type" : "dialogue1",
-		"name" : "유영",
-		"main" : "image/character/인물1.png",
-		"content" : "뭐지?"
-	},
-
-	{
-		"type" : "inner1",
-		"name" : "유영",
-		"main" : "image/character/인물1.png",
-		"content" : "저 안에서 소리가 들린 것 같은데."
-	},
-
-	{
 		"type" : "background",
-		"name" : "??",
-		"image" : "image/background/연두.png",
-		"support" : "image/character/인물2.png",
+		"name" : "지천",
 		"main" : "image/character/인물1.png",
-		"content" : "ㅁ……."
+		"support" : "image/character/인물2.png",
+		"content" : "수화산의 중심의 어떻게 왔는가?",
+		"image" : "image/background/연두.png"
 	},
 
 	{
-		"type" : "inner1",
-		"name" : "유영",
-		"main" : "image/public/인물1.png",
-		"content" : "뿔 달린 구렁이?"
+		"type" : "dialogue2",
+		"name" : "지천",
+		"content" : "과연, 거구귀의 입안을 들어올 생각을 하다니, 비범한 아이로구나.\n내 이름은 지천. 나를 알아보겠는가?",
+		"support" : "image/character/인물2.png",
+		"main" : "image/character/인물1.png"
 	},
 
 	{
 		"type" : "dialogue2",
 		"name" : "유영",
+		"content" : "밖으로 내보내 주세요!",
 		"main" : "image/character/인물1.png",
-		"support" : "image/character/인물2.png",
-		"content" : "안녕? 너는 누구야?"
+		"support" : "image/character/인물2.png"
 	},
 
 	{
 		"type" : "dialogue2",
-		"name" : "이밍",
+		"name" : "지천",
+		"content" : "그렇지만 초대에 응한 건 너가 아니더냐?",
 		"support" : "image/character/인물2.png",
 		"main" : "image/character/인물1.png",
-		"content" : "ㅁ… 나는 이밍이다밍."
-	},
-
-	{
-		"type" : "inner2",
-		"name" : "유영",
-		"main" : "image/character/인물1.png",
-		"support" : "image/character/인물2.png",
-		"content" : "밍?"
 	},
 
 	{
 		"type" : "dialogue2",
 		"name" : "유영",
+		"content" : "초대?",
 		"main" : "image/character/인물1.png",
 		"support" : "image/character/인물2.png",
-		"content" : "그런데 왜 울고 있어?"
 	},
 
 	{
-		"type" : "dialogue2",
-		"name" : "이밍",
-		"support" : "image/character/인물2.png",
-		"main" : "image/character/인물1.png",
-		"content" : "얼른 승천을 해야 이 어두운 동굴 생활을 청산하는데, 높은 곳이 무섭다밍…."
+		"type" : "highlight",
+		"image" : "image/center/아이템창.png",
+		"name" : "",
+		"content" : ""
+	},
+
+	{
+		"type" : "highlight",
+		"image" : "image/center/설정창.png",
+		"name" : "",
+		"content" : ""
 	},
 
 	{
 		"type" : "dialogue2",
 		"name" : "유영",
+		"content" : "그럼… 살아서, 살아서 돌아가게 해주세요!",
 		"main" : "image/character/인물1.png",
 		"support" : "image/character/인물2.png",
-		"content" : "높은 곳? 생각보다 안 무섭지 않아?"
 	},
 
 	{
 		"type" : "dialogue2",
-		"name" : "이밍",
+		"name" : "지천",
+		"content" : "누가 죽인다고 했지?",
 		"support" : "image/character/인물2.png",
 		"main" : "image/character/인물1.png",
-		"content" : "몰라서 말하는 거다밍! 높은 곳은 제멋대로 모습을 바꾸고 끝이 없다밍!"
 	},
 
 	{
 		"type" : "dialogue2",
-		"name" : "유명",
-		"main" : "image/character/인물1.png",
+		"name" : "지천",
+		"content" : "누가 죽인다고 했지?\n하하하! 인간들에게 무지함이란 실로 무서운 것으로 다가오지.",
 		"support" : "image/character/인물2.png",
-		"content" : "하늘엔 예쁜 모습도 있어. 직접 보면 말이 달라질 걸?"
+		"main" : "image/character/인물1.png",
 	},
 
 	{
 		"type" : "dialogue2",
-		"name" : "이밍",
+		"name" : "지천",
+		"content" : "누가 죽인다고 했지?\n하하하! 인간들에게 무지함이란 실로 무서운 것으로 다가오지.\n걱정하지 않아도 된다, 내 죽이진 않을 테니.",
 		"support" : "image/character/인물2.png",
 		"main" : "image/character/인물1.png",
-		"content" : "밍…?"
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "유영",
+		"content" : "!!… 그럼 어느 방향으로 나가면 될…",
+		"main" : "image/character/인물1.png",
+		"support" : "image/character/인물2.png",
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "지천",
+		"content" : "쉬이 나갈 수 있다고는 말하지 않았을 텐데.",
+		"support" : "image/character/인물2.png",
+		"main" : "image/character/인물1.png",
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "유영",
+		"content" : "그럼 어떻게 나갈 수 있는데요!",
+		"main" : "image/character/인물1.png",
+		"support" : "image/character/인물2.png",
+	},
+
+	{
+		"type" : "inner",
+		"name" : "지천",
+		"content" : "역시 제사장의 아이인가. 겁이 없군.",
+		"support" : "image/character/인물2.png",
+		"main" : "image/character/인물1.png",
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "지천",
+		"content" : "좋다. 내 친히 너를 도와주지, 유영. 수화산을 나가려면 영물들의 은혜를 입어야 한다.",
+		"support" : "image/character/인물2.png",
+		"main" : "image/character/인물1.png",
+	},
+
+	{
+		"type" : "inner",
+		"name" : "유영",
+		"content" : "내 이름을 어떻게 알지? 영물은 또 뭐고? 왜 나에게 잘해주지?",
+		"main" : "image/character/인물1.png",
+		"support" : "image/character/인물2.png",
+	},
+
+	{
+		"type" : "highlight2",
+		"name" : "지천",
+		"content" : "4마리의 영물에게 은혜를 입어야 하는데, 각 영물마다 감사의 표시로 꽃을 줄 것이야. 그것을 이 꽃병에 모으면 된다.",
+		"support" : "image/character/인물2.png",
+		"main" : "image/character/인물1.png",
+		"image" : "image/center/지천창.png"
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "유영",
+		"content" : "그 영물들은 어디에 있죠?",
+		"main" : "image/character/인물1.png",
+		"support" : "image/character/인물2.png",
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "지천",
+		"content" : "수화동굴, 수화연못, 그리고 산 정상에 있지.",
+		"support" : "image/character/인물2.png",
+		"main" : "image/character/인물1.png",
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "지천",
+		"content" : "수화동굴, 수화연못, 그리고 산 정상에 있지.\n길은 걱정 말게. 수화산이 인도할 테니.",
+		"support" : "image/character/인물2.png",
+		"main" : "image/character/인물1.png",
+	},
+
+	{
+		"type" : "inner",
+		"name" : "유영",
+		"content" : "이 많은 걸 어떻게 다 기억해….",
+		"support" : "image/character/인물2.png",
+		"main" : "image/character/인물1.png",
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "지천",
+		"content" : "중간에 모르는 것이 있으면 언제든 날 부르거라. 내 가까운 곳에 있을 테니.",
+		"support" : "image/character/인물2.png",
+		"main" : "image/character/인물1.png",
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "지천",
+		"content" : "중간에 모르는 것이 있으면 언제든 날 부르거라. 내 가까운 곳에 있을 테니.\n자, 우선 수화동굴로 가보자꾸나.",
+		"support" : "image/character/인물2.png",
+		"main" : "image/character/인물1.png",
 	}
-]
+]	

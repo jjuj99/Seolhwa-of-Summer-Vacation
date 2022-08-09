@@ -4,51 +4,5 @@
 		"name" : "유영",
 		"main" : "image/character/인물1.png",
 		"content" : "저 나비는 어디까지 가는 거지? 분명 낮인데 숲이 너무 어두워!"
-	},
-
-	{
-		"type" : "background1",
-		"image" : "image/background/연두.png",
-		"name" : "??",
-		"content" : "크르릉…"
-	},
-
-	{
-		"type" : "dialogue1",
-		"name" : "유영",
-		"content" : "무슨 소리지?",
-		"main" : "image/character/인물1.png"
-	},
-
-	{
-		"type" : "inner",
-		"name" : "유영",
-		"main" : "image/character/인물1.png",
-		"content" : "한가운데만 어두워"
-	},
-
-	{
-		"type" : "background2",
-		"name" : "유영",
-		"main" : "image/character/인물1.png",
-		"content" : "이…빨…? 군데 군데 썩어 있다!",
-		"support" : "image/character/인물2.png",
-		"image" : "image/background/보라.png"
-	},
-
-	{
-		"type" : "dialogue2",
-		"name" : "??",
-		"support" : "image/character/인물2.png",
-		"content" : "크르르릉!!!!",
-		"main" : "image/character/인물1.png"
-	},
-
-	{
-		"type" : "dialogue2",
-		"name" : "유영",
-		"main" : "image/character/인물1.png",
-		"support" : "image/character/인물2.png",
-		"content" : "썩은 이빨이 아픈가봐!",
 	}
 ]

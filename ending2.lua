@@ -17,10 +17,10 @@ function scene:create( event )
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 	background:setFillColor(0)
 
-	local replay = display.newImage("image/setting/2.png")
+	local replay = display.newImage("image/setting/다시하기.png")
 	replay.x, replay.y = display.contentWidth * 0.5, display.contentHeight * 0.4
 
-	local out = display.newImage("image/setting/4.png")
+	local out = display.newImage("image/setting/나가기.png")
 	out.x, out.y = display.contentWidth * 0.5, display.contentHeight * 0.6
 
 	local options =

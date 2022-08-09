@@ -1,29 +1,17 @@
 [
 	{
-		"type" : "dialogue1",
-		"name" : "지천",
-		"content" : "조심히 돌아가, 유영."
-	},
-
-	{
-		"type" : "background",
+		"type" : "dialogue2",
 		"name" : "유영",
-		"content" : "지천!!",
+		"content" : "저기 있다!",
 		"main" : "image/character/인물1.png",
-		"image" : "image/background/하늘.png"
+		"support" : "image/character/인물2.png"
 	},
 
 	{
-		"type" : "dialogue1",
-		"name" : "유영",
-		"content" : "지천!!\n어떻게 된 거야! 어떻게 나온 거지? 산은…!",
-		"main" : "image/character/인물1.png"
-	},
-
-	{
-		"type" : "dialogue1",
-		"name" : "유영",
-		"content" : "지천!!\n어떻게 된 거야! 어떻게 나온 거지? 산은…!\n수화산이… 사라졌어…. 어?",
+		"type" : "dialogue2",
+		"name" : "심랑",
+		"content" : "정말이네! 나랑 똑같이 생겼다!",
+		"support" : "image/character/인물2.png",
 		"main" : "image/character/인물1.png"
 	},
 
@@ -31,6 +19,61 @@
 		"type" : "highlight",
 		"name" : "",
 		"content" : "",
-		"image" : "image/center/지천창.png"
+		"image" : "image/center/아이템창.png"
+	},
+
+	{
+		"type" : "highlight",
+		"name" : "",
+		"content" : "",
+		"image" : "image/center/설정창.png"
+	},
+
+	{
+		"type" : "dialogue2",
+		"name" : "심랑",
+		"content" : "고마워! 덕분에 짝도 만나고 날 수 있게 되었어!",
+		"support" : "image/character/인물2.png",
+		"main" : "image/character/인물1.png"
+	},
+
+	{
+		"type" : "highlight",
+		"name" : "",
+		"content" : "",
+		"image" : "image/center/아이템창.png"
+	},
+
+	{
+		"type" : "highlight",
+		"name" : "",
+		"content" : "",
+		"image" : "image/center/설정창.png"
+	},
+	
+	{
+		"type" : "dialogue2",
+		"name" : "유영",
+		"content" : "우와…!",
+		"main" : "image/character/인물1.png",
+		"support" : "image/character/인물2.png"
+	},
+
+	{
+		"type" : "black",
+		"name" : "",
+		"content" : "",
+		"image" : "image/get/진달래획득.png"
+	},
+
+	{
+		"type" : "getting",
+		"image" : "image/center/설정창.png"
+	},
+
+	{
+		"type" : "dialogue3",
+		"name" : "지천",
+		"content" : "이제 산 중심으로 돌아가자꾸나."
 	}
 ]
