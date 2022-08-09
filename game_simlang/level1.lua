@@ -11,9 +11,7 @@ local timeAttack
 function scene:create( event )
 	local sceneGroup = self.view
 
--- 	♬ Music provided by 브금저장소 [BGM Storage]
-
--- ♬ Track: Over the hill - https://youtu.be/oN-LAguSjSU
+	local settingGroup = display.newGroup()
 
 	local explosionSound = audio.loadSound( "sound/Over the hill.mp3" )
 	audio.play(explosionSound, {channel=2, loops=-1})
@@ -24,6 +22,8 @@ function scene:create( event )
 	local explosionSound2 = audio.loadSound( "sound/코드39.wav" )
 
 	local explosionSound3 = audio.loadSound( "sound/스위치_랜턴_버튼.mp3" )
+
+	local clickSound = audio.loadSound( "sound/카툰코드음14.wav" )
 	
 	
 	local levelText2
@@ -33,21 +33,33 @@ function scene:create( event )
 	local time= display.newText(10, display.contentWidth/2, display.contentHeight*0.12)
 	time.size = 50
 
-	local back = display.newRoundedRect(display.contentWidth/2, display.contentHeight/2, 700,500,10)
+	local back = display.newRoundedRect(display.contentWidth/2, display.contentHeight/2, 550,350,10)
 	back:setFillColor(0.5, 0.5, 0.2)
 
-	local textStart= display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.4, 500,300,10)
+	local textStart= display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.4, 450,200,10)
 	textStart:setFillColor(0.5, 0.4, 0.4)
 
-	local textStart2 = display.newText("게임 플레이 방법", display.contentWidth/2, display.contentHeight*0.24)
+	local textStart2 = display.newText("천생연분", display.contentWidth/2, display.contentHeight*0.28)
 	textStart2.size = 30
 
-	local button = display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.77, 500,100,10)
+	local button = display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.66, 450,100,10)
 	button:setFillColor(0.5, 0.4, 0.4)
 
 
- 	local text = display.newText("시작하기", display.contentWidth/2, display.contentHeight*0.77)
+ 	local text = display.newText("시작하기", display.contentWidth/2, display.contentHeight*0.66)
  	text.size = 30
+
+	 local startTalk = display.newText("심랑의 색, 특징, 그리고 생김새를 유심히 살펴보렴.", display.contentWidth*0.5, display.contentHeight*0.9)
+	 startTalk:setFillColor(0)
+	 startTalk.size=30
+
+	 local nameBack =display.newImageRect("image/dialogue/이름.png",200,50)
+	 nameBack.x,nameBack.y = display.contentWidth*0.3, display.contentHeight*0.8
+	 
+
+	 local name = display.newText("지천", display.contentWidth*0.3, display.contentHeight*0.8)
+	 name:setFillColor(0)
+	 name.size=30
 
 	 startGroup:insert(back)
 	 startGroup:insert(time)
@@ -55,10 +67,16 @@ function scene:create( event )
 	 startGroup:insert(textStart2)
 	 startGroup:insert(button)
 	 startGroup:insert(text)
+	 startGroup:insert(startTalk)
+	 startGroup:insert(nameBack)
+	 startGroup:insert(name)
 	-- 이미지 불러오기 ----
+	
+
 	local levelText = display.newText("1단계)어디에 있을까?", display.contentWidth*0.5, display.contentHeight*0.9)
 	levelText:setFillColor(0)
 	levelText.size=30
+	levelText.alpha=0
 
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 
@@ -98,40 +116,32 @@ function scene:create( event )
 --------
 	local card1 = display.newImageRect("image/simlang_image/그림.png",300,180)
 	card1.x,card1.y= display.contentWidth*0.37, display.contentHeight*0.34
-	cardgroup:insert(card1)
 
 	local card11 = display.newImageRect("image/simlang_image/그림2.png",300,180)
 	card11.x,card11.y= display.contentWidth*0.37, display.contentHeight*0.34
 	card11.alpha=0
-	cardgroup:insert(card11)
 --------
 	local card2 = display.newImageRect("image/simlang_image/그림.png",300,180)
 	card2.x,card2.y= display.contentWidth*0.63, display.contentHeight*0.34
-	cardgroup:insert(card2)
 
 	local card21 = display.newImageRect("image/simlang_image/그림2.png",300,180)
 	card21.x,card21.y= display.contentWidth*0.63, display.contentHeight*0.34
 	card21.alpha=0
-	cardgroup:insert(card21)
 -------
 	local card3 = display.newImageRect("image/simlang_image/그림.png",300,180)
 	card3.x,card3.y= display.contentWidth*0.37, display.contentHeight*0.62
-	cardgroup:insert(card3)
 
 	local card31 = display.newImageRect("image/simlang_image/그림2.png",300,180)
 	card31.x,card31.y= display.contentWidth*0.37, display.contentHeight*0.62
 	card31.alpha=0
-	cardgroup:insert(card31)
 	
 -------
 	local card4 = display.newImageRect("image/simlang_image/그림.png",300,180)
 	card4.x,card4.y= display.contentWidth*0.63, display.contentHeight*0.62
-	cardgroup:insert(card4)
 
 	local card41 = display.newImageRect("image/simlang_image/그림2.png",300,180)
 	card41.x,card41.y= display.contentWidth*0.63, display.contentHeight*0.62
 	card41.alpha=0
-	cardgroup:insert(card41)
 
 ------
 	local level = display.newImageRect("image/simlang_image/단계.png",670,120)
@@ -143,6 +153,113 @@ function scene:create( event )
 
 	------이미지 불러오기 끝 ----------------
 
+	----설정창 이미지 불러오기 및 그룹넣고 레이어 정리----------
+	local background3 = display.newImage("image/setting/설정창 바탕.png")
+	background3.strokeWidth = 5
+	background3:setStrokeColor(0.5, 0.5, 0.5)
+	background3.x, background3.y = display.contentCenterX, display.contentCenterY
+
+	local replay = display.newImage("image/setting/2클릭.png")
+	replay.x, replay.y = display.contentWidth * 0.5, display.contentHeight * 0.3
+
+	local detail = display.newImage("image/setting/3클릭.png")
+	detail.x, detail.y = display.contentWidth * 0.5, display.contentHeight * 0.5
+
+	local out = display.newImage("image/setting/4클릭.png")
+	out.x, out.y = display.contentWidth * 0.5, display.contentHeight * 0.7
+
+	local sound1 = display.newRect(display.contentWidth * 0.4, display.contentHeight * 0.5, 50, 50)
+	sound1.alpha = 0
+	sound1.fill = {
+		type = "image",
+		filename = "image/setting/스피커1.png"
+	}
+
+	local sound2 = display.newRect(display.contentWidth * 0.5, display.contentHeight * 0.5, 50, 50)
+	sound2.alpha = 0
+	sound2.fill = {
+		type = "image",
+		filename = "image/setting/스피커2.png"
+	}
+
+	local sound3 = display.newRect(display.contentWidth * 0.6, display.contentHeight * 0.5, 50, 50)
+	sound3.alpha = 0
+	sound3.fill = {
+		type = "image",
+		filename = "image/setting/스피커3.png"
+	}
+
+    local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
+	button1.x,button1.y=822,128
+
+
+	
+	settingGroup:insert(background3)
+	settingGroup:insert(replay)
+	settingGroup:insert(detail)
+	settingGroup:insert(sound1)
+	settingGroup:insert(sound2)
+	settingGroup:insert(sound3)
+    settingGroup:insert(out)
+	settingGroup:insert(button1)
+
+	settingGroup.alpha=0
+	-------------------------------event 정리--------------------------
+	
+	function detail:tap( event )
+		audio.play(explosionSound3, {duration = 1000})
+		detail.alpha = 0
+		sound1.alpha = 1
+		sound2.alpha = 1
+		sound3.alpha = 1
+	end
+	detail:addEventListener("tap", detail)
+
+
+	function sound1:tap ( event )
+		audio.setVolume(0, {channel=2})
+	end
+	sound1:addEventListener("tap", sound1)
+
+	function sound2:tap ( event )
+		audio.setVolume(0.5, {channel=2})
+	end
+	sound2:addEventListener("tap", sound2)
+
+	function sound3:tap ( event )
+		audio.setVolume(1, {channel=2})
+	end
+	sound3:addEventListener("tap", sound3)
+
+	function replay:tap( event )
+		audio.play(explosionSound3, {duration = 1000})
+        composer.removeScene('game_simlang.level1')
+		composer.gotoScene('game_simlang.level1')
+ 	end
+ 	replay:addEventListener("tap", replay)
+
+     function button1:tap( event )
+		audio.play(explosionSound3, {duration = 1000})
+        timer.resume(timeAttack)
+		
+		card2:addEventListener("tap", card2)
+		card3:addEventListener("tap", card3)
+		card4:addEventListener("tap", card4)
+		card1:addEventListener("tap", card1)
+
+		settingGroup.alpha=0
+	end
+	button1:addEventListener("tap", button1)
+
+	function out:tap( event )
+		audio.pause(explosionSound)
+		audio.play(explosionSound3, {duration = 1000})		
+        composer.removeScene('game_simlang.level3')
+		composer.gotoScene('start')
+ 	end
+ 	out:addEventListener("tap", out)
+
+	----------------------------------------------------------------------
 
 	-----레이어 정리-----------
 	sceneGroup:insert(background)
@@ -153,18 +270,28 @@ function scene:create( event )
 	sceneGroup:insert(item)
 	sceneGroup:insert(setting1)
 	sceneGroup:insert(board)
-	sceneGroup:insert(cardgroup)
+	sceneGroup:insert(card1)
+	sceneGroup:insert(card2)
+	sceneGroup:insert(card3)
+	sceneGroup:insert(card4)
+	sceneGroup:insert(card11)
+	sceneGroup:insert(card21)
+	sceneGroup:insert(card31)
+	sceneGroup:insert(card41)
 	sceneGroup:insert(level)
 	sceneGroup:insert(touchAn)
 	sceneGroup:insert(levelText)
 	sceneGroup:insert(timeBoard)
 	sceneGroup:insert(timerText)
 	sceneGroup:insert(time)
-	touchAn:toFront()
+
+
 	--레이어 정리 끝 -------------
 
 	function button:tap( event )
 		startGroup.alpha=0
+		levelText.alpha=1
+
 
 			--timer event-------------------------
 		local function counter( event )
@@ -200,6 +327,7 @@ function scene:create( event )
 	function card1:tap( event )
 		card1.alpha=0
 		card11.alpha=1
+		audio.play(clickSound)
 	end
 	card1:addEventListener("tap", card1)
 
@@ -207,12 +335,14 @@ function scene:create( event )
 	function card2:tap( event )
 		card2.alpha=0
 		card21.alpha=1
+		audio.play(clickSound)
 	end
 	card2:addEventListener("tap", card2)
 --------------------
 	function card3:tap( event )
 		card3.alpha=0
 		card31.alpha=1
+		audio.play(clickSound)
 		touchAn.x,touchAn.y=450,450
 		touchAn:scale(1.3,1.3)
 	end
@@ -221,6 +351,7 @@ function scene:create( event )
 	function card4:tap( event )
 		card4.alpha=0
 		card41.alpha=1
+		audio.play(clickSound)
 	end
 	card4:addEventListener("tap", card4)
 --------------
@@ -242,41 +373,42 @@ function scene:create( event )
  	title.size = 30
     title:setFillColor(0)
 
-    local object1 = display.newImageRect("image/items/백리향.png",450,150)
-	object1.x,object1.y= display.contentWidth*0.38, display.contentHeight*0.5
+    local object1 = display.newImageRect("image/items/백리향.png",450,180)
+	object1.x,object1.y= display.contentWidth*0.5, display.contentHeight*0.5
 
-	local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
-	button1.x,button1.y=864,235
+	local button2 = display.newImageRect("image/simlang_image/엑스.png",50,50)
+	button2.x,button2.y=864,235
 
  	sceneGroup:insert(board)
     sceneGroup:insert(title)
     sceneGroup:insert(object1)
-	sceneGroup:insert(button1)
+	sceneGroup:insert(button2)
 
 	
 
 	
 	--시작 화면---------------------
 
-
-	----------------------------------------------------------------------
-	function button1:tap( event )
+	
+	function button2:tap( event )
 		audio.play(explosionSound3, {duration = 1000})
 		composer.removeScene('game_simlang.level1')
 		composer.gotoScene('game_simlang.level2')
 		timer.cancel(timeAttack)
 	end
-	button1:addEventListener("tap", button1)
+	button2:addEventListener("tap", button2)
 		--composer.showOverlay('game_simlang.popup')
 	end
 	touchAn:addEventListener("tap", touchAn)
 
 	function setting1:tap( event )
+		settingGroup.alpha=1
 		timer.pause(timeAttack)
 		audio.play(explosionSound3, {duration = 1000})
-		composer.setVariable( "timeAttack", timeAttack )
-
-		composer.showOverlay('game_simlang.setting1')
+		card1:removeEventListener("tap", card1)
+		card2:removeEventListener("tap", card2)
+		card3:removeEventListener("tap", card3)
+		card4:removeEventListener("tap", card4)	
 	end
 	setting1:addEventListener("tap", setting1)
 
@@ -296,6 +428,12 @@ function scene:create( event )
 		composer.showOverlay('game_simlang.item')
 	end
 	item:addEventListener("tap", item)
+
+	sceneGroup:insert(settingGroup)
+	settingGroup:toFront()
+
+	--
+
 end
 
 function scene:show( event )

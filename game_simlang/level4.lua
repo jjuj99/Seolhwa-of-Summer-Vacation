@@ -10,8 +10,12 @@ local timeAttack
 
 function scene:create( event )
 	local sceneGroup = self.view
+
+	composer.removeScene('game_simlang.fail2')
+
+	local flag
+
 	local settingGroup = display.newGroup()
-	local popupGroup = display.newGroup()
 
 	local explosionSound2 = audio.loadSound( "sound/코드39.wav" )
 
@@ -21,13 +25,18 @@ function scene:create( event )
 
 	local clickSound = audio.loadSound( "sound/카툰코드음14.wav" )
 
-	local levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
-	levelText2:setFillColor(0)
-	levelText2.size=30
+	-- local explosionSound = audio.loadSound( "image/simlang_image/Trust.mp3" )
+	-- audio.play(explosionSound, {channel=3, loops=-1})
+	-- --배경음악 설정
+	-- audio.setMaxVolume(1, { channel=3 })
+	-- audio.setVolume(0.5, {channel=3})
 
-	levelText2.alpha=0
+	local levelText2
 	-- 이미지 불러오기 ----
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
+
+	-- local back = display.newImageRect("image/p10_2.png",display.contentWidth, display.contentHeight)
+	-- back.x, back.y = display.contentWidth*0.5, display.contentHeight*0.5
 
 	local levelText = display.newText("3단계)어디에 있을까?", display.contentWidth*0.5, display.contentHeight*0.9)
 	levelText:setFillColor(0)
@@ -87,6 +96,7 @@ function scene:create( event )
 	local card12 = display.newImageRect("image/simlang_image/숨은그림.png",100,182)
 	card12.x,card12.y= 904,439
 
+
 	local level = display.newImageRect("image/simlang_image/단계.png",670,120)
 	level.x,level.y= display.contentWidth*0.5, display.contentHeight*0.89
 
@@ -98,26 +108,6 @@ function scene:create( event )
 
 	local timerText =  display.newText("timer", display.contentWidth*0.5, display.contentHeight*0.05)
 	timerText.size=20
-
-	local board11 = display.newImageRect("image/items/바탕.png",500,300)
-	board11.x,board11.y= display.contentWidth*0.5, display.contentHeight*0.5
-	
-	local title11 = display.newText("게임 클리어/꽃 획득 성공!", display.contentWidth/2, display.contentHeight*0.33)
-	title11.size = 30
-	title11:setFillColor(0)
-	
-	local object1111 = display.newImageRect("image/items/진달래.png",450,180)
-	object1111.x,object1111.y= display.contentWidth*0.5, display.contentHeight*0.5
-
-	local button123 = display.newImageRect("image/simlang_image/엑스.png",50,50)
-	button123.x,button123.y=864,235
-
-	popupGroup:insert(board11)
-	popupGroup:insert(title11)
-    popupGroup:insert(object1111)
-	popupGroup:insert(button123)
-
-	popupGroup.alpha=0
 
 	------이미지 불러오기 끝 ----------------
 
@@ -173,6 +163,30 @@ function scene:create( event )
 	settingGroup.alpha=0
 	-------------------------------event 정리--------------------------
 
+	--timer event-------------------------
+	local function counter( event )
+		time.text = time.text - 1
+   
+		if( time.text == '5' ) then
+			time:setFillColor(1, 0, 0)
+		end
+   
+		if( time.text == '-1') then
+			time.alpha = 0
+			levelText.alpha=0
+			levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+			levelText2:setFillColor(0)
+			levelText2.size=30
+
+			sceneGroup:insert(levelText2)
+			timer.cancel(timeAttack)
+	
+			composer.showOverlay('game_simlang.fail21')
+		end
+	end
+   
+	timeAttack = timer.performWithDelay(1000, counter, 11)   
+	
 	function detail:tap( event )
 		audio.play(explosionSound3, {duration = 1000})
 		detail.alpha = 0
@@ -261,47 +275,19 @@ function scene:create( event )
 	sceneGroup:insert(timeBoard)
 	sceneGroup:insert(timerText)
 	sceneGroup:insert(time)
-	sceneGroup:insert(levelText2)
-	sceneGroup:insert(popupGroup)
 	
 	--레이어 정리 끝 -------------
 	
-	function button123:tap( event )	
-		audio.pause(explosionSound4)
-		composer.removeScene('game_simlang.level3')
-		composer.gotoScene('scenario9')
-		timer.cancel(timeAttack)
-		popupGroup.alpha=0
-	end
-	button123:addEventListener("tap", button1)
-
-	--timer event-------------------------
-	local function counter( event )
-		time.text = time.text - 1
-   
-		if( time.text == '5' ) then
-			time:setFillColor(1, 0, 0)
-		end
-   
-		if( time.text == '-1') then
-			time.alpha = 0
-			--audio.pause(explosionSound)
-			composer.showOverlay('game_simlang.fail21')
-			levelText.alpha=0
-			levelText2.alpha=1
-
-			timer.cancel(timeAttack)
-		end
-	end
-   
-	timeAttack = timer.performWithDelay(1000, counter, 11)   
-	
-	--tap 정답 고르기 event------------------------------------------------
+	--tap 확대 event------------------------------------------------
 	function card1:tap( event )
 		time.alpha = 0
 		audio.play(clickSound)
+		--audio.pause(explosionSound)
+		
 		levelText.alpha=0
-		levelText2.alpha=1
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
 		sceneGroup:insert(levelText2)
 		composer.showOverlay('game_simlang.fail21')
 		timer.cancel(timeAttack)
@@ -311,8 +297,12 @@ function scene:create( event )
 	function card2:tap( event )
 		time.alpha = 0
 		audio.play(clickSound)
+		--audio.pause(explosionSound)
+		
 		levelText.alpha=0
-		levelText2.alpha=1
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
 		sceneGroup:insert(levelText2)
 		composer.showOverlay('game_simlang.fail21')
 		timer.cancel(timeAttack)
@@ -321,7 +311,6 @@ function scene:create( event )
 
 	function card3:tap( event )
 		time.alpha = 0
-		popupGroup.alpha=1
 		audio.play(clickSound)
 		audio.pause(explosionSound)
 		audio.play(explosionSound2)
@@ -343,18 +332,47 @@ function scene:create( event )
 		card12:removeEventListener("tap", card12)
 		levelText.alpha=0
 		levelText2 = display.newText("찾기 성공! 숨은 그림 찾기 클리어!", display.contentWidth*0.5, display.contentHeight*0.9)
-		levelText2.alpha=1
+		levelText2:setFillColor(0)
+		levelText2.size=30
+
+		sceneGroup:insert(levelText2)
+		local board = display.newImageRect("image/items/바탕.png",500,300)
+		board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.5
+	
+		local title = display.newText("게임 클리어/꽃 획득 성공!", display.contentWidth/2, display.contentHeight*0.33)
+		 title.size = 30
+		title:setFillColor(0)
+	
+		local object1 = display.newImageRect("image/items/진달래.png",450,180)
+	object1.x,object1.y= display.contentWidth*0.5, display.contentHeight*0.5
+
+	local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
+	button1.x,button1.y=864,235
+
+ 	sceneGroup:insert(board)
+    sceneGroup:insert(title)
+    sceneGroup:insert(object1)
+	sceneGroup:insert(button1)
+	
+		function button1:tap( event )
+			audio.pause(explosionSound4)
+			composer.removeScene('game_simlang.level3')
+			composer.gotoScene('scenario9')
+			timer.cancel(timeAttack)
+		end
+		button1:addEventListener("tap", button1)
 	end
 	card3:addEventListener("tap", card3)
 
-	
 	function card4:tap( event )
 		time.alpha = 0
 		audio.play(clickSound)
 		--audio.pause(explosionSound)
 		composer.showOverlay('game_simlang.fail21')
 		levelText.alpha=0
-		levelText2.alpha=1
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
 		sceneGroup:insert(levelText2)	
 		timer.cancel(timeAttack)
 	end
@@ -365,7 +383,9 @@ function scene:create( event )
 		audio.play(clickSound)
 		--audio.pause(explosionSound)
 		levelText.alpha=0
-		levelText2.alpha=1
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
 		sceneGroup:insert(levelText2)
 		composer.showOverlay('game_simlang.fail21')
 		timer.cancel(timeAttack)
@@ -378,7 +398,9 @@ function scene:create( event )
 		--audio.pause(explosionSound)
 	
 		levelText.alpha=0
-		levelText2.alpha=1
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
 		sceneGroup:insert(levelText2)
 		composer.showOverlay('game_simlang.fail21')
 		timer.cancel(timeAttack)
@@ -390,7 +412,9 @@ function scene:create( event )
 		audio.play(clickSound)
 		--audio.pause(explosionSound)
 		levelText.alpha=0
-		levelText2.alpha=1
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
 		sceneGroup:insert(levelText2)
 		composer.showOverlay('game_simlang.fail21')
 		timer.cancel(timeAttack)
@@ -403,7 +427,9 @@ function scene:create( event )
 		--audio.pause(explosionSound)
 		
 		levelText.alpha=0
-		levelText2.alpha=1
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
 		sceneGroup:insert(levelText2)
 		composer.showOverlay('game_simlang.fail21')
 		timer.cancel(timeAttack)
@@ -415,7 +441,9 @@ function scene:create( event )
 		audio.play(clickSound)
 		--audio.pause(explosionSound)
 		levelText.alpha=0
-		levelText2.alpha=1
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
 		sceneGroup:insert(levelText2)
 		composer.showOverlay('game_simlang.fail21')
 		
@@ -428,7 +456,10 @@ function scene:create( event )
 		audio.play(clickSound)
 		--audio.pause(explosionSound)
 		levelText.alpha=0
-		levelText2.alpha=1
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)
 		composer.showOverlay('game_simlang.fail21')
 		
 		timer.cancel(timeAttack)
@@ -438,28 +469,32 @@ function scene:create( event )
 	function card11:tap( event )
 		time.alpha = 0
 		audio.play(clickSound)
+		--audio.pause(explosionSound)
 		levelText.alpha=0
-		levelText2.alpha=1
-		timer.cancel(timeAttack)
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)
 		composer.showOverlay('game_simlang.fail21')
 		
-		
+		timer.cancel(timeAttack)
 	end
 	card11:addEventListener("tap", card11)
-
 
 	function card12:tap( event )
 		time.alpha = 0
 		audio.play(clickSound)
+		--audio.pause(explosionSound)
 		levelText.alpha=0
-		levelText2.alpha=1
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)
 		composer.showOverlay('game_simlang.fail21')
 		
 		timer.cancel(timeAttack)
 	end
 	card12:addEventListener("tap", card12)
-
-	
 
 
 	function set:tap( event )
@@ -497,8 +532,6 @@ function scene:create( event )
 		composer.showOverlay('game_simlang.item3')
 	end
 	item:addEventListener("tap", item)
-
-
 
 	sceneGroup:insert(settingGroup)
 end

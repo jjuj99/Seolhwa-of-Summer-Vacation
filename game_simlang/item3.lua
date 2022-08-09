@@ -6,15 +6,24 @@ local scene = composer.newScene()
 function scene:create( event )
 	local sceneGroup = self.view
 
-    local set = display.newImageRect("image/public/아이템창.png",400,600)
+	local set = display.newImageRect("image/items/바탕.png",400,600)
     set.x,set.y= display.contentWidth/2, display.contentHeight/2
 
 	local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
 	button1.x,button1.y=820,80
 
+	local object1 = display.newImageRect("image/items/백리향2.png",400,170)
+    object1.x,object1.y= display.contentWidth/2, 172
+
+	local object2 = display.newImageRect("image/items/금사철2.png",400,170)
+    object2.x,object2.y= display.contentWidth/2, 369
+
    
     sceneGroup:insert(set)
 	sceneGroup:insert(button1)
+	sceneGroup:insert(object1)
+	sceneGroup:insert(object2)
+
 
 
 	function button1:tap( event )
