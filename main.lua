@@ -29,11 +29,7 @@ end
 
 -- event listeners for tab buttons:
 local function onFirstView( event )
-<<<<<<< Updated upstream
 	composer.gotoScene( "scenario6" )
-=======
-	composer.gotoScene( "game_simlang.level1" )
->>>>>>> Stashed changes
 end
 
 onFirstView()	-- invoke first tab button's onPress event manually
