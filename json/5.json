@@ -1,65 +1,46 @@
 [
 	{
-		"type" : "highlight2",
-		"name" : "이밍",
-		"content" : "하늘에 고운 비단들이 흘러다닌다밍….",
+		"type" : "dialogue1",
+		"name" : "??",
 		"main" : "image/character/인물2.png",
-		"image" : "image/center/설정창.png"
+		"content" : "ㅁ…."
 	},
 
 	{
 		"type" : "dialogue1",
 		"name" : "유영",
-		"content" : "이밍! 어때? 내려올 수 있겠어?",
-		"main" : "image/character/인물1.png"
+		"main" : "image/character/인물1.png",
+		"content" : "뭐지?"
 	},
 
 	{
-		"type" : "dialogue1",
-		"name" : "이밍",
-		"content" : "당연하밍!",
-		"main" : "image/character/인물2.png"
+		"type" : "inner1",
+		"name" : "유영",
+		"main" : "image/character/인물1.png",
+		"content" : "저 안에서 소리가 들린 것 같은데."
 	},
 
 	{
 		"type" : "background",
-		"name" : "이밍",
-		"content" : "고맙다밍.",
-		"main" : "image/character/인물2.png",
-		"image" : "image/background/연두.png"
+		"name" : "??",
+		"image" : "image/background/연두.png",
+		"support" : "image/character/인물2.png",
+		"main" : "image/character/인물1.png",
+		"content" : "ㅁ……."
 	},
 
 	{
-		"type" : "highlight",
-		"name" : "",
-		"content" : "",
-		"image" : "image/center/설정창.png"
-	},
-
-	{
-		"type" : "highlight",
-		"name" : "",
-		"content" : "",
-		"image" : "image/center/아이템창.png"
-	},
-
-	{
-		"type" : "dialogue1",
+		"type" : "inner1",
 		"name" : "유영",
-		"content" : "?! 방금 비늘이…!",
-		"main" : "image/character/인물1.png"
+		"main" : "image/character/인물1.png",
+		"content" : "뿔 달린 구렁이?"
 	},
 
 	{
-		"type" : "black",
-		"name" : "",
-		"content" : "",
-		"image" : "image/background/검정.png",
-		"highlight" : "image/center/아이템창.png"
-	},
-
-	{
-		"type" : "getting",
-		"image" : "image/center/설정창.png"
+		"type" : "dialogue2",
+		"name" : "유영",
+		"main" : "image/character/인물1.png",
+		"support" : "image/character/인물2.png",
+		"content" : "안녕? 너는 누구야?"
 	}
 ]

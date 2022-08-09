@@ -1,0 +1,21 @@
+[
+	{
+		"type" : "highlight",
+		"name" : "",
+		"content" : "",
+		"image" : "image/center/지천창.png"
+	},
+
+	{
+		"type" : "black",
+		"name" : "",
+		"content" : "",
+		"image" : "image/background/검정.png",
+		"highlight" : "image/center/아이템창.png"
+	},
+
+	{
+		"type" : "getting",
+		"image" : "image/center/설정창.png"
+	}
+]

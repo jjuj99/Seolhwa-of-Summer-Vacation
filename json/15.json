@@ -1,0 +1,30 @@
+[
+	{
+		"type" : "background",
+		"name" : "유영",
+		"content" : "지천!!",
+		"main" : "image/character/인물1.png",
+		"image" : "image/background/하늘.png"
+	},
+
+	{
+		"type" : "dialogue1",
+		"name" : "유영",
+		"content" : "지천!!\n어떻게 된 거야! 어떻게 나온 거지? 산은…!",
+		"main" : "image/character/인물1.png"
+	},
+
+	{
+		"type" : "dialogue1",
+		"name" : "유영",
+		"content" : "지천!!\n어떻게 된 거야! 어떻게 나온 거지? 산은…!\n수화산이… 사라졌어…. 어?",
+		"main" : "image/character/인물1.png"
+	},
+
+	{
+		"type" : "highlight",
+		"name" : "",
+		"content" : "",
+		"image" : "image/center/지천창.png"
+	}
+]

@@ -1,23 +1,32 @@
 [
 	{
-		"type" : "dialogue1",
-		"name" : "총영",
-		"content" : "음… 그렇군…! 비단 얄팍하게 겉만 보고 판단하면 안 되었던 거구나. 고마워!",
-		"main" : "image/character/인물2.png"
+		"type" : "highlight2",
+		"name" : "이밍",
+		"content" : "하늘에 고운 비단들이 흘러다닌다밍….",
+		"main" : "image/character/인물2.png",
+		"image" : "image/center/설정창.png"
 	},
 
 	{
 		"type" : "dialogue1",
-		"name" : "총영",
-		"content" : "음… 그렇군…! 비단 얄팍하게 겉만 보고 판단하면 안 되었던 거구나. 고마워!\n너, 어린애 치고는 괜찮은 머리를 가졌구나? 이건 선물이야. 필요한 거지?",
+		"name" : "유영",
+		"content" : "이밍! 어때? 내려올 수 있겠어?",
+		"main" : "image/character/인물1.png"
+	},
+
+	{
+		"type" : "dialogue1",
+		"name" : "이밍",
+		"content" : "당연하밍!",
 		"main" : "image/character/인물2.png"
 	},
 
 	{
-		"type" : "highlight",
-		"name" : "",
-		"content" : "",
-		"image" : "image/center/아이템창.png"
+		"type" : "background",
+		"name" : "이밍",
+		"content" : "고맙다밍.",
+		"main" : "image/character/인물2.png",
+		"image" : "image/background/연두.png"
 	},
 
 	{
@@ -28,11 +37,24 @@
 	},
 
 	{
+		"type" : "highlight",
+		"name" : "",
+		"content" : "",
+		"image" : "image/center/아이템창.png"
+	},
+
+	{
+		"type" : "dialogue1",
+		"name" : "유영",
+		"content" : "?! 방금 비늘이…!",
+		"main" : "image/character/인물1.png"
+	},
+
+	{
 		"type" : "black",
 		"name" : "",
 		"content" : "",
-		"image" : "image/background/검정.png",
-		"highlight" : "image/center/아이템창.png"
+		"image" : "image/get/백리향획득.png"
 	},
 
 	{

@@ -94,6 +94,7 @@ function scene:create( event )
 
 	--다음 대사--
 	local function tap(event)
+		audio.play(click)
 		nextScript()
 	end
 	next:addEventListener("tap", tap)
