@@ -267,13 +267,14 @@ function scene:create( event )
 	--레이어 정리 끝 -------------
 	
 	function button123:tap( event )	
+		levelText2.alpha=0
+		popupGroup.alpha=0
 		audio.pause(explosionSound4)
 		composer.removeScene('game_simlang.level3')
 		composer.gotoScene('scenario9')
-		timer.cancel(timeAttack)
-		popupGroup.alpha=0
+		timer.cancel(timeAttack)		
 	end
-	button123:addEventListener("tap", button1)
+	button123:addEventListener("tap", button123)
 
 	--timer event-------------------------
 	local function counter( event )
@@ -343,6 +344,8 @@ function scene:create( event )
 		card12:removeEventListener("tap", card12)
 		levelText.alpha=0
 		levelText2 = display.newText("찾기 성공! 숨은 그림 찾기 클리어!", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2:setFillColor(0)
+		levelText2.size=30
 		levelText2.alpha=1
 	end
 	card3:addEventListener("tap", card3)
@@ -423,14 +426,15 @@ function scene:create( event )
 	end
 	card9:addEventListener("tap", card9)
 
+
 	function card10:tap( event )
 		time.alpha = 0
 		audio.play(clickSound)
-		--audio.pause(explosionSound)
+			
 		levelText.alpha=0
 		levelText2.alpha=1
 		composer.showOverlay('game_simlang.fail21')
-		
+			
 		timer.cancel(timeAttack)
 	end
 	card10:addEventListener("tap", card10)
@@ -442,10 +446,10 @@ function scene:create( event )
 		levelText2.alpha=1
 		timer.cancel(timeAttack)
 		composer.showOverlay('game_simlang.fail21')
-		
-		
 	end
 	card11:addEventListener("tap", card11)
+
+	
 
 
 	function card12:tap( event )

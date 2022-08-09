@@ -12,7 +12,7 @@ function scene:create( event )
 	local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
 	button1.x,button1.y=820,80
 
-	local object1 = display.newImageRect("image/items/백리향2.png",400,170)
+	local object1 = display.newImageRect("image/items/백리향.png",400,170)
     object1.x,object1.y= display.contentWidth/2, 172
 
    
