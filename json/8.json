@@ -26,14 +26,14 @@
 		"name" : "유영",
 		"content" : "차…유영이요. 누구… 그나저나 뭘 읽으시는 거예요?",
 		"main" : "image/character/인물1.png",
-		"support" : "image/character/인물2.png"
+		"support" : "image/character/총영_일반.png"
 	},
 
 	{
 		"type" : "dialogue2",
 		"name" : "총영",
 		"content" : "난 총영. 녹정의 후예이지. 지금 정감록을 읽고 있어.",
-		"support" : "image/character/인물2.png",
+		"support" : "image/character/총영_일반.png",
 		"main" : "image/character/인물1.png"
 	},
 
@@ -41,7 +41,7 @@
 		"type" : "dialogue2",
 		"name" : "총영",
 		"content" : "난 총영. 녹정의 후예이지. 지금 정감록을 읽고 있어.\n어린애에게는 어려우려나?",
-		"support" : "image/character/인물2.png",
+		"support" : "image/character/총영_일반.png",
 		"main" : "image/character/인물1.png"
 	},
 
@@ -56,7 +56,7 @@
 		"type" : "dialogue2",
 		"name" : "유영",
 		"content" : "어린이… 속담 사전…?",
-		"support" : "image/character/인물2.png",
+		"support" : "image/character/총영_일반.png",
 		"main" : "image/character/인물1.png"
 	},
 
@@ -64,7 +64,7 @@
 		"type" : "dialogue2",
 		"name" : "총영",
 		"content" : "이… 이걸 어떻게 본 거니!!",
-		"support" : "image/character/인물2.png",
+		"support" : "image/character/총영_화내는.png",
 		"main" : "image/character/인물1.png"
 	},
 
@@ -73,14 +73,14 @@
 		"name" : "유영",
 		"content" : "그냥… 옛날 책들 중에 있는 노란색 책이 눈에 띄지 않을 리가…",
 		"main" : "image/character/인물1.png",
-		"support" : "image/character/인물2.png"
+		"support" : "image/character/총영_화내는.png"
 	},
 
 	{
 		"type" : "dialogue2",
 		"name" : "총영",
 		"content" : "왜 말이 없어! 너도… 내 지혜가 부족하다고 생각하는 거니? 녹정의 후손이 어리석어서 되겠냐고?!",
-		"support" : "image/character/인물2.png",
+		"support" : "image/character/총영_화내는.png",
 		"main" : "image/character/인물1.png"
 	},
 
@@ -89,14 +89,14 @@
 		"name" : "유영",
 		"content" : "아, 아니에요…! 그런데 왜 어린이 속담 사전을 가지고 계신 거예요?",
 		"main" : "image/character/인물1.png",
-		"support" : "image/character/인물2.png"
+		"support" : "image/character/총영_화내는.png"
 	},
 
 	{
 		"type" : "dialogue2",
 		"name" : "총영",
 		"content" : "녹정은 조선시대 정감록이란 예언서를 만들 때 조언을 주었던 지혜로운 사슴이었다고 해. 자랑스러운 녹정의 후손이 되고자 많은 책을 읽었는데, 유일하게 완독하지 못한 책이 저거야. 글자는 알겠는데, 속뜻을 모르겠어.",
-		"support" : "image/character/인물2.png",
+		"support" : "image/character/총영_일반.png",
 		"main" : "image/character/인물1.png"
 	},
 
@@ -105,6 +105,6 @@
 		"name" : "유영",
 		"content" : "속담은 글자만 보는 게 아니라 문장 전체를 봐야하죠.",
 		"main" : "image/character/인물1.png",
-		"support" : "image/character/인물2.png"
+		"support" : "image/character/총영_일반.png"
 	}
 ]

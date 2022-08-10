@@ -3,7 +3,7 @@
 		"type" : "highlight2",
 		"name" : "이밍",
 		"content" : "하늘에 고운 비단들이 흘러다닌다밍….",
-		"main" : "image/character/인물2.png",
+		"main" : "image/character/이밍_반짝눈.png",
 		"image" : "image/center/설정창.png"
 	},
 
@@ -18,14 +18,14 @@
 		"type" : "dialogue1",
 		"name" : "이밍",
 		"content" : "당연하밍!",
-		"main" : "image/character/인물2.png"
+		"main" : "image/character/이밍_반짝눈.png"
 	},
 
 	{
 		"type" : "background",
 		"name" : "이밍",
 		"content" : "고맙다밍.",
-		"main" : "image/character/인물2.png",
+		"main" : "image/character/이밍_신난.png",
 		"image" : "image/background/연두.png"
 	},
 
@@ -54,7 +54,7 @@
 		"type" : "black",
 		"name" : "",
 		"content" : "",
-		"image" : "image/get/백리향획득.png"
+		"image" : "image/get/Asset 613.png"
 	},
 
 	{

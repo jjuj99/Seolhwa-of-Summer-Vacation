@@ -1,6 +1,6 @@
 -----------------------------------------------------------------------------------------
 --
--- scenario6.lua
+-- scenario6.lua 울먹울먹
 --
 -----------------------------------------------------------------------------------------
 
@@ -24,9 +24,9 @@ function scene:create( event )
 	local item = display.newImage("image/public/아이템.png")
 	item.x, item.y = display.contentWidth * 0.95, display.contentHeight * 0.09
 
-	local main = display.newRect(display.contentWidth * 0.2, display.contentHeight * 0.6, 221, 435)
+	local main = display.newRect(display.contentWidth * 0.2, display.contentHeight * 0.5, 250, 435)
 
-	local support = display.newRect(display.contentWidth * 0.8, display.contentHeight * 0.6, 221, 435)
+	local support = display.newRect(display.contentWidth * 0.8, display.contentHeight * 0.5, 350, 450)
 
 	local speaker = display.newImage("image/dialogue/이름.png")
 	speaker.x, speaker.y = display.contentWidth * 0.19, display.contentHeight * 0.62
