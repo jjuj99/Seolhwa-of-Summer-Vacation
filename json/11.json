@@ -4,14 +4,14 @@
 		"name" : "유영",
 		"content" : "저기 있다!",
 		"main" : "image/character/인물1.png",
-		"support" : "image/character/인물2.png"
+		"support" : "image/character/심랑_반짝눈.png"
 	},
 
 	{
 		"type" : "dialogue2",
 		"name" : "심랑",
 		"content" : "정말이네! 나랑 똑같이 생겼다!",
-		"support" : "image/character/인물2.png",
+		"support" : "image/character/심랑_반짝눈.png",
 		"main" : "image/character/인물1.png"
 	},
 
@@ -33,7 +33,7 @@
 		"type" : "dialogue2",
 		"name" : "심랑",
 		"content" : "고마워! 덕분에 짝도 만나고 날 수 있게 되었어!",
-		"support" : "image/character/인물2.png",
+		"support" : "image/character/심랑_신난,완전체.png",
 		"main" : "image/character/인물1.png"
 	},
 
@@ -56,14 +56,14 @@
 		"name" : "유영",
 		"content" : "우와…!",
 		"main" : "image/character/인물1.png",
-		"support" : "image/character/인물2.png"
+		"support" : "image/character/심랑_신난,완전체.png"
 	},
 
 	{
 		"type" : "black",
 		"name" : "",
 		"content" : "",
-		"image" : "image/get/진달래획득.png"
+		"image" : "image/get/Asset 611.png"
 	},
 
 	{

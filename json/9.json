@@ -3,14 +3,14 @@
 		"type" : "dialogue1",
 		"name" : "총영",
 		"content" : "음… 그렇군…! 비단 얄팍하게 겉만 보고 판단하면 안 되었던 거구나. 고마워!",
-		"main" : "image/character/인물2.png"
+		"main" : "image/character/총영_반짝눈.png"
 	},
 
 	{
 		"type" : "dialogue1",
 		"name" : "총영",
 		"content" : "음… 그렇군…! 비단 얄팍하게 겉만 보고 판단하면 안 되었던 거구나. 고마워!\n너, 어린애 치고는 괜찮은 머리를 가졌구나? 이건 선물이야. 필요한 거지?",
-		"main" : "image/character/인물2.png"
+		"main" : "image/character/총영_반짝눈.png"
 	},
 
 	{
@@ -31,7 +31,7 @@
 		"type" : "black",
 		"name" : "",
 		"content" : "",
-		"image" : "image/get/금사철획득.png",
+		"image" : "image/get/Asset 612.png",
 	},
 
 	{

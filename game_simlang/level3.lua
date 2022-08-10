@@ -274,7 +274,7 @@ function scene:create( event )
 		composer.removeScene('game_simlang.level3')
 		-- 변경된 부분입니다.
 		audio.stop()
-		audio.dispose(BGM)
+		audio.dispose(explosionSound)
 		BGM = audio.loadSound("sound/12. 심랑 성공 후_Boy meets Girl.mp3")
 		audio.play(BGM, {channel=1, loops=-1})
 		composer.gotoScene('..scenario11')

@@ -47,7 +47,7 @@
 		"type" : "dialogue2",
 		"name" : "심랑",
 		"content" : "아니 내 종류가 비익조고, 이름은 심랑이다.",
-		"support" : "image/character/인물2.png",
+		"support" : "image/character/심랑_귀찮은.png",
 		"main" : "image/character/인물1.png"
 	},
 
@@ -55,7 +55,7 @@
 		"type" : "dialogue2",
 		"name" : "심랑",
 		"content" : "아니 내 종류가 비익조고, 이름은 심랑이다.\n난 지금 짝 찾느라 바쁘니까 안 도와줄 거면 저리 비켜!",
-		"support" : "image/character/인물2.png",
+		"support" : "image/character/심랑_귀찮은.png",
 		"main" : "image/character/인물1.png"
 	},
 
@@ -64,14 +64,14 @@
 		"name" : "유영",
 		"content" : "짝을 왜 찾는데?",
 		"main" : "image/character/인물1.png",
-		"support" : "image/character/인물2.png"
+		"support" : "image/character/심랑_귀찮은.png"
 	},
 
 	{
 		"type" : "dialogue2",
 		"name" : "심랑",
 		"content" : "그래야 날 수 있어서 그래. 이 모양으로 어떻게 날겠냐?",
-		"support" : "image/character/인물2.png",
+		"support" : "image/character/심랑_귀찮은.png",
 		"main" : "image/character/인물1.png"
 	},
 
@@ -79,7 +79,7 @@
 		"type" : "dialogue2",
 		"name" : "유영",
 		"content" : "아… 그렇구나~ 아, 저기 새들 많이 있다.",
-		"support" : "image/character/인물2.png",
+		"support" : "image/character/심랑_귀찮은.png",
 		"main" : "image/character/인물1.png"
 	},
 
@@ -87,7 +87,7 @@
 		"type" : "dialogue2",
 		"name" : "심랑",
 		"content" : "뭐? 너 새 잘 찾는구나. 나 좀 도와줘봐!",
-		"support" : "image/character/인물2.png",
+		"support" : "image/character/심랑_반짝눈.png",
 		"main" : "image/character/인물1.png"
 	},
 

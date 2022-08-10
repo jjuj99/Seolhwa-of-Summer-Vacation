@@ -17,11 +17,16 @@ function scene:create( event )
 	local background = display.newImage("image/items/바탕.png")
 	background.x, background.y = display.contentCenterX, display.contentCenterY
 
+	local txt = display.newText("획득한 아이템이 없습니다.", display.contentWidth * 0.5, display.contentHeight * 0.5, "font/경기천년바탕_Regular.ttf")
+	txt.size = 25
+	txt:setFillColor(0)
+
 	local x = display.newImage("image/public/X.png")
 	x.x, x.y = display.contentWidth * 0.645, display.contentHeight * 0.17
 
 	sceneGroup:insert(background)
 	sceneGroup:insert(x)
+	sceneGroup:insert(txt)
 
 	function x:tap( event )
 		audio.play(click)
