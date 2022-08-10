@@ -72,9 +72,9 @@ function scene:create( event )
 		if (index > #Data) then
 			audio.stop()
 			audio.dispose(BGM)
-			BGM = audio.loadSound("sound/12. 심랑 성공 후_Boy meets Girl.mp3")
-			audio.play(BGM, {channel=1, loops=-1})
-			composer.gotoScene('scenario11', options)
+			-- BGM = audio.loadSound("sound/12. 심랑 성공 후_Boy meets Girl.mp3")
+			-- audio.play(BGM, {channel=1, loops=-1})
+			composer.gotoScene('game_simlang.level1', options)
 			composer.removeScene('scenario10')
 			return
 		end
