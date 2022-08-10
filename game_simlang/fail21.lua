@@ -21,7 +21,8 @@ function scene:create( event )
  	function button1:tap( event )
 		background.alpha=0
 		composer.removeScene('game_simlang.level3')
-		composer.hideOverlay('game_simlang.fail21')
+		composer.hideOverlay('fade', 400)
+		--composer.hideOverlay('game_simlang.fail21')
         composer.gotoScene('game_simlang.level1')
 		
 		

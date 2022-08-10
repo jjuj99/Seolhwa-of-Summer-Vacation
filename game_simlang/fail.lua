@@ -19,7 +19,7 @@ function scene:create( event )
  	text.size = 30
 
  	function button1:tap( event )
-		composer.hideOverlay('game_simlang.fail')
+		composer.hideOverlay('fade', 400)
         composer.gotoScene('game_simlang.level1')
         composer.removeScene('game_simlang.level1')
  	end
