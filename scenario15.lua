@@ -17,8 +17,9 @@ function scene:create( event )
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 	background.fill = {
 		type = "image",
-		filename = "image/background/검정.png"
+		filename = "image/background/마을수화산없음노을.png"
 	}
+	
 	local set = display.newImage("image/public/설정.png")
 	set.x, set.y = display.contentWidth * 0.05, display.contentHeight * 0.09
 
