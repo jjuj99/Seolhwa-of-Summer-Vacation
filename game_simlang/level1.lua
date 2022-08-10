@@ -73,7 +73,8 @@ function scene:create( event )
 	-- 이미지 불러오기 ----
 	
 
-	local levelText = display.newText("1단계)어디에 있을까?", display.contentWidth*0.5, display.contentHeight*0.9)
+	local levelText = display.newText("1단계)어디에 있을까?", display.contentWidth*0.5, display.contentHeight*0.9, display.contentWidth * 0.5, display.contentWidth * 0.1, "font/경기천년바탕_Regular.ttf")
+
 	levelText:setFillColor(0)
 	levelText.size=30
 	levelText.alpha=0
