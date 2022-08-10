@@ -296,36 +296,7 @@ function scene:create( event )
 
 	--레이어 정리 끝 -------------
 
-	function button:tap( event )
-		startGroup.alpha=0
-		levelText.alpha=1
-
-
-			--timer event-------------------------
-		local function counter( event )
-			time.text = time.text - 1
 	
-			if( time.text == '5' ) then
-				time:setFillColor(1, 0, 0)
-			end
-	
-			if( time.text == '-1') then
-				time.alpha = 0
-				audio.pause(explosionSound)
-				composer.showOverlay('game_simlang.fail')
-				levelText.alpha=0
-				levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
-				levelText2:setFillColor(0)
-				levelText2.size=30
-
-				sceneGroup:insert(levelText2)
-				
-			end
-		end
-	
-		timeAttack = timer.performWithDelay(1000, counter, 11)   
-	end
-	button:addEventListener("tap", button)
 
 	
 	sceneGroup:insert(startGroup)
@@ -333,37 +304,42 @@ function scene:create( event )
 
 	--tap 확대 event------------------------------------------------
 	function card1:tap( event )
-		card1.alpha=0
-		card11.alpha=1
+		time.alpha = 0
 		audio.play(clickSound)
+		--audio.pause(explosionSound)
+		composer.showOverlay('game_simlang.fail')
+		levelText.alpha=0
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)	
+		timer.cancel(timeAttack)
+		card1:removeEventListener("tap", card1)
+		card2:removeEventListener("tap", card2)
+		card3:removeEventListener("tap", card3)
+		card4:removeEventListener("tap", card4)
 	end
-	card1:addEventListener("tap", card1)
-
+	
 ---------------------
 	function card2:tap( event )
-		card2.alpha=0
-		card21.alpha=1
+		time.alpha = 0
 		audio.play(clickSound)
+		--audio.pause(explosionSound)
+		composer.showOverlay('game_simlang.fail')
+		levelText.alpha=0
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)	
+		timer.cancel(timeAttack)
+		card1:removeEventListener("tap", card1)
+		card2:removeEventListener("tap", card2)
+		card3:removeEventListener("tap", card3)
+		card4:removeEventListener("tap", card4)
 	end
-	card2:addEventListener("tap", card2)
+	
 --------------------
 	function card3:tap( event )
-		card3.alpha=0
-		card31.alpha=1
-		audio.play(clickSound)
-		touchAn.x,touchAn.y=450,450
-		touchAn:scale(1.3,1.3)
-	end
-	card3:addEventListener("tap", card3)
-----------------
-	function card4:tap( event )
-		card4.alpha=0
-		card41.alpha=1
-		audio.play(clickSound)
-	end
-	card4:addEventListener("tap", card4)
---------------
-	function touchAn:tap( event )
 		time.alpha = 0
 		audio.play(explosionSound2)
 		--audio.pause(explosionSound)
@@ -392,12 +368,12 @@ function scene:create( event )
     sceneGroup:insert(object1)
 	sceneGroup:insert(button2)
 
+	card1:removeEventListener("tap", card1)
+	card2:removeEventListener("tap", card2)
+	card3:removeEventListener("tap", card3)
+	card4:removeEventListener("tap", card4)
 	
-
-	
-	--시작 화면---------------------
-
-	
+		--composer.showOverlay('game_simlang.popup')
 	function button2:tap( event )
 		audio.play(explosionSound3, {duration = 1000})
 		composer.removeScene('game_simlang.level1')
@@ -405,42 +381,100 @@ function scene:create( event )
 		timer.cancel(timeAttack)
 	end
 	button2:addEventListener("tap", button2)
-		--composer.showOverlay('game_simlang.popup')
-	end
-	touchAn:addEventListener("tap", touchAn)
+	
+	
+	
+	
 
-	function setting1:tap( event )
-		settingGroup.alpha=1
-		timer.pause(timeAttack)
-		audio.play(explosionSound3, {duration = 1000})
+	
+	end
+	
+----------------
+	function card4:tap( event )
+		time.alpha = 0
+		audio.play(clickSound)
+		--audio.pause(explosionSound)
+		composer.showOverlay('game_simlang.fail')
+		levelText.alpha=0
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)	
+		timer.cancel(timeAttack)
 		card1:removeEventListener("tap", card1)
 		card2:removeEventListener("tap", card2)
 		card3:removeEventListener("tap", card3)
-		card4:removeEventListener("tap", card4)	
+		card4:removeEventListener("tap", card4)
 	end
-	setting1:addEventListener("tap", setting1)
+	
+--------------
+function button:tap( event )
+	startGroup.alpha=0
+	levelText.alpha=1
 
-	function face:tap( event )
-		audio.play(explosionSound3, {duration = 1000})
-		timer.pause(timeAttack)
-		composer.setVariable( "timeAttack2", timeAttack )
+	
 
-		composer.showOverlay('game_simlang.jichunface')
+		--timer event-------------------------
+	local function counter( event )
+		time.text = time.text - 1
+
+		if( time.text == '5' ) then
+			time:setFillColor(1, 0, 0)
+		end
+
+		if( time.text == '-1') then
+			time.alpha = 0
+			audio.pause(explosionSound)
+			composer.showOverlay('game_simlang.fail')
+			levelText.alpha=0
+			levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
+			levelText2:setFillColor(0)
+			levelText2.size=30
+
+			sceneGroup:insert(levelText2)
+			
+		end
 	end
-	face:addEventListener("tap", face)
 
-	function item:tap( event )
-		audio.play(explosionSound3, {duration = 1000})
-		timer.pause(timeAttack)
-		composer.setVariable( "timeAttack3", timeAttack )
-		composer.showOverlay('game_simlang.item')
-	end
-	item:addEventListener("tap", item)
+	timeAttack = timer.performWithDelay(1000, counter, 11)   
 
-	sceneGroup:insert(settingGroup)
-	settingGroup:toFront()
+	card1:addEventListener("tap", card1)
+	card2:addEventListener("tap", card2)
+	card3:addEventListener("tap", card3)
+	card4:addEventListener("tap", card4)
+end
+button:addEventListener("tap", button)
+		
+function setting1:tap( event )
+	settingGroup.alpha=1
+	timer.pause(timeAttack)
+	audio.play(explosionSound3, {duration = 1000})
+	card1:removeEventListener("tap", card1)
+	card2:removeEventListener("tap", card2)
+	card3:removeEventListener("tap", card3)
+	card4:removeEventListener("tap", card4)	
+end
+setting1:addEventListener("tap", setting1)
 
-	--
+function face:tap( event )
+	audio.play(explosionSound3, {duration = 1000})
+	timer.pause(timeAttack)
+	composer.setVariable( "timeAttack2", timeAttack )
+
+	composer.showOverlay('game_simlang.jichunface')
+end
+face:addEventListener("tap", face)
+
+function item:tap( event )
+	audio.play(explosionSound3, {duration = 1000})
+	timer.pause(timeAttack)
+	composer.setVariable( "timeAttack3", timeAttack )
+	composer.showOverlay('game_simlang.item')
+end
+item:addEventListener("tap", item)
+
+sceneGroup:insert(settingGroup)
+settingGroup:toFront()
 
 end
 

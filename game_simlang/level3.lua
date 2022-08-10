@@ -17,7 +17,7 @@ function scene:create( event )
 
 	local explosionSound3 = audio.loadSound( "sound/스위치_랜턴_버튼.mp3" )
 	
-	local explosionSound4 = audio.loadSound( "sound/Boy meets Girl.mp3" )
+	-- local explosionSound4 = audio.loadSound( "sound/Boy meets Girl.mp3" )
 
 	local clickSound = audio.loadSound( "sound/카툰코드음14.wav" )
 
@@ -334,7 +334,7 @@ function scene:create( event )
 		audio.play(explosionSound2)
 		timer.pause(timeAttack)
 
-		audio.play(explosionSound4)
+		--audio.play(explosionSound4)
 
 		card1:removeEventListener("tap", card1)
 		card2:removeEventListener("tap", card2)
