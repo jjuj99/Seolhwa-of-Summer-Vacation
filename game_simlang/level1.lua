@@ -49,7 +49,7 @@ function scene:create( event )
  	local text = display.newText("시작하기", display.contentWidth/2, display.contentHeight*0.66)
  	text.size = 30
 
-	 local startTalk = display.newText("심랑의 색, 특징, 그리고 생김새를 유심히 살펴보렴.", display.contentWidth*0.5, display.contentHeight*0.9)
+	 local startTalk = display.newText("심랑의 색, 특징, 그리고 생김새를 유심히 살펴보렴.", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
 	 startTalk:setFillColor(0)
 	 startTalk.size=30
 
@@ -57,7 +57,8 @@ function scene:create( event )
 	 nameBack.x,nameBack.y = display.contentWidth*0.3, display.contentHeight*0.8
 	 
 
-	 local name = display.newText("지천", display.contentWidth*0.3, display.contentHeight*0.8)
+	 local name = display.newText("지천", display.contentWidth*0.3, display.contentHeight*0.8,"font/경기천년바탕_Regular.ttf")
+	 startTalk:setFillColor(0)
 	 name:setFillColor(0)
 	 name.size=30
 
@@ -73,8 +74,7 @@ function scene:create( event )
 	-- 이미지 불러오기 ----
 	
 
-	local levelText = display.newText("1단계)어디에 있을까?", display.contentWidth*0.5, display.contentHeight*0.9, display.contentWidth * 0.5, display.contentWidth * 0.1, "font/경기천년바탕_Regular.ttf")
-
+	local levelText = display.newText("1단계)어디에 있을까?", display.contentWidth*0.5, display.contentHeight*0.9, "font/경기천년바탕_Regular.ttf")
 	levelText:setFillColor(0)
 	levelText.size=30
 	levelText.alpha=0
@@ -155,9 +155,9 @@ function scene:create( event )
 	------이미지 불러오기 끝 ----------------
 
 	----설정창 이미지 불러오기 및 그룹넣고 레이어 정리----------
-	local background3 = display.newImage("image/setting/설정창 바탕.png")
-	background3.strokeWidth = 5
-	background3:setStrokeColor(0.5, 0.5, 0.5)
+	local background3 = display.newImage("image/setting/설정창바탕.png")
+	-- background3.strokeWidth = 5
+	-- background3:setStrokeColor(0.5, 0.5, 0.5)
 	background3.x, background3.y = display.contentCenterX, display.contentCenterY
 
 	local replay = display.newImage("image/setting/2클릭.png")
@@ -190,8 +190,8 @@ function scene:create( event )
 		filename = "image/setting/스피커3.png"
 	}
 
-    local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
-	button1.x,button1.y=822,128
+    local button1 = display.newImage("image/public/X.png")
+	button1.x,button1.y=display.contentWidth*0.645,display.contentHeight*0.17
 
 
 	
@@ -296,36 +296,7 @@ function scene:create( event )
 
 	--레이어 정리 끝 -------------
 
-	function button:tap( event )
-		startGroup.alpha=0
-		levelText.alpha=1
-
-
-			--timer event-------------------------
-		local function counter( event )
-			time.text = time.text - 1
 	
-			if( time.text == '5' ) then
-				time:setFillColor(1, 0, 0)
-			end
-	
-			if( time.text == '-1') then
-				time.alpha = 0
-				audio.pause(explosionSound)
-				composer.showOverlay('game_simlang.fail')
-				levelText.alpha=0
-				levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
-				levelText2:setFillColor(0)
-				levelText2.size=30
-
-				sceneGroup:insert(levelText2)
-				
-			end
-		end
-	
-		timeAttack = timer.performWithDelay(1000, counter, 11)   
-	end
-	button:addEventListener("tap", button)
 
 	
 	sceneGroup:insert(startGroup)
@@ -333,43 +304,48 @@ function scene:create( event )
 
 	--tap 확대 event------------------------------------------------
 	function card1:tap( event )
-		card1.alpha=0
-		card11.alpha=1
+		time.alpha = 0
 		audio.play(clickSound)
+		--audio.pause(explosionSound)
+		composer.showOverlay('game_simlang.fail')
+		levelText.alpha=0
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)	
+		timer.cancel(timeAttack)
+		card1:removeEventListener("tap", card1)
+		card2:removeEventListener("tap", card2)
+		card3:removeEventListener("tap", card3)
+		card4:removeEventListener("tap", card4)
 	end
-	card1:addEventListener("tap", card1)
-
+	
 ---------------------
 	function card2:tap( event )
-		card2.alpha=0
-		card21.alpha=1
+		time.alpha = 0
 		audio.play(clickSound)
+		--audio.pause(explosionSound)
+		composer.showOverlay('game_simlang.fail')
+		levelText.alpha=0
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)	
+		timer.cancel(timeAttack)
+		card1:removeEventListener("tap", card1)
+		card2:removeEventListener("tap", card2)
+		card3:removeEventListener("tap", card3)
+		card4:removeEventListener("tap", card4)
 	end
-	card2:addEventListener("tap", card2)
+	
 --------------------
 	function card3:tap( event )
-		card3.alpha=0
-		card31.alpha=1
-		audio.play(clickSound)
-		touchAn.x,touchAn.y=450,450
-		touchAn:scale(1.3,1.3)
-	end
-	card3:addEventListener("tap", card3)
-----------------
-	function card4:tap( event )
-		card4.alpha=0
-		card41.alpha=1
-		audio.play(clickSound)
-	end
-	card4:addEventListener("tap", card4)
---------------
-	function touchAn:tap( event )
 		time.alpha = 0
 		audio.play(explosionSound2)
 		--audio.pause(explosionSound)
 		timer.pause(timeAttack)
 		levelText.alpha=0
-		levelText2 = display.newText("찾기 성공! 1단계 통과~~", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2 = display.newText("찾기 성공! 1단계 통과~~", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
 		levelText2:setFillColor(0)
 		levelText2.size=30
 
@@ -377,7 +353,7 @@ function scene:create( event )
 	local board = display.newImageRect("image/items/바탕.png",500,300)
 	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.5
 
-    local title = display.newText("게임 클리어/꽃 획득 성공!", display.contentWidth/2, display.contentHeight*0.33)
+    local title = display.newText("게임 클리어/꽃 획득 성공!", display.contentWidth/2, display.contentHeight*0.33,"font/경기천년바탕_Regular.ttf")
  	title.size = 30
     title:setFillColor(0)
 
@@ -392,12 +368,12 @@ function scene:create( event )
     sceneGroup:insert(object1)
 	sceneGroup:insert(button2)
 
+	card1:removeEventListener("tap", card1)
+	card2:removeEventListener("tap", card2)
+	card3:removeEventListener("tap", card3)
+	card4:removeEventListener("tap", card4)
 	
-
-	
-	--시작 화면---------------------
-
-	
+		--composer.showOverlay('game_simlang.popup')
 	function button2:tap( event )
 		audio.play(explosionSound3, {duration = 1000})
 		composer.removeScene('game_simlang.level1')
@@ -405,42 +381,100 @@ function scene:create( event )
 		timer.cancel(timeAttack)
 	end
 	button2:addEventListener("tap", button2)
-		--composer.showOverlay('game_simlang.popup')
-	end
-	touchAn:addEventListener("tap", touchAn)
+	
+	
+	
+	
 
-	function setting1:tap( event )
-		settingGroup.alpha=1
-		timer.pause(timeAttack)
-		audio.play(explosionSound3, {duration = 1000})
+	
+	end
+	
+----------------
+	function card4:tap( event )
+		time.alpha = 0
+		audio.play(clickSound)
+		--audio.pause(explosionSound)
+		composer.showOverlay('game_simlang.fail')
+		levelText.alpha=0
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)	
+		timer.cancel(timeAttack)
 		card1:removeEventListener("tap", card1)
 		card2:removeEventListener("tap", card2)
 		card3:removeEventListener("tap", card3)
-		card4:removeEventListener("tap", card4)	
+		card4:removeEventListener("tap", card4)
 	end
-	setting1:addEventListener("tap", setting1)
+	
+--------------
+function button:tap( event )
+	startGroup.alpha=0
+	levelText.alpha=1
 
-	function face:tap( event )
-		audio.play(explosionSound3, {duration = 1000})
-		timer.pause(timeAttack)
-		composer.setVariable( "timeAttack2", timeAttack )
+	
 
-		composer.showOverlay('game_simlang.jichunface')
+		--timer event-------------------------
+	local function counter( event )
+		time.text = time.text - 1
+
+		if( time.text == '5' ) then
+			time:setFillColor(1, 0, 0)
+		end
+
+		if( time.text == '-1') then
+			time.alpha = 0
+			audio.pause(explosionSound)
+			composer.showOverlay('game_simlang.fail')
+			levelText.alpha=0
+			levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
+			levelText2:setFillColor(0)
+			levelText2.size=30
+
+			sceneGroup:insert(levelText2)
+			
+		end
 	end
-	face:addEventListener("tap", face)
 
-	function item:tap( event )
-		audio.play(explosionSound3, {duration = 1000})
-		timer.pause(timeAttack)
-		composer.setVariable( "timeAttack3", timeAttack )
-		composer.showOverlay('game_simlang.item')
-	end
-	item:addEventListener("tap", item)
+	timeAttack = timer.performWithDelay(1000, counter, 11)   
 
-	sceneGroup:insert(settingGroup)
-	settingGroup:toFront()
+	card1:addEventListener("tap", card1)
+	card2:addEventListener("tap", card2)
+	card3:addEventListener("tap", card3)
+	card4:addEventListener("tap", card4)
+end
+button:addEventListener("tap", button)
+		
+function setting1:tap( event )
+	settingGroup.alpha=1
+	timer.pause(timeAttack)
+	audio.play(explosionSound3, {duration = 1000})
+	card1:removeEventListener("tap", card1)
+	card2:removeEventListener("tap", card2)
+	card3:removeEventListener("tap", card3)
+	card4:removeEventListener("tap", card4)	
+end
+setting1:addEventListener("tap", setting1)
 
-	--
+function face:tap( event )
+	audio.play(explosionSound3, {duration = 1000})
+	timer.pause(timeAttack)
+	composer.setVariable( "timeAttack2", timeAttack )
+
+	composer.showOverlay('game_simlang.jichunface')
+end
+face:addEventListener("tap", face)
+
+function item:tap( event )
+	audio.play(explosionSound3, {duration = 1000})
+	timer.pause(timeAttack)
+	composer.setVariable( "timeAttack3", timeAttack )
+	composer.showOverlay('game_simlang.item')
+end
+item:addEventListener("tap", item)
+
+sceneGroup:insert(settingGroup)
+settingGroup:toFront()
 
 end
 
