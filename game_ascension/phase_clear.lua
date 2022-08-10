@@ -14,8 +14,8 @@ function scene:create( event )
 	local sceneGroup = self.view
 
 	-- 효과음 --
-	local explosionSound2 = audio.loadSound( "sound/코드39.wav" )
-	local explosionSound3 = audio.loadSound( "sound/스위치_랜턴_버튼.mp3" )
+	local explosionSound2 = audio.loadSound("sound/A_1. 미니게임 버튼_카툰코드음14_mp3.mp3") -- 점프
+	local explosionSound3 = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3") -- 설정 등 클릭
 
 	physics.start()
 	physics.setDrawMode( "hybrid" )
@@ -62,38 +62,37 @@ function scene:create( event )
 	local aurora = display.newImage("image/game_ascension/phase4/오로라.png")
 	aurora.x, aurora.y = display.contentWidth/2, display.contentHeight
 
+	-- physics.addBody(aurora, "static", {friction=1})
 	physics.addBody(aurora, "static")
 	sceneGroup:insert(aurora)
 
 
 	local arrow = {}
 
-	arrow[1] = display.newImage("image/game_ascension/왼쪽이동.png")
-	arrow[1].x, arrow[1].y = 1000, 600
-	arrow[1]:scale(0.4, 0.4)
+	arrow[1] = display.newImage("image/game_ascension/arrow/왼쪽버튼1.png")
+	arrow[1]:scale(0.75, 0.75)
+	arrow[1].x, arrow[1].y = 1050, 630
 	arrow[1].name = "left"
 
-	arrow[2] = display.newImage("image/game_ascension/점프.png")
-	arrow[2].x, arrow[2].y = 150, 600
-	arrow[2]:scale(0.4, 0.4)
+	arrow[2] = display.newImage("image/game_ascension/arrow/점프1.png")
+	arrow[2]:scale(0.75, 0.75)
+	arrow[2].x, arrow[2].y = 100, 630
 	arrow[2].name = "jump"
 
-	arrow[3] = display.newImage("image/game_ascension/오른쪽이동.png")
-	arrow[3].x, arrow[3].y = 1160, 600
-	arrow[3]:scale(0.4, 0.4)
+	arrow[3] = display.newImage("image/game_ascension/arrow/오른쪽버튼1.png")
+	arrow[3]:scale(0.75, 0.75)
+	arrow[3].x, arrow[3].y = 1200, 630
 	arrow[3].name = "right"
 
 	arrow[4] = "right"
 
 
-	local eming = display.newImageRect("image/game_ascension/이밍.png", 100, 100)
-	eming.x, eming.y = display.contentWidth/2, 600
-	-- eming:scale(0.4, 0.4)
+	-- player 이밍 추가 --
+	local eming = display.newImage("image/game_ascension/이밍게임_오른쪽.png")
+	eming.x, eming.y = display.contentCenterX, 550
 
-	local eming_outline_none = graphics.newOutline(1, "image/game_ascension/이밍.png")
-	local eming_outline_flip = graphics.newOutline(1, "image/game_ascension/이밍.png")
-	-- player.x, player.y = background.x, background.y+200
-	eming.name = "eming"
+	local eming_outline_none = graphics.newOutline(2, "image/game_ascension/이밍게임_오른쪽.png")
+	local eming_outline_flip = graphics.newOutline(2, "image/game_ascension/이밍게임_왼쪽.png")
 
 	physics.addBody(eming, {friction=1, outline=eming_outline_none})
 	eming.isFixedRotation = true 
@@ -108,8 +107,11 @@ function scene:create( event )
 			if (arrow[4] == "left") then
 				-- transition.to(eming, { x=(x-100), transition=easing.continuousLoop})
 				-- eming:applyLinearImpulse( -1, 1 )
+				-- eming:applyForce(-0, 1000, eming.x, eming.y)
 
-				transition.to(eming, {time=200, x=(x-100), y=(y-100)})
+				eming:setLinearVelocity( 10, 4 )
+
+				-- transition.to(eming, {time=200, x=(x-100), y=(y-100)})
 			else
 			    transition.to(eming, {time=200, x=(x+100), y=(y-100)})
 			end

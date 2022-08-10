@@ -12,16 +12,16 @@ function scene:create( event )
 	local sceneGroup = self.view
 
 	-- BGM --
-	local explosionSound = audio.loadSound( "sound/Over the hill.mp3" )
-	audio.play(explosionSound, {channel=2, loops=-1})
+	local explosionSound = audio.loadSound( "sound/A. 미니게임_Over the hill.mp3" )
+	audio.play(explosionSound, {channel=1, loops=-1})
 
 	audio.setMaxVolume(1, { channel=1 })
 	audio.setVolume(0.5, {channel=1})
 
 
 	-- 효과음 --
-	local explosionSound2 = audio.loadSound( "sound/코드39.wav" )
-	local explosionSound3 = audio.loadSound( "sound/스위치_랜턴_버튼.mp3" )
+	local explosionSound2 = audio.loadSound("sound/A_1. 미니게임 버튼_카툰코드음14_mp3.mp3") -- 점프
+	local explosionSound3 = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3") -- 설정 등 클릭
 
 
 	-- 물리엔진 시작 --
@@ -52,25 +52,20 @@ function scene:create( event )
 	-- 구름 오브젝트 배치 --
 	local cloud = {}
 
-	cloud[1] = display.newImage("image/game_ascension/phase1/대기권구름.png")
+	cloud[1] = display.newImageRect("image/game_ascension/대기구름.png", 400, 100)
 	cloud[1].x, cloud[1].y = 400, 550
-	-- cloud[1]:scale(0.4, 0.4)
 
-	cloud[2] = display.newImage("image/game_ascension/phase1/대기권구름.png")
+	cloud[2] = display.newImageRect("image/game_ascension/대기구름.png", 400, 100)
 	cloud[2].x, cloud[2].y = 850, 450
-	-- cloud[2]:scale(0.4, 0.4)
 
-	cloud[3] = display.newImage("image/game_ascension/phase1/대기권구름.png")
+	cloud[3] = display.newImageRect("image/game_ascension/대기구름.png", 400, 100)
 	cloud[3].x, cloud[3].y = 480, 350
-	-- cloud[3]:scale(0.4, 0.4)
 
-	cloud[4] = display.newImage("image/game_ascension/phase1/대기권구름.png")
+	cloud[4] = display.newImageRect("image/game_ascension/대기구름.png", 400, 100)
 	cloud[4].x, cloud[4].y = 900, 250
-	-- cloud[4]:scale(0.4, 0.4)
 
-	cloud[5] = display.newImage("image/game_ascension/phase1/대기권구름.png")
+	cloud[5] = display.newImageRect("image/game_ascension/대기구름.png", 400, 100)
 	cloud[5].x, cloud[5].y = 550, 180
-	-- -- cloud[5]:scale(0.4, 0.4)
 
 
 	-- 벽 설정 --
@@ -85,8 +80,11 @@ function scene:create( event )
 
 	
 	-- 구름, 벽 물리엔진 추가 --
+	local cloud_outline_none = graphics.newOutline(1, "image/game_ascension/대기구름.png")
+
 	for i = 1, #cloud do 
-		physics.addBody(cloud[i], "static")
+		-- physics.addBody(cloud[i], "static", {friction=1, outline=cloud_outline_none})
+		physics.addBody(cloud[i], "static", {outline=cloud_outline_none})
 		sceneGroup:insert(cloud[i])
 	end
 
@@ -97,9 +95,10 @@ function scene:create( event )
 
 
 	-- 땅 배치 --
-	local ground = display.newImage("image/game_ascension/phase1/땅.png")
+	local ground = display.newImage("image/game_ascension/땅.png")
 	ground.x, ground.y = display.contentWidth/2, display.contentHeight-40
 
+	-- physics.addBody(ground, "static", {friction=1})
 	physics.addBody(ground, "static")
 	sceneGroup:insert(ground)
 
@@ -107,38 +106,34 @@ function scene:create( event )
 	-- 화살표 이미지 추가 --
 	local arrow = {}
 
-	arrow[1] = display.newImage("image/game_ascension/왼쪽이동.png")
-	arrow[1].x, arrow[1].y = 1000, 600
-	arrow[1]:scale(0.4, 0.4)
+	arrow[1] = display.newImage("image/game_ascension/arrow/왼쪽버튼1.png")
+	arrow[1]:scale(0.75, 0.75)
+	arrow[1].x, arrow[1].y = 1050, 630
 	arrow[1].name = "left"
 
-	arrow[2] = display.newImage("image/game_ascension/점프.png")
-	arrow[2].x, arrow[2].y = 150, 600
-	arrow[2]:scale(0.4, 0.4)
+	arrow[2] = display.newImage("image/game_ascension/arrow/점프1.png")
+	arrow[2]:scale(0.75, 0.75)
+	arrow[2].x, arrow[2].y = 100, 630
 	arrow[2].name = "jump"
 
-	arrow[3] = display.newImage("image/game_ascension/오른쪽이동.png")
-	arrow[3].x, arrow[3].y = 1160, 600
-	arrow[3]:scale(0.4, 0.4)
+	arrow[3] = display.newImage("image/game_ascension/arrow/오른쪽버튼1.png")
+	arrow[3]:scale(0.75, 0.75)
+	arrow[3].x, arrow[3].y = 1200, 630
 	arrow[3].name = "right"
 
 	arrow[4] = "right"
 
 
 	-- player 이밍 추가 --
-	local eming = display.newImageRect("image/game_ascension/이밍.png", 100, 100)
-	eming.x, eming.y = display.contentWidth/2, 600
-	-- eming:scale(0.4, 0.4)
+	local eming = display.newImage("image/game_ascension/이밍게임_오른쪽.png")
+	eming.x, eming.y = display.contentCenterX, 550
 
-	local eming_outline_none = graphics.newOutline(1, "image/game_ascension/이밍.png")
-	local eming_outline_flip = graphics.newOutline(1, "image/game_ascension/이밍.png")
-	-- player.x, player.y = background.x, background.y+200
-	eming.name = "eming"
+	local eming_outline_none = graphics.newOutline(2, "image/game_ascension/이밍게임_오른쪽.png")
+	local eming_outline_flip = graphics.newOutline(2, "image/game_ascension/이밍게임_왼쪽.png")
 
 	physics.addBody(eming, {friction=1, outline=eming_outline_none})
 	eming.isFixedRotation = true 
 	sceneGroup:insert(eming)
-
 
 	-- 방향키 적용 --
 	function arrowTab( event )
@@ -147,10 +142,15 @@ function scene:create( event )
 		if (event.target.name == "jump") then
 			audio.play(explosionSound2)
 
+			print("jump")
+
 			if (arrow[4] == "left") then
 				transition.to(eming, {time=100, x=(x-100), y=(y-100)})
+				-- eming:applyForce(100, 100, eming.x, eming.y)
+				-- eming:applyLinearImpulse(-1, 1)
 			else
 			    transition.to(eming, {time=100, x=(x+100), y=(y-100)})
+			    -- eming:applyForce(100, 100, eming.x, eming.y)
 			end
 			
 		else
@@ -223,7 +223,7 @@ function scene:create( event )
 		}
 
 	if composer.getVariable("start") == nil then	-- 처음부터 시작 --
- 		composer.showOverlay('game_ascension.ascension_start', options)
+ 		-- composer.showOverlay('game_ascension.ascension_start', options)
  	end
 
 
