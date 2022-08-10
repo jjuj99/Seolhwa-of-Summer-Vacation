@@ -6,32 +6,35 @@ local scene = composer.newScene()
 function scene:create( event )
 	local sceneGroup = self.view
 
-	local set = display.newImageRect("image/items/바탕.png",400,600)
-    set.x,set.y= display.contentWidth/2, display.contentHeight/2
+	click = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
+	
+	local background = display.newImage("image/items/바탕.png")
+	background.x, background.y = display.contentCenterX, display.contentCenterY
 
-	local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
-	button1.x,button1.y=820,80
+	background.strokeWidth = 5
+	background:setStrokeColor(0.5, 0.5, 0.5)
 
-	local object1 = display.newImageRect("image/items/백리향.png",400,170)
-    object1.x,object1.y= display.contentWidth/2, 172
+	local x = display.newImage("image/public/X.png")
+	x.x, x.y = display.contentWidth * 0.676, display.contentHeight * 0.1111
 
-	local object2 = display.newImageRect("image/items/금사철.png",400,170)
-    object2.x,object2.y= display.contentWidth/2, 369
+	local flower1 = display.newImage("image/items/백리향.png")
+	flower1.x, flower1.y = display.contentWidth * 0.5, display.contentHeight * 0.3
 
-   
-    sceneGroup:insert(set)
-	sceneGroup:insert(button1)
-	sceneGroup:insert(object1)
-	sceneGroup:insert(object2)
+	local flower2 = display.newImage("image/items/금사철.png")
+	flower2.x, flower2.y = display.contentWidth * 0.5, display.contentHeight * 0.5
 
+	sceneGroup:insert(background)
+	sceneGroup:insert(flower1)
+	sceneGroup:insert(flower2)
+	sceneGroup:insert(x)
 
-
-	function button1:tap( event )
+	function x:tap( event )
 		local timeAttack = composer.getVariable("timeAttack3")
         timer.resume(timeAttack)
-		composer.hideOverlay('game_simlang.item3')
+		audio.play(click)
+		composer.hideOverlay( 'fade', 400)
 	end
-	button1:addEventListener("tap", button1)
+	x:addEventListener("tap", x)
    
 
 
