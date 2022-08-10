@@ -156,8 +156,8 @@ function scene:create( event )
 
 	----설정창 이미지 불러오기 및 그룹넣고 레이어 정리----------
 	local background3 = display.newImage("image/setting/설정창바탕.png")
-	background3.strokeWidth = 5
-	background3:setStrokeColor(0.5, 0.5, 0.5)
+	-- background3.strokeWidth = 5
+	-- background3:setStrokeColor(0.5, 0.5, 0.5)
 	background3.x, background3.y = display.contentCenterX, display.contentCenterY
 
 	local replay = display.newImage("image/setting/2클릭.png")
