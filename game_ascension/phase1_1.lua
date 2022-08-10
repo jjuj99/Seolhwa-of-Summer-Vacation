@@ -26,7 +26,7 @@ function scene:create( event )
 
 	-- 물리엔진 시작 --
 	physics.start()
-	physics.setDrawMode( "hybrid" )
+	physics.setDrawMode( "normal" )
 
 
 	-- 배경 --
@@ -56,16 +56,16 @@ function scene:create( event )
 	cloud[1].x, cloud[1].y = 400, 550
 
 	cloud[2] = display.newImageRect("image/game_ascension/대기구름.png", 400, 100)
-	cloud[2].x, cloud[2].y = 850, 450
+	cloud[2].x, cloud[2].y = 850, 480
 
 	cloud[3] = display.newImageRect("image/game_ascension/대기구름.png", 400, 100)
-	cloud[3].x, cloud[3].y = 480, 350
+	cloud[3].x, cloud[3].y = 380, 350
 
 	cloud[4] = display.newImageRect("image/game_ascension/대기구름.png", 400, 100)
-	cloud[4].x, cloud[4].y = 900, 250
+	cloud[4].x, cloud[4].y = 870, 300
 
 	cloud[5] = display.newImageRect("image/game_ascension/대기구름.png", 400, 100)
-	cloud[5].x, cloud[5].y = 550, 180
+	cloud[5].x, cloud[5].y = 1090, 170
 
 
 	-- 벽 설정 --
@@ -83,8 +83,7 @@ function scene:create( event )
 	local cloud_outline_none = graphics.newOutline(1, "image/game_ascension/대기구름.png")
 
 	for i = 1, #cloud do 
-		-- physics.addBody(cloud[i], "static", {friction=1, outline=cloud_outline_none})
-		physics.addBody(cloud[i], "static", {outline=cloud_outline_none})
+		physics.addBody(cloud[i], "static", {friction=1, outline=cloud_outline_none})
 		sceneGroup:insert(cloud[i])
 	end
 
@@ -98,8 +97,7 @@ function scene:create( event )
 	local ground = display.newImage("image/game_ascension/땅.png")
 	ground.x, ground.y = display.contentWidth/2, display.contentHeight-40
 
-	-- physics.addBody(ground, "static", {friction=1})
-	physics.addBody(ground, "static")
+	physics.addBody(ground, "static", {friction=1})
 	sceneGroup:insert(ground)
 
 
@@ -131,7 +129,7 @@ function scene:create( event )
 	local eming_outline_none = graphics.newOutline(2, "image/game_ascension/이밍게임_오른쪽.png")
 	local eming_outline_flip = graphics.newOutline(2, "image/game_ascension/이밍게임_왼쪽.png")
 
-	physics.addBody(eming, {friction=1, outline=eming_outline_none})
+	physics.addBody(eming, {friction=0.5, outline=eming_outline_none})
 	eming.isFixedRotation = true 
 	sceneGroup:insert(eming)
 
@@ -142,15 +140,10 @@ function scene:create( event )
 		if (event.target.name == "jump") then
 			audio.play(explosionSound2)
 
-			print("jump")
-
 			if (arrow[4] == "left") then
-				transition.to(eming, {time=100, x=(x-100), y=(y-100)})
-				-- eming:applyForce(100, 100, eming.x, eming.y)
-				-- eming:applyLinearImpulse(-1, 1)
+				transition.to(eming, {time=250, x=(x-130), y=(y-130)})
 			else
-			    transition.to(eming, {time=100, x=(x+100), y=(y-100)})
-			    -- eming:applyForce(100, 100, eming.x, eming.y)
+			    transition.to(eming, {time=250, x=(x+150), y=(y-120)})
 			end
 			
 		else
@@ -191,7 +184,6 @@ function scene:create( event )
 		if(event.phase == "ended" and flag == false) then
 			if(event.other.name == "up") then
 				flag = true
-
 				timer.performWithDelay(1, function()
 										physics.removeBody(ground)
 										physics.removeBody(eming)
@@ -223,7 +215,7 @@ function scene:create( event )
 		}
 
 	if composer.getVariable("start") == nil then	-- 처음부터 시작 --
- 		-- composer.showOverlay('game_ascension.ascension_start', options)
+ 		composer.showOverlay('game_ascension.ascension_start', options)
  	end
 
 
@@ -259,7 +251,7 @@ function scene:create( event )
 		    params = {}
 		}
 
- 		composer.showOverlay('items', options)
+ 		composer.showOverlay('items0', options)
  	end
  	item:addEventListener("tap", item)
 

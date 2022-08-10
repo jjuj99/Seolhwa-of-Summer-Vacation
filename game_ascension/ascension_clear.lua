@@ -16,8 +16,8 @@ function scene:create( event )
 	click = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
 	
 	local background = display.newImage("image/setting/설정창 바탕.png")
-	background.strokeWidth = 5
-	background:setStrokeColor(0.5, 0.5, 0.5)
+	-- background.strokeWidth = 5
+	-- background:setStrokeColor(0.5, 0.5, 0.5)
 	background.x, background.y = display.contentCenterX, display.contentCenterY
 
 	local nextBtn = display.newImage("image/setting/2.png")
