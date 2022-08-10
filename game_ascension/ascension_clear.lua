@@ -11,6 +11,9 @@ local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
+
+	-- 효과음 설정
+	click = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
 	
 	local background = display.newImage("image/setting/설정창 바탕.png")
 	background.strokeWidth = 5
@@ -21,6 +24,7 @@ function scene:create( event )
 	nextBtn.x, nextBtn.y = display.contentWidth * 0.5, display.contentHeight * 0.3
 
 	function nextBtn:tap( event )
+		audio.play(click)
 
 		local eming = composer.getVariable("eming")
  		local save = composer.getVariable("save")

@@ -8,30 +8,39 @@
 local composer = require( "composer" )
 local scene = composer.newScene()
 
-
 function scene:create( event )
 	local sceneGroup = self.view
+
+	-- 효과음 설정
+	click = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
 	
-	local background = display.newImage("image/jichuns/바탕.png")
+	-- 배경 --
+	local background = display.newImage("image/game_ascension/이밍창바탕.png")
+	-- background.strokeWidth = 5
+	-- background:setStrokeColor(0.5, 0.5, 0.5)
 	background.x, background.y = display.contentCenterX, display.contentCenterY
 
-	background.strokeWidth = 5
-	background:setStrokeColor(0.5, 0.5, 0.5)
 
-	local storyInfo = display.newImage("image/jichuns/1.png")
+
+	local x = display.newImage("image/public/X.png")
+	x.x, x.y = display.contentWidth * 0.645, display.contentHeight * 0.17
+
+	local storyInfo = display.newImage("image/game_ascension/info/스토리소개1.png")
 	storyInfo.x, storyInfo.y = display.contentWidth * 0.5, display.contentHeight * 0.335
 
-	local gameInfo = display.newImage("image/jichuns/2.png")
+	local gameInfo = display.newImage("image/game_ascension/info/미니게임설명1.png")
 	gameInfo.x, gameInfo.y = display.contentWidth * 0.5, display.contentHeight * 0.665
 
-	function background:tap( event )
+	function x:tap( event )
+		audio.play(click)
 		composer.hideOverlay('fade', 400)
 	end
-	background:addEventListener("tap", background)
+	x:addEventListener("tap", x)
 
 	sceneGroup:insert(background)
 	sceneGroup:insert(storyInfo)
 	sceneGroup:insert(gameInfo)
+	sceneGroup:insert(x)
 
 end
 

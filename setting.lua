@@ -66,7 +66,6 @@ function scene:create( event )
 	end
 	detail:addEventListener("tap", detail)
 
-
 	function sound1:tap ( event )
 		audio.play(click)
 		audio.setVolume(0, {channel=1})

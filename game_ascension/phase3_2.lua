@@ -14,8 +14,8 @@ function scene:create( event )
 	local sceneGroup = self.view
 
 	-- 효과음 --
-	local explosionSound2 = audio.loadSound( "sound/코드39.wav" )
-	local explosionSound3 = audio.loadSound( "sound/스위치_랜턴_버튼.mp3" )
+	local explosionSound2 = audio.loadSound("sound/A_1. 미니게임 버튼_카툰코드음14_mp3.mp3") -- 점프
+	local explosionSound3 = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3") -- 설정 등 클릭
 
 	physics.start()
 	physics.setDrawMode( "hybrid" )
@@ -44,25 +44,20 @@ function scene:create( event )
 	-- 구름 오브젝트 배치 --
 	local cloud = {}
 
-	cloud[1] = display.newImage("image/game_ascension/phase3/중간권구름.png")
+	cloud[1] = display.newImageRect("image/game_ascension/중간구름.png", 200, 100)
 	cloud[1].x, cloud[1].y = 450, 600
-	-- cloud[1]:scale(0.4, 0.4)
 
-	cloud[2] = display.newImage("image/game_ascension/phase3/중간권구름.png")
+	cloud[2] = display.newImageRect("image/game_ascension/중간구름.png", 200, 100)
 	cloud[2].x, cloud[2].y = 200, 450
-	-- cloud[2]:scale(0.4, 0.4)
 
-	cloud[3] = display.newImage("image/game_ascension/phase3/중간권구름.png")
+	cloud[3] = display.newImageRect("image/game_ascension/중간구름.png", 200, 100)
 	cloud[3].x, cloud[3].y = 500, 350
-	-- cloud[3]:scale(0.4, 0.4)
 
-	cloud[4] = display.newImage("image/game_ascension/phase3/중간권구름.png")
+	cloud[4] = display.newImageRect("image/game_ascension/중간구름.png", 200, 100)
 	cloud[4].x, cloud[4].y = 800, 300
-	-- cloud[4]:scale(0.4, 0.4)
 
-	cloud[5] = display.newImage("image/game_ascension/phase3/중간권구름.png")
+	cloud[5] = display.newImageRect("image/game_ascension/중간구름.png", 200, 100)
 	cloud[5].x, cloud[5].y = 550, 200
-	-- -- cloud[5]:scale(0.4, 0.4)
 
 	
 	-- 벽 설정 --
@@ -75,9 +70,10 @@ function scene:create( event )
 	wall[4] = display.newRect(background.x, background.height, background.width, 30)
 	wall[4].name = "down"
 
+	local cloud_outline_none = graphics.newOutline(1, "image/game_ascension/중간구름.png")
 
 	for i = 1, #cloud do 
-		physics.addBody(cloud[i], "static")
+		physics.addBody(cloud[i], "static", {friction=1, outline=cloud_outline_none})
 		sceneGroup:insert(cloud[i])
 	end
 
@@ -89,32 +85,30 @@ function scene:create( event )
 
 	local arrow = {}
 
-	arrow[1] = display.newImage("image/game_ascension/왼쪽이동.png")
-	arrow[1].x, arrow[1].y = 1000, 600
-	arrow[1]:scale(0.4, 0.4)
+	arrow[1] = display.newImage("image/game_ascension/arrow/왼쪽버튼1.png")
+	arrow[1]:scale(0.75, 0.75)
+	arrow[1].x, arrow[1].y = 1050, 630
 	arrow[1].name = "left"
 
-	arrow[2] = display.newImage("image/game_ascension/점프.png")
-	arrow[2].x, arrow[2].y = 150, 600
-	arrow[2]:scale(0.4, 0.4)
+	arrow[2] = display.newImage("image/game_ascension/arrow/점프1.png")
+	arrow[2]:scale(0.75, 0.75)
+	arrow[2].x, arrow[2].y = 100, 630
 	arrow[2].name = "jump"
 
-	arrow[3] = display.newImage("image/game_ascension/오른쪽이동.png")
-	arrow[3].x, arrow[3].y = 1160, 600
-	arrow[3]:scale(0.4, 0.4)
+	arrow[3] = display.newImage("image/game_ascension/arrow/오른쪽버튼1.png")
+	arrow[3]:scale(0.75, 0.75)
+	arrow[3].x, arrow[3].y = 1200, 630
 	arrow[3].name = "right"
 
 	arrow[4] = "right"
 
 
-	local eming = display.newImageRect("image/game_ascension/이밍.png", 100, 100)
-	eming.x, eming.y = 500, 540
-	-- eming:scale(0.4, 0.4)
+	-- player 이밍 추가 --
+	local eming = display.newImage("image/game_ascension/이밍게임_오른쪽.png")
+	eming.x, eming.y = display.contentCenterX, 550
 
-	local eming_outline_none = graphics.newOutline(1, "image/game_ascension/이밍.png")
-	local eming_outline_flip = graphics.newOutline(1, "image/game_ascension/이밍.png")
-	-- player.x, player.y = background.x, background.y+200
-	eming.name = "eming"
+	local eming_outline_none = graphics.newOutline(2, "image/game_ascension/이밍게임_오른쪽.png")
+	local eming_outline_flip = graphics.newOutline(2, "image/game_ascension/이밍게임_왼쪽.png")
 
 	physics.addBody(eming, {friction=1, outline=eming_outline_none})
 	eming.isFixedRotation = true 

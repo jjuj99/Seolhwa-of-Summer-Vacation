@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------------------------
 --
 -- ascension_setting.lua
--- 이밍 승천 게임 설정
+-- 이밍 승천 게임 설정창
 --
 -----------------------------------------------------------------------------------------
 
@@ -12,21 +12,33 @@ function scene:create( event )
 	local sceneGroup = self.view
 
 	physics.start()
-	
-	local background = display.newImage("image/setting/설정창 바탕.png")
-	background.strokeWidth = 5
-	background:setStrokeColor(0.5, 0.5, 0.5)
-	background.x, background.y = display.contentCenterX, display.contentCenterY
 
-	local replay = display.newImage("image/setting/2.png")
+	-- 효과음 설정
+	click = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
+	
+	-- 배경 --
+	local background = display.newImage("image/game_ascension/이밍창바탕.png")
+	background.x, background.y = display.contentCenterX, display.contentCenterY
+	-- background.strokeWidth = 5
+	-- background:setStrokeColor(0.5, 0.5, 0.5)
+
+	-- 다시하기 버튼 --
+	local replay = display.newImage("image/setting/다시하기1.png")
 	replay.x, replay.y = display.contentWidth * 0.5, display.contentHeight * 0.3
 
-	local detail = display.newImage("image/setting/3.png")
+	-- 세부설정 버튼 --
+	local detail = display.newImage("image/setting/세부설정1.png")
 	detail.x, detail.y = display.contentWidth * 0.5, display.contentHeight * 0.5
 
-	local out = display.newImage("image/setting/4.png")
+	-- 나가기 버튼 --
+	local out = display.newImage("image/setting/나가기1.png")
 	out.x, out.y = display.contentWidth * 0.5, display.contentHeight * 0.7
 
+	-- X 버튼 --
+	local x = display.newImage("image/public/X.png")
+	x.x, x.y = display.contentWidth * 0.645, display.contentHeight * 0.17
+
+	-- 소리 설정 --
 	local sound1 = display.newRect(display.contentWidth * 0.4, display.contentHeight * 0.5, 50, 50)
 	sound1.alpha = 0
 	sound1.fill = {
@@ -50,6 +62,7 @@ function scene:create( event )
 
 
 	function detail:tap( event )
+		audio.play(click)
 		detail.alpha = 0
 		sound1.alpha = 1
 		sound2.alpha = 1
@@ -57,52 +70,32 @@ function scene:create( event )
 	end
 	detail:addEventListener("tap", detail)
 
-
 	function sound1:tap ( event )
+		audio.play(click)
 		audio.setVolume(0, {channel=1})
+		audio.setVolume(0, click)
 	end
 	sound1:addEventListener("tap", sound1)
 
 	function sound2:tap ( event )
+		audio.play(click)
 		audio.setVolume(0.5, {channel=1})
+		audio.setVolume(0.4, click)
 	end
 	sound2:addEventListener("tap", sound2)
 
 	function sound3:tap ( event )
+		audio.play(click)
 		audio.setVolume(1, {channel=1})
+		audio.setVolume(1, click)
 	end
 	sound3:addEventListener("tap", sound3)
 
-	-- local index = 2 --나가서 다시 설정 들어오면 이미지가 바뀜--
-	-- function sound:tap( event)
-	-- 	if (index == 1) then
-	-- 		sound.fill = {
-	-- 			type = "image",
-	-- 			filename = "image/setting/스피커2.png"
-	-- 		}
-	-- 		audio.setVolume(0.5, {channel=1})
-	-- 		index = 2
-	-- 	elseif (index == 2) then
-	-- 		sound.fill = {
-	-- 			type = "image",
-	-- 			filename = "image/setting/스피커3.png"
-	-- 		}
-	-- 		audio.setVolume(1, {channel=1})
-	-- 		index = 3
-	-- 	elseif (index == 3) then
-	-- 		sound.fill = {
-	-- 			type = "image",
-	-- 			filename = "image/setting/스피커1.png"
-	-- 		}
-	-- 		audio.setVolume(0, {channel=1})
-	-- 		index = 1
-	-- 	end
-	-- end
-	-- sound:addEventListener("tap", sound)
-
+	
+	-- 다시하기 클릭시 > 미니게임 재시작 --
 	function replay:tap( event )
- 		-- composer.hideOverlay('fade', 400)
- 
+		audio.play(click)
+
  		local phase = composer.getVariable("phase")
 
  		local eming = composer.getVariable("eming")
@@ -113,17 +106,6 @@ function scene:create( event )
  		if phase == "phase1_1" or phase == "phase2_1" or phase == "phase_clear" then
  			save = composer.getVariable("save")
  		end
-
-
-
- 	-- 	physics.removeBody(eming)
- 	-- 	physics.removeBody(ground)
-		-- for i = 1, #cloud do 
-		-- 	physics.removeBody(cloud[i])
-		-- end
-		-- for i = 1, #wall do
-		-- 	physics.removeBody(wall[i])
-		-- end
 
 		timer.performWithDelay(1, function()
 										if save ~= nil then
@@ -145,15 +127,53 @@ function scene:create( event )
 										composer.removeScene('game_ascension.' .. phase, true)
  										composer.gotoScene('game_ascension.phase1_1')
 									end, 1)
-
-
-
-
-
- 		-- composer.removeScene('game_ascension.' .. phase, true)
- 		-- composer.gotoScene('game_ascension.phase1_1')
  	end
  	replay:addEventListener("tap", replay)
+
+ 	-- 나가기 클릭시 --
+ 	function out:tap( event )
+ 		audio.play(click)
+
+ 		local phase = composer.getVariable("phase")
+
+ 		local eming = composer.getVariable("eming")
+ 		local wall = composer.getVariable("wall")
+ 		local cloud = composer.getVariable("cloud")
+
+ 		save = nil
+ 		if phase == "phase1_1" or phase == "phase2_1" or phase == "phase_clear" then
+ 			save = composer.getVariable("save")
+ 		end
+
+ 		timer.performWithDelay(1, function()
+										if save ~= nil then
+											physics.removeBody(save)
+										end
+
+										physics.removeBody(eming)
+
+										if cloud ~= nil then
+											for i = 1, #cloud do 
+												physics.removeBody(cloud[i])
+											end
+										end
+
+										for i = 1, #wall do
+											physics.removeBody(wall[i])
+										end
+
+										composer.removeScene('game_ascension.' .. phase, true)
+ 										composer.gotoScene('start')
+									end, 1)
+ 	end
+ 	out:addEventListener("tap", out)
+
+ 	-- X 클릭 --
+ 	function x:tap( event )
+		audio.play(click)
+		composer.hideOverlay('fade', 400)
+	end
+	x:addEventListener("tap", x)
 
  	sceneGroup:insert(background)
  	sceneGroup:insert(replay)
@@ -162,6 +182,7 @@ function scene:create( event )
  	sceneGroup:insert(sound2)
  	sceneGroup:insert(sound3)
  	sceneGroup:insert(out)
+ 	sceneGroup:insert(x)
 end
 
 function scene:show( event )
