@@ -122,11 +122,11 @@ function scene:create( event )
 	------이미지 불러오기 끝 ----------------
 
 	----설정창 이미지 불러오기 및 그룹넣고 레이어 정리----------
-	local background2 = display.newImage("image/setting/설정창 바탕.png")
+	local background2 = display.newImage("image/setting/설정창바탕.png")
 	background2.strokeWidth = 5
 	background2:setStrokeColor(0.5, 0.5, 0.5)
 	background2.x, background2.y = display.contentCenterX, display.contentCenterY
-
+	
 	local replay = display.newImage("image/setting/2클릭.png")
 	replay.x, replay.y = display.contentWidth * 0.5, display.contentHeight * 0.3
 
@@ -157,8 +157,9 @@ function scene:create( event )
 		filename = "image/setting/스피커3.png"
 	}
 
-    local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
-	button1.x,button1.y=822,128
+    local button1 = display.newImage("image/public/X.png")
+	button1.x,button1.y=display.contentWidth*0.645,display.contentHeight*0.17
+
 
 
 	settingGroup:insert(background2)
