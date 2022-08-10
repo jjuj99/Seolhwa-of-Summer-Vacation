@@ -16,7 +16,7 @@ function scene:create( event )
 	local explosionSound3 = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3") -- 설정 등 클릭
 
 	physics.start()
-	physics.setDrawMode( "hybrid" )
+	physics.setDrawMode( "normal" )
 
 
 	-- 배경 --
@@ -42,20 +42,20 @@ function scene:create( event )
 	-- 구름 오브젝트 배치 --
 	local cloud = {}
 
-	cloud[1] = display.newImageRect("image/game_ascension/성층구름.png", 300, 100)
-	cloud[1].x, cloud[1].y = 400, 550
+	cloud[1] = display.newImageRect("image/game_ascension/성층구름.png", 300, 90)
+	cloud[1].x, cloud[1].y = 300, 550
 
-	cloud[2] = display.newImageRect("image/game_ascension/성층구름.png", 300, 100)
-	cloud[2].x, cloud[2].y = 850, 450
+	cloud[2] = display.newImageRect("image/game_ascension/성층구름.png", 300, 90)
+	cloud[2].x, cloud[2].y = 650, 470
 
-	cloud[3] = display.newImageRect("image/game_ascension/성층구름.png", 300, 100)
-	cloud[3].x, cloud[3].y = 480, 350
+	cloud[3] = display.newImageRect("image/game_ascension/성층구름.png", 300, 90)
+	cloud[3].x, cloud[3].y = 1000, 400
 
-	cloud[4] = display.newImageRect("image/game_ascension/성층구름.png", 300, 100)
-	cloud[4].x, cloud[4].y = 900, 300
+	cloud[4] = display.newImageRect("image/game_ascension/성층구름.png", 300, 90)
+	cloud[4].x, cloud[4].y = 680, 290
 
-	cloud[5] = display.newImageRect("image/game_ascension/성층구름.png", 300, 100)
-	cloud[5].x, cloud[5].y = 700, 180
+	cloud[5] = display.newImageRect("image/game_ascension/성층구름.png", 300, 90)
+	cloud[5].x, cloud[5].y = 380, 190
 
 	
 	-- 벽 설정 --
@@ -130,9 +130,9 @@ function scene:create( event )
 			audio.play(explosionSound2)
 
 			if (arrow[4] == "left") then
-				transition.to(eming, {time=100, x=(x-100), y=(y-100)})
+				transition.to(eming, {time=250, x=(x-130), y=(y-130)})
 			else
-			    transition.to(eming, {time=100, x=(x+100), y=(y-100)})
+			    transition.to(eming, {time=250, x=(x+150), y=(y-120)})
 			end
 			
 		else
@@ -243,7 +243,7 @@ function scene:create( event )
 		    params = {}
 		}
 
- 		composer.showOverlay('items', options)
+ 		composer.showOverlay('items0', options)
  	end
  	item:addEventListener("tap", item)
 

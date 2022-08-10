@@ -13,11 +13,11 @@ function scene:create( event )
 	local sceneGroup = self.view
 
 	-- 효과음 --
-	local explosionSound3 = audio.loadSound( "sound/스위치_랜턴_버튼.mp3" )
+	local explosionSound3 = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
 	
 	local background = display.newImage("image/game_ascension/이밍창바탕.png")
-	background.strokeWidth = 5
-	background:setStrokeColor(0.5, 0.5, 0.5)
+	-- background.strokeWidth = 5
+	-- background:setStrokeColor(0.5, 0.5, 0.5)
 	background.x, background.y = display.contentCenterX, display.contentCenterY
 
 	local startBtn = display.newImage("image/setting/2.png")

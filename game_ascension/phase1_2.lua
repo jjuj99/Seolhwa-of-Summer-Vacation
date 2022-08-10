@@ -18,7 +18,7 @@ function scene:create( event )
 	local explosionSound3 = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3") -- 설정 등 클릭
 
 	physics.start()
-	physics.setDrawMode( "hybrid" )
+	physics.setDrawMode( "normal" )
 
 
 	-- 배경 --
@@ -45,19 +45,19 @@ function scene:create( event )
 	local cloud = {}
 
 	cloud[1] = display.newImageRect("image/game_ascension/대기구름.png", 400, 100)
-	cloud[1].x, cloud[1].y = 500, 650
+	cloud[1].x, cloud[1].y = 800, 660
 
 	cloud[2] = display.newImageRect("image/game_ascension/대기구름.png", 400, 100)
-	cloud[2].x, cloud[2].y = 750, 530
+	cloud[2].x, cloud[2].y = 1080, 570
 
 	cloud[3] = display.newImageRect("image/game_ascension/대기구름.png", 400, 100)
-	cloud[3].x, cloud[3].y = 950, 450
+	cloud[3].x, cloud[3].y = 650, 430
 
 	cloud[4] = display.newImageRect("image/game_ascension/대기구름.png", 400, 100)
-	cloud[4].x, cloud[4].y = 780, 320
+	cloud[4].x, cloud[4].y = 350, 300
 
 	cloud[5] = display.newImageRect("image/game_ascension/대기구름.png", 400, 100)
-	cloud[5].x, cloud[5].y = 600, 230
+	cloud[5].x, cloud[5].y = 700, 200
 
 
 	-- 벽 설정 --
@@ -69,6 +69,9 @@ function scene:create( event )
 	wall[3].name = "up"
 	wall[4] = display.newRect(background.x, background.height, background.width, 30)
 	wall[4].name = "down"
+
+
+	-- 구름, 벽 물리엔진 추가 --
 
 	local cloud_outline_none = graphics.newOutline(1, "image/game_ascension/대기구름.png")
 
@@ -82,7 +85,7 @@ function scene:create( event )
 		sceneGroup:insert(wall[i])
 	end
 
-
+	-- 방향키 --
 	local arrow = {}
 
 	arrow[1] = display.newImage("image/game_ascension/arrow/왼쪽버튼1.png")
@@ -105,7 +108,7 @@ function scene:create( event )
 
 	-- player 이밍 추가 --
 	local eming = display.newImage("image/game_ascension/이밍게임_오른쪽.png")
-	eming.x, eming.y = display.contentCenterX, 550
+	eming.x, eming.y = display.contentCenterX + 180, 580
 
 	local eming_outline_none = graphics.newOutline(2, "image/game_ascension/이밍게임_오른쪽.png")
 	local eming_outline_flip = graphics.newOutline(2, "image/game_ascension/이밍게임_왼쪽.png")
@@ -123,9 +126,9 @@ function scene:create( event )
 			audio.play(explosionSound2)
 
 			if (arrow[4] == "left") then
-				transition.to(eming, {time=100, x=(x-100), y=(y-100)})
+				transition.to(eming, {time=250, x=(x-130), y=(y-130)})
 			else
-			    transition.to(eming, {time=100, x=(x+100), y=(y-100)})
+			    transition.to(eming, {time=250, x=(x+150), y=(y-120)})
 			end
 			
 		else
@@ -234,7 +237,7 @@ function scene:create( event )
 		    params = {}
 		}
 
- 		composer.showOverlay('items', options)
+ 		composer.showOverlay('items0', options)
  	end
  	item:addEventListener("tap", item)
 

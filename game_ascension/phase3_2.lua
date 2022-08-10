@@ -18,7 +18,7 @@ function scene:create( event )
 	local explosionSound3 = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3") -- 설정 등 클릭
 
 	physics.start()
-	physics.setDrawMode( "hybrid" )
+	physics.setDrawMode( "normal" )
 
 
 	-- 배경 --
@@ -44,20 +44,20 @@ function scene:create( event )
 	-- 구름 오브젝트 배치 --
 	local cloud = {}
 
-	cloud[1] = display.newImageRect("image/game_ascension/중간구름.png", 200, 100)
-	cloud[1].x, cloud[1].y = 450, 600
+	cloud[1] = display.newImageRect("image/game_ascension/중간구름.png", 200, 85)
+	cloud[1].x, cloud[1].y = 450, 650
 
-	cloud[2] = display.newImageRect("image/game_ascension/중간구름.png", 200, 100)
-	cloud[2].x, cloud[2].y = 200, 450
+	cloud[2] = display.newImageRect("image/game_ascension/중간구름.png", 200, 85)
+	cloud[2].x, cloud[2].y = 220, 550
 
-	cloud[3] = display.newImageRect("image/game_ascension/중간구름.png", 200, 100)
-	cloud[3].x, cloud[3].y = 500, 350
+	cloud[3] = display.newImageRect("image/game_ascension/중간구름.png", 200, 85)
+	cloud[3].x, cloud[3].y = 470, 440
 
-	cloud[4] = display.newImageRect("image/game_ascension/중간구름.png", 200, 100)
-	cloud[4].x, cloud[4].y = 800, 300
+	cloud[4] = display.newImageRect("image/game_ascension/중간구름.png", 200, 85)
+	cloud[4].x, cloud[4].y = 800, 380
 
-	cloud[5] = display.newImageRect("image/game_ascension/중간구름.png", 200, 100)
-	cloud[5].x, cloud[5].y = 550, 200
+	cloud[5] = display.newImageRect("image/game_ascension/중간구름.png", 200, 85)
+	cloud[5].x, cloud[5].y = 970, 280
 
 	
 	-- 벽 설정 --
@@ -105,7 +105,7 @@ function scene:create( event )
 
 	-- player 이밍 추가 --
 	local eming = display.newImage("image/game_ascension/이밍게임_오른쪽.png")
-	eming.x, eming.y = display.contentCenterX, 550
+	eming.x, eming.y = 460, 560
 
 	local eming_outline_none = graphics.newOutline(2, "image/game_ascension/이밍게임_오른쪽.png")
 	local eming_outline_flip = graphics.newOutline(2, "image/game_ascension/이밍게임_왼쪽.png")
@@ -121,9 +121,9 @@ function scene:create( event )
 			audio.play(explosionSound2)
 
 			if (arrow[4] == "left") then
-				transition.to(eming, {time=100, x=(x-100), y=(y-100)})
+				transition.to(eming, {time=250, x=(x-130), y=(y-130)})
 			else
-			    transition.to(eming, {time=100, x=(x+100), y=(y-100)})
+			    transition.to(eming, {time=250, x=(x+150), y=(y-120)})
 			end
 			
 		else
@@ -232,7 +232,7 @@ function scene:create( event )
 		    params = {}
 		}
 
- 		composer.showOverlay('items', options)
+ 		composer.showOverlay('items0', options)
  	end
  	item:addEventListener("tap", item)
 

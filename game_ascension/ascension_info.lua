@@ -20,8 +20,7 @@ function scene:create( event )
 	-- background:setStrokeColor(0.5, 0.5, 0.5)
 	background.x, background.y = display.contentCenterX, display.contentCenterY
 
-
-
+	-- X 버튼 --
 	local x = display.newImage("image/public/X.png")
 	x.x, x.y = display.contentWidth * 0.645, display.contentHeight * 0.17
 

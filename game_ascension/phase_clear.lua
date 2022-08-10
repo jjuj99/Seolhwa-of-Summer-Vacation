@@ -18,7 +18,7 @@ function scene:create( event )
 	local explosionSound3 = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3") -- 설정 등 클릭
 
 	physics.start()
-	physics.setDrawMode( "hybrid" )
+	physics.setDrawMode( "normal" )
 
 
 	-- 배경 --
@@ -62,8 +62,7 @@ function scene:create( event )
 	local aurora = display.newImage("image/game_ascension/phase4/오로라.png")
 	aurora.x, aurora.y = display.contentWidth/2, display.contentHeight
 
-	-- physics.addBody(aurora, "static", {friction=1})
-	physics.addBody(aurora, "static")
+	physics.addBody(aurora, "static", {friction=1})
 	sceneGroup:insert(aurora)
 
 
@@ -105,15 +104,9 @@ function scene:create( event )
 			audio.play(explosionSound2)
 
 			if (arrow[4] == "left") then
-				-- transition.to(eming, { x=(x-100), transition=easing.continuousLoop})
-				-- eming:applyLinearImpulse( -1, 1 )
-				-- eming:applyForce(-0, 1000, eming.x, eming.y)
-
-				eming:setLinearVelocity( 10, 4 )
-
-				-- transition.to(eming, {time=200, x=(x-100), y=(y-100)})
+				transition.to(eming, {time=250, x=(x-130), y=(y-130)})
 			else
-			    transition.to(eming, {time=200, x=(x+100), y=(y-100)})
+			    transition.to(eming, {time=250, x=(x+150), y=(y-120)})
 			end
 			
 		else
@@ -174,7 +167,7 @@ function scene:create( event )
 		    params = {}
 		}
 
- 		composer.showOverlay('items', options)
+ 		composer.showOverlay('items0', options)
  	end
  	item:addEventListener("tap", item)
 
