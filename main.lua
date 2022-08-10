@@ -29,8 +29,7 @@ end
 
 -- event listeners for tab buttons:
 local function onFirstView( event )
-	composer.gotoScene( "game_ascension.phase_clear" )
-	-- composer.gotoScene( "start" )
+	composer.gotoScene( "start" )
 end
 
 onFirstView()	-- invoke first tab button's onPress event manually

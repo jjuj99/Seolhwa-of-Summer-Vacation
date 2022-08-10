@@ -271,7 +271,12 @@ function scene:create( event )
 		popupGroup.alpha=0
 		audio.pause(explosionSound4)
 		composer.removeScene('game_simlang.level3')
-		composer.gotoScene('scenario9')
+		-- 변경된 부분입니다.
+		audio.stop()
+		audio.dispose(BGM)
+		BGM = audio.loadSound("sound/12. 심랑 성공 후_Boy meets Girl.mp3")
+		audio.play(BGM, {channel=1, loops=-1})
+		composer.gotoScene('..scenario11')
 		timer.cancel(timeAttack)		
 	end
 	button123:addEventListener("tap", button123)

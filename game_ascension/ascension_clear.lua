@@ -38,9 +38,12 @@ function scene:create( event )
 										for i = 1, #wall do
 											physics.removeBody(wall[i])
 										end
-
+										audio.stop()
+										audio.dispose(BGM)
+										BGM = audio.loadSound("sound/08. 이밍 성공 후_Fly With Me.mp3")
+										audio.play(BGM, {channel=1, loops=-1})
 										composer.removeScene("game_ascension.phase_clear")
- 										composer.gotoScene("game_ascension.ex_next")
+ 										composer.gotoScene("..scenario7")
 									end, 1)
 
 

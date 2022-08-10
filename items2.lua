@@ -17,11 +17,8 @@ function scene:create( event )
 	local background = display.newImage("image/items/바탕.png")
 	background.x, background.y = display.contentCenterX, display.contentCenterY
 
-	background.strokeWidth = 5
-	background:setStrokeColor(0.5, 0.5, 0.5)
-
 	local x = display.newImage("image/public/X.png")
-	x.x, x.y = display.contentWidth * 0.676, display.contentHeight * 0.1111
+	x.x, x.y = display.contentWidth * 0.645, display.contentHeight * 0.17
 
 	local flower1 = display.newImage("image/items/백리향.png")
 	flower1.x, flower1.y = display.contentWidth * 0.5, display.contentHeight * 0.3
