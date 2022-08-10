@@ -21,7 +21,7 @@ function scene:create( event )
 
 	local clickSound = audio.loadSound( "sound/카툰코드음14.wav" )
 
-	local levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+	local levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9, "font/경기천년바탕_Regular.ttf")
 	levelText2:setFillColor(0)
 	levelText2.size=30
 
@@ -29,7 +29,7 @@ function scene:create( event )
 	-- 이미지 불러오기 ----
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 
-	local levelText = display.newText("3단계)어디에 있을까?", display.contentWidth*0.5, display.contentHeight*0.9)
+	local levelText = display.newText("3단계)어디에 있을까?", display.contentWidth*0.5, display.contentHeight*0.9, "font/경기천년바탕_Regular.ttf")
 	levelText:setFillColor(0)
 	levelText.size=30
 
@@ -102,7 +102,7 @@ function scene:create( event )
 	local board11 = display.newImageRect("image/items/바탕.png",500,300)
 	board11.x,board11.y= display.contentWidth*0.5, display.contentHeight*0.5
 	
-	local title11 = display.newText("게임 클리어/꽃 획득 성공!", display.contentWidth/2, display.contentHeight*0.33)
+	local title11 = display.newText("게임 클리어/꽃 획득 성공!", display.contentWidth/2, display.contentHeight*0.33, "font/경기천년바탕_Regular.ttf")
 	title11.size = 30
 	title11:setFillColor(0)
 	
@@ -348,7 +348,7 @@ function scene:create( event )
 		card11:removeEventListener("tap", card11)
 		card12:removeEventListener("tap", card12)
 		levelText.alpha=0
-		levelText2 = display.newText("찾기 성공! 숨은 그림 찾기 클리어!", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2 = display.newText("찾기 성공! 숨은 그림 찾기 클리어!", display.contentWidth*0.5, display.contentHeight*0.9, "font/경기천년바탕_Regular.ttf")
 		levelText2:setFillColor(0)
 		levelText2.size=30
 		levelText2.alpha=1

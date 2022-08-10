@@ -49,7 +49,7 @@ function scene:create( event )
  	local text = display.newText("시작하기", display.contentWidth/2, display.contentHeight*0.66)
  	text.size = 30
 
-	 local startTalk = display.newText("심랑의 색, 특징, 그리고 생김새를 유심히 살펴보렴.", display.contentWidth*0.5, display.contentHeight*0.9)
+	 local startTalk = display.newText("심랑의 색, 특징, 그리고 생김새를 유심히 살펴보렴.", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
 	 startTalk:setFillColor(0)
 	 startTalk.size=30
 
@@ -57,7 +57,8 @@ function scene:create( event )
 	 nameBack.x,nameBack.y = display.contentWidth*0.3, display.contentHeight*0.8
 	 
 
-	 local name = display.newText("지천", display.contentWidth*0.3, display.contentHeight*0.8)
+	 local name = display.newText("지천", display.contentWidth*0.3, display.contentHeight*0.8,"font/경기천년바탕_Regular.ttf")
+	 startTalk:setFillColor(0)
 	 name:setFillColor(0)
 	 name.size=30
 
@@ -73,8 +74,7 @@ function scene:create( event )
 	-- 이미지 불러오기 ----
 	
 
-	local levelText = display.newText("1단계)어디에 있을까?", display.contentWidth*0.5, display.contentHeight*0.9, display.contentWidth * 0.5, display.contentWidth * 0.1, "font/경기천년바탕_Regular.ttf")
-
+	local levelText = display.newText("1단계)어디에 있을까?", display.contentWidth*0.5, display.contentHeight*0.9, "font/경기천년바탕_Regular.ttf")
 	levelText:setFillColor(0)
 	levelText.size=30
 	levelText.alpha=0
@@ -314,7 +314,7 @@ function scene:create( event )
 				audio.pause(explosionSound)
 				composer.showOverlay('game_simlang.fail')
 				levelText.alpha=0
-				levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9)
+				levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
 				levelText2:setFillColor(0)
 				levelText2.size=30
 
@@ -369,7 +369,7 @@ function scene:create( event )
 		--audio.pause(explosionSound)
 		timer.pause(timeAttack)
 		levelText.alpha=0
-		levelText2 = display.newText("찾기 성공! 1단계 통과~~", display.contentWidth*0.5, display.contentHeight*0.9)
+		levelText2 = display.newText("찾기 성공! 1단계 통과~~", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
 		levelText2:setFillColor(0)
 		levelText2.size=30
 
@@ -377,7 +377,7 @@ function scene:create( event )
 	local board = display.newImageRect("image/items/바탕.png",500,300)
 	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.5
 
-    local title = display.newText("게임 클리어/꽃 획득 성공!", display.contentWidth/2, display.contentHeight*0.33)
+    local title = display.newText("게임 클리어/꽃 획득 성공!", display.contentWidth/2, display.contentHeight*0.33,"font/경기천년바탕_Regular.ttf")
  	title.size = 30
     title:setFillColor(0)
 
