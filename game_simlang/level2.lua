@@ -211,9 +211,9 @@ function scene:create( event )
 	button1:addEventListener("tap", button1)
 
 	function out:tap( event )
-		audio.phase(explosionSound)
+		--audio.phase(explosionSound)
 		audio.play(explosionSound3, {duration = 1000})		
-        composer.removeScene('game_simlang.level3')
+        composer.removeScene('game_simlang.level2')
 		composer.gotoScene('start')
  	end
  	out:addEventListener("tap", out)

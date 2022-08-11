@@ -15,14 +15,6 @@ function scene:create( event )
     local buttonNum2 = display.newImageRect("image/jichuns/2.png",355,200)
     buttonNum2.x,buttonNum2.y=640,500
 
-	local buttonNum11 = display.newImageRect("image/simlang_image/스토리 소개.png",355,200)
-    buttonNum11.x,buttonNum11.y=640,220
-	buttonNum11.alpha=0
-
-    local buttonNum21 = display.newImageRect("image/simlang_image/방법.png",355,200)
-    buttonNum21.x,buttonNum21.y=640,500
-	buttonNum21.alpha=0
-
 	local button1 = display.newImageRect("image/simlang_image/엑스.png",50,50)
 	button1.x,button1.y=820,80
 
@@ -30,8 +22,6 @@ function scene:create( event )
     sceneGroup:insert(set)
     sceneGroup:insert(buttonNum1)
     sceneGroup:insert(buttonNum2)
-	sceneGroup:insert(buttonNum11)
-    sceneGroup:insert(buttonNum21)
 	sceneGroup:insert(button1)
 
     function button1:tap( event )
@@ -40,18 +30,6 @@ function scene:create( event )
 		composer.hideOverlay('game_simlang.jichunface')
 	end
 	button1:addEventListener("tap", button1)
-
-	function buttonNum1:tap( event )
-		buttonNum1.alpha=0
-		buttonNum11.alpha=1
-	end
-	buttonNum1:addEventListener("tap", buttonNum1)
-
-	function buttonNum2:tap( event )
-		buttonNum2.alpha=0
-		buttonNum21.alpha=1
-	end
-	buttonNum2:addEventListener("tap", buttonNum2)
  
 
 

@@ -232,19 +232,19 @@ function scene:create( event )
 	end
 	sound3:addEventListener("tap", sound3)
 
-	function replay:tap( event )
-		audio.play(explosionSound3, {duration = 1000})
-		audio.play(click)
- 		composer.hideOverlay('fade', 400)
- 	end
- 	replay:addEventListener("tap", replay)
-
 	-- function replay:tap( event )
 	-- 	audio.play(explosionSound3, {duration = 1000})
-    --     composer.removeScene('game_simlang.level1')
-	-- 	composer.gotoScene('game_simlang.level1')
+	-- 	audio.play(click)
+ 	-- 	composer.hideOverlay('fade', 400)
  	-- end
  	-- replay:addEventListener("tap", replay)
+
+	function replay:tap( event )
+	 	audio.play(explosionSound3, {duration = 1000})
+         composer.removeScene('game_simlang.level1')
+	 	composer.gotoScene('game_simlang.level1')
+ 	end
+ 	replay:addEventListener("tap", replay)
 
      function button1:tap( event )
 		audio.play(explosionSound3, {duration = 1000})
@@ -262,7 +262,7 @@ function scene:create( event )
 	function out:tap( event )
 		audio.pause(explosionSound)
 		audio.play(explosionSound3, {duration = 1000})		
-        composer.removeScene('game_simlang.level3')
+        composer.removeScene('game_simlang.level1')
 		composer.gotoScene('start')
  	end
  	out:addEventListener("tap", out)
