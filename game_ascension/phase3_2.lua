@@ -8,8 +8,6 @@
 local composer = require( "composer" )
 local scene = composer.newScene()
 
--- local physics = require( "physics" )
-
 function scene:create( event )
 	local sceneGroup = self.view
 

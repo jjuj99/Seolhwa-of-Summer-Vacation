@@ -15,20 +15,26 @@ function scene:create( event )
 	-- 효과음 --
 	local explosionSound3 = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
 	
+
+	-- 배경 --
 	local background = display.newImage("image/game_ascension/이밍창바탕.png")
-	-- background.strokeWidth = 5
-	-- background:setStrokeColor(0.5, 0.5, 0.5)
 	background.x, background.y = display.contentCenterX, display.contentCenterY
 
+
+	-- 시작 버튼 --
 	local startBtn = display.newImage("image/setting/2.png")
 	startBtn.x, startBtn.y = display.contentWidth * 0.5, display.contentHeight * 0.3
 
+
+	-- 시적 버튼 클릭시 --
 	function startBtn:tap( event )
 		audio.play(explosionSound3)
  		composer.hideOverlay('fade', 400)
  	end
  	startBtn:addEventListener("tap", startBtn)
 
+
+ 	-- 레이어 정리 --
  	sceneGroup:insert(background)
  	sceneGroup:insert(startBtn)
 end
