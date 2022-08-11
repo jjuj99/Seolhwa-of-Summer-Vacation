@@ -62,6 +62,7 @@ function scene:create( event )
 
 	function replay:tap( event )
 		audio.play(click)
+		audio.stop()
  		composer.gotoScene('start', 'fade', 400)
  	end
  	replay:addEventListener("tap", replay)
