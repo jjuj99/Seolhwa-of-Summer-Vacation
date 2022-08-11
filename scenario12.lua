@@ -41,6 +41,9 @@ function scene:create( event )
 	local highlight = display.newRect(display.contentCenterX, display.contentHeight* 0.45, 400, 300)
 	highlight.alpha = 0
 
+	local img = display.newRect(display.contentWidth * 0.2, display.contentHeight * 0.45, 150, 433)
+	img.alpha = 0
+
 	-- 더미 대사, 더미 이름--
 
 	local script = display.newText("더미텍스트", display.contentWidth*0.505, display.contentHeight*0.785, display.contentWidth * 0.88, display.contentWidth * 0.1, "font/경기천년바탕_Regular.ttf")
@@ -89,6 +92,20 @@ function scene:create( event )
 				filename = Data[index].main
 			}
 			script:setFillColor(0)
+			img.alpha = 0
+		elseif (Data[index].type == "dialogue3") then
+			name.text = Data[index].name
+			script.text = Data[index].content
+			main.alpha = 0
+			support.alpha = 0
+			highlight.alpha = 0
+			speaker.alpha = 1
+			img.alpha = 1
+			img.fill = {
+				type = "image",
+				filename = Data[index].main
+			}
+			script:setFillColor(0)
 		elseif(Data[index].type == "highlight") then
 			name.text = Data[index].name
 			script.text = Data[index].content
@@ -101,6 +118,7 @@ function scene:create( event )
 				filename = Data[index].image
 			}
 			script:setFillColor(0)
+			img.alpha = 0
 		elseif (Data[index].type == "highlight2") then
 			name.text = Data[index].name
 			script.text = Data[index].content
@@ -121,6 +139,7 @@ function scene:create( event )
 				filename = Data[index].main
 			}
 			script:setFillColor(0)
+			img.alpha = 0
 		elseif (Data[index].type == "background") then
 			name.text = Data[index].name
 			script.text = Data[index].content
@@ -137,6 +156,7 @@ function scene:create( event )
 				type = "image",
 				filename = Data[index].main
 			}
+			img.alpha = 0
 		elseif (Data[index].type == "black") then
 			name.text = Data[index].name
 			script.text = Data[index].content
@@ -186,6 +206,7 @@ function scene:create( event )
 	sceneGroup:insert(item)
 	sceneGroup:insert(main)
 	sceneGroup:insert(support)
+	sceneGroup:insert(img)
 	sceneGroup:insert(speaker)
 	sceneGroup:insert(lines)
 	sceneGroup:insert(highlight)

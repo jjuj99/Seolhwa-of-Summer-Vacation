@@ -173,7 +173,10 @@ function scene:create( event )
 
       if(index >= #Data) then 
 
-         if(score >= 7) then 
+         if(score >= 7) then
+            audio.stop()
+            BGM = audio.loadSound("sound/10. 총영 성공 후_My home.mp3")
+            audio.play(BGM, {channel=1, loops=-1})
             composer.gotoScene('scenario9', option)
             composer.removeScene('game_saying', option)
             return
