@@ -1,47 +1,28 @@
 -----------------------------------------------------------------------------------------
 --
--- ending2.lua 처음으로 돌아가기, 끝내기
+-- exit.lua
 --
 -----------------------------------------------------------------------------------------
 
 local composer = require( "composer" )
 local scene = composer.newScene()
 
-
 function scene:create( event )
 	local sceneGroup = self.view
 
-	-- 효과음 설정
-	click = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
-
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
-	background:setFillColor(0)
+	background.fill = {
+		type = "image",
+		filename = "image/background/검정.png"
+	}
 
-	local replay = display.newImage("image/setting/다시하기.png")
-	replay.x, replay.y = display.contentWidth * 0.5, display.contentHeight * 0.4
+	local txt = display.newText("X버튼을 눌러 종료하세요.", display.contentWidth * 0.5, display.contentHeight * 0.5, "font/경기천년바탕_Regular.ttf")
+	txt.size = 30
+	txt:setFillColor(1)
 
-	local out = display.newImage("image/setting/나가기.png")
-	out.x, out.y = display.contentWidth * 0.5, display.contentHeight * 0.6
+	sceneGroup:insert(background)
+	sceneGroup:insert(txt)
 
-	local options =
-	{ 
-		effect = "crossFade",
-    	time = 500
-    }
-
-	function replay:tap( event )
- 		composer.gotoScene('start', options)
- 	end
- 	replay:addEventListener("tap", replay)
-
- 	function out:tap( event )
- 		composer.gotoScene('exit', 'fade', 400)
- 	end
- 	out:addEventListener("tap", out)
-
- 	sceneGroup:insert(background)
- 	sceneGroup:insert(replay)
- 	sceneGroup:insert(out)
 end
 
 function scene:show( event )
@@ -55,7 +36,6 @@ function scene:show( event )
 		-- 
 		-- INSERT code here to make the scene come alive
 		-- e.g. start timers, begin animation, play audio, etc.
-
 	end	
 end
 
@@ -70,7 +50,6 @@ function scene:hide( event )
 		-- e.g. stop timers, stop animation, unload sounds, etc.)
 	elseif phase == "did" then
 		-- Called when the scene is now off screen
-
 	end
 end
 

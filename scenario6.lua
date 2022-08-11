@@ -24,9 +24,9 @@ function scene:create( event )
 	local item = display.newImage("image/public/아이템.png")
 	item.x, item.y = display.contentWidth * 0.95, display.contentHeight * 0.09
 
-	local main = display.newRect(display.contentWidth * 0.2, display.contentHeight * 0.5, 250, 435)
+	local main = display.newRect(display.contentWidth * 0.2, display.contentHeight * 0.5, 150, 433)
 
-	local support = display.newRect(display.contentWidth * 0.8, display.contentHeight * 0.5, 350, 450)
+	local support = display.newRect(display.contentWidth * 0.8, display.contentHeight * 0.45, 342, 375)
 
 	local speaker = display.newImage("image/dialogue/이름.png")
 	speaker.x, speaker.y = display.contentWidth * 0.19, display.contentHeight * 0.62
@@ -171,18 +171,6 @@ function scene:create( event )
  		composer.showOverlay('items0', option)
  	end
  	item:addEventListener("tap", item)
-
- 	function guide:tap( event )
- 		audio.play(click)
- 		local option = {
-				isModal = true,
-				effect = "fade",
-				tiem = 400,
-				params = {}
-		}
- 		composer.showOverlay('info', option)
- 	end
- 	guide:addEventListener("tap", guide)
 
 end
 

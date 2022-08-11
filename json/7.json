@@ -11,11 +11,11 @@
 		"type" : "dialogue1",
 		"name" : "유영",
 		"content" : "이밍! 어때? 내려올 수 있겠어?",
-		"main" : "image/character/인물1.png"
+		"main" : "image/character/유영일반.png"
 	},
 
 	{
-		"type" : "dialogue1",
+		"type" : "dialogue3",
 		"name" : "이밍",
 		"content" : "당연하밍!",
 		"main" : "image/character/이밍_반짝눈.png"
@@ -47,7 +47,7 @@
 		"type" : "dialogue1",
 		"name" : "유영",
 		"content" : "?! 방금 비늘이…!",
-		"main" : "image/character/인물1.png"
+		"main" : "image/character/유영놀란.png"
 	},
 
 	{

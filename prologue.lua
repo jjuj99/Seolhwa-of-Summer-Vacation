@@ -19,9 +19,6 @@ function scene:create( event )
 	local set = display.newImage("image/public/설정.png")
 	set.x, set.y = display.contentWidth * 0.05, display.contentHeight * 0.09
 
-	local guide = display.newImage("image/public/지천.png")
-	guide.x, guide.y = display.contentWidth * 0.853, display.contentHeight * 0.09
-
 	local item = display.newImage("image/public/아이템.png")
 	item.x, item.y = display.contentWidth * 0.95, display.contentHeight * 0.09
 
@@ -88,7 +85,6 @@ function scene:create( event )
 
 	sceneGroup:insert(background)
 	sceneGroup:insert(set)
-	sceneGroup:insert(guide)
 	sceneGroup:insert(item)
 	sceneGroup:insert(lines)
 	sceneGroup:insert(script)
@@ -118,18 +114,6 @@ function scene:create( event )
  		composer.showOverlay('items0', option)
  	end
  	item:addEventListener("tap", item)
-
- 	function guide:tap( event )
- 		audio.play(click)
- 		local option = {
-				isModal = true,
-				effect = "fade",
-				tiem = 400,
-				params = {}
-		}
- 		composer.showOverlay('info', option)
- 	end
- 	guide:addEventListener("tap", guide)
 
 end
 

@@ -3,7 +3,7 @@
 		"type" : "background",
 		"name" : "유영",
 		"content" : "지천!!",
-		"main" : "image/character/인물1.png",
+		"main" : "image/character/유영당황.png",
 		"image" : "image/background/마을수화산없음노을.png"
 	},
 
@@ -11,14 +11,14 @@
 		"type" : "dialogue1",
 		"name" : "유영",
 		"content" : "지천!!\n어떻게 된 거야! 어떻게 나온 거지? 산은…!",
-		"main" : "image/character/인물1.png"
+		"main" : "image/character/유영당황.png"
 	},
 
 	{
 		"type" : "dialogue1",
 		"name" : "유영",
 		"content" : "지천!!\n어떻게 된 거야! 어떻게 나온 거지? 산은…!\n수화산이… 사라졌어…. 어?",
-		"main" : "image/character/인물1.png"
+		"main" : "image/character/유영당황.png"
 	},
 
 	{

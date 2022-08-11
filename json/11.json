@@ -3,7 +3,7 @@
 		"type" : "dialogue2",
 		"name" : "유영",
 		"content" : "저기 있다!",
-		"main" : "image/character/인물1.png",
+		"main" : "image/character/유영웃는.png",
 		"support" : "image/character/심랑_반짝눈.png"
 	},
 
@@ -12,7 +12,7 @@
 		"name" : "심랑",
 		"content" : "정말이네! 나랑 똑같이 생겼다!",
 		"support" : "image/character/심랑_반짝눈.png",
-		"main" : "image/character/인물1.png"
+		"main" : "image/character/유영웃는.png"
 	},
 
 	{
@@ -34,7 +34,7 @@
 		"name" : "심랑",
 		"content" : "고마워! 덕분에 짝도 만나고 날 수 있게 되었어!",
 		"support" : "image/character/심랑_신난,완전체.png",
-		"main" : "image/character/인물1.png"
+		"main" : "image/character/유영웃는.png"
 	},
 
 	{
@@ -55,7 +55,7 @@
 		"type" : "dialogue2",
 		"name" : "유영",
 		"content" : "우와…!",
-		"main" : "image/character/인물1.png",
+		"main" : "image/character/유영놀란.png",
 		"support" : "image/character/심랑_신난,완전체.png"
 	},
 
@@ -73,6 +73,7 @@
 
 	{
 		"type" : "dialogue3",
+		"image" : "image/background/검정.png",
 		"name" : "지천",
 		"content" : "이제 산 중심으로 돌아가자꾸나."
 	}
