@@ -19,7 +19,7 @@ function scene:create( event )
 	local set = display.newImage("image/public/설정.png")
 	set.x, set.y = display.contentWidth * 0.05, display.contentHeight * 0.09
 
-	local speakerImg = display.newRect(display.contentWidth * 0.5, display.contentHeight * 0.6, 221, 435)
+	local speakerImg = display.newRect(display.contentWidth * 0.5, display.contentHeight * 0.5, 221, 435)
 
 	local speaker = display.newImage("image/dialogue/이름.png")
 	speaker.x, speaker.y = display.contentWidth * 0.19, display.contentHeight * 0.62

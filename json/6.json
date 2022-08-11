@@ -3,14 +3,14 @@
 		"type" : "dialogue2",
 		"name" : "이밍",
 		"support" : "image/character/이밍_울먹이는.png",
-		"main" : "image/character/인물1.png",
+		"main" : "image/character/유영일반.png",
 		"content" : "ㅁ… 나는 이밍이다밍."
 	},
 
 	{
 		"type" : "inner2",
 		"name" : "유영",
-		"main" : "image/character/인물1.png",
+		"main" : "image/character/유영궁금.png",
 		"support" : "image/character/이밍_울먹이는.png",
 		"content" : "밍?"
 	},
@@ -18,7 +18,7 @@
 	{
 		"type" : "dialogue2",
 		"name" : "유영",
-		"main" : "image/character/인물1.png",
+		"main" : "image/character/유영궁금.png",
 		"support" : "image/character/이밍_울먹이는.png",
 		"content" : "그런데 왜 울고 있어?"
 	},
@@ -27,14 +27,14 @@
 		"type" : "dialogue2",
 		"name" : "이밍",
 		"support" : "image/character/이밍_울먹이는.png",
-		"main" : "image/character/인물1.png",
+		"main" : "image/character/유영궁금.png",
 		"content" : "얼른 승천을 해야 이 어두운 동굴 생활을 청산하는데, 높은 곳이 무섭다밍…."
 	},
 
 	{
 		"type" : "dialogue2",
 		"name" : "유영",
-		"main" : "image/character/인물1.png",
+		"main" : "image/character/유영궁금.png",
 		"support" : "image/character/이밍_울먹이는.png",
 		"content" : "높은 곳? 생각보다 안 무섭지 않아?"
 	},
@@ -43,14 +43,14 @@
 		"type" : "dialogue2",
 		"name" : "이밍",
 		"support" : "image/character/이밍_울먹이는.png",
-		"main" : "image/character/인물1.png",
+		"main" : "image/character/유영궁금.png",
 		"content" : "몰라서 말하는 거다밍! 높은 곳은 제멋대로 모습을 바꾸고 끝이 없다밍!"
 	},
 
 	{
 		"type" : "dialogue2",
 		"name" : "유명",
-		"main" : "image/character/인물1.png",
+		"main" : "image/character/유영웃는.png",
 		"support" : "image/character/이밍_울먹이는.png",
 		"content" : "하늘엔 예쁜 모습도 있어. 직접 보면 말이 달라질 걸?"
 	},
@@ -59,7 +59,7 @@
 		"type" : "dialogue2",
 		"name" : "이밍",
 		"support" : "image/character/이밍_궁금한.png",
-		"main" : "image/character/인물1.png",
+		"main" : "image/character/유영웃는.png",
 		"content" : "밍…?"
 	}
 ]

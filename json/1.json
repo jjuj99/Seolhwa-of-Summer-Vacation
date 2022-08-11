@@ -1,7 +1,7 @@
 [
 	{
 		"type" : "dialogue2",
-		"main" : "image/character/인물1.png",
+		"main" : "image/character/유영일반.png",
 		"name" : "할머니",
 		"support" : "image/character/인물2.png",
 		"content" : "…산 주변엔 가지 말고 늦기 전에 돌아오라~ 오늘 밥 먹고 서울로 가야지~"
@@ -9,7 +9,7 @@
 
 	{
 		"type" : "dialogue2",
-		"main" : "image/character/인물1.png",
+		"main" : "image/character/유영일반.png",
 		"name" : "유영",
 		"support" : "image/character/인물2.png",
 		"content" : "네에!"
@@ -23,14 +23,14 @@
 
 	{
 		"type" : "dialogue1",
-		"main" : "image/character/인물1.png",
+		"main" : "image/character/유영궁금.png",
 		"name" : "유영",
 		"content" : "왜 잠자리가 한 마리도 없지??"
 	},
 
 	{
 		"type" : "highlight",
-		"main" : "image/character/인물1.png",
+		"main" : "image/character/유영웃는.png",
 		"name" : "유영",
 		"content" : "우와! 예쁜 나비다!",
 		"highlight" : "image/center/아이템창.png"
@@ -38,7 +38,7 @@
 
 	{
 		"type" : "dialogue1",
-		"main" : "image/character/인물1.png",
+		"main" : "image/character/유영당황.png",
 		"name" : "유영",
 		"content" : "어어! 왜 안 잡혀! 어디가 나비야~! 같이 가~!"
 	},
