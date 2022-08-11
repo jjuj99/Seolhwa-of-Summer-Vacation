@@ -74,9 +74,9 @@ function scene:create( event )
 		if (index > #Data) then
 			audio.stop()
 			audio.dispose(BGM)
-			BGM = audio.loadSound("sound/10. 총영 성공 후_My home.mp3")
-			audio.play(BGM, {channel=1, loops=-1})
-			composer.gotoScene('scenario9', options)
+			-- BGM = audio.loadSound("sound/10. 총영 성공 후_My home.mp3")
+			-- audio.play(BGM, {channel=1, loops=-1})
+			composer.gotoScene('game_saying.game_saying', options)
 			composer.removeScene('scenario8')
 			return
 		end

@@ -56,27 +56,15 @@ function scene:create( event )
 		sound1.alpha = 1
 		sound2.alpha = 1
 		sound3.alpha = 1
-		-- replay.fill = {
-		-- 	type = "image",
-		-- 	filename = "image/setting/2클릭.png"
-		-- }
-		-- detail.fill = {
-		-- 	type = "image",
-		-- 	filename = "image/setting/4클릭.png"
-		-- }
 	end
 	detail:addEventListener("tap", detail)
+
 
 	function replay:tap( event )
 		audio.play(click)
  		composer.gotoScene('start', 'fade', 400)
  	end
  	replay:addEventListener("tap", replay)
-
- 	function out:tap( event )
- 		composer.gotoScene('exit', 'fade', 400)
- 	end
- 	out:addEventListener("tap", out)
 
 	function sound1:tap ( event )
 		audio.play(click)
@@ -105,13 +93,19 @@ function scene:create( event )
  	end
  	x:addEventListener("tap", x)
 
+ 	function out:tap ( event )
+ 		audio.play(click)
+ 		composer.gotoScene('exit', 'fade', 400)
+ 	end
+ 	out:addEventListener("tap", out)
+
  	sceneGroup:insert(background)
  	sceneGroup:insert(replay)
+ 	sceneGroup:insert(out)
  	sceneGroup:insert(detail)
  	sceneGroup:insert(sound1)
  	sceneGroup:insert(sound2)
  	sceneGroup:insert(sound3)
- 	sceneGroup:insert(out)
  	sceneGroup:insert(x)
 end
 

@@ -1,9 +1,9 @@
 [
 	{
-		"type" : "dialogue1",
+		"type" : "dialogue3",
 		"name" : "지천",
 		"content" : "이제 모아온 꽃들을 병에 넣어보렴.",
-		"main" : "image/character/인물2.png"
+		"main" : "image/character/지천일반.png"
 	},
 
 	{
