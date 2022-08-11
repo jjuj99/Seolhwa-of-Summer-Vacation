@@ -14,10 +14,10 @@ function scene:create( event )
 	local settingGroup = display.newGroup()
 
 	local explosionSound = audio.loadSound( "sound/Over the hill.mp3" )
-	audio.play(explosionSound, {channel=2, loops=-1})
+	audio.play(explosionSound, {channel=1, loops=-1})
 	--배경음악 설정
-	audio.setMaxVolume(1, { channel=2 })
-	audio.setVolume(0.5, {channel=2})
+	audio.setMaxVolume(1, { channel=1 })
+	audio.setVolume(0.5, {channel=1})
 
 	local explosionSound2 = audio.loadSound( "sound/코드39.wav" )
 
@@ -218,17 +218,17 @@ function scene:create( event )
 
 
 	function sound1:tap ( event )
-		audio.setVolume(0, {channel=2})
+		audio.setVolume(0, {channel=1})
 	end
 	sound1:addEventListener("tap", sound1)
 
 	function sound2:tap ( event )
-		audio.setVolume(0.5, {channel=2})
+		audio.setVolume(0.5, {channel=1})
 	end
 	sound2:addEventListener("tap", sound2)
 
 	function sound3:tap ( event )
-		audio.setVolume(1, {channel=2})
+		audio.setVolume(1, {channel=1})
 	end
 	sound3:addEventListener("tap", sound3)
 

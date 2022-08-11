@@ -171,17 +171,17 @@ function scene:create( event )
 
 
 	function sound1:tap ( event )
-		audio.setVolume(0, {channel=2})
+		audio.setVolume(0, {channel=1})
 	end
 	sound1:addEventListener("tap", sound1)
 
 	function sound2:tap ( event )
-		audio.setVolume(0.5, {channel=2})
+		audio.setVolume(0.5, {channel=1})
 	end
 	sound2:addEventListener("tap", sound2)
 
 	function sound3:tap ( event )
-		audio.setVolume(1, {channel=2})
+		audio.setVolume(1, {channel=1})
 	end
 	sound3:addEventListener("tap", sound3)
 
