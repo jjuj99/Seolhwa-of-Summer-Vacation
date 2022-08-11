@@ -17,6 +17,8 @@ function scene:create( event )
 	local explosionSound2 = audio.loadSound("sound/A_1. 미니게임 버튼_카툰코드음14_mp3.mp3") -- 점프
 	local explosionSound3 = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3") -- 설정 등 클릭
 
+
+	-- 물리엔진 시작 --
 	physics.start()
 	physics.setDrawMode( "normal" )
 

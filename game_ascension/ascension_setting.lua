@@ -19,24 +19,27 @@ function scene:create( event )
 	-- 배경 --
 	local background = display.newImage("image/game_ascension/이밍창바탕.png")
 	background.x, background.y = display.contentCenterX, display.contentCenterY
-	-- background.strokeWidth = 5
-	-- background:setStrokeColor(0.5, 0.5, 0.5)
+
 
 	-- 다시하기 버튼 --
 	local replay = display.newImage("image/setting/다시하기1.png")
 	replay.x, replay.y = display.contentWidth * 0.5, display.contentHeight * 0.3
 
+
 	-- 세부설정 버튼 --
 	local detail = display.newImage("image/setting/세부설정1.png")
 	detail.x, detail.y = display.contentWidth * 0.5, display.contentHeight * 0.5
+
 
 	-- 나가기 버튼 --
 	local out = display.newImage("image/setting/나가기1.png")
 	out.x, out.y = display.contentWidth * 0.5, display.contentHeight * 0.7
 
+
 	-- X 버튼 --
 	local x = display.newImage("image/public/X.png")
 	x.x, x.y = display.contentWidth * 0.645, display.contentHeight * 0.17
+
 
 	-- 소리 설정 --
 	local sound1 = display.newRect(display.contentWidth * 0.4, display.contentHeight * 0.5, 50, 50)
@@ -108,6 +111,7 @@ function scene:create( event )
  		end
 
 		timer.performWithDelay(1, function()
+										-- 물리엔진 삭제 --
 										if save ~= nil then
 											physics.removeBody(save)
 										end
@@ -124,13 +128,14 @@ function scene:create( event )
 											physics.removeBody(wall[i])
 										end
 
+										-- 다음화면으로 넘어가기 --
 										composer.removeScene('game_ascension.' .. phase, true)
  										composer.gotoScene('game_ascension.phase1_1')
 									end, 1)
  	end
  	replay:addEventListener("tap", replay)
 
- 	-- 나가기 클릭시 --
+ 	-- 나가기 클릭시 > start 화면 --
  	function out:tap( event )
  		audio.play(click)
 
@@ -146,6 +151,7 @@ function scene:create( event )
  		end
 
  		timer.performWithDelay(1, function()
+ 										-- 물리엔진 삭제 --
 										if save ~= nil then
 											physics.removeBody(save)
 										end
@@ -162,6 +168,7 @@ function scene:create( event )
 											physics.removeBody(wall[i])
 										end
 
+										-- 화면 이동 --
 										composer.removeScene('game_ascension.' .. phase, true)
  										composer.gotoScene('start')
 									end, 1)
@@ -175,6 +182,8 @@ function scene:create( event )
 	end
 	x:addEventListener("tap", x)
 
+
+	-- 레이어 정리 --
  	sceneGroup:insert(background)
  	sceneGroup:insert(replay)
  	sceneGroup:insert(detail)
