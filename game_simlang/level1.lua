@@ -33,20 +33,20 @@ function scene:create( event )
 	local time= display.newText(10, display.contentWidth/2, display.contentHeight*0.12)
 	time.size = 50
 
-	local back = display.newRoundedRect(display.contentWidth/2, display.contentHeight/2, 550,350,10)
+	local back = display.newRoundedRect(display.contentWidth/2, display.contentHeight/2, 550,400,10)
 	back:setFillColor(0.5, 0.5, 0.2)
 
-	local textStart= display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.4, 450,200,10)
+	local textStart= display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.45, 450,340,10)
 	textStart:setFillColor(0.5, 0.4, 0.4)
 
 	local textStart2 = display.newText("천생연분", display.contentWidth/2, display.contentHeight*0.28)
 	textStart2.size = 30
 
-	local button = display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.66, 450,100,10)
+	local button = display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.78, 450,70,10)
 	button:setFillColor(0.5, 0.4, 0.4)
 
 
- 	local text = display.newText("시작하기", display.contentWidth/2, display.contentHeight*0.66)
+ 	local text = display.newText("시작하기", display.contentWidth/2, display.contentHeight*0.78)
  	text.size = 30
 
 	 local startTalk = display.newText("심랑의 색, 특징, 그리고 생김새를 유심히 살펴보렴.", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
@@ -62,6 +62,8 @@ function scene:create( event )
 	 name:setFillColor(0)
 	 name.size=30
 
+	 startGroup:insert(nameBack)
+	 startGroup:insert(name)
 	 startGroup:insert(back)
 	 startGroup:insert(time)
 	 startGroup:insert(textStart)
@@ -69,8 +71,7 @@ function scene:create( event )
 	 startGroup:insert(button)
 	 startGroup:insert(text)
 	 startGroup:insert(startTalk)
-	 startGroup:insert(nameBack)
-	 startGroup:insert(name)
+	 
 	-- 이미지 불러오기 ----
 	
 
