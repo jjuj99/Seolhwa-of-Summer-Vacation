@@ -1,25 +1,31 @@
+-----------------------------------------------------------------------------------------
+--
+-- jichunStart.lua
+--
+-----------------------------------------------------------------------------------------
+
 local composer = require( "composer" )
 local scene = composer.newScene()
 
-
 function scene:create( event )
 	local sceneGroup = self.view
+
+	local touch = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
 	
-	local background = display.newImage("image/scoreResult/fail.png")
+	local background = display.newImage("image/미니게임시작/jichunExpBackground.png")
 	background.x, background.y = display.contentCenterX, display.contentCenterY
 
-	local replay = display.newImage("image/scoreResult/다시하기.png")
-	replay.x, replay.y = display.contentWidth * 0.5, display.contentHeight * 0.64
+	local start = display.newImage("image/미니게임시작/start.png")
+	start.x, start.y = display.contentWidth * 0.5, display.contentHeight * 0.77
 
-
-	function replay:tap( event )
-        composer.removeScene('game')
-		composer.gotoScene('game') 
+	function start:tap( event )
+		audio.play(touch)
+ 		composer.hideOverlay('fade', 400)
  	end
- 	replay:addEventListener("tap", replay)
+ 	start:addEventListener("tap", start)
 
-    sceneGroup:insert(background)
-    sceneGroup:insert(replay)
+ 	sceneGroup:insert(background)
+ 	sceneGroup:insert(start)
 end
 
 function scene:show( event )
