@@ -42,19 +42,27 @@ function scene:create( event )
 	local item = display.newImage("image/public/아이템.png")
 	item.x, item.y = display.contentWidth * 0.95, display.contentHeight * 0.09
 
-	local c1 = display.newImageRect("image/simlang_image/유영.png",170,320)
-	c1.x,c1.y = display.contentWidth*0.151, display.contentHeight*0.773
+	local c1 = display.newImageRect("image/simlang_image/유영.png",170,410)
+	c1.x,c1.y = display.contentWidth*0.151, display.contentHeight*0.71
 	
-	local c2 = display.newImageRect("image/simlang_image/심랑.png",170,320)
-	c2.x,c2.y = display.contentWidth*0.8486, display.contentHeight*0.773
+	local c2 = display.newImageRect("image/simlang_image/심랑.png",170,410)
+	c2.x,c2.y = display.contentWidth*0.8486, display.contentHeight*0.71
 
-	local c3 = display.newImageRect("image/simlang_image/심랑_눈물.png",170,320)
-	c3.x,c3.y = display.contentWidth*0.8486, display.contentHeight*0.773
+	local c3 = display.newImageRect("image/simlang_image/심랑_눈물.png",170,410)
+	c3.x,c3.y = display.contentWidth*0.8486, display.contentHeight*0.71
 	c3.alpha=0
 
-	local c4 = display.newImageRect("image/character/유영당황.png",170,320)
-	c4.x,c4.y = display.contentWidth*0.151, display.contentHeight*0.773
+	local c4 = display.newImageRect("image/character/유영당황.png",170,410)
+	c4.x,c4.y = display.contentWidth*0.151, display.contentHeight*0.71
 	c4.alpha=0
+
+	local c5 = display.newImageRect("image/character/심랑_신난,완전체.png",170,410)
+	c5.x,c5.y = display.contentWidth*0.8486, display.contentHeight*0.71
+	c5.alpha=0
+
+	local c6 = display.newImageRect("image/character/유영웃는.png",170,410)
+	c6.x,c6.y = display.contentWidth*0.151, display.contentHeight*0.71
+	c6.alpha=0
 
 	local board = display.newImageRect("image/simlang_image/배경.jpg",680,400)
 	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.48
@@ -71,7 +79,7 @@ function scene:create( event )
 	local card4 = display.newImageRect("image/simlang_image/12.png",110,182)
 	card4.x,card4.y=  904,439
 
-	local level = display.newImageRect("image/dialogue/대사창.png",670,120)
+	local level = display.newImageRect("image/dialogue/대사창.png",720,160)
 	level.x,level.y= display.contentWidth*0.5, display.contentHeight*0.89
 
 	local time= display.newText(10, display.contentWidth/2, display.contentHeight*0.12)
@@ -83,23 +91,11 @@ function scene:create( event )
 	local timerText =  display.newText("timer", display.contentWidth*0.5, display.contentHeight*0.05)
 	timerText.size=20
 
-	local board11 = display.newImageRect("image/simlang_image/성공.png",500,300)
+	local board11 = display.newImage("image/simlang_image/성공.png")
 	board11.x,board11.y= display.contentWidth*0.5, display.contentHeight*0.5
-	
-	-- local title11 = display.newText("게임 클리어/꽃 획득 성공!", display.contentWidth/2, display.contentHeight*0.33, "font/경기천년바탕_Regular.ttf")
-	-- title11.size = 30
-	-- title11:setFillColor(0)
-	
-	-- local object1111 = display.newImageRect("image/items/진달래.png",450,180)
-	-- object1111.x,object1111.y= display.contentWidth*0.5, display.contentHeight*0.5
-
-	local button123 = display.newImage("image/public/X.png")
-	button123.x,button123.y=837,268
 
 	popupGroup:insert(board11)
-	-- popupGroup:insert(title11)
-    -- popupGroup:insert(object1111)
-	popupGroup:insert(button123)
+	
 
 	popupGroup.alpha=0
 
@@ -220,6 +216,8 @@ function scene:create( event )
 	sceneGroup:insert(c2)
 	sceneGroup:insert(c3)
 	sceneGroup:insert(c4)
+	sceneGroup:insert(c5)
+	sceneGroup:insert(c6)
 	sceneGroup:insert(item)
 	sceneGroup:insert(set)
 	sceneGroup:insert(board)
@@ -295,7 +293,7 @@ function scene:create( event )
 		time.alpha = 0
 		popupGroup.alpha=1
 
-	function button123:tap( event )	
+	function board11:tap( event )	
 		levelText2.alpha=0
 		popupGroup.alpha=0
 		audio.pause(explosionSound4)
@@ -308,11 +306,16 @@ function scene:create( event )
 		composer.gotoScene('..scenario11')
 		timer.cancel(timeAttack)		
 	end
-	button123:addEventListener("tap", button123)
+	board11:addEventListener("tap", board11)
 		audio.play(clickSound)
 		audio.pause(explosionSound)
 		audio.play(explosionSound2)
 		timer.pause(timeAttack)
+
+		c2.alpha=0
+		c5.alpha=1
+		c1.alpha=0
+		c6.alpha=1
 
 		--audio.play(explosionSound4)
 

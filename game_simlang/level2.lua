@@ -46,19 +46,27 @@ function scene:create( event )
 	local item = display.newImage("image/public/아이템.png")
 	item.x, item.y = display.contentWidth * 0.95, display.contentHeight * 0.09
 	
-	local c1 = display.newImageRect("image/simlang_image/유영.png",170,320)
-	c1.x,c1.y = display.contentWidth*0.151, display.contentHeight*0.773
+	local c1 = display.newImageRect("image/simlang_image/유영.png",170,410)
+	c1.x,c1.y = display.contentWidth*0.151, display.contentHeight*0.71
 	
-	local c2 = display.newImageRect("image/simlang_image/심랑.png",170,320)
-	c2.x,c2.y = display.contentWidth*0.8486, display.contentHeight*0.773
+	local c2 = display.newImageRect("image/simlang_image/심랑.png",170,410)
+	c2.x,c2.y = display.contentWidth*0.8486, display.contentHeight*0.71
 
-	local c3 = display.newImageRect("image/simlang_image/심랑_눈물.png",170,320)
-	c3.x,c3.y = display.contentWidth*0.8486, display.contentHeight*0.773
+	local c3 = display.newImageRect("image/simlang_image/심랑_눈물.png",170,410)
+	c3.x,c3.y = display.contentWidth*0.8486, display.contentHeight*0.71
 	c3.alpha=0
 
-	local c4 = display.newImageRect("image/character/유영당황.png",170,320)
-	c4.x,c4.y = display.contentWidth*0.151, display.contentHeight*0.773
+	local c4 = display.newImageRect("image/character/유영당황.png",170,410)
+	c4.x,c4.y = display.contentWidth*0.151, display.contentHeight*0.71
 	c4.alpha=0
+
+	local c5 = display.newImageRect("image/character/심랑_신난,완전체.png",170,410)
+	c5.x,c5.y = display.contentWidth*0.8486, display.contentHeight*0.71
+	c5.alpha=0
+
+	local c6 = display.newImageRect("image/character/유영웃는.png",170,410)
+	c6.x,c6.y = display.contentWidth*0.151, display.contentHeight*0.71
+	c6.alpha=0
 
 	local board = display.newImageRect("image/simlang_image/배경.jpg",680,400)
 	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.48
@@ -92,7 +100,7 @@ function scene:create( event )
 ------
 
 -------
-	local level = display.newImageRect("image/dialogue/대사창.png",670,120)
+	local level = display.newImageRect("image/dialogue/대사창.png",720,160)
 	level.x,level.y= display.contentWidth*0.5, display.contentHeight*0.89
 
 	------이미지 불러오기 끝 ----------------
@@ -213,6 +221,8 @@ function scene:create( event )
 	sceneGroup:insert(c2)
 	sceneGroup:insert(c3)
 	sceneGroup:insert(c4)
+	sceneGroup:insert(c5)
+	sceneGroup:insert(c6)
 	sceneGroup:insert(item)
 	sceneGroup:insert(setting1)
 	sceneGroup:insert(board)
@@ -277,6 +287,10 @@ function scene:create( event )
 		card2:removeEventListener("tap", card2)
 		card3:removeEventListener("tap", card3)
 		card4:removeEventListener("tap", card4)
+		c2.alpha=0
+		c5.alpha=1
+		c1.alpha=0
+		c6.alpha=1
 		time.alpha = 0
 		audio.play(explosionSound2)
 		--audio.pause(explosionSound)
@@ -288,35 +302,20 @@ function scene:create( event )
 		levelText2.size=30
 
 		sceneGroup:insert(levelText2)
-		local board = display.newImageRect("image/simlang_image/성공.png",500,300)
-		board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.5
-	
-	-- 	local title = display.newText("게임 클리어/꽃 획득 성공!", display.contentWidth/2, display.contentHeight*0.33, "font/경기천년바탕_Regular.ttf")
-	-- 	 title.size = 30
-	-- 	title:setFillColor(0)
-	
-	-- 	local object1 = display.newImageRect("image/items/금사철.png",450,180)
-	-- object1.x,object1.y= display.contentWidth*0.5, display.contentHeight*0.5
+		local board = display.newImage("image/simlang_image/성공.png")
+	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.5
 
-	local button2 = display.newImage("image/public/X.png")
-	 button2.x,button2.y=837,268
+    
+	
 
  	sceneGroup:insert(board)
-    -- sceneGroup:insert(title)
-    -- sceneGroup:insert(object1)
-	sceneGroup:insert(button2)
-	-- local object1 = display.newImageRect("image/get/Asset 612.png",display.contentWidth*1.1,display.contentHeight*1.1)
-	-- object1.x,object1.y= display.contentWidth*0.5, display.contentHeight*0.5
-	--object1.alpha=0.98
-	
-	--sceneGroup:insert(object1)
 
-		function button2:tap( event )
+		function board:tap( event )
 			composer.removeScene('game_simlang.level2')
 			composer.gotoScene('game_simlang.level3')
 			timer.cancel(timeAttack)
 		end
-		button2:addEventListener("tap", button2)
+		board:addEventListener("tap", board)
 	end
 	card3:addEventListener("tap", card3)
 --------------------
