@@ -33,6 +33,8 @@ function scene:create( event )
 	local time= display.newText(10, display.contentWidth/2, display.contentHeight*0.12)
 	time.size = 50
 
+	
+
 	local back = display.newRoundedRect(display.contentWidth/2, display.contentHeight/2, 550,400,10)
 	back:setFillColor(0.5, 0.5, 0.2)
 
@@ -41,6 +43,8 @@ function scene:create( event )
 
 	local textStart2 = display.newText("천생연분", display.contentWidth/2, display.contentHeight*0.28)
 	textStart2.size = 30
+
+	
 
 	local button = display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.78, 450,70,10)
 	button:setFillColor(0.5, 0.4, 0.4)
@@ -80,6 +84,8 @@ function scene:create( event )
 	levelText.size=30
 	levelText.alpha=0
 
+	
+	
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 
 	local cardgroup= display.newGroup()
@@ -111,8 +117,11 @@ function scene:create( event )
 	c4.x,c4.y = display.contentWidth*0.151, display.contentHeight*0.773
 	c4.alpha=0
 
-	local board = display.newImageRect("image/simlang_image/보드.png",680,400)
-	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.48
+	local board = display.newImageRect("image/simlang_image/1단계배경.png",680,400)
+    board.x,board.y=display.contentWidth*0.5, display.contentHeight*0.48
+
+	-- local board = display.newImageRect("image/simlang_image/보드.png",680,400)
+	-- board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.48
 
 	local time= display.newText(10, display.contentWidth/2, display.contentHeight*0.12)
 	time.size = 50
@@ -124,24 +133,24 @@ function scene:create( event )
 	timerText.size=20
 
 --------
-	local card1 = display.newImageRect("image/simlang_image/그림.png",300,180)
+	local card1 = display.newImageRect("image/simlang_image/빨간색.png",300,180)
 	card1.x,card1.y= display.contentWidth*0.37, display.contentHeight*0.34
 --------
-	local card2 = display.newImageRect("image/simlang_image/그림.png",300,180)
+	local card2 = display.newImageRect("image/simlang_image/파랑.png",300,180)
 	card2.x,card2.y= display.contentWidth*0.63, display.contentHeight*0.34
 
 -------
-	local card3 = display.newImageRect("image/simlang_image/그림.png",300,180)
+	local card3 = display.newImageRect("image/simlang_image/노란색(정답).png",300,180)
 	card3.x,card3.y= display.contentWidth*0.37, display.contentHeight*0.62
 
 	
 -------
-	local card4 = display.newImageRect("image/simlang_image/그림.png",300,180)
+	local card4 = display.newImageRect("image/simlang_image/흰색.png",300,180)
 	card4.x,card4.y= display.contentWidth*0.63, display.contentHeight*0.62
 
 ------
-	local level = display.newImageRect("image/simlang_image/단계.png",670,120)
-	level.x,level.y= display.contentWidth*0.5, display.contentHeight*0.89
+	-- local level = display.newImageRect("image/simlang_image/단계.png",670,120)
+	-- level.x,level.y= display.contentWidth*0.5, display.contentHeight*0.89
 
 	------이미지 불러오기 끝 ----------------
 
@@ -185,6 +194,8 @@ function scene:create( event )
 	button1.x,button1.y=display.contentWidth*0.645,display.contentHeight*0.17
 
 
+	local dialogue = display.newImageRect("image/dialogue/대사창.png",670,120)
+	dialogue.x,dialogue.y= display.contentWidth*0.5, display.contentHeight*0.89
 	
 	settingGroup:insert(background3)
 	settingGroup:insert(replay)
@@ -264,23 +275,27 @@ function scene:create( event )
 	sceneGroup:insert(background)
 	--sceneGroup:insert(back)
 	sceneGroup:insert(face)
-	sceneGroup:insert(c1)
-	sceneGroup:insert(c2)
-	sceneGroup:insert(c3)
-	sceneGroup:insert(c4)
+	
 	sceneGroup:insert(item)
 	sceneGroup:insert(setting1)
 	sceneGroup:insert(board)
+	
 	sceneGroup:insert(card1)
 	sceneGroup:insert(card2)
 	sceneGroup:insert(card3)
 	sceneGroup:insert(card4)
-	sceneGroup:insert(level)
+	sceneGroup:insert(dialogue)
+	sceneGroup:insert(c1)
+	sceneGroup:insert(c2)
+	sceneGroup:insert(c3)
+	sceneGroup:insert(c4)
+	--sceneGroup:insert(level)	
 	sceneGroup:insert(levelText)
 	sceneGroup:insert(timeBoard)
 	sceneGroup:insert(timerText)
 	sceneGroup:insert(time)
 
+	
 
 	--레이어 정리 끝 -------------
 

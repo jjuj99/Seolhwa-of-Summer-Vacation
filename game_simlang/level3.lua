@@ -56,46 +56,22 @@ function scene:create( event )
 	c4.x,c4.y = display.contentWidth*0.151, display.contentHeight*0.773
 	c4.alpha=0
 
-	local board = display.newImageRect("image/simlang_image/보드.png",680,400)
+	local board = display.newImageRect("image/simlang_image/배경.jpg",680,400)
 	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.48
 
-	local card1 = display.newImageRect("image/simlang_image/숨은그림.png",100,182)
-	card1.x,card1.y= 364,250
+	local card1 = display.newImageRect("image/simlang_image/1_6.png",630,182)
+	card1.x,card1.y= 650,250
 
-	local card2 = display.newImageRect("image/simlang_image/숨은그림.png",100,182)
-	card2.x,card2.y= 475,250
+	local card2 = display.newImageRect("image/simlang_image/7_10.png",410,182)
+	card2.x,card2.y= 522,439
 
-	local card3 = display.newImageRect("image/simlang_image/숨은그림.png",100,182)
-	card3.x,card3.y=  580,250
+	local card3 = display.newImageRect("image/simlang_image/정답.png",110,182)
+	card3.x,card3.y=  779,439
 
-	local card4 = display.newImageRect("image/simlang_image/숨은그림.png",100,182)
-	card4.x,card4.y=  690,250
+	local card4 = display.newImageRect("image/simlang_image/12.png",110,182)
+	card4.x,card4.y=  904,439
 
-	local card5 = display.newImageRect("image/simlang_image/숨은그림.png",100,182)
-	card5.x,card5.y= 799,250
-
-	local card6 = display.newImageRect("image/simlang_image/숨은그림.png",100,182)
-	card6.x,card6.y= 904,250
-
-	local card7 = display.newImageRect("image/simlang_image/숨은그림.png",100,182)
-	card7.x,card7.y=  364,439
-
-	local card8 = display.newImageRect("image/simlang_image/숨은그림.png",100,182)
-	card8.x,card8.y=  475,439
-
-	local card9 = display.newImageRect("image/simlang_image/숨은그림.png",100,182)
-	card9.x,card9.y= 580,439
-
-	local card10 = display.newImageRect("image/simlang_image/숨은그림.png",100,182)
-	card10.x,card10.y= 690,439
-
-	local card11 = display.newImageRect("image/simlang_image/숨은그림.png",100,182)
-	card11.x,card11.y= 799,439
-
-	local card12 = display.newImageRect("image/simlang_image/숨은그림.png",100,182)
-	card12.x,card12.y= 904,439
-
-	local level = display.newImageRect("image/simlang_image/단계.png",670,120)
+	local level = display.newImageRect("image/dialogue/대사창.png",670,120)
 	level.x,level.y= display.contentWidth*0.5, display.contentHeight*0.89
 
 	local time= display.newText(10, display.contentWidth/2, display.contentHeight*0.12)
@@ -222,14 +198,6 @@ function scene:create( event )
 		card2:addEventListener("tap", card2)
 		card3:addEventListener("tap", card3)
 		card4:addEventListener("tap", card4)
-		card5:addEventListener("tap", card5)
-		card6:addEventListener("tap", card6)
-		card7:addEventListener("tap", card7)
-		card8:addEventListener("tap", card8)
-		card9:addEventListener("tap", card9)
-		card10:addEventListener("tap", card10)
-		card11:addEventListener("tap", card11)
-		card12:addEventListener("tap", card12)
 
 		settingGroup.alpha=0
 	end
@@ -259,14 +227,6 @@ function scene:create( event )
 	sceneGroup:insert(card2)
 	sceneGroup:insert(card3)
 	sceneGroup:insert(card4)
-	sceneGroup:insert(card5)
-	sceneGroup:insert(card6)
-	sceneGroup:insert(card7)
-	sceneGroup:insert(card8)
-	sceneGroup:insert(card9)
-	sceneGroup:insert(card10)
-	sceneGroup:insert(card11)
-	sceneGroup:insert(card12)
 	sceneGroup:insert(level)
 	sceneGroup:insert(levelText)
 	sceneGroup:insert(timeBoard)
@@ -365,14 +325,6 @@ function scene:create( event )
 		card2:removeEventListener("tap", card2)
 		card3:removeEventListener("tap", card3)
 		card4:removeEventListener("tap", card4)
-		card5:removeEventListener("tap", card5)
-		card6:removeEventListener("tap", card6)
-		card7:removeEventListener("tap", card7)
-		card8:removeEventListener("tap", card8)
-		card9:removeEventListener("tap", card9)
-		card10:removeEventListener("tap", card10)
-		card11:removeEventListener("tap", card11)
-		card12:removeEventListener("tap", card12)
 		levelText.alpha=0
 		levelText2 = display.newText("찾기 성공! 숨은 그림 찾기 클리어!", display.contentWidth*0.5, display.contentHeight*0.9, "font/경기천년바탕_Regular.ttf")
 		levelText2:setFillColor(0)
@@ -398,139 +350,6 @@ function scene:create( event )
 	end
 	card4:addEventListener("tap", card4)
 
-	function card5:tap( event )
-		time.alpha = 0
-		audio.play(clickSound)
-		--audio.pause(explosionSound)
-		c2.alpha=0
-		c3.alpha=1
-		c1.alpha=0
-		c4.alpha=1
-		levelText.alpha=0
-		levelText2.alpha=1
-		sceneGroup:insert(levelText2)
-		composer.showOverlay('game_simlang.fail21')
-		timer.cancel(timeAttack)
-	end
-	card5:addEventListener("tap", card5)
-
-	function card6:tap( event )
-		time.alpha = 0
-		audio.play(clickSound)
-		--audio.pause(explosionSound)
-	
-		c2.alpha=0
-		c3.alpha=1
-		c1.alpha=0
-		c4.alpha=1
-		levelText.alpha=0
-		levelText2.alpha=1
-		sceneGroup:insert(levelText2)
-		composer.showOverlay('game_simlang.fail21')
-		timer.cancel(timeAttack)
-	end
-	card6:addEventListener("tap", card6)
-
-	function card7:tap( event )
-		time.alpha = 0
-		audio.play(clickSound)
-		--audio.pause(explosionSound)
-		c2.alpha=0
-		c3.alpha=1
-		c1.alpha=0
-		c4.alpha=1
-		levelText.alpha=0
-		levelText2.alpha=1
-		sceneGroup:insert(levelText2)
-		composer.showOverlay('game_simlang.fail21')
-		timer.cancel(timeAttack)
-	end
-	card7:addEventListener("tap", card7)
-
-	function card8:tap( event )
-		time.alpha = 0
-		audio.play(clickSound)
-		--audio.pause(explosionSound)
-		c2.alpha=0
-		c3.alpha=1
-		c1.alpha=0
-		c4.alpha=1
-		levelText.alpha=0
-		levelText2.alpha=1
-		sceneGroup:insert(levelText2)
-		composer.showOverlay('game_simlang.fail21')
-		timer.cancel(timeAttack)
-	end
-	card8:addEventListener("tap", card8)
-
-	function card9:tap( event )
-		time.alpha = 0
-		audio.play(clickSound)
-		--audio.pause(explosionSound)
-		c2.alpha=0
-		c3.alpha=1
-		c1.alpha=0
-		c4.alpha=1
-		levelText.alpha=0
-		levelText2.alpha=1
-		sceneGroup:insert(levelText2)
-		composer.showOverlay('game_simlang.fail21')
-		
-		timer.cancel(timeAttack)
-	end
-	card9:addEventListener("tap", card9)
-
-
-	function card10:tap( event )
-		time.alpha = 0
-		audio.play(clickSound)
-		c2.alpha=0
-		c3.alpha=1
-		c1.alpha=0
-		c4.alpha=1	
-		levelText.alpha=0
-		levelText2.alpha=1
-		composer.showOverlay('game_simlang.fail21')
-			
-		timer.cancel(timeAttack)
-	end
-	card10:addEventListener("tap", card10)
-
-	function card11:tap( event )
-		time.alpha = 0
-		audio.play(clickSound)
-		c2.alpha=0
-		c3.alpha=1
-		c1.alpha=0
-		c4.alpha=1
-		levelText.alpha=0
-		levelText2.alpha=1
-		timer.cancel(timeAttack)
-		composer.showOverlay('game_simlang.fail21')
-	end
-	card11:addEventListener("tap", card11)
-
-	
-
-
-	function card12:tap( event )
-		time.alpha = 0
-		audio.play(clickSound)
-		c2.alpha=0
-		c3.alpha=1
-		c1.alpha=0
-		c4.alpha=1
-		levelText.alpha=0
-		levelText2.alpha=1
-		composer.showOverlay('game_simlang.fail21')
-		
-		timer.cancel(timeAttack)
-	end
-	card12:addEventListener("tap", card12)
-
-	
-
-
 	function set:tap( event )
 		audio.play(explosionSound3, {duration = 1000})
 		timer.pause(timeAttack)
@@ -538,14 +357,7 @@ function scene:create( event )
 		card2:removeEventListener("tap", card2)
 		card3:removeEventListener("tap", card3)
 		card4:removeEventListener("tap", card4)
-		card5:removeEventListener("tap", card5)
-		card6:removeEventListener("tap", card6)
-		card7:removeEventListener("tap", card7)
-		card8:removeEventListener("tap", card8)
-		card9:removeEventListener("tap", card9)
-		card10:removeEventListener("tap", card10)
-		card11:removeEventListener("tap", card11)
-		card12:removeEventListener("tap", card12)
+	
 		settingGroup.alpha=1
 	end
 	set:addEventListener("tap", set)
