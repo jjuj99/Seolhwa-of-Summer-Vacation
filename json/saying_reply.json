@@ -1,0 +1,85 @@
+[
+
+	{
+		"type" : "comment",
+		"result" : "true",
+		"sentence" : "후후, 제법 똑똑한 걸?",
+	},
+
+	{
+		"type" : "comment",
+		"result" : "true",
+		"sentence" : "그런 의미였구나!",
+		"y_image" : "image/character/유영웃는.png",
+		"c_image" : "image/character/총영_반짝눈.png"
+	},
+	{
+		"type" : "comment",
+		"result" : "true",
+		"sentence" : "어머, 그렇구나!",
+		"y_image" : "image/character/유영알아낸.png",
+		"c_image" : "image/character/총영_반짝눈.png"
+	},
+	{
+		"type" : "comment",
+		"result" : "true",
+		"sentence" : "새로운 걸 알았네",
+		"y_image" : "image/character/유영알아낸.png",
+		"c_image" : "image/character/총영_반짝눈.png"
+	},
+
+
+	{
+		"type" : "comment",
+		"result" : "false",
+		"sentence" : "다시 한 번 생각해보자",
+		"y_image" : "image/character/유영당황.png",
+		"c_image" : "image/character/총영_당황.png"
+	},
+	{
+		"type" : "comment",
+		"result" : "false",
+		"sentence" : "정말 그게 맞을까?",
+		"y_image" : "image/character/유영당황.png",
+		"c_image" : "image/character/총영_당황.png"
+	},
+	{
+		"type" : "comment",
+		"result" : "false",
+		"sentence" : "... ... 글쎄다",
+		"y_image" : "image/character/유영힘든.png",
+		"c_image" : "image/character/총영_화내는.png"
+	},
+	{
+		"type" : "comment",
+		"result" : "false",
+		"sentence" : "음.. 어린이는 역시 어린인가",
+		"y_image" : "image/character/유영힘든.png",
+		"c_image" : "image/character/총영_화내는.png" 
+	}, 
+
+
+	{
+		"type": "image",
+		"y_image" : "image/character/유영웃는.png",
+		"c_image" : "image/character/총영_반짝눈.png"
+	},
+
+	{
+		"type": "image",
+		"y_image" : "image/character/유영알아낸.png",
+		"c_image" : "image/character/총영_반짝눈.png"
+	},
+
+	{
+		"type": "image",
+		"y_image" : "image/character/유영당황.png",
+		"c_image" : "image/character/총영_당황.png"
+	},
+
+	{
+		"type": "image",
+		"y_image" : "image/character/유영힘든.png",
+		"c_image" : "image/character/총영_화내는.png"
+	}
+]
