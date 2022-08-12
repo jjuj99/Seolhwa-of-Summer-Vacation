@@ -6,19 +6,13 @@ local scene = composer.newScene()
 function scene:create( event )
 	local sceneGroup = self.view
 	
-	local background = display.newRoundedRect(display.contentWidth/2, display.contentHeight/2, 700,400, 45)
- 	background:setFillColor(0.6, 0.5, 0.5)
+	local background = display.newImageRect("image/simlang_image/실패.png",700,400)
+ 	background.x,background.y=display.contentWidth/2, display.contentHeight/2
 
- 	local title = display.newText("Fail", display.contentWidth/2, display.contentHeight*0.3)
- 	title.size = 60
+ 	local text = display.newImage("image/simlang_image/다시하기.png")
+ 	text.x,text.y=display.contentWidth/2, display.contentHeight*0.64
 
-    local button1 = display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.64, 700,200,10)
- 	button1:setFillColor(0.5, 0.5, 0.2)
-
- 	local text = display.newText("다시하기", display.contentWidth/2, display.contentHeight*0.64)
- 	text.size = 30
-
- 	function button1:tap( event )
+ 	function text:tap( event )
 		background.alpha=0
 		composer.removeScene('game_simlang.level3')
 		composer.hideOverlay('fade', 400)
@@ -27,11 +21,9 @@ function scene:create( event )
 		
 		
  	end
- 	button1:addEventListener("tap", button1)
+ 	text:addEventListener("tap", text)
 
  	sceneGroup:insert(background)
- 	sceneGroup:insert(title)
-     sceneGroup:insert(button1)
  	sceneGroup:insert(text)
 
 end

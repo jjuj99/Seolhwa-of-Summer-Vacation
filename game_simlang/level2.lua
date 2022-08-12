@@ -288,8 +288,8 @@ function scene:create( event )
 		levelText2.size=30
 
 		sceneGroup:insert(levelText2)
-	-- 	local board = display.newImageRect("image/items/바탕.png",500,300)
-	-- 	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.5
+		local board = display.newImageRect("image/simlang_image/성공.png",500,300)
+		board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.5
 	
 	-- 	local title = display.newText("게임 클리어/꽃 획득 성공!", display.contentWidth/2, display.contentHeight*0.33, "font/경기천년바탕_Regular.ttf")
 	-- 	 title.size = 30
@@ -298,25 +298,25 @@ function scene:create( event )
 	-- 	local object1 = display.newImageRect("image/items/금사철.png",450,180)
 	-- object1.x,object1.y= display.contentWidth*0.5, display.contentHeight*0.5
 
-	-- local button2 = display.newImageRect("image/simlang_image/엑스.png",50,50)
-	-- button2.x,button2.y=864,235
+	local button2 = display.newImage("image/public/X.png")
+	 button2.x,button2.y=837,268
 
- 	-- sceneGroup:insert(board)
+ 	sceneGroup:insert(board)
     -- sceneGroup:insert(title)
     -- sceneGroup:insert(object1)
-	-- sceneGroup:insert(button2)
-	local object1 = display.newImageRect("image/get/Asset 612.png",display.contentWidth*1.1,display.contentHeight*1.1)
-	object1.x,object1.y= display.contentWidth*0.5, display.contentHeight*0.5
+	sceneGroup:insert(button2)
+	-- local object1 = display.newImageRect("image/get/Asset 612.png",display.contentWidth*1.1,display.contentHeight*1.1)
+	-- object1.x,object1.y= display.contentWidth*0.5, display.contentHeight*0.5
 	--object1.alpha=0.98
 	
-	sceneGroup:insert(object1)
+	--sceneGroup:insert(object1)
 
-		function object1:tap( event )
+		function button2:tap( event )
 			composer.removeScene('game_simlang.level2')
 			composer.gotoScene('game_simlang.level3')
 			timer.cancel(timeAttack)
 		end
-		object1:addEventListener("tap", object1)
+		button2:addEventListener("tap", button2)
 	end
 	card3:addEventListener("tap", card3)
 --------------------

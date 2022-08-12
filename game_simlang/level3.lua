@@ -83,8 +83,8 @@ function scene:create( event )
 	local timerText =  display.newText("timer", display.contentWidth*0.5, display.contentHeight*0.05)
 	timerText.size=20
 
-	-- local board11 = display.newImageRect("image/items/바탕.png",500,300)
-	-- board11.x,board11.y= display.contentWidth*0.5, display.contentHeight*0.5
+	local board11 = display.newImageRect("image/simlang_image/성공.png",500,300)
+	board11.x,board11.y= display.contentWidth*0.5, display.contentHeight*0.5
 	
 	-- local title11 = display.newText("게임 클리어/꽃 획득 성공!", display.contentWidth/2, display.contentHeight*0.33, "font/경기천년바탕_Regular.ttf")
 	-- title11.size = 30
@@ -93,15 +93,15 @@ function scene:create( event )
 	-- local object1111 = display.newImageRect("image/items/진달래.png",450,180)
 	-- object1111.x,object1111.y= display.contentWidth*0.5, display.contentHeight*0.5
 
-	-- local button123 = display.newImageRect("image/simlang_image/엑스.png",50,50)
-	-- button123.x,button123.y=864,235
+	local button123 = display.newImage("image/public/X.png")
+	button123.x,button123.y=837,268
 
-	-- popupGroup:insert(board11)
+	popupGroup:insert(board11)
 	-- popupGroup:insert(title11)
     -- popupGroup:insert(object1111)
-	-- popupGroup:insert(button123)
+	popupGroup:insert(button123)
 
-	-- popupGroup.alpha=0
+	popupGroup.alpha=0
 
 	------이미지 불러오기 끝 ----------------
 
@@ -293,14 +293,9 @@ function scene:create( event )
 
 	function card3:tap( event )
 		time.alpha = 0
-		-- popupGroup.alpha=1
-		local object1 = display.newImageRect("image/get/Asset 613.png",display.contentWidth*1.1,display.contentHeight*1.1)
-	object1.x,object1.y= display.contentWidth*0.5, display.contentHeight*0.5
-	--object1.alpha=0.98
-	
-	sceneGroup:insert(object1)
+		popupGroup.alpha=1
 
-	function object1:tap( event )	
+	function button123:tap( event )	
 		levelText2.alpha=0
 		popupGroup.alpha=0
 		audio.pause(explosionSound4)
@@ -313,7 +308,7 @@ function scene:create( event )
 		composer.gotoScene('..scenario11')
 		timer.cancel(timeAttack)		
 	end
-	object1:addEventListener("tap", object1)
+	button123:addEventListener("tap", button123)
 		audio.play(clickSound)
 		audio.pause(explosionSound)
 		audio.play(explosionSound2)

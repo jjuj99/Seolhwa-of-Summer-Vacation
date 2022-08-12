@@ -33,25 +33,16 @@ function scene:create( event )
 	local time= display.newText(10, display.contentWidth/2, display.contentHeight*0.12)
 	time.size = 50
 
-	
-
-	local back = display.newRoundedRect(display.contentWidth/2, display.contentHeight/2, 550,400,10)
-	back:setFillColor(0.5, 0.5, 0.2)
-
-	local textStart= display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.45, 450,340,10)
-	textStart:setFillColor(0.5, 0.4, 0.4)
-
-	local textStart2 = display.newText("천생연분", display.contentWidth/2, display.contentHeight*0.28)
-	textStart2.size = 30
+	local textStart=display.newImage("image/simlang_image/천생연분_시작버튼X.png")
+	textStart.x,textStart.y=display.contentWidth/2, display.contentHeight*0.5
 
 	
 
-	local button = display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.78, 450,70,10)
-	button:setFillColor(0.5, 0.4, 0.4)
+	
 
-
- 	local text = display.newText("시작하기", display.contentWidth/2, display.contentHeight*0.78)
- 	text.size = 30
+	local button = display.newImageRect("image/simlang_image/시작버튼.png",450,90)
+	button.x,button.y=display.contentWidth/2, display.contentHeight*0.78
+	
 
 	 local startTalk = display.newText("심랑의 색, 특징, 그리고 생김새를 유심히 살펴보렴.", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
 	 startTalk:setFillColor(0)
@@ -68,12 +59,9 @@ function scene:create( event )
 
 	 startGroup:insert(nameBack)
 	 startGroup:insert(name)
-	 startGroup:insert(back)
 	 startGroup:insert(time)
 	 startGroup:insert(textStart)
-	 startGroup:insert(textStart2)
 	 startGroup:insert(button)
-	 startGroup:insert(text)
 	 startGroup:insert(startTalk)
 	 
 	-- 이미지 불러오기 ----
@@ -361,24 +349,24 @@ function scene:create( event )
 		levelText2.size=30
 
 		sceneGroup:insert(levelText2)
-	-- local board = display.newImageRect("image/items/바탕.png",500,300)
-	-- board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.5
+	local board = display.newImageRect("image/simlang_image/성공.png",500,300)
+	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.5
 
     -- local title = display.newText("게임 클리어/꽃 획득 성공!", display.contentWidth/2, display.contentHeight*0.33,"font/경기천년바탕_Regular.ttf")
  	-- title.size = 30
     -- title:setFillColor(0)
 
-    local object1 = display.newImageRect("image/get/Asset 611.png",display.contentWidth*1.1,display.contentHeight*1.1)
-	object1.x,object1.y= display.contentWidth*0.5, display.contentHeight*0.5
+    -- local object1 = display.newImageRect("image/get/Asset 611.png",display.contentWidth*1.1,display.contentHeight*1.1)
+	-- object1.x,object1.y= display.contentWidth*0.5, display.contentHeight*0.5
 	--object1.alpha=0.98
 
-	-- local button2 = display.newImageRect("image/simlang_image/엑스.png",50,50)
-	-- button2.x,button2.y=864,235
+	local button2 = display.newImage("image/public/X.png")
+	button2.x,button2.y=837,268
 
- 	-- sceneGroup:insert(board)
+ 	sceneGroup:insert(board)
     -- sceneGroup:insert(title)
-    sceneGroup:insert(object1)
-	--sceneGroup:insert(button2)
+   -- sceneGroup:insert(object1)
+	sceneGroup:insert(button2)
 
 	card1:removeEventListener("tap", card1)
 	card2:removeEventListener("tap", card2)
@@ -386,13 +374,13 @@ function scene:create( event )
 	card4:removeEventListener("tap", card4)
 	
 		--composer.showOverlay('game_simlang.popup')
-	function object1:tap( event )
+	function button2:tap( event )
 		audio.play(explosionSound3, {duration = 1000})
 		composer.removeScene('game_simlang.level1')
 		composer.gotoScene('game_simlang.level2')
 		timer.cancel(timeAttack)
 	end
-	object1:addEventListener("tap", object1)
+	button2:addEventListener("tap", button2)
 	
 	
 	

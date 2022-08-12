@@ -15,12 +15,16 @@ function scene:create( event )
 
 	local x = display.newImage("image/public/X.png")
 	x.x, x.y = display.contentWidth * 0.676, display.contentHeight * 0.1111
-
+	
 	local flower1 = display.newImage("image/items/백리향.png")
 	flower1.x, flower1.y = display.contentWidth * 0.5, display.contentHeight * 0.3
 
+	local flower2 = display.newImage("image/items/금사철.png")
+	flower2.x, flower2.y = display.contentWidth * 0.5, display.contentHeight * 0.5
+
 	sceneGroup:insert(background)
 	sceneGroup:insert(flower1)
+	sceneGroup:insert(flower2)
 	sceneGroup:insert(x)
 
 	function x:tap( event )

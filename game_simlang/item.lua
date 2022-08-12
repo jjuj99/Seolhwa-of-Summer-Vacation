@@ -18,7 +18,15 @@ function scene:create( event )
 	background.strokeWidth = 5
 	background:setStrokeColor(0.5, 0.5, 0.5)
 
+	local flower1 = display.newImage("image/items/백리향.png")
+	flower1.x, flower1.y = display.contentWidth * 0.5, display.contentHeight * 0.3
+
+	local flower2 = display.newImage("image/items/금사철.png")
+	flower2.x, flower2.y = display.contentWidth * 0.5, display.contentHeight * 0.5
+
 	sceneGroup:insert(background)
+	sceneGroup:insert(flower1)
+	sceneGroup:insert(flower2)
 	sceneGroup:insert(x)
 
 	function x:tap( event )
