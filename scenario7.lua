@@ -79,7 +79,7 @@ function scene:create( event )
 		if (index > #Data) then
 			audio.stop()
 			audio.dispose(BGM)
-			BGM = audio.loadSound("sound/09. 수화연못_Day Dream_황명수김정식김민기계한용.mp3")
+			BGM = audio.loadSound("sound/09. (수정) 수화연못_Day Dream_황명수김정식김민기계한용.mp3")
 			audio.play(BGM, {channel=1, loops=-1})
 			composer.gotoScene('scenario8', options)
 			composer.removeScene('scenario7')
