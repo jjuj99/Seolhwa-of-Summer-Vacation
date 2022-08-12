@@ -23,7 +23,7 @@
 	{
 		"type" : "background",
 		"name" : "??",
-		"image" : "image/background/연두.png",
+		"image" : "image/background/동굴안.png",
 		"support" : "image/character/이밍_검정형상.png",
 		"main" : "image/character/유영당황.png",
 		"content" : "ㅁ……."
