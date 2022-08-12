@@ -26,7 +26,7 @@ function scene:create( event )
 	local out = display.newImage("image/setting/나가기1.png")
 	out.x, out.y = display.contentWidth * 0.5, display.contentHeight * 0.7
 
-	local x = display.newImage("image/public/X.png")
+	local x = display.newImage("image/setting/X.png")
 	x.x, x.y = display.contentWidth * 0.645, display.contentHeight * 0.17
 
 	local sound1 = display.newRect(display.contentWidth * 0.4, display.contentHeight * 0.5, 50, 50)
@@ -61,9 +61,8 @@ function scene:create( event )
 
 
 	function replay:tap( event )
-		audio.play(click)
-		audio.stop()
- 		composer.gotoScene('start', 'fade', 400)
+        composer.removeScene('game')
+ 		composer.gotoScene('game', 'fade', 400)
  	end
  	replay:addEventListener("tap", replay)
 
@@ -89,6 +88,9 @@ function scene:create( event )
 	sound3:addEventListener("tap", sound3)
 
 	function x:tap( event )
+        local timeAttack = composer.getVariable("timeAttack")
+        timer.resume(timeAttack)
+
 		audio.play(click)
  		composer.hideOverlay('fade', 400)
  	end
