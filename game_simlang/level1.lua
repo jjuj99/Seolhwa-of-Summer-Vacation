@@ -118,40 +118,22 @@ function scene:create( event )
 --------
 	local card1 = display.newImageRect("image/simlang_image/그림.png",300,180)
 	card1.x,card1.y= display.contentWidth*0.37, display.contentHeight*0.34
-
-	local card11 = display.newImageRect("image/simlang_image/그림2.png",300,180)
-	card11.x,card11.y= display.contentWidth*0.37, display.contentHeight*0.34
-	card11.alpha=0
 --------
 	local card2 = display.newImageRect("image/simlang_image/그림.png",300,180)
 	card2.x,card2.y= display.contentWidth*0.63, display.contentHeight*0.34
 
-	local card21 = display.newImageRect("image/simlang_image/그림2.png",300,180)
-	card21.x,card21.y= display.contentWidth*0.63, display.contentHeight*0.34
-	card21.alpha=0
 -------
 	local card3 = display.newImageRect("image/simlang_image/그림.png",300,180)
 	card3.x,card3.y= display.contentWidth*0.37, display.contentHeight*0.62
 
-	local card31 = display.newImageRect("image/simlang_image/그림2.png",300,180)
-	card31.x,card31.y= display.contentWidth*0.37, display.contentHeight*0.62
-	card31.alpha=0
 	
 -------
 	local card4 = display.newImageRect("image/simlang_image/그림.png",300,180)
 	card4.x,card4.y= display.contentWidth*0.63, display.contentHeight*0.62
 
-	local card41 = display.newImageRect("image/simlang_image/그림2.png",300,180)
-	card41.x,card41.y= display.contentWidth*0.63, display.contentHeight*0.62
-	card41.alpha=0
-
 ------
 	local level = display.newImageRect("image/simlang_image/단계.png",670,120)
 	level.x,level.y= display.contentWidth*0.5, display.contentHeight*0.89
-
-	local touchAn = display.newImage("image/simlang_image/숨은정답1.png")
-	touchAn.x,touchAn.y=400,500
-	touchAn:scale(0.3,0.3)
 
 	------이미지 불러오기 끝 ----------------
 
@@ -283,12 +265,7 @@ function scene:create( event )
 	sceneGroup:insert(card2)
 	sceneGroup:insert(card3)
 	sceneGroup:insert(card4)
-	sceneGroup:insert(card11)
-	sceneGroup:insert(card21)
-	sceneGroup:insert(card31)
-	sceneGroup:insert(card41)
 	sceneGroup:insert(level)
-	sceneGroup:insert(touchAn)
 	sceneGroup:insert(levelText)
 	sceneGroup:insert(timeBoard)
 	sceneGroup:insert(timerText)
