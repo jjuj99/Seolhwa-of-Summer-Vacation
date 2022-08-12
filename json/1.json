@@ -1,17 +1,15 @@
 [
 	{
-		"type" : "dialogue2",
+		"type" : "dialogue1",
 		"main" : "image/character/유영일반.png",
 		"name" : "할머니",
-		"support" : "image/character/인물2.png",
 		"content" : "…산 주변엔 가지 말고 늦기 전에 돌아오라~ 오늘 밥 먹고 서울로 가야지~"
 	},
 
 	{
-		"type" : "dialogue2",
+		"type" : "dialogue1",
 		"main" : "image/character/유영일반.png",
 		"name" : "유영",
-		"support" : "image/character/인물2.png",
 		"content" : "네에!"
 	},
 
