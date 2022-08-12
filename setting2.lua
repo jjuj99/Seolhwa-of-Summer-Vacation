@@ -1,6 +1,6 @@
 -----------------------------------------------------------------------------------------
 --
--- setting.lua
+-- setting2.lua
 --
 -----------------------------------------------------------------------------------------
 
@@ -17,33 +17,30 @@ function scene:create( event )
 	local background = display.newImage("image/setting/설정창바탕.png")
 	background.x, background.y = display.contentCenterX, display.contentCenterY
 
-	local replay = display.newImage("image/setting/다시하기1.png")
-	replay.x, replay.y = display.contentWidth * 0.5, display.contentHeight * 0.3
-
 	local detail = display.newImage("image/setting/세부설정1.png")
-	detail.x, detail.y = display.contentWidth * 0.5, display.contentHeight * 0.5
+	detail.x, detail.y = display.contentWidth * 0.5, display.contentHeight * 0.4
 
 	local out = display.newImage("image/setting/나가기1.png")
-	out.x, out.y = display.contentWidth * 0.5, display.contentHeight * 0.7
+	out.x, out.y = display.contentWidth * 0.5, display.contentHeight * 0.6
 
 	local x = display.newImage("image/public/X.png")
 	x.x, x.y = display.contentWidth * 0.645, display.contentHeight * 0.17
 
-	local sound1 = display.newRect(display.contentWidth * 0.4, display.contentHeight * 0.5, 50, 50)
+	local sound1 = display.newRect(display.contentWidth * 0.4, display.contentHeight * 0.4, 50, 50)
 	sound1.alpha = 0
 	sound1.fill = {
 		type = "image",
 		filename = "image/setting/스피커1.png"
 	}
 
-	local sound2 = display.newRect(display.contentWidth * 0.5, display.contentHeight * 0.5, 50, 50)
+	local sound2 = display.newRect(display.contentWidth * 0.5, display.contentHeight * 0.4, 50, 50)
 	sound2.alpha = 0
 	sound2.fill = {
 		type = "image",
 		filename = "image/setting/스피커2.png"
 	}
 
-	local sound3 = display.newRect(display.contentWidth * 0.6, display.contentHeight * 0.5, 50, 50)
+	local sound3 = display.newRect(display.contentWidth * 0.6, display.contentHeight * 0.4, 50, 50)
 	sound3.alpha = 0
 	sound3.fill = {
 		type = "image",
@@ -60,12 +57,12 @@ function scene:create( event )
 	detail:addEventListener("tap", detail)
 
 
-	function replay:tap( event )
-		audio.play(click)
-		audio.stop()
- 		composer.gotoScene('start', 'fade', 400)
- 	end
- 	replay:addEventListener("tap", replay)
+	-- function replay:tap( event )
+	-- 	audio.play(click)
+	-- 	audio.stop()
+ -- 		composer.gotoScene('start', 'fade', 400)
+ -- 	end
+ -- 	replay:addEventListener("tap", replay)
 
 	function sound1:tap ( event )
 		audio.play(click)
@@ -102,7 +99,6 @@ function scene:create( event )
  	out:addEventListener("tap", out)
 
  	sceneGroup:insert(background)
- 	sceneGroup:insert(replay)
  	sceneGroup:insert(out)
  	sceneGroup:insert(detail)
  	sceneGroup:insert(sound1)

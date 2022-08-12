@@ -62,7 +62,7 @@ function scene:create( event )
 			tiem = 400,
 			params = {}
 		}
- 		composer.showOverlay('setting', option)
+ 		composer.showOverlay('setting2', option)
  	end
  	set:addEventListener("tap", set)
 
