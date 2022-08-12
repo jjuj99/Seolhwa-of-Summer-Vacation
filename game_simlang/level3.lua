@@ -266,11 +266,19 @@ function scene:create( event )
 		c3.alpha=1
 		c1.alpha=0
 		c4.alpha=1
-		levelText.alpha=0
-		levelText2.alpha=1
-		sceneGroup:insert(levelText2)
 		composer.showOverlay('game_simlang.fail21')
+		levelText.alpha=0
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)	
+		
 		timer.cancel(timeAttack)
+
+		card1:removeEventListener("tap", card1)
+		card2:removeEventListener("tap", card2)
+		card3:removeEventListener("tap", card3)
+		card4:removeEventListener("tap", card4)
 	end
 	card1:addEventListener("tap", card1)
 
@@ -281,11 +289,19 @@ function scene:create( event )
 		c3.alpha=1
 		c1.alpha=0
 		c4.alpha=1
-		levelText.alpha=0
-		levelText2.alpha=1
-		sceneGroup:insert(levelText2)
 		composer.showOverlay('game_simlang.fail21')
+		levelText.alpha=0
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
+		levelText2:setFillColor(0)
+		levelText2.size=30
+		sceneGroup:insert(levelText2)	
+		
 		timer.cancel(timeAttack)
+
+		card1:removeEventListener("tap", card1)
+		card2:removeEventListener("tap", card2)
+		card3:removeEventListener("tap", card3)
+		card4:removeEventListener("tap", card4)
 	end
 	card2:addEventListener("tap", card2)
 
@@ -339,12 +355,19 @@ function scene:create( event )
 		c3.alpha=1
 		c1.alpha=0
 		c4.alpha=1
-		--audio.pause(explosionSound)
 		composer.showOverlay('game_simlang.fail21')
 		levelText.alpha=0
-		levelText2.alpha=1
+		levelText2 = display.newText("다시 시도해보자 ㅠㅠ", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
+		levelText2:setFillColor(0)
+		levelText2.size=30
 		sceneGroup:insert(levelText2)	
+		
 		timer.cancel(timeAttack)
+
+		card1:removeEventListener("tap", card1)
+		card2:removeEventListener("tap", card2)
+		card3:removeEventListener("tap", card3)
+		card4:removeEventListener("tap", card4)
 	end
 	card4:addEventListener("tap", card4)
 
