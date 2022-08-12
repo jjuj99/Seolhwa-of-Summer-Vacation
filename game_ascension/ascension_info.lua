@@ -15,22 +15,14 @@ function scene:create( event )
 	click = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
 	
 
-	-- 배경 --
-	local background = display.newImage("image/game_ascension/이밍창바탕.png")
-	background.x, background.y = display.contentCenterX, display.contentCenterY
-
-
 	-- X 버튼 --
 	local x = display.newImage("image/public/X.png")
-	x.x, x.y = display.contentWidth * 0.645, display.contentHeight * 0.17
+	x.x, x.y = display.contentWidth * 0.645, display.contentHeight * 0.2
 
 
 	-- 게임 설명 이미지 --
-	local storyInfo = display.newImage("image/game_ascension/info/스토리소개1.png")
-	storyInfo.x, storyInfo.y = display.contentWidth * 0.5, display.contentHeight * 0.335
-
-	local gameInfo = display.newImage("image/game_ascension/info/미니게임설명1.png")
-	gameInfo.x, gameInfo.y = display.contentWidth * 0.5, display.contentHeight * 0.665
+	local info = display.newImage("image/game_ascension/승천연습 설명.png")
+	info.x, info.y = display.contentWidth * 0.5, display.contentHeight * 0.5
 
 
 	-- X 누르면 창 닫는 함수 --
@@ -42,9 +34,7 @@ function scene:create( event )
 
 
 	-- 레이어 정리 --
-	sceneGroup:insert(background)
-	sceneGroup:insert(storyInfo)
-	sceneGroup:insert(gameInfo)
+	sceneGroup:insert(info)
 	sceneGroup:insert(x)
 
 end

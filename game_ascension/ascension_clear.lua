@@ -16,16 +16,12 @@ function scene:create( event )
 	click = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
 	
 
-	-- 배경 --
-	local background = display.newImage("image/setting/설정창 바탕.png")
+	-- 배경 > 탭하면 다음 화며으로 --
+	local background = display.newImage("image/game_ascension/성공.png")
 	background.x, background.y = display.contentCenterX, display.contentCenterY
 
 
-	-- 다음 화면으로 넘어가는 버튼 --
-	local nextBtn = display.newImage("image/setting/2.png")
-	nextBtn.x, nextBtn.y = display.contentWidth * 0.5, display.contentHeight * 0.3
-
-	function nextBtn:tap( event )
+	function background:tap( event )
 		audio.play(click)
 
 		local eming = composer.getVariable("eming")
@@ -52,12 +48,11 @@ function scene:create( event )
  										composer.gotoScene("..scenario7")
 									end, 1)
  	end
- 	nextBtn:addEventListener("tap", nextBtn)
+ 	background:addEventListener("tap", background)
 
 
  	-- 레이어 정리 --
  	sceneGroup:insert(background)
- 	sceneGroup:insert(nextBtn)
 end
 
 function scene:show( event )
