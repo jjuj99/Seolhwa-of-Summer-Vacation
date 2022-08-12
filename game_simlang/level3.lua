@@ -42,11 +42,19 @@ function scene:create( event )
 	local item = display.newImage("image/public/아이템.png")
 	item.x, item.y = display.contentWidth * 0.95, display.contentHeight * 0.09
 
-	local c1 = display.newImageRect("image/simlang_image/유영.png",170,248)
+	local c1 = display.newImageRect("image/simlang_image/유영.png",170,320)
 	c1.x,c1.y = display.contentWidth*0.151, display.contentHeight*0.773
 	
-	local c2 = display.newImageRect("image/simlang_image/심랑.png",170,248)
+	local c2 = display.newImageRect("image/simlang_image/심랑.png",170,320)
 	c2.x,c2.y = display.contentWidth*0.8486, display.contentHeight*0.773
+
+	local c3 = display.newImageRect("image/simlang_image/심랑_눈물.png",170,320)
+	c3.x,c3.y = display.contentWidth*0.8486, display.contentHeight*0.773
+	c3.alpha=0
+
+	local c4 = display.newImageRect("image/character/유영당황.png",170,320)
+	c4.x,c4.y = display.contentWidth*0.151, display.contentHeight*0.773
+	c4.alpha=0
 
 	local board = display.newImageRect("image/simlang_image/보드.png",680,400)
 	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.48
@@ -242,6 +250,8 @@ function scene:create( event )
 	sceneGroup:insert(face)
 	sceneGroup:insert(c1)
 	sceneGroup:insert(c2)
+	sceneGroup:insert(c3)
+	sceneGroup:insert(c4)
 	sceneGroup:insert(item)
 	sceneGroup:insert(set)
 	sceneGroup:insert(board)
@@ -294,6 +304,10 @@ function scene:create( event )
 	function card1:tap( event )
 		time.alpha = 0
 		audio.play(clickSound)
+		c2.alpha=0
+		c3.alpha=1
+		c1.alpha=0
+		c4.alpha=1
 		levelText.alpha=0
 		levelText2.alpha=1
 		sceneGroup:insert(levelText2)
@@ -305,6 +319,10 @@ function scene:create( event )
 	function card2:tap( event )
 		time.alpha = 0
 		audio.play(clickSound)
+		c2.alpha=0
+		c3.alpha=1
+		c1.alpha=0
+		c4.alpha=1
 		levelText.alpha=0
 		levelText2.alpha=1
 		sceneGroup:insert(levelText2)
@@ -367,6 +385,10 @@ function scene:create( event )
 	function card4:tap( event )
 		time.alpha = 0
 		audio.play(clickSound)
+		c2.alpha=0
+		c3.alpha=1
+		c1.alpha=0
+		c4.alpha=1
 		--audio.pause(explosionSound)
 		composer.showOverlay('game_simlang.fail21')
 		levelText.alpha=0
@@ -380,6 +402,10 @@ function scene:create( event )
 		time.alpha = 0
 		audio.play(clickSound)
 		--audio.pause(explosionSound)
+		c2.alpha=0
+		c3.alpha=1
+		c1.alpha=0
+		c4.alpha=1
 		levelText.alpha=0
 		levelText2.alpha=1
 		sceneGroup:insert(levelText2)
@@ -393,6 +419,10 @@ function scene:create( event )
 		audio.play(clickSound)
 		--audio.pause(explosionSound)
 	
+		c2.alpha=0
+		c3.alpha=1
+		c1.alpha=0
+		c4.alpha=1
 		levelText.alpha=0
 		levelText2.alpha=1
 		sceneGroup:insert(levelText2)
@@ -405,6 +435,10 @@ function scene:create( event )
 		time.alpha = 0
 		audio.play(clickSound)
 		--audio.pause(explosionSound)
+		c2.alpha=0
+		c3.alpha=1
+		c1.alpha=0
+		c4.alpha=1
 		levelText.alpha=0
 		levelText2.alpha=1
 		sceneGroup:insert(levelText2)
@@ -417,7 +451,10 @@ function scene:create( event )
 		time.alpha = 0
 		audio.play(clickSound)
 		--audio.pause(explosionSound)
-		
+		c2.alpha=0
+		c3.alpha=1
+		c1.alpha=0
+		c4.alpha=1
 		levelText.alpha=0
 		levelText2.alpha=1
 		sceneGroup:insert(levelText2)
@@ -430,6 +467,10 @@ function scene:create( event )
 		time.alpha = 0
 		audio.play(clickSound)
 		--audio.pause(explosionSound)
+		c2.alpha=0
+		c3.alpha=1
+		c1.alpha=0
+		c4.alpha=1
 		levelText.alpha=0
 		levelText2.alpha=1
 		sceneGroup:insert(levelText2)
@@ -443,7 +484,10 @@ function scene:create( event )
 	function card10:tap( event )
 		time.alpha = 0
 		audio.play(clickSound)
-			
+		c2.alpha=0
+		c3.alpha=1
+		c1.alpha=0
+		c4.alpha=1	
 		levelText.alpha=0
 		levelText2.alpha=1
 		composer.showOverlay('game_simlang.fail21')
@@ -455,6 +499,10 @@ function scene:create( event )
 	function card11:tap( event )
 		time.alpha = 0
 		audio.play(clickSound)
+		c2.alpha=0
+		c3.alpha=1
+		c1.alpha=0
+		c4.alpha=1
 		levelText.alpha=0
 		levelText2.alpha=1
 		timer.cancel(timeAttack)
@@ -468,6 +516,10 @@ function scene:create( event )
 	function card12:tap( event )
 		time.alpha = 0
 		audio.play(clickSound)
+		c2.alpha=0
+		c3.alpha=1
+		c1.alpha=0
+		c4.alpha=1
 		levelText.alpha=0
 		levelText2.alpha=1
 		composer.showOverlay('game_simlang.fail21')

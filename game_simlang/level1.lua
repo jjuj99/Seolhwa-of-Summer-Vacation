@@ -57,7 +57,7 @@ function scene:create( event )
 	 nameBack.x,nameBack.y = display.contentWidth*0.3, display.contentHeight*0.8
 	 
 
-	 local name = display.newText("지천", display.contentWidth*0.3, display.contentHeight*0.8,"font/경기천년바탕_Regular.ttf")
+	 local name = display.newText("유영", display.contentWidth*0.3, display.contentHeight*0.8,"font/경기천년바탕_Regular.ttf")
 	 startTalk:setFillColor(0)
 	 name:setFillColor(0)
 	 name.size=30
@@ -97,11 +97,19 @@ function scene:create( event )
 	local item = display.newImage("image/public/아이템.png")
 	item.x, item.y = display.contentWidth * 0.95, display.contentHeight * 0.09
 
-	local c1 = display.newImageRect("image/simlang_image/유영.png",170,248)
+	local c1 = display.newImageRect("image/simlang_image/유영.png",170,320)
 	c1.x,c1.y = display.contentWidth*0.151, display.contentHeight*0.773
 	
-	local c2 = display.newImageRect("image/simlang_image/심랑.png",170,248)
+	local c2 = display.newImageRect("image/simlang_image/심랑.png",170,320)
 	c2.x,c2.y = display.contentWidth*0.8486, display.contentHeight*0.773
+
+	local c3 = display.newImageRect("image/simlang_image/심랑_눈물.png",170,320)
+	c3.x,c3.y = display.contentWidth*0.8486, display.contentHeight*0.773
+	c3.alpha=0
+
+	local c4 = display.newImageRect("image/character/유영당황.png",170,320)
+	c4.x,c4.y = display.contentWidth*0.151, display.contentHeight*0.773
+	c4.alpha=0
 
 	local board = display.newImageRect("image/simlang_image/보드.png",680,400)
 	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.48
@@ -112,7 +120,7 @@ function scene:create( event )
 	local timeBoard = display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.1, 100,100, 5)
 	timeBoard:setFillColor(0.6, 0.5, 0.5)
 
-	local timerText =  display.newText("timer", display.contentWidth*0.5, display.contentHeight*0.05)
+	local timerText =  display.newText("timer", display.contentWidth*0.5, display.contentHeight*0.05, "font/경기천년바탕_Regular.ttf")
 	timerText.size=20
 
 --------
@@ -258,6 +266,8 @@ function scene:create( event )
 	sceneGroup:insert(face)
 	sceneGroup:insert(c1)
 	sceneGroup:insert(c2)
+	sceneGroup:insert(c3)
+	sceneGroup:insert(c4)
 	sceneGroup:insert(item)
 	sceneGroup:insert(setting1)
 	sceneGroup:insert(board)
@@ -284,6 +294,10 @@ function scene:create( event )
 	function card1:tap( event )
 		time.alpha = 0
 		audio.play(clickSound)
+		c2.alpha=0
+		c3.alpha=1
+		c1.alpha=0
+		c4.alpha=1
 		--audio.pause(explosionSound)
 		composer.showOverlay('game_simlang.fail')
 		levelText.alpha=0
@@ -302,6 +316,10 @@ function scene:create( event )
 	function card2:tap( event )
 		time.alpha = 0
 		audio.play(clickSound)
+		c2.alpha=0
+		c3.alpha=1
+		c1.alpha=0
+		c4.alpha=1
 		--audio.pause(explosionSound)
 		composer.showOverlay('game_simlang.fail')
 		levelText.alpha=0
@@ -372,6 +390,10 @@ function scene:create( event )
 	function card4:tap( event )
 		time.alpha = 0
 		audio.play(clickSound)
+		c2.alpha=0
+		c3.alpha=1
+		c1.alpha=0
+		c4.alpha=1
 		--audio.pause(explosionSound)
 		composer.showOverlay('game_simlang.fail')
 		levelText.alpha=0
