@@ -69,9 +69,9 @@ function scene:create( event )
 		if (index > #Data) then
 			audio.stop()
 			audio.dispose(BGM)
-			BGM = audio.loadSound("sound/05. 수화산 중심_Endless.mp3")
-			audio.play(BGM, {channel=1, loops=-1})
-			composer.gotoScene('scenario4', options)
+			-- BGM = audio.loadSound("sound/05. 수화산 중심_Endless.mp3")
+			-- audio.play(BGM, {channel=1, loops=-1})
+			composer.gotoScene('game_jichun.game', options)
 			composer.removeScene('scenario3')
 			return
 		end
