@@ -83,6 +83,13 @@ function scene:create( event )
 	end
 
 
+	-- 점프하세요 이미지 --
+	local jumpImg = display.newImage("image/game_ascension/JUMP.png")
+	jumpImg.x, jumpImg.y = 580, 180
+
+	sceneGroup:insert(jumpImg)
+
+
 	local arrow = {}
 
 	arrow[1] = display.newImage("image/game_ascension/arrow/왼쪽버튼2.png")

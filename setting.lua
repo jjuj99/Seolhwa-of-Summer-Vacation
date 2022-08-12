@@ -96,7 +96,6 @@ function scene:create( event )
 
  	function out:tap ( event )
  		audio.play(click)
- 		audio.stop()
  		composer.gotoScene('exit', 'fade', 400)
  	end
  	out:addEventListener("tap", out)

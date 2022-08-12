@@ -10,12 +10,10 @@ local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
-	local scoreText = composer.getVariable("scoreText")
- 	local endingText = display.newText(scoreText, display.contentWidth/2, display.contentHeight*0.4)
- 	endingText.size = 200
+	local background = display.newImage("image/scoreResult/성공.png")
+	background.x, background.y = display.contentCenterX, display.contentCenterY
 
-	sceneGroup:insert(endingText)
-	sceneGroup:insert(replay)
+	sceneGroup:insert(background)
 end
 
 function scene:show( event )

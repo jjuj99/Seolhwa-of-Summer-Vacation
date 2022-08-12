@@ -6,14 +6,12 @@
 
 local composer = require( "composer" )
 local scene = composer.newScene()
-local scoreText
-local endingFlag = 0
 
 function scene:create( event )
 	local sceneGroup = self.view
 	
 	soundTable = {
-		backgroundMusic = audio.loadStream( "sound/04.mp3" ),
+		backgroundMusic = audio.loadStream( "sound/OverTheHill.mp3" ),
 		jabSound = audio.loadSound( "sound/Jab.mp3" ),
 	}	 
 	audio.play(soundTable.backgroundMusic, {channel=1, loops=-1})
@@ -23,11 +21,18 @@ function scene:create( event )
 	
 	local background = display.newImageRect("image/background.png", display.contentWidth, display.contentHeight)
 	background.x, background.y = display.contentWidth/2, display.contentHeight/2
-	local timeBackground = display.newImage("image/time/zeroText.png")
-	timeBackground.x, timeBackground.y = 635, 72
+	local zeroText = display.newImage("image/time/zeroText.png")
+	zeroText.x, zeroText.y = 600, 72
+	local zeroText2 = display.newImage("image/time/zeroText.png")
+	zeroText2.x, zeroText2.y = 698, 72
 	local timeImage = display.newImage("image/time/clock.gif")
 	timeImage:scale(0.83, 0.83)
 	timeImage.x, timeImage.y = 535, 66
+	local dash = display.newImage("image/time/dash.png")
+	dash.x, dash.y = 685, 72
+	dash.alpha = 0
+	local dash2 = display.newImage("image/time/dash.png")
+	dash2.x, dash2.y = 666, 72
 	
 	local objectGroup = display.newGroup()
 	local option = display.newImage("image/option.png")
@@ -84,26 +89,18 @@ function scene:create( event )
 		end
 		twoTooth[i].alpha = 0
  	end
-
-	--정렬
-	sceneGroup:insert(background)
-	sceneGroup:insert(cheek)
-	sceneGroup:insert(noToothGroup)
-	sceneGroup:insert(oneToothGroup)
-	sceneGroup:insert(twoToothGroup)
-	sceneGroup:insert(objectGroup)
 	
 	--점수_변수선언
 	local score= display.newText(0, 500, 210)
 	score.size = 100
 	score:setFillColor(0)
-	score.alpha = 0.5
+	score.alpha = 0
 
 	--- 타이머_변수선언
-	local second= display.newText(0, 747, 74, "font/bold.ttf")
+	local second= display.newText(00, 747, 72, "font/bold.ttf")
  	second.size = 62
  	second:setFillColor(0)
-	local minute= display.newText(1, 649, 74, "font/bold.ttf")
+	local minute= display.newText(01, 649, 72, "font/bold.ttf")
 	minute.size = 62
 	minute:setFillColor(0)
 
@@ -112,42 +109,45 @@ function scene:create( event )
 	local function counter( event )
 		second.text = second.text - 1
 		
-		--if ( endingFlag == 1 and second.text == '-1' ) then
-		--	second.alpha = 0
-		--	minute.alpha = 0
-
-		--	if( score.text ~= '성공!' ) then
-		--		score.text = '실패!'
-		--		scoreText = '실패!'
-		--		composer.setVariable("scoreText", scoreText)
-		--		composer.gotoScene('ending')
-		--	end
-		if( second.text == '-1' ) then
-			second.text = 59
-			minute.text = minute.text - 1
-			endingFlag = endingFlag + 1
+		--타이머_텍스트 배치
+		if('0' < second.text and second.text < '10' and minute.text == '0') then
+			dash.alpha = 0
+			dash2.alpha = 1
+			zeroText2.alpha = 1
+		else
+			dash.alpha = 1
+			dash2.alpha = 0
+			zeroText2.alpha = 0
+		end
+		
+		if(second.text == '1' or second.text == '2' or second.text == '3' or
+		second.text == '4' or second.text == '5' or second.text == '6' or
+		second.text == '7' or second.text == '8' or second.text == '9') then
+			zeroText2.alpha = 1
+			zeroText2.x = 720
+			second.x = 770
 		end
 
-		if( minute.text == 0 and second.text == '-1') then
-			second.alpha = 0
-   		end
+		--실패
 
-		if( score.text == '20') then
+		if ( minute.text == '0' and second.text == '0') then
+			composer.showOverlay('fail')
+			dash.alpha = 0
+			dash2.alpha = 0
+			zeroText.alpha = 0
+			zeroText2.alpha = 0
 			timeImage.alpha = 0
-			timeBackground.alpha = 0
 			minute.alpha = 0
 			second.alpha = 0
-			score.alpha = 0
-
-			score.text = '성공!'
-			scoreText = '성공!'
-			composer.setVariable("scoreText", scoreText)
-			second.text = 0
-			--변경되었습니다.--
-			audio.stop()
-			BGM = audio.loadSound("sound/05. 수화산 중심_Endless.mp3")
-			audio.play(BGM, {channel=1, loops=-1})
-			composer.gotoScene('..scenario4')
+		elseif( second.text == '-1' ) then
+			second.text = 59
+			minute.text = minute.text - 1
+		end
+		
+		-- 성공
+		if( score.text == '20') then
+			timer.pause(timeAttack)
+			composer.showOverlay('ending')
 		end
 		-- 충치 발생
 		local count = 0
@@ -166,40 +166,94 @@ function scene:create( event )
 			end
 		end
 	end
-	timeAttack = timer.performWithDelay(1000, counter, 61)
+	timeAttack = timer.performWithDelay(1000, counter, 60)
 	
-	----event 
-	--// 게임 설명, 설정창, BGM, 실패 텍스트, 아이템창
-	
-	local oneTapScore = 0;
+	----event
+
+	local function cheekTap( event )
+		audio.play(soundTable.jabSound, {channel=2, loops=0})
+		audio.setMaxVolume(1, { channel=2})
+		audio.setVolume(0.5, {channel=2}) 
+		score.text = score.text - 1;
+	end
+	cheek:addEventListener("tap", cheekTap)
+
+	local oneTapScore = 0
 	local function oneTap( event )
+		audio.play(soundTable.jabSound, {channel=2, loops=0})
+		audio.setMaxVolume(1, { channel=2})
+		audio.setVolume(0.5, {channel=2}) 
 		if(oneTapScore == 2) then
-			(event.target).alpha = 0;
-			score.text = score.text + 2;
-			oneTapScore = 0;
+			(event.target).alpha = 0
+			score.text = score.text + 2
+			oneTapScore = 0
 		else
-			oneTapScore = oneTapScore + 1;
+			oneTapScore = oneTapScore + 1
 		end
 	end
 	for i = 0, 11 do
 		oneTooth[i]:addEventListener("tap", oneTap)
 	end
 
-	local twoTapScore = 0;
+	local twoTapScore = 0
 	local function twoTap( event )
+		audio.play(soundTable.jabSound, {channel=2, loops=0})
+		audio.setMaxVolume(1, { channel=2})
+		audio.setVolume(0.5, {channel=2}) 
 		if(twoTapScore == 5) then
-			(event.target).alpha = 0;
-			score.text = score.text + 2;
+			(event.target).alpha = 0
+			score.text = score.text + 2
 			twoTapScore = 0;
 		else
-			twoTapScore = twoTapScore + 1;
+			twoTapScore = twoTapScore + 1
 		end
 	end
 	for i = 0, 11 do
 		twoTooth[i]:addEventListener("tap", twoTap)
 	end
 	
+	--시작 화면
+	local start = {
+		isModal = true,
+		effect = "fade",
+		time = 400,
+		params = {}
+	}
 
+	if composer.getVariable("start") == nil then
+		composer.showOverlay('jichunStart', start)
+	end
+	--설정
+ 	function option:tap( event )
+		timer.pause(timeAttack)
+ 		composer.setVariable( "timeAttack", timeAttack )
+		composer.showOverlay('setting')
+ 	end
+ 	option:addEventListener("tap", option)
+	
+	--아이템
+	function item:tap( event )
+		timer.pause(timeAttack)
+ 		composer.setVariable( "timeAttack", timeAttack )
+		composer.showOverlay('items')
+ 	end
+ 	item:addEventListener("tap", item)
+	
+	--정렬
+	sceneGroup:insert(background)
+	sceneGroup:insert(cheek)
+	sceneGroup:insert(noToothGroup)
+	sceneGroup:insert(oneToothGroup)
+	sceneGroup:insert(twoToothGroup)
+	sceneGroup:insert(objectGroup)
+	sceneGroup:insert(minute)
+	sceneGroup:insert(second)
+	sceneGroup:insert(zeroText)
+	sceneGroup:insert(zeroText2)
+	sceneGroup:insert(timeImage)
+	sceneGroup:insert(score)
+	sceneGroup:insert(dash)
+	sceneGroup:insert(dash2)
 end
 
 function scene:show( event )

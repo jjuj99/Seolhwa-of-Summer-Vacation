@@ -15,6 +15,10 @@ function scene:create( event )
 
 	-- 오브젝트들 배치 --
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
+	background.fill = {
+		type = "image",
+		filename = "image/background/동굴앞.png"
+	}
 
 	local set = display.newImage("image/public/설정.png")
 	set.x, set.y = display.contentWidth * 0.05, display.contentHeight * 0.09
@@ -38,7 +42,7 @@ function scene:create( event )
 	local next = display.newImage("image/dialogue/다음.png")
 	next.x, next.y = display.contentWidth * 0.925, display.contentHeight * 0.88
 
-	local highlight = display.newRect(display.contentCenterX, display.contentHeight* 0.45, 400, 300)
+	local highlight = display.newRect(display.contentCenterX, display.contentHeight* 0.4, 400, 300)
 	highlight.alpha = 0
 
 	local img = display.newRect(display.contentWidth * 0.2, display.contentHeight * 0.45, 342, 375)
@@ -125,7 +129,7 @@ function scene:create( event )
 		elseif (Data[index].type == "dialogue3") then
 			name.text = Data[index].name
 			script.text = Data[index].content
-			main.alpha = 1
+			main.alpha = 0
 			speaker.alpha = 1
 			support.alpha = 0
 			highlight.alpha = 0

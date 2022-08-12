@@ -83,6 +83,13 @@ function scene:create( event )
 	end
 
 
+	-- 점프하세요 이미지 --
+	local jumpImg = display.newImage("image/game_ascension/JUMP.png")
+	jumpImg.x, jumpImg.y = 300, 140
+
+	sceneGroup:insert(jumpImg)
+
+
 	-- 오존층 배치 --
 	local ozone = display.newImage("image/game_ascension/오존층.png")
 	ozone.x, ozone.y = display.contentWidth/2, display.contentHeight-40

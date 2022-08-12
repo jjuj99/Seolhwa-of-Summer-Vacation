@@ -33,21 +33,12 @@ function scene:create( event )
 	local time= display.newText(10, display.contentWidth/2, display.contentHeight*0.12)
 	time.size = 50
 
-	local back = display.newRoundedRect(display.contentWidth/2, display.contentHeight/2, 550,400,10)
-	back:setFillColor(0.5, 0.5, 0.2)
+	local textStart=display.newImage("image/simlang_image/천생연분_시작버튼X.png")
+	textStart.x,textStart.y=display.contentWidth/2, display.contentHeight*0.5
 
-	local textStart= display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.45, 450,340,10)
-	textStart:setFillColor(0.5, 0.4, 0.4)
-
-	local textStart2 = display.newText("천생연분", display.contentWidth/2, display.contentHeight*0.28)
-	textStart2.size = 30
-
-	local button = display.newRoundedRect(display.contentWidth/2, display.contentHeight*0.78, 450,70,10)
-	button:setFillColor(0.5, 0.4, 0.4)
-
-
- 	local text = display.newText("시작하기", display.contentWidth/2, display.contentHeight*0.78)
- 	text.size = 30
+	local button = display.newImageRect("image/simlang_image/시작버튼.png",450,90)
+	button.x,button.y=display.contentWidth/2, display.contentHeight*0.78
+	
 
 	 local startTalk = display.newText("심랑의 색, 특징, 그리고 생김새를 유심히 살펴보렴.", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
 	 startTalk:setFillColor(0)
@@ -64,12 +55,9 @@ function scene:create( event )
 
 	 startGroup:insert(nameBack)
 	 startGroup:insert(name)
-	 startGroup:insert(back)
 	 startGroup:insert(time)
 	 startGroup:insert(textStart)
-	 startGroup:insert(textStart2)
 	 startGroup:insert(button)
-	 startGroup:insert(text)
 	 startGroup:insert(startTalk)
 	 
 	-- 이미지 불러오기 ----
@@ -80,6 +68,8 @@ function scene:create( event )
 	levelText.size=30
 	levelText.alpha=0
 
+	
+	
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 
 	local cardgroup= display.newGroup()
@@ -97,22 +87,34 @@ function scene:create( event )
 	local item = display.newImage("image/public/아이템.png")
 	item.x, item.y = display.contentWidth * 0.95, display.contentHeight * 0.09
 
-	local c1 = display.newImageRect("image/simlang_image/유영.png",170,320)
-	c1.x,c1.y = display.contentWidth*0.151, display.contentHeight*0.773
+	local c1 = display.newImageRect("image/simlang_image/유영.png",170,410)
+	c1.x,c1.y = display.contentWidth*0.151, display.contentHeight*0.71
 	
-	local c2 = display.newImageRect("image/simlang_image/심랑.png",170,320)
-	c2.x,c2.y = display.contentWidth*0.8486, display.contentHeight*0.773
+	local c2 = display.newImageRect("image/simlang_image/심랑.png",170,410)
+	c2.x,c2.y = display.contentWidth*0.8486, display.contentHeight*0.71
 
-	local c3 = display.newImageRect("image/simlang_image/심랑_눈물.png",170,320)
-	c3.x,c3.y = display.contentWidth*0.8486, display.contentHeight*0.773
+	local c3 = display.newImageRect("image/simlang_image/심랑_눈물.png",170,410)
+	c3.x,c3.y = display.contentWidth*0.8486, display.contentHeight*0.71
 	c3.alpha=0
 
-	local c4 = display.newImageRect("image/character/유영당황.png",170,320)
-	c4.x,c4.y = display.contentWidth*0.151, display.contentHeight*0.773
+	local c4 = display.newImageRect("image/character/유영당황.png",170,410)
+	c4.x,c4.y = display.contentWidth*0.151, display.contentHeight*0.71
 	c4.alpha=0
 
-	local board = display.newImageRect("image/simlang_image/보드.png",680,400)
-	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.48
+	
+	local c5 = display.newImageRect("image/character/심랑_신난,완전체.png",170,410)
+	c5.x,c5.y = display.contentWidth*0.8486, display.contentHeight*0.71
+	c5.alpha=0
+
+	local c6 = display.newImageRect("image/character/유영웃는.png",170,410)
+	c6.x,c6.y = display.contentWidth*0.151, display.contentHeight*0.71
+	c6.alpha=0
+
+	local board = display.newImageRect("image/simlang_image/1단계배경.png",680,400)
+    board.x,board.y=display.contentWidth*0.5, display.contentHeight*0.48
+
+	-- local board = display.newImageRect("image/simlang_image/보드.png",680,400)
+	-- board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.48
 
 	local time= display.newText(10, display.contentWidth/2, display.contentHeight*0.12)
 	time.size = 50
@@ -124,24 +126,24 @@ function scene:create( event )
 	timerText.size=20
 
 --------
-	local card1 = display.newImageRect("image/simlang_image/그림.png",300,180)
+	local card1 = display.newImageRect("image/simlang_image/빨간색.png",300,180)
 	card1.x,card1.y= display.contentWidth*0.37, display.contentHeight*0.34
 --------
-	local card2 = display.newImageRect("image/simlang_image/그림.png",300,180)
+	local card2 = display.newImageRect("image/simlang_image/파랑.png",300,180)
 	card2.x,card2.y= display.contentWidth*0.63, display.contentHeight*0.34
 
 -------
-	local card3 = display.newImageRect("image/simlang_image/그림.png",300,180)
+	local card3 = display.newImageRect("image/simlang_image/노란색(정답).png",300,180)
 	card3.x,card3.y= display.contentWidth*0.37, display.contentHeight*0.62
 
 	
 -------
-	local card4 = display.newImageRect("image/simlang_image/그림.png",300,180)
+	local card4 = display.newImageRect("image/simlang_image/흰색.png",300,180)
 	card4.x,card4.y= display.contentWidth*0.63, display.contentHeight*0.62
 
 ------
-	local level = display.newImageRect("image/simlang_image/단계.png",670,120)
-	level.x,level.y= display.contentWidth*0.5, display.contentHeight*0.89
+	-- local level = display.newImageRect("image/simlang_image/단계.png",670,120)
+	-- level.x,level.y= display.contentWidth*0.5, display.contentHeight*0.89
 
 	------이미지 불러오기 끝 ----------------
 
@@ -185,6 +187,8 @@ function scene:create( event )
 	button1.x,button1.y=display.contentWidth*0.645,display.contentHeight*0.17
 
 
+	local dialogue = display.newImageRect("image/dialogue/대사창.png",720,160)
+	dialogue.x,dialogue.y= display.contentWidth*0.5, display.contentHeight*0.89
 	
 	settingGroup:insert(background3)
 	settingGroup:insert(replay)
@@ -264,23 +268,29 @@ function scene:create( event )
 	sceneGroup:insert(background)
 	--sceneGroup:insert(back)
 	sceneGroup:insert(face)
-	sceneGroup:insert(c1)
-	sceneGroup:insert(c2)
-	sceneGroup:insert(c3)
-	sceneGroup:insert(c4)
+	
 	sceneGroup:insert(item)
 	sceneGroup:insert(setting1)
 	sceneGroup:insert(board)
+	
 	sceneGroup:insert(card1)
 	sceneGroup:insert(card2)
 	sceneGroup:insert(card3)
 	sceneGroup:insert(card4)
-	sceneGroup:insert(level)
+	sceneGroup:insert(dialogue)
+	sceneGroup:insert(c1)
+	sceneGroup:insert(c2)
+	sceneGroup:insert(c3)
+	sceneGroup:insert(c4)
+	sceneGroup:insert(c5)
+	sceneGroup:insert(c6)
+	--sceneGroup:insert(level)	
 	sceneGroup:insert(levelText)
 	sceneGroup:insert(timeBoard)
 	sceneGroup:insert(timerText)
 	sceneGroup:insert(time)
 
+	
 
 	--레이어 정리 끝 -------------
 
@@ -340,30 +350,23 @@ function scene:create( event )
 		audio.play(explosionSound2)
 		--audio.pause(explosionSound)
 		timer.pause(timeAttack)
+		c2.alpha=0
+		c5.alpha=1
+		c1.alpha=0
+		c6.alpha=1
 		levelText.alpha=0
 		levelText2 = display.newText("찾기 성공! 1단계 통과~~", display.contentWidth*0.5, display.contentHeight*0.9,"font/경기천년바탕_Regular.ttf")
 		levelText2:setFillColor(0)
 		levelText2.size=30
 
 		sceneGroup:insert(levelText2)
-	-- local board = display.newImageRect("image/items/바탕.png",500,300)
-	-- board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.5
+	local board = display.newImage("image/simlang_image/성공.png")
+	board.x,board.y= display.contentWidth*0.5, display.contentHeight*0.5
 
-    -- local title = display.newText("게임 클리어/꽃 획득 성공!", display.contentWidth/2, display.contentHeight*0.33,"font/경기천년바탕_Regular.ttf")
- 	-- title.size = 30
-    -- title:setFillColor(0)
+    
+	
 
-    local object1 = display.newImageRect("image/get/Asset 611.png",display.contentWidth*1.1,display.contentHeight*1.1)
-	object1.x,object1.y= display.contentWidth*0.5, display.contentHeight*0.5
-	--object1.alpha=0.98
-
-	-- local button2 = display.newImageRect("image/simlang_image/엑스.png",50,50)
-	-- button2.x,button2.y=864,235
-
- 	-- sceneGroup:insert(board)
-    -- sceneGroup:insert(title)
-    sceneGroup:insert(object1)
-	--sceneGroup:insert(button2)
+ 	sceneGroup:insert(board)
 
 	card1:removeEventListener("tap", card1)
 	card2:removeEventListener("tap", card2)
@@ -371,13 +374,13 @@ function scene:create( event )
 	card4:removeEventListener("tap", card4)
 	
 		--composer.showOverlay('game_simlang.popup')
-	function object1:tap( event )
+	function  board:tap( event )
 		audio.play(explosionSound3, {duration = 1000})
 		composer.removeScene('game_simlang.level1')
 		composer.gotoScene('game_simlang.level2')
 		timer.cancel(timeAttack)
 	end
-	object1:addEventListener("tap", object1)
+	board:addEventListener("tap",  board)
 	
 	
 	

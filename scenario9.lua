@@ -15,6 +15,10 @@ function scene:create( event )
 
 	-- 오브젝트들 배치 --
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
+	background.fill = {
+		type = "image",
+		filename = "image/background/수화연못.png"
+	}
 
 	local set = display.newImage("image/public/설정.png")
 	set.x, set.y = display.contentWidth * 0.05, display.contentHeight * 0.09
@@ -38,7 +42,7 @@ function scene:create( event )
 	local next = display.newImage("image/dialogue/다음.png")
 	next.x, next.y = display.contentWidth * 0.925, display.contentHeight * 0.88
 
-	local highlight = display.newRect(display.contentCenterX, display.contentHeight* 0.45, 400, 300)
+	local highlight = display.newRect(display.contentCenterX, display.contentHeight* 0.4, 400, 300)
 	highlight.alpha = 0
 
 	-- 더미 대사, 더미 이름--

@@ -4,7 +4,7 @@
 		"name" : "유영",
 		"content" : "지천!!",
 		"main" : "image/character/유영당황.png",
-		"image" : "image/background/마을수화산없음노을.png"
+		"image" : "image/background/마을수화산없음.png"
 	},
 
 	{
@@ -25,6 +25,6 @@
 		"type" : "highlight",
 		"name" : "",
 		"content" : "",
-		"image" : "image/center/지천창.png"
+		"image" : "image/center/유영 손과 쥐고 있는 꽃들.jpg"
 	}
 ]

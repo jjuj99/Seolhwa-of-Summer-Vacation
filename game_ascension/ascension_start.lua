@@ -17,13 +17,13 @@ function scene:create( event )
 	
 
 	-- 배경 --
-	local background = display.newImage("image/game_ascension/이밍창바탕.png")
+	local background = display.newImage("image/game_ascension/승천연습_시작버튼X.png")
 	background.x, background.y = display.contentCenterX, display.contentCenterY
 
 
 	-- 시작 버튼 --
-	local startBtn = display.newImage("image/setting/2.png")
-	startBtn.x, startBtn.y = display.contentWidth * 0.5, display.contentHeight * 0.3
+	local startBtn = display.newImage("image/game_ascension/시작버튼.png")
+	startBtn.x, startBtn.y = display.contentWidth * 0.5, display.contentHeight * 0.77
 
 
 	-- 시적 버튼 클릭시 --
