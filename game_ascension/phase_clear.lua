@@ -57,6 +57,13 @@ function scene:create( event )
 	sceneGroup:insert(background)
 
 
+	-- 이밍을 클릭 이미지 --
+	local emingClickImg = display.newImage("image/game_ascension/이밍을 Click!(흰+그림자).png")
+	emingClickImg.x, emingClickImg.y = display.contentCenterX, display.contentCenterY
+
+	sceneGroup:insert(emingClickImg)
+
+
 	-- 오로라 배치 --
 	local aurora = display.newImage("image/game_ascension/phase4/오로라.png")
 	aurora.x, aurora.y = display.contentWidth/2, display.contentHeight
@@ -86,11 +93,11 @@ function scene:create( event )
 
 
 	-- player 이밍 추가 --
-	local eming = display.newImage("image/game_ascension/이밍게임_오른쪽.png")
+	local eming = display.newImage("image/game_ascension/이밍게임_기뻐하는(오른쪽).png")
 	eming.x, eming.y = display.contentCenterX, 550
 
-	local eming_outline_none = graphics.newOutline(2, "image/game_ascension/이밍게임_오른쪽.png")
-	local eming_outline_flip = graphics.newOutline(2, "image/game_ascension/이밍게임_왼쪽.png")
+	local eming_outline_none = graphics.newOutline(2, "image/game_ascension/이밍게임_기뻐하는(오른쪽).png")
+	local eming_outline_flip = graphics.newOutline(2, "image/game_ascension/이밍게임_기뻐하는(왼쪽).png")
 
 	physics.addBody(eming, {friction=1, outline=eming_outline_none})
 	eming.isFixedRotation = true 
