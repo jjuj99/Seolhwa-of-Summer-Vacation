@@ -10,17 +10,25 @@ local scene = composer.newScene()
 function scene:create( event )
 	local sceneGroup = self.view
 	
-	local backgroundMusic = audio.loadStream("sound/04.InJichun'sMouth.mp3")
-	audio.play(backgroundMusic, {channel=1, loops=-1})
+	soundTable = {
+		backgroundMusic = audio.loadStream( "sound/OverTheHill.mp3" ),
+		jabSound = audio.loadSound( "sound/Jab.mp3" ),
+	}	 
+	audio.play(soundTable.backgroundMusic, {channel=1, loops=-1})
 	--배경음악 설정
 	audio.setMaxVolume(1, { channel=1 })
 	audio.setVolume(0.5, {channel=1}) 
-	says:audio.stop()
- 		audio.dispose(BGM) 
-		dispose()
-	--local background = display.newImageRect("image/example.png", display.contentWidth, display.contentHeight)
-	--background.x, background.y = display.contentWidth/2, display.contentHeight/2
-
+	
+	local background = display.newImageRect("image/background.png", display.contentWidth, display.contentHeight)
+	background.x, background.y = display.contentWidth/2, display.contentHeight/2
+	local zeroText = display.newImage("image/time/zeroText.png")
+	zeroText.x, zeroText.y = 635, 72
+	local zeroText2 = display.newImage("image/time/zeroText.png")
+	zeroText2.x, zeroText2.y = 655, 72
+	local timeImage = display.newImage("image/time/clock.gif")
+	timeImage:scale(0.83, 0.83)
+	timeImage.x, timeImage.y = 535, 66
+	
 	local objectGroup = display.newGroup()
 	local option = display.newImage("image/option.png")
 	option.x, option.y = 65, 64
@@ -76,71 +84,144 @@ function scene:create( event )
 		end
 		twoTooth[i].alpha = 0
  	end
-
-	--정렬
-	sceneGroup:insert(noToothGroup)
-	sceneGroup:insert(oneToothGroup)
-	sceneGroup:insert(twoToothGroup)
-	sceneGroup:insert(cheek)
-	sceneGroup:insert(objectGroup)
-	--sceneGroup:insert(background)
 	
 	--점수_변수선언
 	local score= display.newText(0, 500, 210)
 	score.size = 100
 	score:setFillColor(0)
-	score.alpha = 0.5
+	score.alpha = 0
 
 	--- 타이머_변수선언
-	local second= display.newText(0, display.contentWidth*0.9, display.contentHeight*0.15)
- 	second.size = 100
- 	second:setFillColor(1, 1, 1)
- 	second.alpha = 0.5
-	local minute= display.newText(2, 1200, 210)
-	minute.size = 100
-	minute:setFillColor(1, 1, 1)
-	minute.alpha = 0.5
+	local second= display.newText(0, 747, 74, "font/bold.ttf")
+ 	second.size = 62
+ 	second:setFillColor(0)
+	local minute= display.newText(1, 649, 74, "font/bold.ttf")
+	minute.size = 62
+	minute:setFillColor(0)
 
 	--타이머_함수
 	math.randomseed(os.time())
 	local function counter( event )
 		second.text = second.text - 1
-		if( second.text == '-1' ) then
+		
+		--미완
+		if(second.text < 10 and second.text > 0) then
+			second.x, second.y = 757, 74
+			zeroText2.alpha = 1
+		else
+			second.x, second.y = 747, 74
+			zeroText2.alpha = 0
+		end
+		
+		--실패
+		if ( minute.text == '0' and second.text == '0') then
+			composer.showOverlay('fail')
+			timeBackground.alpha = 0
+			timeImage.alpha = 0
+			minute.alpha = 0
+			second.alpha = 0
+		elseif( second.text == '-1' ) then
 			second.text = 59
 			minute.text = minute.text - 1
 		end
-		if( minute.text == 0 and second.text == '-1') then
-			second.alpha = 0
-   		end
+		
+		-- 성공
+		if( score.text == '20') then
+			timer.pause(timeAttack)
+			composer.showOverlay('ending')
+		end
 		-- 충치 발생
+		local count = 0
 		if(second.text%2 ~= 0) then
-			local cavity = math.random(2)
 			local whichTooth = math.random(11)
-			if(cavity == 2) then
-				if(twoTooth[whichTooth].alpha ~= 1) then
-					oneTooth[whichTooth].alpha = 1
+			if(twoTooth[whichTooth].alpha ~= 1) then
+				oneTooth[whichTooth].alpha = 1
+			end
+		else
+			for i = 0, 11 do
+				if(count == 2 and oneTooth[i].alpha == 1) then
+					twoTooth[i].alpha = 1
+				else
+					count = count + 1;
 				end
-			else
-				twoTooth[whichTooth].alpha = 1
 			end
 		end
 	end
-	timeAttack = timer.performWithDelay(1000, counter, 121)
+	timeAttack = timer.performWithDelay(1000, counter, 60)
 	
-	----event // 클릭하면 깨끗해지기
+	----event
+
+	local function cheekTap( event )
+		audio.play(soundTable.jabSound, {channel=2, loops=0})
+		audio.setMaxVolume(1, { channel=2})
+		audio.setVolume(0.5, {channel=2}) 
+		score.text = score.text - 1;
+	end
+	cheek:addEventListener("tap", cheekTap)
+
+	local oneTapScore = 0
 	local function oneTap( event )
-		
-		dice[math.random(6)].alpha = 1
+		audio.play(soundTable.jabSound, {channel=2, loops=0})
+		audio.setMaxVolume(1, { channel=2})
+		audio.setVolume(0.5, {channel=2}) 
+		if(oneTapScore == 2) then
+			(event.target).alpha = 0
+			score.text = score.text + 2
+			oneTapScore = 0
+		else
+			oneTapScore = oneTapScore + 1
+		end
 	end
-	oneToothGroup:addEventListener("tap", tapDice)
+	for i = 0, 11 do
+		oneTooth[i]:addEventListener("tap", oneTap)
+	end
 
+	local twoTapScore = 0
 	local function twoTap( event )
-		
-		dice[math.random(6)].alpha = 1
+		audio.play(soundTable.jabSound, {channel=2, loops=0})
+		audio.setMaxVolume(1, { channel=2})
+		audio.setVolume(0.5, {channel=2}) 
+		if(twoTapScore == 5) then
+			(event.target).alpha = 0
+			score.text = score.text + 2
+			twoTapScore = 0;
+		else
+			twoTapScore = twoTapScore + 1
+		end
 	end
-	oneToothGroup:addEventListener("tap", tapDice)
-
-
+	for i = 0, 11 do
+		twoTooth[i]:addEventListener("tap", twoTap)
+	end
+	
+	--설정
+ 	function option:tap( event )
+		timer.pause(timeAttack)
+ 		composer.setVariable( "timeAttack", timeAttack )
+		composer.showOverlay('setting')
+ 	end
+ 	option:addEventListener("tap", option)
+	
+	--아이템
+	function item:tap( event )
+		timer.pause(timeAttack)
+ 		composer.setVariable( "timeAttack", timeAttack )
+		composer.showOverlay('items')
+ 	end
+ 	item:addEventListener("tap", item)
+	
+	--정렬
+	sceneGroup:insert(background)
+	sceneGroup:insert(cheek)
+	sceneGroup:insert(noToothGroup)
+	sceneGroup:insert(oneToothGroup)
+	sceneGroup:insert(twoToothGroup)
+	sceneGroup:insert(objectGroup)
+	sceneGroup:insert(minute)
+	sceneGroup:insert(second)
+	sceneGroup:insert(zeroText)
+	sceneGroup:insert(zeroText2)
+	sceneGroup:insert(timeImage)
+	sceneGroup:insert(score)
 end
 
 function scene:show( event )
