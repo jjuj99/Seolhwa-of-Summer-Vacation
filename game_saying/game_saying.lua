@@ -12,6 +12,15 @@ function scene:create( event )
    
    local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 
+   -- BGM --
+   
+   local explosionSound = audio.loadSound( "sound/A. 미니게임_Over the hill.mp3" )
+   audio.play(explosionSound, {channel=1, loops=-1})
+
+   audio.setMaxVolume(1, { channel=1 })
+   audio.setVolume(0.5, {channel=1})
+
+   
 
    -- 본격 게임화면
 
@@ -90,7 +99,6 @@ function scene:create( event )
 
 
 
-   
 
    local set = display.newImage("image/public/설정.png") -- 고정
    set.x, set.y = display.contentWidth * 0.05, display.contentHeight * 0.09
@@ -115,44 +123,45 @@ function scene:create( event )
    end
 
 
-   local yycha = display.newImage("image/public/인물1.png") --청자는 어둡게 할 필요 있음
-   yycha.x, yycha.y = display.contentWidth * 0.1, display.contentHeight * 0.95 
+   local yycha = display.newImage("image/character/유영일반.png") --청자는 어둡게 할 필요 있음
+   yycha.x, yycha.y = display.contentWidth * 0.1, display.contentHeight * 0.8
+   yycha:scale(0.45, 0.45) 
    yycha:toFront()
 
-   local chongyoung = display.newImage("image/character/총영_일반.png") --청자는 어둡게 할 필요 있음
-   chongyoung.x, chongyoung.y = display.contentWidth * 0.9, display.contentHeight * 0.95 
+
+   -- 총영 그룹화
+
+   local cy = display.newGroup()
+
+   local chongyoung = display.newImage(cy, "image/character/총영_일반.png") --청자는 어둡게 할 필요 있음
+   chongyoung.x, chongyoung.y = display.contentWidth * 0.9, display.contentHeight * 0.7 
    chongyoung:toFront()
 
-   local saying1 = display.newText(" ", display.contentWidth * 0.65, display.contentHeight * 0.265, "font/경기천년바탕_Regular.ttf")
+
+   local saying1 = display.newText("문항1", display.contentWidth * 0.65, display.contentHeight * 0.265, "font/경기천년바탕_Regular.ttf")
    saying1:setFillColor(0)
    saying1.size = 16
    saying1:toFront()
    saying1.align = "middle"
 
-   local saying2 = display.newText(" ", display.contentWidth * 0.65, display.contentHeight * 0.407, "font/경기천년바탕_Regular.ttf")
+   local saying2 = display.newText("문항2", display.contentWidth * 0.65, display.contentHeight * 0.407, "font/경기천년바탕_Regular.ttf")
    saying2:setFillColor(0)
    saying2.size = 16
    saying2:toFront()
    saying2.align = "middle"
 
-   local saying3 =  display.newText(" ", display.contentWidth * 0.65, display.contentHeight * 0.549, "font/경기천년바탕_Regular.ttf")
+   local saying3 =  display.newText("문항3", display.contentWidth * 0.65, display.contentHeight * 0.549, "font/경기천년바탕_Regular.ttf")
    saying3:setFillColor(0)
    saying3.size = 16
    saying3:toFront()
    saying3.align = "middle"
 
-   local saying4 = display.newText(" ", display.contentWidth * 0.65, display.contentHeight * 0.690, "font/경기천년바탕_Regular.ttf")
+   local saying4 = display.newText("문항4", display.contentWidth * 0.65, display.contentHeight * 0.690, "font/경기천년바탕_Regular.ttf")
    saying4:setFillColor(0)
    saying4.size = 16
    saying4:toFront()
    saying4.align = "middle"
-
-   local options =
-   { 
-      effect = "fade",
-      time = 1000
-    }
-
+ 
    --json에서 정보 읽기
    local Data = jsonParse( "json/saying_example.json" )
 
@@ -160,10 +169,17 @@ function scene:create( event )
    local score = 0
   
 
-   local comment = display.newText(" ", display.contentWidth * 0.5, display.contentHeight * 0.9, "font/경기천년바탕_Regular.ttf")
-   comment:setFillColor(0)
-   comment.size = 50
+   ----------------------------------------------------------------------------------------------------------reply
+   local Reply = jsonParse("json/saying_reply.json")
 
+  -- 코멘트
+   local commentGroup = display.newGroup()
+
+   
+   local comment = display.newText(commentGroup," ", display.contentWidth * 0.5, display.contentHeight * 0.9, "font/경기천년바탕_Regular.ttf")
+   comment.size = 30
+   comment:setFillColor(0)
+   
 
    local function nextScript( )
       --문제번호, index 각각 +1
@@ -171,19 +187,20 @@ function scene:create( event )
       index = index + 1
       queNum.text = queNum.text + 1
 
-      if(index >= #Data) then 
+      if(index > #Data) then 
+         commentBackground.alpha = 0
 
          if(score >= 7) then
             audio.stop()
             BGM = audio.loadSound("sound/10. 총영 성공 후_My home.mp3")
             audio.play(BGM, {channel=1, loops=-1})
             composer.gotoScene('scenario9', option)
-            composer.removeScene('game_saying', option)
+            composer.removeScene('game_saying.game_saying', option)
             return
 
          else
-            composer.gotoScene('fail', option)
-            composer.removeScene('game_saying')   
+            composer.gotoScene('game_saying.fail', option)
+            composer.removeScene('game_saying.game_saying')   
             return   
          end
       end
@@ -207,124 +224,190 @@ function scene:create( event )
    end
 
    local function tap(event)
-
-     --
-           nextScript()
+      nextScript()
    end
 
+   local q1 = qbg[1]
+   local q2 = qbg[2]
+   local q3 = qbg[3]
+   local q4 = qbg[4]
 
--- 미완,, (클릭 시 코멘트 부분) (점수 카운트는 됨)
+   function q1:tap()
 
-   function selectAnswer1() 
-
-      chongyoung.alpha = 0
-      myAnswer = 1
-
+      commentBackground.alpha = 0
       if(index == 1 or index == 8 or index == 10) then
-         if(myAnswer == Data[index].answer) then
-            score = score + 1
-
-            commentBackground.alpha = 0 
-
-            chongyoung = display.newImage("image/character/총영_반짝눈.png", display.contentWidth * 0.9, display.contentHeight * 0.95)
-            makeGround()
-            comment.text = "후후, 제법 똑똑한 걸?"
-
-           
-         else
-            
-            chongyoung = display.newImage("image/character/총영_화내는.png", display.contentWidth * 0.9, display.contentHeight * 0.95)
-            comment.text = "다시 한 번 생각해보자"
-         end
+         score = score + 1
+         makeGround()
+         comment.text = Reply[1].sentence
 
 
-      end
+         yycha.fill = {
+         type = "image",
+         filename = Reply[9].y_image
+      }
 
+         chongyoung.fill = {
+            type = "image",
+            filename = Reply[9].c_image
+
+         }
+
+      else
+         makeGround()
+         comment.text = Reply[5].sentence
+        
+        yycha.fill = {
+         type = "image",
+         filename = Reply[11].y_image
+      }
+
+         chongyoung.fill = {
+            type = "image",
+            filename = Reply[11].c_image
+
+         }
+
+      end   
 
       nextScript()
    end
 
-   function selectAnswer2() 
 
-      chongyoung.alpha = 0
-
+   function q2:tap() 
+      
+      commentBackground.alpha = 0
       if(index == 3 or index == 6) then
-         if(Data[index].answer == 2) then
-
-            score = score + 1
-
-            commentBackground.alpha = 0
-            makeGround()
-            chongyoung = display.newImage("image/character/총영_반짝눈.png", display.contentWidth * 0.9, display.contentHeight * 0.95)
-            
-            comment.text = "그런 의미였구나!"
-
+         score = score + 1
+         makeGround()
+         comment.text = Reply[2].sentence
          
+         yycha.fill = {
+         type = "image",
+         filename = Reply[10].y_image
+      }
 
-         elseif(Data[index].answer ~= 2) then
-            comment.text = "정말 그게 맞을까?"
-         end 
-            
+         chongyoung.fill = {
+            type = "image",
+            filename = Reply[10].c_image
+
+         }
+      else
+         makeGround()
+         comment.text = Reply[6].sentence
+
+         yycha.fill = {
+         type = "image",
+         filename = Reply[12].y_image
+      }
+
+         chongyoung.fill = {
+            type = "image",
+            filename = Reply[12].c_image
+
+         }
+
       end
+
       nextScript()
    end
 
-   function selectAnswer3() 
+   function q3:tap() 
 
-      chongyoung.alpha = 0
-
+      commentBackground.alpha = 0
       if(index == 2 or index == 4 or index == 7 or index == 9) then
-         if(Data[index].answer == 3) then
-            score = score + 1
+         score = score + 1
+         makeGround()
+         comment.text = Reply[3].sentence
 
-            commentBackground.alpha = 0
-            makeGround()
-            chongyoung = display.newImage("image/character/총영_반짝눈.png", display.contentWidth * 0.9, display.contentHeight * 0.95)
-            comment.text = "어머, 그렇구나!"
+         yycha.fill = {
+         type = "image",
+         filename = Reply[9].y_image
+      }
+
+         chongyoung.fill = {
+            type = "image",
+            filename = Reply[9].c_image
+
+         }
+
+      else
+         makeGround()
+         comment.text = Reply[7].sentence
          
+         yycha.fill = {
+         type = "image",
+         filename = Reply[11].y_image
+      }
 
-         elseif(Data[index].answer ~= 3) then
-            comment.text = "... ... 글쎄다" 
-            chongyoung = display.newImage("image/character/총영_화내는.png", display.contentWidth * 0.9, display.contentHeight * 0.95)
-  
-         end
-           
+         chongyoung.fill = {
+            type = "image",
+            filename = Reply[11].c_image
+
+         }
       end
+
       nextScript()
    end
 
-   function selectAnswer4() 
+   function q4:tap() 
 
-      chongyoung.alpha = 0
-
+      commentBackground.alpha = 0
       if(index == 5) then
-         if(Data[index].answer == 4) then
-            score = score + 1
+         score = score + 1
+         makeGround()
+         comment.text = Reply[4].sentence
+         
+         yycha.fill = {
+         type = "image",
+         filename = Reply[10].y_image
+      }
 
-            commentBackground.alpha = 0
-            makeGround(options)
-            chongyoung = display.newImage("image/character/총영_반짝눈.png", display.contentWidth * 0.9, display.contentHeight * 0.95)
-            comment.text = "새로운 걸 알았네"
-         end
+         chongyoung.fill = {
+            type = "image",
+            filename = Reply[10].c_image
 
-         if(Data[index].answer ~= 4) then
-            comment.text = "음.. 어린이는 역시 어린인가" 
-         end 
-            
+         }
+
+      else
+         makeGround()
+         comment.text = Reply[8].sentence
+         
+         yycha.fill = {
+         type = "image",
+         filename = Reply[12].y_image
+      }
+
+         chongyoung.fill = {
+            type = "image",
+            filename = Reply[12].c_image
+
+         }
+
       end
-      nextScript()
+     
+     nextScript()
    end
    
 
 
-   qbg[1]:addEventListener("tap", selectAnswer1)
-   qbg[2]:addEventListener("tap", selectAnswer2)
-   qbg[3]:addEventListener("tap", selectAnswer3)
-   qbg[4]:addEventListener("tap", selectAnswer4)
+   qbg[1]:addEventListener("tap", q1)
+   qbg[2]:addEventListener("tap", q2)
+   qbg[3]:addEventListener("tap", q3)
+   qbg[4]:addEventListener("tap", q4)
 
    nextScript()
 
+   -- 시작화면
 
+   local start = {
+      isModal = true,
+      effect = "fade",
+      time = 400,
+      params = {}
+   }
+   if composer.getVariable("start") == nil then -- 처음부터 시작 --
+      composer.showOverlay('game_saying.saying_start', start)
+   end
    --layer 정리--
 
    sceneGroup:insert(background) 
@@ -347,12 +430,14 @@ function scene:create( event )
    sceneGroup:insert(saying3)
    sceneGroup:insert(saying4)
 
+   sceneGroup:insert(commentGroup)
+
    --sceneGroup:insert(score)
    sceneGroup:insert(set)
    sceneGroup:insert(guide)
    sceneGroup:insert(item)
    sceneGroup:insert(yycha)
-   sceneGroup:insert(chongyoung)
+   sceneGroup:insert(cy)
    
 
 ----------------------------------------------------setting 기본 설정 
@@ -362,7 +447,7 @@ function scene:create( event )
       local option = {
             isModal = true,
             effect = "fade",
-            tiem = 400,
+            time = 400,
             params = {}
       }
       composer.showOverlay('setting', option)
@@ -375,10 +460,10 @@ function scene:create( event )
       local option = {
             isModal = true,
             effect = "fade",
-            tiem = 400,
+            time = 400,
             params = {}
       }
-      composer.showOverlay('items', option)
+      composer.showOverlay('items1', option)
    end
    item:addEventListener("tap", item)
 
@@ -388,14 +473,15 @@ function scene:create( event )
       local option = {
             isModal = true,
             effect = "fade",
-            tiem = 400,
+            time = 400,
             params = {}
       }
-      composer.showOverlay('info', option)
+      composer.showOverlay('game_saying.saying_info', option)
    end
    guide:addEventListener("tap", guide)
 --
 end
+
 
 function scene:show( event )
    local sceneGroup = self.view

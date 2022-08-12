@@ -1,30 +1,42 @@
 -----------------------------------------------------------------------------------------
 --
--- fail.lua
+-- saying_info.lua
+-- 총영 속담 게임 소개(지천 얼굴 클릭시)
 --
 -----------------------------------------------------------------------------------------
+
 local composer = require( "composer" )
 local scene = composer.newScene()
 
-
 function scene:create( event )
 	local sceneGroup = self.view
+
+	-- 효과음 설정
+	click = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
 	
-	local background = display.newImage("image/scoreResult/실패_다시하기창X.png")
-	background.x, background.y = display.contentCenterX, display.contentCenterY
 
-	local replay = display.newImage("image/scoreResult/다시하기.png")
-	replay.x, replay.y = display.contentWidth * 0.5, display.contentHeight * 0.64
+	-- X 버튼 --
+	local x = display.newImage("image/public/X.png")
+	x.x, x.y = display.contentWidth * 0.645, display.contentHeight * 0.2
 
 
-	function replay:tap( event )
-        composer.removeScene('game_saying.fail')
-		composer.gotoScene('game_saying.game_saying') 
- 	end
- 	replay:addEventListener("tap", replay)
+	-- 게임 설명 이미지 --
+	local info = display.newImage("image/saying_game/속뜻의 지혜 설명.png")
+	info.x, info.y = display.contentWidth * 0.5, display.contentHeight * 0.5
 
-    sceneGroup:insert(background)
-    sceneGroup:insert(replay)
+
+	-- X 누르면 창 닫는 함수 --
+	function x:tap( event )
+		audio.play(click)
+		composer.hideOverlay('fade', 400)
+	end
+	x:addEventListener("tap", x)
+
+
+	-- 레이어 정리 --
+	sceneGroup:insert(info)
+	sceneGroup:insert(x)
+
 end
 
 function scene:show( event )
