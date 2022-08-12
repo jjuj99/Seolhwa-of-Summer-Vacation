@@ -29,6 +29,7 @@ end
 
 -- event listeners for tab buttons:
 local function onFirstView( event )
+	-- composer.gotoScene( "start" )
 	composer.gotoScene( "start" )
 end
 

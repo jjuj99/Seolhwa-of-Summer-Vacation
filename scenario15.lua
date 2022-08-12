@@ -42,7 +42,7 @@ function scene:create( event )
 	local next = display.newImage("image/dialogue/다음.png")
 	next.x, next.y = display.contentWidth * 0.925, display.contentHeight * 0.88
 
-	local highlight = display.newRect(display.contentCenterX, display.contentHeight* 0.45, 400, 300)
+	local highlight = display.newRect(display.contentCenterX, display.contentHeight* 0.4, 400, 300)
 	highlight.alpha = 0
 
 	-- 더미 대사, 더미 이름--
