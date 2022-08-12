@@ -65,7 +65,7 @@ function scene:create( event )
 
 
 	-- 오로라 배치 --
-	local aurora = display.newImage("image/game_ascension/phase4/오로라.png")
+	local aurora = display.newImage("image/game_ascension/오로라.png")
 	aurora.x, aurora.y = display.contentWidth/2, display.contentHeight
 
 	physics.addBody(aurora, "static", {friction=1})
