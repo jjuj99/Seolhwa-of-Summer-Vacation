@@ -24,8 +24,16 @@ function scene:create( event )
 
 
 	-- 배경 --
-	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
-	background:setFillColor(1)
+	-- local background = display.newImage("image/game_ascension/background/하늘2.jpg")
+	-- background.x, background.y = display.contentCenterX, display.contentCenterY
+
+	-- background:scale(0.5, 0.5)
+
+	-- local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
+	-- background:setFillColor(0.5)
+
+	local background = display.newImageRect("image/game_ascension/background/하늘2.jpg", display.contentWidth, display.contentHeight)
+	background.x, background.y = display.contentCenterX, display.contentCenterY
 
 	sceneGroup:insert(background)
 

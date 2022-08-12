@@ -20,8 +20,8 @@ function scene:create( event )
 
 
 	-- 배경 --
-	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
-	background:setFillColor(1)
+	local background = display.newImage("image/game_ascension/background/하늘3.jpg")
+	background.x, background.y = display.contentCenterX, display.contentCenterY
 
 	sceneGroup:insert(background)
 
