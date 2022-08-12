@@ -20,13 +20,8 @@ function scene:create( event )
 
 
 	-- 배경 --
-	-- local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
-	-- background:setFillColor(1)
-
 	local background = display.newImageRect("image/game_ascension/background/하늘4.jpg", display.contentWidth, display.contentHeight)
 	background.x, background.y = display.contentCenterX, display.contentCenterY
-
-	sceneGroup:insert(background)
 
 
 	-- 기본 오브젝트 배치 --
@@ -71,32 +66,36 @@ function scene:create( event )
 	wall[4] = display.newRect(background.x, background.height, background.width, 30)
 	wall[4].name = "down"
 
-	local cloud_outline_none = graphics.newOutline(1, "image/game_ascension/성층구름.png")
+	
+	-- 구름, 벽 물리엔진, 배경레이어 추가 --
+	for i = 1, #wall do
+		physics.addBody(wall[i], "static")
+		sceneGroup:insert(wall[i])
+	end
+
+	sceneGroup:insert(background)
+
+	local cloud_outline_none = graphics.newOutline(1, "image/game_ascension/대기구름.png")
 
 	for i = 1, #cloud do 
 		physics.addBody(cloud[i], "static", {friction=1, outline=cloud_outline_none})
 		sceneGroup:insert(cloud[i])
 	end
 
-	for i = 1, #wall do
-		physics.addBody(wall[i], "static")
-		sceneGroup:insert(wall[i])
-	end
-
 
 	local arrow = {}
 
-	arrow[1] = display.newImage("image/game_ascension/arrow/왼쪽버튼1.png")
+	arrow[1] = display.newImage("image/game_ascension/arrow/왼쪽버튼2.png")
 	arrow[1]:scale(0.75, 0.75)
 	arrow[1].x, arrow[1].y = 1050, 630
 	arrow[1].name = "left"
 
-	arrow[2] = display.newImage("image/game_ascension/arrow/점프1.png")
+	arrow[2] = display.newImage("image/game_ascension/arrow/점프2.png")
 	arrow[2]:scale(0.75, 0.75)
 	arrow[2].x, arrow[2].y = 100, 630
 	arrow[2].name = "jump"
 
-	arrow[3] = display.newImage("image/game_ascension/arrow/오른쪽버튼1.png")
+	arrow[3] = display.newImage("image/game_ascension/arrow/오른쪽버튼2.png")
 	arrow[3]:scale(0.75, 0.75)
 	arrow[3].x, arrow[3].y = 1200, 630
 	arrow[3].name = "right"
