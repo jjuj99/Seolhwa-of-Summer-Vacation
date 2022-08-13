@@ -13,8 +13,8 @@ function scene:create( event )
 
 
 	function replay:tap( event )
-        composer.removeScene('game')
-		composer.gotoScene('game') 
+        composer.removeScene('game_jichun.game')
+		composer.gotoScene('game_jichun.game') 
  	end
  	replay:addEventListener("tap", replay)
 

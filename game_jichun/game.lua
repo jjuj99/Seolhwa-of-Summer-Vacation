@@ -11,7 +11,7 @@ function scene:create( event )
 	local sceneGroup = self.view
 	
 	soundTable = {
-		backgroundMusic = audio.loadStream( "sound/OverTheHill.mp3" ),
+		backgroundMusic = audio.loadStream( "sound/A. 미니게임_Over the hill.mp3" ),
 		jabSound = audio.loadSound( "sound/Jab.mp3" ),
 	}	 
 	audio.play(soundTable.backgroundMusic, {channel=1, loops=-1})
@@ -145,7 +145,9 @@ function scene:create( event )
 		end
 		
 		-- 성공
-		if( score.text == '20') then
+		if( score.text == '20' or score.text == '21') then
+			twoToothGroup.alpha = 0
+			oneToothGroup.alpha = 0
 			timer.pause(timeAttack)
 			composer.showOverlay('game_jichun.ending')
 		end
@@ -227,7 +229,7 @@ function scene:create( event )
  	function option:tap( event )
 		timer.pause(timeAttack)
  		composer.setVariable( "timeAttack", timeAttack )
-		composer.showOverlay('setting')
+		composer.showOverlay('game_jichun.setting')
  	end
  	option:addEventListener("tap", option)
 	
@@ -235,7 +237,7 @@ function scene:create( event )
 	function item:tap( event )
 		timer.pause(timeAttack)
  		composer.setVariable( "timeAttack", timeAttack )
-		composer.showOverlay('items')
+		composer.showOverlay('game_jichun.items')
  	end
  	item:addEventListener("tap", item)
 	

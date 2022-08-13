@@ -13,6 +13,15 @@ function scene:create( event )
 	local background = display.newImage("image/scoreResult/성공.png")
 	background.x, background.y = display.contentCenterX, display.contentCenterY
 
+	--변경되었습니다.--
+	function background:tap( event )
+		audio.stop()
+		BGM = audio.loadSound("sound/05. 수화산 중심_Endless.mp3")
+		audio.play(BGM, {channel=1, loops=-1})
+		composer.gotoScene('..scenario4')
+	end
+	background:addEventListener("tap", background)
+	
 	sceneGroup:insert(background)
 end
 

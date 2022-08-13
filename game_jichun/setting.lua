@@ -61,8 +61,8 @@ function scene:create( event )
 
 
 	function replay:tap( event )
-        composer.removeScene('game')
- 		composer.gotoScene('game', 'fade', 400)
+        composer.removeScene('game_jichun.game')
+ 		composer.gotoScene('game_jichun.game', 'fade', 400)
  	end
  	replay:addEventListener("tap", replay)
 
