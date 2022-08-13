@@ -66,9 +66,12 @@ function scene:create( event )
 
 	-- 오로라 배치 --
 	local aurora = display.newImage("image/game_ascension/오로라.png")
-	aurora.x, aurora.y = display.contentWidth/2, display.contentHeight
+	aurora.x, aurora.y = display.contentWidth/2, display.contentCenterY + 315
 
-	physics.addBody(aurora, "static", {friction=1})
+	local aurora_outline_none = graphics.newOutline(1, "image/game_ascension/오로라.png")
+
+
+	physics.addBody(aurora, "static", {friction=1, outline=aurora_outline_none})
 	sceneGroup:insert(aurora)
 
 
