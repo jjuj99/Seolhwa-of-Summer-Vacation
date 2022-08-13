@@ -4,7 +4,7 @@
 		"name" : "이밍",
 		"content" : "하늘에 고운 비단들이 흘러다닌다밍….",
 		"main" : "image/character/이밍_반짝눈.png",
-		"image" : "image/center/오로라.jpg"
+		"image" : "image/center/설정창.png"
 	},
 
 	{
@@ -33,14 +33,14 @@
 		"type" : "highlight",
 		"name" : "",
 		"content" : "",
-		"image" : "image/center/입에비늘.png"
+		"image" : "image/center/설정창.png"
 	},
 
 	{
 		"type" : "highlight",
 		"name" : "",
 		"content" : "",
-		"image" : "image/center/백리향.jpg"
+		"image" : "image/center/아이템창.png"
 	},
 
 	{

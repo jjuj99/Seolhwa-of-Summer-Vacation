@@ -1,0 +1,44 @@
+[
+	{
+		"type" : "background1",
+		"image" : "image/background/연두.png",
+		"name" : "??",
+		"content" : "크르릉…"
+	},
+
+	{
+		"type" : "dialogue1",
+		"name" : "유영",
+		"content" : "무슨 소리지?",
+		"main" : "image/character/유영궁금.png"
+	},
+
+	{
+		"type" : "inner",
+		"name" : "유영",
+		"main" : "image/character/유영궁금.png",
+		"content" : "한가운데만 어두워."
+	},
+
+	{
+		"type" : "background2",
+		"name" : "유영",
+		"main" : "image/character/유영궁금.png",
+		"content" : "이…빨…? 군데 군데 썩어 있다!",
+		"image" : "image/background/보라.png"
+	},
+
+	{
+		"type" : "dialogue1",
+		"name" : "??",
+		"content" : "크르르릉!!!!",
+		"main" : "image/character/유영궁금.png"
+	},
+
+	{
+		"type" : "dialogue1",
+		"name" : "유영",
+		"main" : "image/character/유영알아낸.png",
+		"content" : "썩은 이빨이 아픈가봐!",
+	}
+]

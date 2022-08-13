@@ -1,0 +1,29 @@
+[
+	{
+		"type" : "dialogue3",
+		"name" : "지천",
+		"content" : "이제 모아온 꽃들을 병에 넣어보렴.",
+		"main" : "image/character/지천일반.png"
+	},
+
+	{
+		"type" : "highlight",
+		"name" : "",
+		"content" : "",
+		"image" : "image/center/빈꽃병들.jpg"
+	},
+
+	{
+		"type" : "highlight",
+		"name" : "",
+		"content" : "",
+		"image" : "image/center/꽃병3+빈꽃병.jpg"
+	},
+
+	{
+		"type" : "dialogue1",
+		"name" : "유영",
+		"content" : "어? 하나가 비어요. 남은 영물이 또 있나?",
+		"main" : "image/character/유영궁금.png"
+	}
+]
