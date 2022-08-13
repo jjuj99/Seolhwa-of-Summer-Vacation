@@ -1,32 +1,40 @@
 -----------------------------------------------------------------------------------------
 --
--- fail.lua
+-- saying_ending.lua
 --
 -----------------------------------------------------------------------------------------
+
 local composer = require( "composer" )
 local scene = composer.newScene()
 
 
 function scene:create( event )
-	local sceneGroup = self.view
+
 	
-	local background = display.newImage("image/scoreResult/실패_다시하기창X.png")
+	local sceneGroup = self.view
+
+	click = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
+	local background = display.newImage("image/scoreResult/성공.png")
 	background.x, background.y = display.contentCenterX, display.contentCenterY
 
-	local replay = display.newImage("image/scoreResult/다시하기.png")
-	replay.x, replay.y = display.contentWidth * 0.5, display.contentHeight * 0.64
-
-
-	function replay:tap( event )
-        composer.removeScene('game_saying.game_saying')
-		composer.gotoScene('game_saying.game_saying') 
-
- 	end
- 	replay:addEventListener("tap", replay)
-
-    sceneGroup:insert(background)
-    sceneGroup:insert(replay)
+	--변경되었습니다.--
+	function background:tap( event )
+		audio.play(click)
+		--audio.stop()
+		BGM = audio.loadSound("sound/10. 총영 성공 후_My home.mp3")
+		audio.play(BGM, {channel=1, loops=-1})
+		--composer.gotoScene('..scenario9')
+		composer.removeScene('game_saying.saying_start')
+		composer.gotoScene('..scenario9')
+	end
+	background:addEventListener("tap", background)
+	
+	sceneGroup:insert(background)
 end
+	
+
+
+
 
 function scene:show( event )
 	local sceneGroup = self.view
