@@ -221,7 +221,7 @@ function scene:create( event )
 	}
 
 	if composer.getVariable("start") == nil then
-		composer.showOverlay('jichunStart', start)
+		composer.showOverlay('start', start)
 	end
 	--설정
  	function option:tap( event )
