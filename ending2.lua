@@ -15,13 +15,16 @@ function scene:create( event )
 	click = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
 
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
-	background:setFillColor(0)
+	background.fill = {
+		type = "image",
+		filename = "image/background/엔딩화면.jpg"
+	}
 
-	local replay = display.newImage("image/setting/다시하기.png")
-	replay.x, replay.y = display.contentWidth * 0.5, display.contentHeight * 0.4
+	local replay = display.newImage("image/end/처음으로 돌아가기_클릭전.png")
+	replay.x, replay.y = display.contentWidth * 0.25, display.contentHeight * 0.2
 
-	local out = display.newImage("image/setting/나가기.png")
-	out.x, out.y = display.contentWidth * 0.5, display.contentHeight * 0.6
+	local out = display.newImage("image/end/끝내기_클릭전.png")
+	out.x, out.y = display.contentWidth * 0.25, display.contentHeight * 0.35
 
 	local options =
 	{ 
