@@ -23,7 +23,7 @@ function scene:create( event )
 	local set = display.newImage("image/public/설정.png")
 	set.x, set.y = display.contentWidth * 0.05, display.contentHeight * 0.09
 
-	local guide = display.newImage("image/public/지천.png")
+	local guide = display.newImage("image/public/지천얼굴.png")
 	guide.x, guide.y = display.contentWidth * 0.853, display.contentHeight * 0.09
 
 	local item = display.newImage("image/public/아이템.png")
@@ -47,6 +47,9 @@ function scene:create( event )
 
 	local img = display.newRect(display.contentWidth * 0.2, display.contentHeight * 0.45, 342, 375)
 	img.alpha = 0
+
+	local ex = display.newRect(display.contentWidth * 0.5, display.contentHeight * 0.45, 490, 600)
+	ex.alpha = 0
 
 	-- 더미 대사, 더미 이름--
 
@@ -187,9 +190,14 @@ function scene:create( event )
 			support.alpha = 0
 			highlight.alpha = 1
 			script:setFillColor(0)
-			highlight.fill = {
+			ex.alpha = 1
+			ex.fill = {
 				type = "image",
 				filename = Data[index].image
+			}
+			background.fill = {
+				type = "image",
+				filename = "image/background/검정.png"
 			}
 		end
 	end
@@ -219,6 +227,7 @@ function scene:create( event )
 	sceneGroup:insert(name)
 	sceneGroup:insert(script)
 	sceneGroup:insert(next)
+	sceneGroup:insert(ex)
 
 	--설정창--
 

@@ -54,11 +54,11 @@
 		"type" : "black",
 		"name" : "",
 		"content" : "",
-		"image" : "image/get/Asset 613.png"
+		"image" : "image/get/백리향 획득창.png"
 	},
 
 	{
 		"type" : "getting",
-		"image" : "image/center/설정창.png"
+		"image" : "image/get/백리향 설명.png"
 	}
 ]
