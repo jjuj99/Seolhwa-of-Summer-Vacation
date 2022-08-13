@@ -40,7 +40,7 @@ function scene:create( event )
 	local set = display.newImage("image/public/설정.png")
 	set.x, set.y = display.contentWidth * 0.05, display.contentHeight * 0.09
 
-	local guide = display.newImage("image/public/지천.png")
+	local guide = display.newImage("image/public/지천얼굴.png")
 	guide.x, guide.y = display.contentWidth * 0.853, display.contentHeight * 0.09
 
 	local item = display.newImage("image/public/아이템.png")
