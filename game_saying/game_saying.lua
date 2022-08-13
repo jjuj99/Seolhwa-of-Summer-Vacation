@@ -10,17 +10,19 @@ local scene = composer.newScene()
 function scene:create( event )
    local sceneGroup = self.view
    
-   local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
+   local background = display.newImage("image/background/수화연못.png", 
+      display.contentCenterX, display.contentCenterY,
+      display.contentWidth, display.contentHeight)
 
    -- BGM --
    
-   local explosionSound = audio.loadSound( "sound/A. 미니게임_Over the hill.mp3" )
-   audio.play(explosionSound, {channel=1, loops=-1})
+   local minibgm = audio.loadSound( "sound/A. 미니게임_Over the hill.mp3" )
+   audio.play(minibgm, {channel=1, loops=-1})
 
    audio.setMaxVolume(1, { channel=1 })
    audio.setVolume(0.5, {channel=1})
 
-   
+   local qbgm = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
 
    -- 본격 게임화면
 
@@ -78,6 +80,7 @@ function scene:create( event )
    exCtn:toFront()
    exCtn.align = "middle"
 
+   -- 문항
    local qbg = {}
 
  
@@ -99,30 +102,57 @@ function scene:create( event )
 
 
 
-
+   -- 설정, 소개, 획득창 
    local set = display.newImage("image/public/설정.png") -- 고정
    set.x, set.y = display.contentWidth * 0.05, display.contentHeight * 0.09
 
-   local guide = display.newImage("image/public/지천.png") -- 고정
+   local guide = display.newImage("image/public/지천얼굴.png") -- 고정
    guide.x, guide.y = display.contentWidth * 0.853, display.contentHeight * 0.09
 
    local item = display.newImage("image/public/아이템.png") -- 고정
    item.x, item.y = display.contentWidth * 0.95, display.contentHeight * 0.09
 
------------------------------------------------------------------------------------------------일부러 유영, 차영 앞에(백그라운드)
+-----------------------------------------------------------------------------------------------
    
+   --[[
    local commentBackground = display.newRect(display.contentCenterX, display.contentCenterY + 300, display.contentWidth, 200)
    commentBackground:setFillColor(0.2)
    commentBackground.alpha = 0
+   ]]
+
+   -- 화자, 대사 창
+
+   local replyBackground = display.newGroup()
+
+   local lines = display.newImage(replyBackground, "image/dialogue/대사창.png")
+   lines.x, lines.y = display.contentWidth * 0.5, display.contentHeight * 0.93
+   lines.alpha = 0
+   
+   local speaker = display.newImage(replyBackground, "image/dialogue/이름.png")
+   speaker.x, speaker.y = display.contentWidth * 0.24, display.contentHeight * 0.8
+   speaker.alpha = 0
+   speaker:toFront()
+
+   local speakerIs = display.newText("총영", display.contentWidth * 0.24, display.contentHeight * 0.8, "font/경기천년바탕_Regular.ttf")
+   speakerIs.size = 30
+   speakerIs:setFillColor(0)
+   speakerIs:toFront()
+   speakerIs.alpha = 0
+   
    
 
    function makeGround()
-      commentBackground = display.newRect(display.contentCenterX, display.contentCenterY + 300, display.contentWidth, 200)
-      commentBackground:setFillColor(0.2)
-      commentBackground.alpha = 0.3
+      --
+
+      speaker = display.newImage(replyBackground, "image/dialogue/이름.png")
+      speaker.x, speaker.y = display.contentWidth * 0.19, display.contentHeight * 0.8
+
+      lines = display.newImage(replyBackground, "image/dialogue/대사창.png")
+      lines.x, lines.y = display.contentWidth * 0.5, display.contentHeight * 0.93
+      
+
    end
-
-
+   
    local yycha = display.newImage("image/character/유영일반.png") --청자는 어둡게 할 필요 있음
    yycha.x, yycha.y = display.contentWidth * 0.1, display.contentHeight * 0.8
    yycha:scale(0.45, 0.45) 
@@ -174,7 +204,7 @@ function scene:create( event )
 
   -- 코멘트
    local commentGroup = display.newGroup()
-
+   commentGroup:toFront()
    
    local comment = display.newText(commentGroup," ", display.contentWidth * 0.5, display.contentHeight * 0.9, "font/경기천년바탕_Regular.ttf")
    comment.size = 30
@@ -184,25 +214,38 @@ function scene:create( event )
    local function nextScript( )
       --문제번호, index 각각 +1
       
-      index = index + 1
+      index = index + 1 
       queNum.text = queNum.text + 1
 
-      if(index > #Data) then 
-         commentBackground.alpha = 0
+      if(index == 2) then
+         makeGround()
+      end
 
+      speaker.alpha = 0
+      lines.alpha = 0
+      --speakerIs.alpha = 0
+      --replyBackground.alpha = 0
+
+
+
+      if(index > #Data) then 
          if(score >= 7) then
             audio.stop()
-            BGM = audio.loadSound("sound/10. 총영 성공 후_My home.mp3")
-            audio.play(BGM, {channel=1, loops=-1})
-            composer.gotoScene('scenario9', option)
-            composer.removeScene('game_saying.game_saying', option)
-            return
+            --composer.gotoScene('game_saying.saying_ending')
+            
+            composer.showOverlay('game_saying.saying_ending')
+            
+
+            --composer.removeScene('game_saying.game_saying', option)
+           return
 
          else
-            composer.gotoScene('game_saying.fail', option)
-            composer.removeScene('game_saying.game_saying')   
-            return   
+            --composer.gotoScene('game_saying.fail', option)
+            composer.showOverlay('game_saying.fail')
+            --composer.removeScene('game_saying.game_saying')   
+            return
          end
+
       end
 
 
@@ -218,12 +261,17 @@ function scene:create( event )
   
       end
       
-      --
+      -- composer.showOverlay('game_saying.saying_ending')
 
    
    end
 
    local function tap(event)
+     
+      --speaker.alpha = 0
+      --lines.alpha = 
+      --speakerIs.alpha = 0
+      replyBackground.alpha = 0
       nextScript()
    end
 
@@ -234,10 +282,14 @@ function scene:create( event )
 
    function q1:tap()
 
-      commentBackground.alpha = 0
+      audio.play(qbgm)
+      speaker.alpha = 1
+      lines.alpha = 1
+      speakerIs.alpha = 1 
+
       if(index == 1 or index == 8 or index == 10) then
          score = score + 1
-         makeGround()
+         
          comment.text = Reply[1].sentence
 
 
@@ -253,7 +305,7 @@ function scene:create( event )
          }
 
       else
-         makeGround()
+         
          comment.text = Reply[5].sentence
         
         yycha.fill = {
@@ -275,10 +327,14 @@ function scene:create( event )
 
    function q2:tap() 
       
-      commentBackground.alpha = 0
+      audio.play(qbgm)
+      speaker.alpha = 1
+      lines.alpha = 1
+      speakerIs.alpha = 1
+
       if(index == 3 or index == 6) then
          score = score + 1
-         makeGround()
+         
          comment.text = Reply[2].sentence
          
          yycha.fill = {
@@ -292,7 +348,7 @@ function scene:create( event )
 
          }
       else
-         makeGround()
+         
          comment.text = Reply[6].sentence
 
          yycha.fill = {
@@ -313,10 +369,14 @@ function scene:create( event )
 
    function q3:tap() 
 
-      commentBackground.alpha = 0
+      audio.play(qbgm)
+      speaker.alpha = 1
+      lines.alpha = 1
+      speakerIs.alpha = 1
+
       if(index == 2 or index == 4 or index == 7 or index == 9) then
          score = score + 1
-         makeGround()
+         
          comment.text = Reply[3].sentence
 
          yycha.fill = {
@@ -331,7 +391,7 @@ function scene:create( event )
          }
 
       else
-         makeGround()
+         
          comment.text = Reply[7].sentence
          
          yycha.fill = {
@@ -351,10 +411,14 @@ function scene:create( event )
 
    function q4:tap() 
 
-      commentBackground.alpha = 0
+      audio.play(qbgm)
+      speaker.alpha = 1
+      lines.alpha = 1
+      speakerIs.alpha = 1
+
       if(index == 5) then
          score = score + 1
-         makeGround()
+         
          comment.text = Reply[4].sentence
          
          yycha.fill = {
@@ -369,7 +433,7 @@ function scene:create( event )
          }
 
       else
-         makeGround()
+         
          comment.text = Reply[8].sentence
          
          yycha.fill = {
@@ -389,7 +453,6 @@ function scene:create( event )
    end
    
 
-
    qbg[1]:addEventListener("tap", q1)
    qbg[2]:addEventListener("tap", q2)
    qbg[3]:addEventListener("tap", q3)
@@ -408,6 +471,21 @@ function scene:create( event )
    if composer.getVariable("start") == nil then -- 처음부터 시작 --
       composer.showOverlay('game_saying.saying_start', start)
    end
+
+   --[[
+      local ending = {
+          isModal = true,
+          effect = "fade",
+          time = 400,
+          params = {}
+      }
+
+      composer.showOverlay('game_saying.saying_ending', ending)
+      ]]
+   ---------------------------------------------------------------------------------------------end
+   
+   --sceneGroup:insert(background)
+
    --layer 정리--
 
    sceneGroup:insert(background) 
@@ -430,15 +508,18 @@ function scene:create( event )
    sceneGroup:insert(saying3)
    sceneGroup:insert(saying4)
 
+   sceneGroup:insert(replyBackground)
+   --sceneGroup:insert(speakerIs)
    sceneGroup:insert(commentGroup)
-
-   --sceneGroup:insert(score)
+   
+   
    sceneGroup:insert(set)
    sceneGroup:insert(guide)
    sceneGroup:insert(item)
    sceneGroup:insert(yycha)
    sceneGroup:insert(cy)
    
+   sceneGroup:insert(speakerIs)
 
 ----------------------------------------------------setting 기본 설정 
 
@@ -450,7 +531,7 @@ function scene:create( event )
             time = 400,
             params = {}
       }
-      composer.showOverlay('setting', option)
+      composer.showOverlay('game_saying.saying_setting', option)
    end
    set:addEventListener("tap", set)
 
