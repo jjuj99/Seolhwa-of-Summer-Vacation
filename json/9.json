@@ -31,11 +31,11 @@
 		"type" : "black",
 		"name" : "",
 		"content" : "",
-		"image" : "image/get/Asset 612.png",
+		"image" : "image/get/금사철 획득창.png",
 	},
 
 	{
 		"type" : "getting",
-		"image" : "image/center/설정창.png"
+		"image" : "image/get/금사철 설명.png"
 	}
 ]

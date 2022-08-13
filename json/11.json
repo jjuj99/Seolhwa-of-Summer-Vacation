@@ -48,7 +48,7 @@
 		"type" : "highlight",
 		"name" : "",
 		"content" : "",
-		"image" : "image/center/진달래.png"
+		"image" : "image/center/진달래.jpg"
 	},
 	
 	{
@@ -63,12 +63,12 @@
 		"type" : "black",
 		"name" : "",
 		"content" : "",
-		"image" : "image/get/Asset 611.png"
+		"image" : "image/get/진달래 획득창.png"
 	},
 
 	{
 		"type" : "getting",
-		"image" : "image/center/설정창.png"
+		"image" : "image/get/진달래 설명.png"
 	},
 
 	{
