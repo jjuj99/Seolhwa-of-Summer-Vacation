@@ -10,12 +10,12 @@
 		"type" : "black",
 		"name" : "",
 		"content" : "",
-		"image" : "image/get/물망초 획득창.png",
+		"image" : "image/background/검정.png",
+		"highlight" : "image/center/아이템창.png"
 	},
 
 	{
 		"type" : "getting",
-		"img" : "image/background/검정.png",
 		"image" : "image/center/설정창.png"
 	}
 ]

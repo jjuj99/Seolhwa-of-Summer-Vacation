@@ -1,0 +1,49 @@
+[
+	{
+		"type" : "dialogue1",
+		"main" : "image/character/유영일반.png",
+		"name" : "할머니",
+		"content" : "…산 주변엔 가지 말고 늦기 전에 돌아오라~ 오늘 밥 먹고 서울로 가야지~"
+	},
+
+	{
+		"type" : "dialogue1",
+		"main" : "image/character/유영일반.png",
+		"name" : "유영",
+		"content" : "네에!"
+	},
+
+	{
+		"type" : "narration",
+		"name" : "",
+		"content" : "10분 후"
+	},
+
+	{
+		"type" : "dialogue1",
+		"main" : "image/character/유영궁금.png",
+		"name" : "유영",
+		"content" : "왜 잠자리가 한 마리도 없지??"
+	},
+
+	{
+		"type" : "highlight",
+		"main" : "image/character/유영웃는.png",
+		"name" : "유영",
+		"content" : "우와! 예쁜 나비다!",
+		"highlight" : "image/center/수화산있음 푸른나비.jpg"
+	},
+
+	{
+		"type" : "dialogue1",
+		"main" : "image/character/유영당황.png",
+		"name" : "유영",
+		"content" : "어어! 왜 안 잡혀! 어디가 나비야~! 같이 가~!"
+	},
+
+	{
+		"type" : "narration",
+		"name" : "",
+		"content" : "홀린 듯이 나비를 쫓아간 유영은 이내, 요괴가 나온다는 산인 ‘수화산’에 들어가고 만다."
+	}
+]

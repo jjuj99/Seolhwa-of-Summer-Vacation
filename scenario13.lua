@@ -170,6 +170,10 @@ function scene:create( event )
 				type = "image",
 				filename = Data[index].image
 			}
+			background.fill = {
+				type = "image",
+				filename = Data[index].img
+			}
 		end
 	end
 

@@ -18,7 +18,7 @@ function scene:create( event )
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
 	background.fill = {
 		type = "image",
-		filename = "image/background/보라.png"
+		filename = "image/background/하늘8.jpg"
 	}
 	local set = display.newImage("image/public/설정.png")
 	set.x, set.y = display.contentWidth * 0.05, display.contentHeight * 0.09
