@@ -24,7 +24,7 @@
 		"type" : "background",
 		"name" : "??",
 		"image" : "image/background/동굴안.png",
-		"support" : "image/character/이밍_검정형상.png",
+		"support" : "image/character/이밍_눈만 보이는 이미지.png",
 		"main" : "image/character/유영당황.png",
 		"content" : "ㅁ……."
 	},
@@ -40,7 +40,7 @@
 		"type" : "dialogue2",
 		"name" : "유영",
 		"main" : "image/character/유영일반.png",
-		"support" : "image/character/이밍_검정형상.png",
+		"support" : "image/character/이밍_눈만 보이는 이미지.png",
 		"content" : "안녕? 너는 누구야?"
 	}
 ]
