@@ -131,7 +131,7 @@ function scene:create( event )
 		--실패
 
 		if ( minute.text == '0' and second.text == '0') then
-			composer.showOverlay('fail')
+			composer.showOverlay('game_jichun.fail')
 			dash.alpha = 0
 			dash2.alpha = 0
 			zeroText.alpha = 0
@@ -147,7 +147,7 @@ function scene:create( event )
 		-- 성공
 		if( score.text == '20') then
 			timer.pause(timeAttack)
-			composer.showOverlay('ending')
+			composer.showOverlay('game_jichun.ending')
 		end
 		-- 충치 발생
 		local count = 0
@@ -221,7 +221,7 @@ function scene:create( event )
 	}
 
 	if composer.getVariable("start") == nil then
-		composer.showOverlay('start', start)
+		composer.showOverlay('game_jichun.start', start)
 	end
 	--설정
  	function option:tap( event )
