@@ -27,7 +27,8 @@ function scene:create( event )
 	-- audio.setMaxVolume(1, { channel=2 })
 	-- audio.setVolume(0.5, {channel=2})
 	-- 이미지 불러오기 ----
-	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
+	local background = display.newImageRect("image/background/수화산정상.png", display.contentWidth, display.contentHeight)
+	background.x,background.y=display.contentCenterX, display.contentCenterY
 
 	local levelText = display.newText("2단계)어디에 있을까?", display.contentWidth*0.5, display.contentHeight*0.9, "font/경기천년바탕_Regular.ttf")
 	levelText:setFillColor(0)
@@ -40,7 +41,7 @@ function scene:create( event )
 	local setting1 = display.newImage("image/public/설정.png")
 	setting1.x, setting1.y = display.contentWidth * 0.05, display.contentHeight * 0.09
 
-	local face = display.newImage("image/public/지천.png")
+	local face = display.newImage("image/public/지천얼굴.png")
 	face.x, face.y = display.contentWidth * 0.853, display.contentHeight * 0.09
 
 	local item = display.newImage("image/public/아이템.png")

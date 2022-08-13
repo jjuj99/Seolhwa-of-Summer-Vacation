@@ -70,7 +70,8 @@ function scene:create( event )
 
 	
 	
-	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
+	local background = display.newImageRect("image/background/수화산정상.png", display.contentWidth, display.contentHeight)
+	background.x,background.y=display.contentCenterX, display.contentCenterY
 
 	local cardgroup= display.newGroup()
 	-- local back = display.newImageRect("image/p9_1.png",display.contentWidth, display.contentHeight)
@@ -81,7 +82,7 @@ function scene:create( event )
 	local setting1 = display.newImage("image/public/설정.png")
 	setting1.x, setting1.y = display.contentWidth * 0.05, display.contentHeight * 0.09
 
-	local face = display.newImage("image/public/지천.png")
+	local face = display.newImage("image/public/지천얼굴.png")
 	face.x, face.y = display.contentWidth * 0.853, display.contentHeight * 0.09
 
 	local item = display.newImage("image/public/아이템.png")
