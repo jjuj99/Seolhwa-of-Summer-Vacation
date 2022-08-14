@@ -22,7 +22,7 @@ function scene:create( event )
    audio.setMaxVolume(1, { channel=1 })
    audio.setVolume(0.5, {channel=1})
 
-   local qbgm = audio.loadSound("sound/B. 일반 버튼_스위치_랜턴_버튼_mp3.mp3")
+   local qbgm = audio.loadSound("sound/A_1. 미니게임 버튼_카툰코드음14_mp3.mp3")
 
    -- 본격 게임화면
 
@@ -114,11 +114,6 @@ function scene:create( event )
 
 -----------------------------------------------------------------------------------------------
    
-   --[[
-   local commentBackground = display.newRect(display.contentCenterX, display.contentCenterY + 300, display.contentWidth, 200)
-   commentBackground:setFillColor(0.2)
-   commentBackground.alpha = 0
-   ]]
 
    -- 화자, 대사 창
 
@@ -211,7 +206,12 @@ function scene:create( event )
    comment:setFillColor(0)
    
 
-   local function nextScript( )
+   -- 성공 시
+   local success = display.newImage("image/scoreResult/성공.png")
+   success.x, success.y = display.contentCenterX, display.contentCenterY
+   success.alpha = 0
+
+   local function nextScript(event)
       --문제번호, index 각각 +1
       
       index = index + 1 
@@ -223,29 +223,22 @@ function scene:create( event )
 
       speaker.alpha = 0
       lines.alpha = 0
-      --speakerIs.alpha = 0
-      --replyBackground.alpha = 0
 
 
 
       if(index > #Data) then 
          if(score >= 7) then
             audio.stop()
-            --composer.gotoScene('game_saying.saying_ending')
-            
-            composer.showOverlay('game_saying.saying_ending')
-            
-
-            --composer.removeScene('game_saying.game_saying', option)
-           return
-
+                        
+            success.alpha = 1
          else
-            --composer.gotoScene('game_saying.fail', option)
-            composer.showOverlay('game_saying.fail')
-            --composer.removeScene('game_saying.game_saying')   
-            return
+            
+            audio.stop()
+            composer.showOverlay('game_saying.fail') 
+            
          end
-
+         
+         return
       end
 
 
@@ -260,9 +253,6 @@ function scene:create( event )
          saying4.text = Data[index].saying4
   
       end
-      
-      -- composer.showOverlay('game_saying.saying_ending')
-
    
    end
 
@@ -274,6 +264,17 @@ function scene:create( event )
       replyBackground.alpha = 0
       nextScript()
    end
+
+
+   function success:tap( event )
+      audio.play(click)
+      audio.stop()
+      BGM = audio.loadSound("sound/10. 총영 성공 후_My home.mp3")
+      audio.play(BGM, {channel=1, loops=-1})
+      composer.gotoScene("..scenario9")
+      
+   end
+   success:addEventListener("tap", success)
 
    local q1 = qbg[1]
    local q2 = qbg[2]
@@ -472,19 +473,9 @@ function scene:create( event )
       composer.showOverlay('game_saying.saying_start', start)
    end
 
-   --[[
-      local ending = {
-          isModal = true,
-          effect = "fade",
-          time = 400,
-          params = {}
-      }
 
-      composer.showOverlay('game_saying.saying_ending', ending)
-      ]]
    ---------------------------------------------------------------------------------------------end
    
-   --sceneGroup:insert(background)
 
    --layer 정리--
 
@@ -512,6 +503,7 @@ function scene:create( event )
    --sceneGroup:insert(speakerIs)
    sceneGroup:insert(commentGroup)
    
+   sceneGroup:insert(success)
    
    sceneGroup:insert(set)
    sceneGroup:insert(guide)
