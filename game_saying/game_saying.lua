@@ -228,7 +228,7 @@ function scene:create( event )
 
       if(index > #Data) then 
          if(score >= 7) then
-            audio.stop()
+            --audio.stop()
                         
             success.alpha = 1
          else
