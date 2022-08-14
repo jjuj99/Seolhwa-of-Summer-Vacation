@@ -25,17 +25,15 @@ function scene:create( event )
 
 	-- 오브젝트들 배치 --
 	local background = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
-
+	background.fill = {
+		type = "image",
+		filename = "image/start/시작화면.png"
+	}
 	local set = display.newImage("image/public/설정.png")
 	set.x, set.y = display.contentWidth * 0.05, display.contentHeight * 0.91
 
-	local logo = display.newRect(display.contentWidth * 0.5, display.contentHeight * 0.35, 450, 450)
-	logo.fill = {
-		type = "image",
-		filename = "image/start/여름방학 설화.png"
-	}
 	local starting = display.newImage("image/start/시작하기.png")
-	starting.x, starting.y = display.contentWidth * 0.5, display.contentHeight * 0.7
+	starting.x, starting.y = display.contentWidth * 0.5, display.contentHeight * 0.75
 
 	--fade--
 
@@ -49,7 +47,6 @@ function scene:create( event )
 
 	sceneGroup:insert(background)
 	sceneGroup:insert(set)
-	sceneGroup:insert(logo)
 	sceneGroup:insert(starting)
 
 	--설정창--
