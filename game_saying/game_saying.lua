@@ -271,7 +271,7 @@ function scene:create( event )
       audio.dispose(minibgm)
       BGM = audio.loadSound("sound/10. 총영 성공 후_My home.mp3")
       audio.play(BGM, {channel=1, loops=-1})
-      composer.gotoScene("..scenario9")
+      composer.gotoScene("...scenario9")
       
    end
    success:addEventListener("tap", success)
