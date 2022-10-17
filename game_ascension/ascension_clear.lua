@@ -45,7 +45,7 @@ function scene:create( event )
 
 										-- 다음화면으로 넘어가기 --
 										composer.removeScene("game_ascension.phase_clear")
- 										composer.gotoScene("...scenario7")
+ 										composer.gotoScene('scenario7')
 									end, 1)
  	end
  	background:addEventListener("tap", background)
