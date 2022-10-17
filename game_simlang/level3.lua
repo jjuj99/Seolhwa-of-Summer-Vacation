@@ -321,7 +321,7 @@ function scene:create( event )
 		audio.dispose(explosionSound)
 		BGM = audio.loadSound("sound/12. 심랑 성공 후_Boy meets Girl.mp3")
 		audio.play(BGM, {channel=1, loops=-1})
-		composer.gotoScene('...scenario11')
+		composer.gotoScene('scenario11')
 		timer.cancel(timeAttack)		
 	end
 	board11:addEventListener("tap", board11)
