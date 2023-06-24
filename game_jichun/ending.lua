@@ -18,7 +18,7 @@ function scene:create( event )
 		audio.stop()
 		BGM = audio.loadSound("sound/05. 수화산 중심_Endless.mp3")
 		audio.play(BGM, {channel=1, loops=-1})
-		composer.gotoScene('scenario4')
+		composer.gotoScene("scenario4")
 	end
 	background:addEventListener("tap", background)
 	
